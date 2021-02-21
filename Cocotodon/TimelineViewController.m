@@ -120,8 +120,37 @@
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
     NSLog(@"ws notification: %@", notification);
     __auto_type *content = [UNMutableNotificationContent new];
-    content.title = [NSString stringWithFormat:@"⭐️ @%@ さんにふぁぼられました", notification.account.fullAcct];
-    content.body = notification.status.expandContent;
+    switch (notification.type) {
+        case DONMastodonNotificationFollowType:
+            content.body = [NSString stringWithFormat:@"@%@ さんにフォローされました", notification.account.fullAcct];
+            break;
+        case DONMastodonNotificationFollowRequestType:
+            content.body = [NSString stringWithFormat:@"@%@ さんからフォローリクエストが届いています", notification.account.fullAcct];
+            break;
+        case DONMastodonNotificationMentionType:
+            content.title = [NSString stringWithFormat:@"💬 @%@ さんからの返信", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationReblogType:
+            content.title = [NSString stringWithFormat:@"🔁 @%@ さんにブーストされました", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationFavoriteType:
+            content.title = [NSString stringWithFormat:@"⭐️ @%@ さんにふぁぼられました", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationPollType:
+            content.title = @"🗳 投票が終了しました";
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationStatusType:
+            content.title = [NSString stringWithFormat:@"📥 @%@ さんの新しいトゥート", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        default:
+            NSLog(@"ws unknown notification type!");
+            return;
+    }
     content.sound = [UNNotificationSound defaultSound];
     
     __auto_type request = [UNNotificationRequest requestWithIdentifier:notification.identity content:content trigger:nil];
