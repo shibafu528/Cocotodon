@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MRBSettingFileSelect"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jed-gk-jP9">
+                    <rect key="frame" x="-2" y="3" width="244" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Rff-X6-TOc">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="label" id="iNN-iA-AG3"/>
+                    </connections>
+                </textField>
+                <button verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="kZd-fY-7Wb">
+                    <rect key="frame" x="401" y="-7" width="85" height="32"/>
+                    <buttonCell key="cell" type="push" title="Browse" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Qsn-Rn-M2A">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="browse:" target="-2" id="Xry-pB-BFn"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="SXa-zU-o4X">
+                    <rect key="frame" x="248" y="0.0" width="151" height="21"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="cfw-Ql-qqf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="path" id="Z3o-Og-7XF">
+                            <dictionary key="options">
+                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="jed-gk-jP9" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" multiplier="0.5" id="0dP-7X-Vjd"/>
+                <constraint firstItem="jed-gk-jP9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="7z8-QD-2ff"/>
+                <constraint firstItem="kZd-fY-7Wb" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="98A-4E-1A4"/>
+                <constraint firstItem="jed-gk-jP9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="top" id="CW2-3H-Ede"/>
+                <constraint firstItem="kZd-fY-7Wb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="top" id="JVc-oz-Jba"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jed-gk-jP9" secondAttribute="bottom" id="OQ7-WD-Lzx"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kZd-fY-7Wb" secondAttribute="bottom" id="h8z-7v-sq1"/>
+                <constraint firstItem="SXa-zU-o4X" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="iZh-tq-Ap8"/>
+                <constraint firstItem="SXa-zU-o4X" firstAttribute="leading" secondItem="jed-gk-jP9" secondAttribute="trailing" constant="8" id="lCZ-ou-AVK"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SXa-zU-o4X" secondAttribute="bottom" id="lHG-dc-ygO"/>
+                <constraint firstItem="SXa-zU-o4X" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="top" id="lY8-fE-z5R"/>
+                <constraint firstItem="kZd-fY-7Wb" firstAttribute="leading" secondItem="SXa-zU-o4X" secondAttribute="trailing" constant="8" id="mls-OG-sxZ"/>
+                <constraint firstItem="jed-gk-jP9" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="uBQ-na-HDb"/>
+                <constraint firstAttribute="trailing" secondItem="kZd-fY-7Wb" secondAttribute="trailing" id="yDx-Yf-wmD"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </customView>
+    </objects>
+</document>

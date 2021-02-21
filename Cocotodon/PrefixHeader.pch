@@ -1,0 +1,36 @@
+//
+// Copyright (c) 2020 shibafu
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "AppDelegate.h"
+
+#import <mruby.h>
+#import <mruby/array.h>
+#import <mruby/class.h>
+#import <mruby/compile.h>
+#import <mruby/data.h>
+#import <mruby/error.h>
+#import <mruby/hash.h>
+#import <mruby/mix.h>
+#import <mruby/string.h>
+#import <mruby/variable.h>
+
+#import "MRBPin.h"
+#import "MRBProc.h"
+#import "mrb_util.h"
+
+#import "DONApiClient.h"
+#import "DONUtils.h"
+#import "NSString+DONExtension.h"
+#import "NSView+NibLoader.h"
+#import "NSImage+Resize.h"
+
+#import <PromiseKit/PromiseKit.h>
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,970 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		41B86BE914A62B975C3A8477 /* Pods_Cocotodon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 700D3FB33002720B46FB651C /* Pods_Cocotodon.framework */; };
+		5D04E72025E0EDFC0068FDFF /* DONMastodonAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D04E71F25E0EDFC0068FDFF /* DONMastodonAttachment.m */; };
+		5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D04E72625E113B30068FDFF /* PreviewViewController.m */; };
+		5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D04E72D25E14A870068FDFF /* ClickableImageView.m */; };
+		5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BE96E25D5166300EBE6E0 /* WindowController.m */; };
+		5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */; };
+		5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */; };
+		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
+		5D3D9F8F2536747F00BC64A7 /* DONStatusContentParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */; };
+		5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D597225D90F5100E2F2F9 /* MainViewController.m */; };
+		5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */; };
+		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
+		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
+		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
+		5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C025138D840067EAB4 /* FlippedView.m */; };
+		5D54E6C6251429430067EAB4 /* mrb_setting_dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C5251429430067EAB4 /* mrb_setting_dsl.m */; };
+		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
+		5D6F5E2B2515D34900018EBA /* PostBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F5E2A2515CB0400018EBA /* PostBox.xib */; };
+		5D7AC8A625029CA70042009D /* MRBPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A525029CA70042009D /* MRBPin.m */; };
+		5D7AC8A92502A4760042009D /* mrb_cocotodon_model.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */; };
+		5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7AC8AB2503E6E30042009D /* MRBProc.m */; };
+		5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A4C9825DD49780073D733 /* LXHTMLParser.m */; };
+		5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486E62516F0FF009066C3 /* MRBSettingView.m */; };
+		5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486E92516F2D4009066C3 /* MRBSettingFileSelect.m */; };
+		5D9486EC2516F2EB009066C3 /* MRBSettingFileSelect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */; };
+		5D9486EF2516F9EA009066C3 /* NSView+NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486EE2516F9EA009066C3 /* NSView+NibLoader.m */; };
+		5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486F225173247009066C3 /* NSString+DONExtension.m */; };
+		5D94870F25173247009066C3 /* DONApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486F525173247009066C3 /* DONApiClient.m */; };
+		5D94871025173247009066C3 /* DONMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FA25173247009066C3 /* DONMastodonApp.m */; };
+		5D94871125173247009066C3 /* DONMastodonAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FB25173247009066C3 /* DONMastodonAccessToken.m */; };
+		5D94871225173247009066C3 /* DONMastodonAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FC25173247009066C3 /* DONMastodonAccount.m */; };
+		5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FF25173247009066C3 /* DONApiClient+Accounts.m */; };
+		5D94871425173247009066C3 /* DONApiClient+Statuses.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870225173247009066C3 /* DONApiClient+Statuses.m */; };
+		5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870425173247009066C3 /* DONApiClient+Timelines.m */; };
+		5D94871625173247009066C3 /* DONApiClient+Apps.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870525173247009066C3 /* DONApiClient+Apps.m */; };
+		5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870725173247009066C3 /* DONStatusVisibility.m */; };
+		5D94871825173247009066C3 /* DONPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870B25173247009066C3 /* DONPicture.m */; };
+		5D94871B25173AE8009066C3 /* DONStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94871A25173AE8009066C3 /* DONStatus.m */; };
+		5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DE893250126E100A9E9F2 /* mrb_util.h */; };
+		5D9DE8962501271900A9E9F2 /* mrb_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DE8952501271900A9E9F2 /* mrb_util.m */; };
+		5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3179124FF190D0095AF04 /* AppDelegate.m */; };
+		5DA3179524FF190D0095AF04 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3179424FF190D0095AF04 /* TimelineViewController.m */; };
+		5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DA3179624FF19100095AF04 /* Assets.xcassets */; };
+		5DA3179A24FF19100095AF04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA3179824FF19100095AF04 /* Main.storyboard */; };
+		5DA3179D24FF19100095AF04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3179C24FF19100095AF04 /* main.m */; };
+		5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AA22518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m */; };
+		5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */; };
+		5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */; };
+		5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */; };
+		5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC2F3225B11347003D797F /* ExpandableCellView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D3D9F862536742600BC64A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DA3178524FF190C0095AF04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DA3178C24FF190D0095AF04;
+			remoteInfo = Cocotodon;
+		};
+		5DEBFEA924FFF2F6009836F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DA3178524FF190C0095AF04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DEBF07924FFDC79009836F1;
+			remoteInfo = Cocotodon_mruby;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		06016B61E71F759389BE6068 /* Pods-Cocotodon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocotodon.release.xcconfig"; path = "Target Support Files/Pods-Cocotodon/Pods-Cocotodon.release.xcconfig"; sourceTree = "<group>"; };
+		3C59F63870BBAFA6CC8EA7CB /* Pods-Cocotodon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cocotodon.debug.xcconfig"; path = "Target Support Files/Pods-Cocotodon/Pods-Cocotodon.debug.xcconfig"; sourceTree = "<group>"; };
+		5D04E71E25E0EDFC0068FDFF /* DONMastodonAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonAttachment.h; sourceTree = "<group>"; };
+		5D04E71F25E0EDFC0068FDFF /* DONMastodonAttachment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonAttachment.m; sourceTree = "<group>"; };
+		5D04E72525E113B30068FDFF /* PreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		5D04E72625E113B30068FDFF /* PreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		5D04E72C25E14A870068FDFF /* ClickableImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClickableImageView.h; sourceTree = "<group>"; };
+		5D04E72D25E14A870068FDFF /* ClickableImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClickableImageView.m; sourceTree = "<group>"; };
+		5D0BE96D25D5166300EBE6E0 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		5D0BE96E25D5166300EBE6E0 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
+		5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
+		5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentParser.h; sourceTree = "<group>"; };
+		5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentParser.m; sourceTree = "<group>"; };
+		5D3D9F812536742600BC64A7 /* DonKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D3D9F852536742600BC64A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentParserTests.m; sourceTree = "<group>"; };
+		5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStreamingEventDelegate.h; sourceTree = "<group>"; };
+		5D4D597125D90F5100E2F2F9 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		5D4D597225D90F5100E2F2F9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
+		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
+		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
+		5D54E68F250BBDA70067EAB4 /* MRBState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBState.h; sourceTree = "<group>"; };
+		5D54E690250BBDA70067EAB4 /* MRBState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBState.m; sourceTree = "<group>"; };
+		5D54E6BC251265A00067EAB4 /* PreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		5D54E6BF25138D840067EAB4 /* FlippedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlippedView.h; sourceTree = "<group>"; };
+		5D54E6C025138D840067EAB4 /* FlippedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlippedView.m; sourceTree = "<group>"; };
+		5D54E6C5251429430067EAB4 /* mrb_setting_dsl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = mrb_setting_dsl.m; path = /Users/shibafu/git/Cocotodon/Cocotodon/mrb/mrb_setting_dsl.m; sourceTree = "<absolute>"; };
+		5D54E6C7251429710067EAB4 /* mrb_setting_dsl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_setting_dsl.h; sourceTree = "<group>"; };
+		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
+		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
+		5D6F5E2A2515CB0400018EBA /* PostBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostBox.xib; path = /Users/shibafu/git/Cocotodon/Cocotodon/PostBox.xib; sourceTree = "<absolute>"; };
+		5D7AC8A425029CA70042009D /* MRBPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBPin.h; sourceTree = "<group>"; };
+		5D7AC8A525029CA70042009D /* MRBPin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBPin.m; sourceTree = "<group>"; };
+		5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = mrb_cocotodon_model.rb; sourceTree = "<group>"; };
+		5D7AC8AA2503E6E30042009D /* MRBProc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBProc.h; sourceTree = "<group>"; };
+		5D7AC8AB2503E6E30042009D /* MRBProc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBProc.m; sourceTree = "<group>"; };
+		5D8A4C9725DD49780073D733 /* LXHTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXHTMLParser.h; sourceTree = "<group>"; };
+		5D8A4C9825DD49780073D733 /* LXHTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXHTMLParser.m; sourceTree = "<group>"; };
+		5D9486E52516F0FF009066C3 /* MRBSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBSettingView.h; sourceTree = "<group>"; };
+		5D9486E62516F0FF009066C3 /* MRBSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBSettingView.m; sourceTree = "<group>"; };
+		5D9486E82516F2D4009066C3 /* MRBSettingFileSelect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBSettingFileSelect.h; sourceTree = "<group>"; };
+		5D9486E92516F2D4009066C3 /* MRBSettingFileSelect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBSettingFileSelect.m; sourceTree = "<group>"; };
+		5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MRBSettingFileSelect.xib; sourceTree = "<group>"; };
+		5D9486ED2516F9EA009066C3 /* NSView+NibLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+NibLoader.h"; sourceTree = "<group>"; };
+		5D9486EE2516F9EA009066C3 /* NSView+NibLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+NibLoader.m"; sourceTree = "<group>"; };
+		5D9486F225173247009066C3 /* NSString+DONExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DONExtension.m"; sourceTree = "<group>"; };
+		5D9486F325173247009066C3 /* NSString+DONExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DONExtension.h"; sourceTree = "<group>"; };
+		5D9486F525173247009066C3 /* DONApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONApiClient.m; sourceTree = "<group>"; };
+		5D9486F725173247009066C3 /* DONMastodonApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONMastodonApp.h; sourceTree = "<group>"; };
+		5D9486F825173247009066C3 /* DONMastodonAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONMastodonAccount.h; sourceTree = "<group>"; };
+		5D9486F925173247009066C3 /* DONMastodonAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONMastodonAccessToken.h; sourceTree = "<group>"; };
+		5D9486FA25173247009066C3 /* DONMastodonApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONMastodonApp.m; sourceTree = "<group>"; };
+		5D9486FB25173247009066C3 /* DONMastodonAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONMastodonAccessToken.m; sourceTree = "<group>"; };
+		5D9486FC25173247009066C3 /* DONMastodonAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONMastodonAccount.m; sourceTree = "<group>"; };
+		5D9486FD25173247009066C3 /* DONStatusVisibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONStatusVisibility.h; sourceTree = "<group>"; };
+		5D9486FF25173247009066C3 /* DONApiClient+Accounts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Accounts.m"; sourceTree = "<group>"; };
+		5D94870025173247009066C3 /* DONApiClient+Timelines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Timelines.h"; sourceTree = "<group>"; };
+		5D94870125173247009066C3 /* DONApiClient+Apps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Apps.h"; sourceTree = "<group>"; };
+		5D94870225173247009066C3 /* DONApiClient+Statuses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Statuses.m"; sourceTree = "<group>"; };
+		5D94870325173247009066C3 /* DONApiClient+Accounts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Accounts.h"; sourceTree = "<group>"; };
+		5D94870425173247009066C3 /* DONApiClient+Timelines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Timelines.m"; sourceTree = "<group>"; };
+		5D94870525173247009066C3 /* DONApiClient+Apps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Apps.m"; sourceTree = "<group>"; };
+		5D94870625173247009066C3 /* DONApiClient+Statuses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Statuses.h"; sourceTree = "<group>"; };
+		5D94870725173247009066C3 /* DONStatusVisibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONStatusVisibility.m; sourceTree = "<group>"; };
+		5D94870825173247009066C3 /* DONApiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONApiClient.h; sourceTree = "<group>"; };
+		5D94870A25173247009066C3 /* DONPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONPicture.h; sourceTree = "<group>"; };
+		5D94870B25173247009066C3 /* DONPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONPicture.m; sourceTree = "<group>"; };
+		5D94870D25173247009066C3 /* DONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONUtils.h; sourceTree = "<group>"; };
+		5D94871925173AE8009066C3 /* DONStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatus.h; sourceTree = "<group>"; };
+		5D94871A25173AE8009066C3 /* DONStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatus.m; sourceTree = "<group>"; };
+		5D9DE893250126E100A9E9F2 /* mrb_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_util.h; sourceTree = "<group>"; };
+		5D9DE8952501271900A9E9F2 /* mrb_util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mrb_util.m; sourceTree = "<group>"; };
+		5DA3178D24FF190D0095AF04 /* Cocotodon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocotodon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DA3179024FF190D0095AF04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5DA3179124FF190D0095AF04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5DA3179324FF190D0095AF04 /* TimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		5DA3179424FF190D0095AF04 /* TimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		5DA3179624FF19100095AF04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5DA3179924FF19100095AF04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5DA3179B24FF19100095AF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DA3179C24FF19100095AF04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5DA3179E24FF19100095AF04 /* Cocotodon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cocotodon.entitlements; sourceTree = "<group>"; };
+		5DA74AA12518B9A600A1CF38 /* NSString+ReplaceLineBreaks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ReplaceLineBreaks.h"; sourceTree = "<group>"; };
+		5DA74AA22518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ReplaceLineBreaks.m"; sourceTree = "<group>"; };
+		5DA74AA52518F3F700A1CF38 /* DONApiClient+Streaming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Streaming.h"; sourceTree = "<group>"; };
+		5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Streaming.m"; sourceTree = "<group>"; };
+		5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONWebSocketStreaming.h; sourceTree = "<group>"; };
+		5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONWebSocketStreaming.m; sourceTree = "<group>"; };
+		5DADEAEC25DABD6D004D8FD0 /* AutolayoutTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutolayoutTextView.h; sourceTree = "<group>"; };
+		5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutolayoutTextView.m; sourceTree = "<group>"; };
+		5DBC2F3125B11347003D797F /* ExpandableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpandableCellView.h; sourceTree = "<group>"; };
+		5DBC2F3225B11347003D797F /* ExpandableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpandableCellView.m; sourceTree = "<group>"; };
+		700D3FB33002720B46FB651C /* Pods_Cocotodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cocotodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D3D9F7E2536742600BC64A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DA3178A24FF190D0095AF04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41B86BE914A62B975C3A8477 /* Pods_Cocotodon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		38BEAB491AAF725A55719083 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C59F63870BBAFA6CC8EA7CB /* Pods-Cocotodon.debug.xcconfig */,
+				06016B61E71F759389BE6068 /* Pods-Cocotodon.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5D3D61DB25DD5D1A001B93D4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5D9486ED2516F9EA009066C3 /* NSView+NibLoader.h */,
+				5D9486EE2516F9EA009066C3 /* NSView+NibLoader.m */,
+				5DA74AA12518B9A600A1CF38 /* NSString+ReplaceLineBreaks.h */,
+				5DA74AA22518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m */,
+				5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */,
+				5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		5D3D9F822536742600BC64A7 /* DonKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D9F8D2536746900BC64A7 /* Utils */,
+				5D3D9F852536742600BC64A7 /* Info.plist */,
+			);
+			path = DonKitTests;
+			sourceTree = "<group>";
+		};
+		5D3D9F8D2536746900BC64A7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5D7AC8A3250284940042009D /* mrb */ = {
+			isa = PBXGroup;
+			children = (
+				5D7AC8A425029CA70042009D /* MRBPin.h */,
+				5D7AC8A525029CA70042009D /* MRBPin.m */,
+				5D7AC8AA2503E6E30042009D /* MRBProc.h */,
+				5D7AC8AB2503E6E30042009D /* MRBProc.m */,
+				5D54E68F250BBDA70067EAB4 /* MRBState.h */,
+				5D54E690250BBDA70067EAB4 /* MRBState.m */,
+				5D9DE893250126E100A9E9F2 /* mrb_util.h */,
+				5D9DE8952501271900A9E9F2 /* mrb_util.m */,
+				5D54E6C7251429710067EAB4 /* mrb_setting_dsl.h */,
+				5D54E6C5251429430067EAB4 /* mrb_setting_dsl.m */,
+				5D9486E52516F0FF009066C3 /* MRBSettingView.h */,
+				5D9486E62516F0FF009066C3 /* MRBSettingView.m */,
+				5D9486E82516F2D4009066C3 /* MRBSettingFileSelect.h */,
+				5D9486E92516F2D4009066C3 /* MRBSettingFileSelect.m */,
+				5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */,
+			);
+			path = mrb;
+			sourceTree = "<group>";
+		};
+		5D7AC8A72502A44C0042009D /* mrblib */ = {
+			isa = PBXGroup;
+			children = (
+				5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */,
+			);
+			path = mrblib;
+			sourceTree = "<group>";
+		};
+		5D8A4C9625DD494E0073D733 /* LXHTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				5D8A4C9725DD49780073D733 /* LXHTMLParser.h */,
+				5D8A4C9825DD49780073D733 /* LXHTMLParser.m */,
+			);
+			path = LXHTMLParser;
+			sourceTree = "<group>";
+		};
+		5D9486F025173247009066C3 /* DonKitTraditional */ = {
+			isa = PBXGroup;
+			children = (
+				5D94870925173247009066C3 /* Entity */,
+				5D9486F125173247009066C3 /* Extension */,
+				5D9486F425173247009066C3 /* Mastodon */,
+				5D94870C25173247009066C3 /* Utils */,
+			);
+			path = DonKitTraditional;
+			sourceTree = "<group>";
+		};
+		5D9486F125173247009066C3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5D9486F325173247009066C3 /* NSString+DONExtension.h */,
+				5D9486F225173247009066C3 /* NSString+DONExtension.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5D9486F425173247009066C3 /* Mastodon */ = {
+			isa = PBXGroup;
+			children = (
+				5D9486FE25173247009066C3 /* API */,
+				5D94870825173247009066C3 /* DONApiClient.h */,
+				5D9486F525173247009066C3 /* DONApiClient.m */,
+				5D9486FD25173247009066C3 /* DONStatusVisibility.h */,
+				5D94870725173247009066C3 /* DONStatusVisibility.m */,
+				5D9486F625173247009066C3 /* Entity */,
+				5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */,
+				5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */,
+				5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */,
+			);
+			path = Mastodon;
+			sourceTree = "<group>";
+		};
+		5D9486F625173247009066C3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				5D9486F925173247009066C3 /* DONMastodonAccessToken.h */,
+				5D9486FB25173247009066C3 /* DONMastodonAccessToken.m */,
+				5D9486F825173247009066C3 /* DONMastodonAccount.h */,
+				5D9486FC25173247009066C3 /* DONMastodonAccount.m */,
+				5D9486F725173247009066C3 /* DONMastodonApp.h */,
+				5D9486FA25173247009066C3 /* DONMastodonApp.m */,
+				5D94871925173AE8009066C3 /* DONStatus.h */,
+				5D94871A25173AE8009066C3 /* DONStatus.m */,
+				5D04E71E25E0EDFC0068FDFF /* DONMastodonAttachment.h */,
+				5D04E71F25E0EDFC0068FDFF /* DONMastodonAttachment.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		5D9486FE25173247009066C3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5D94870325173247009066C3 /* DONApiClient+Accounts.h */,
+				5D9486FF25173247009066C3 /* DONApiClient+Accounts.m */,
+				5D94870125173247009066C3 /* DONApiClient+Apps.h */,
+				5D94870525173247009066C3 /* DONApiClient+Apps.m */,
+				5D94870625173247009066C3 /* DONApiClient+Statuses.h */,
+				5D94870225173247009066C3 /* DONApiClient+Statuses.m */,
+				5D94870025173247009066C3 /* DONApiClient+Timelines.h */,
+				5D94870425173247009066C3 /* DONApiClient+Timelines.m */,
+				5DA74AA52518F3F700A1CF38 /* DONApiClient+Streaming.h */,
+				5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5D94870925173247009066C3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				5D94870A25173247009066C3 /* DONPicture.h */,
+				5D94870B25173247009066C3 /* DONPicture.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		5D94870C25173247009066C3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D94870D25173247009066C3 /* DONUtils.h */,
+				5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */,
+				5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5DA3178424FF190C0095AF04 = {
+			isa = PBXGroup;
+			children = (
+				5D8A4C9625DD494E0073D733 /* LXHTMLParser */,
+				5D9486F025173247009066C3 /* DonKitTraditional */,
+				5DA3178F24FF190D0095AF04 /* Cocotodon */,
+				5D3D9F822536742600BC64A7 /* DonKitTests */,
+				5DA3178E24FF190D0095AF04 /* Products */,
+				38BEAB491AAF725A55719083 /* Pods */,
+				BFF7F3A0831F9F9D29B2D667 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5DA3178E24FF190D0095AF04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5DA3178D24FF190D0095AF04 /* Cocotodon.app */,
+				5D3D9F812536742600BC64A7 /* DonKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5DA3178F24FF190D0095AF04 /* Cocotodon */ = {
+			isa = PBXGroup;
+			children = (
+				5D3D61DB25DD5D1A001B93D4 /* Categories */,
+				5D54E682250913160067EAB4 /* PrefixHeader.pch */,
+				5D7AC8A72502A44C0042009D /* mrblib */,
+				5D7AC8A3250284940042009D /* mrb */,
+				5DA3179024FF190D0095AF04 /* AppDelegate.h */,
+				5DA3179124FF190D0095AF04 /* AppDelegate.m */,
+				5DA3179324FF190D0095AF04 /* TimelineViewController.h */,
+				5DA3179424FF190D0095AF04 /* TimelineViewController.m */,
+				5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */,
+				5DA3179624FF19100095AF04 /* Assets.xcassets */,
+				5DA3179824FF19100095AF04 /* Main.storyboard */,
+				5DA3179B24FF19100095AF04 /* Info.plist */,
+				5DA3179C24FF19100095AF04 /* main.m */,
+				5DA3179E24FF19100095AF04 /* Cocotodon.entitlements */,
+				5D54E683250928770067EAB4 /* ReplyViewController.h */,
+				5D54E684250928770067EAB4 /* ReplyViewController.m */,
+				5D54E6BC251265A00067EAB4 /* PreferencesViewController.h */,
+				5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */,
+				5D54E6BF25138D840067EAB4 /* FlippedView.h */,
+				5D54E6C025138D840067EAB4 /* FlippedView.m */,
+				5D6F5E272515CAEE00018EBA /* PostBox.h */,
+				5D6F5E282515CAEE00018EBA /* PostBox.m */,
+				5D6F5E2A2515CB0400018EBA /* PostBox.xib */,
+				5DBC2F3125B11347003D797F /* ExpandableCellView.h */,
+				5DBC2F3225B11347003D797F /* ExpandableCellView.m */,
+				5D0BE96D25D5166300EBE6E0 /* WindowController.h */,
+				5D0BE96E25D5166300EBE6E0 /* WindowController.m */,
+				5D4D597125D90F5100E2F2F9 /* MainViewController.h */,
+				5D4D597225D90F5100E2F2F9 /* MainViewController.m */,
+				5DADEAEC25DABD6D004D8FD0 /* AutolayoutTextView.h */,
+				5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */,
+				5D04E72525E113B30068FDFF /* PreviewViewController.h */,
+				5D04E72625E113B30068FDFF /* PreviewViewController.m */,
+				5D04E72C25E14A870068FDFF /* ClickableImageView.h */,
+				5D04E72D25E14A870068FDFF /* ClickableImageView.m */,
+			);
+			path = Cocotodon;
+			sourceTree = "<group>";
+		};
+		BFF7F3A0831F9F9D29B2D667 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				700D3FB33002720B46FB651C /* Pods_Cocotodon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		5DEBF07924FFDC79009836F1 /* Cocotodon_mruby */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 5DEBF07A24FFDC79009836F1 /* Build configuration list for PBXLegacyTarget "Cocotodon_mruby" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = "$(PROJECT_DIR)/mruby";
+			dependencies = (
+			);
+			name = Cocotodon_mruby;
+			passBuildSettingsInEnvironment = 1;
+			productName = Cocotodon_mruby;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		5D3D9F802536742600BC64A7 /* DonKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D3D9F882536742600BC64A7 /* Build configuration list for PBXNativeTarget "DonKitTests" */;
+			buildPhases = (
+				5D3D9F7D2536742600BC64A7 /* Sources */,
+				5D3D9F7E2536742600BC64A7 /* Frameworks */,
+				5D3D9F7F2536742600BC64A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D3D9F872536742600BC64A7 /* PBXTargetDependency */,
+			);
+			name = DonKitTests;
+			productName = DonKitTests;
+			productReference = 5D3D9F812536742600BC64A7 /* DonKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5DA3178C24FF190D0095AF04 /* Cocotodon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5DA317A124FF19100095AF04 /* Build configuration list for PBXNativeTarget "Cocotodon" */;
+			buildPhases = (
+				9C1C61F8A2C128910BD5B05E /* [CP] Check Pods Manifest.lock */,
+				5DA3178924FF190D0095AF04 /* Sources */,
+				5DA3178A24FF190D0095AF04 /* Frameworks */,
+				5DA3178B24FF190D0095AF04 /* Resources */,
+				BAE2947883149E1A4D049A37 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5DEBFEAA24FFF2F6009836F1 /* PBXTargetDependency */,
+			);
+			name = Cocotodon;
+			productName = Cocotodon;
+			productReference = 5DA3178D24FF190D0095AF04 /* Cocotodon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5DA3178524FF190C0095AF04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = shibafu;
+				TargetAttributes = {
+					5D3D9F802536742600BC64A7 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 5DA3178C24FF190D0095AF04;
+					};
+					5DA3178C24FF190D0095AF04 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					5DEBF07924FFDC79009836F1 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 5DA3178824FF190C0095AF04 /* Build configuration list for PBXProject "Cocotodon" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = ja;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ja,
+				Base,
+			);
+			mainGroup = 5DA3178424FF190C0095AF04;
+			productRefGroup = 5DA3178E24FF190D0095AF04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DA3178C24FF190D0095AF04 /* Cocotodon */,
+				5DEBF07924FFDC79009836F1 /* Cocotodon_mruby */,
+				5D3D9F802536742600BC64A7 /* DonKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D3D9F7F2536742600BC64A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DA3178B24FF190D0095AF04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D6F5E2B2515D34900018EBA /* PostBox.xib in Resources */,
+				5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */,
+				5D9486EC2516F2EB009066C3 /* MRBSettingFileSelect.xib in Resources */,
+				5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */,
+				5DA3179A24FF19100095AF04 /* Main.storyboard in Resources */,
+				5D7AC8A92502A4760042009D /* mrb_cocotodon_model.rb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9C1C61F8A2C128910BD5B05E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cocotodon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAE2947883149E1A4D049A37 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cocotodon/Pods-Cocotodon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cocotodon/Pods-Cocotodon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cocotodon/Pods-Cocotodon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D3D9F7D2536742600BC64A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D3D9F8F2536747F00BC64A7 /* DONStatusContentParserTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DA3178924FF190D0095AF04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */,
+				5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */,
+				5D94871125173247009066C3 /* DONMastodonAccessToken.m in Sources */,
+				5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */,
+				5D94871025173247009066C3 /* DONMastodonApp.m in Sources */,
+				5DA3179524FF190D0095AF04 /* TimelineViewController.m in Sources */,
+				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
+				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
+				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
+				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
+				5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */,
+				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
+				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,
+				5D94871225173247009066C3 /* DONMastodonAccount.m in Sources */,
+				5D54E6C6251429430067EAB4 /* mrb_setting_dsl.m in Sources */,
+				5D9DE8962501271900A9E9F2 /* mrb_util.m in Sources */,
+				5DA3179D24FF19100095AF04 /* main.m in Sources */,
+				5D04E72025E0EDFC0068FDFF /* DONMastodonAttachment.m in Sources */,
+				5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */,
+				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
+				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
+				5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */,
+				5D94871625173247009066C3 /* DONApiClient+Apps.m in Sources */,
+				5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */,
+				5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */,
+				5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */,
+				5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */,
+				5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */,
+				5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */,
+				5D9486EF2516F9EA009066C3 /* NSView+NibLoader.m in Sources */,
+				5D94871825173247009066C3 /* DONPicture.m in Sources */,
+				5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */,
+				5D94870F25173247009066C3 /* DONApiClient.m in Sources */,
+				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,
+				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
+				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
+				5D94871425173247009066C3 /* DONApiClient+Statuses.m in Sources */,
+				5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */,
+				5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */,
+				5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */,
+				5D7AC8A625029CA70042009D /* MRBPin.m in Sources */,
+				5D94871B25173AE8009066C3 /* DONStatus.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D3D9F872536742600BC64A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DA3178C24FF190D0095AF04 /* Cocotodon */;
+			targetProxy = 5D3D9F862536742600BC64A7 /* PBXContainerItemProxy */;
+		};
+		5DEBFEAA24FFF2F6009836F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DEBF07924FFDC79009836F1 /* Cocotodon_mruby */;
+			targetProxy = 5DEBFEA924FFF2F6009836F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5DA3179824FF19100095AF04 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5DA3179924FF19100095AF04 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5D3D9F892536742600BC64A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DonKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = info.shibafu528.DonKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cocotodon.app/Contents/MacOS/Cocotodon";
+			};
+			name = Debug;
+		};
+		5D3D9F8A2536742600BC64A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DonKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = info.shibafu528.DonKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cocotodon.app/Contents/MacOS/Cocotodon";
+			};
+			name = Release;
+		};
+		5DA3179F24FF19100095AF04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mruby/include",
+					"$(PROJECT_DIR)/mruby/build/repos/host/mruby-mix/mruby-mix/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-debug/lib",
+					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-debug/mrbgems/mruby-yaml/yaml-0.2.2/build/lib/",
+					/usr/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lmruby",
+					"-lyaml",
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5DA317A024FF19100095AF04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mruby/include",
+					"$(PROJECT_DIR)/mruby/build/repos/host/mruby-mix/mruby-mix/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-release/lib",
+					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-release/mrbgems/mruby-yaml/yaml-0.2.2/build/lib/",
+					/usr/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lmruby",
+					"-lyaml",
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5DA317A224FF19100095AF04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C59F63870BBAFA6CC8EA7CB /* Pods-Cocotodon.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cocotodon/Cocotodon.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
+				INFOPLIST_FILE = Cocotodon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = info.shibafu528.Cocotodon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5DA317A324FF19100095AF04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06016B61E71F759389BE6068 /* Pods-Cocotodon.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cocotodon/Cocotodon.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
+				INFOPLIST_FILE = Cocotodon/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = info.shibafu528.Cocotodon;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5DEBF07B24FFDC79009836F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MRUBY_CONFIG = "$(PROJECT_DIR)/build_config.rb";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUBYOPT = "-EUTF-8";
+			};
+			name = Debug;
+		};
+		5DEBF07C24FFDC79009836F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MRUBY_CONFIG = "$(PROJECT_DIR)/build_config.rb";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUBYOPT = "-EUTF-8";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D3D9F882536742600BC64A7 /* Build configuration list for PBXNativeTarget "DonKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D3D9F892536742600BC64A7 /* Debug */,
+				5D3D9F8A2536742600BC64A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DA3178824FF190C0095AF04 /* Build configuration list for PBXProject "Cocotodon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DA3179F24FF19100095AF04 /* Debug */,
+				5DA317A024FF19100095AF04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DA317A124FF19100095AF04 /* Build configuration list for PBXNativeTarget "Cocotodon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DA317A224FF19100095AF04 /* Debug */,
+				5DA317A324FF19100095AF04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5DEBF07A24FFDC79009836F1 /* Build configuration list for PBXLegacyTarget "Cocotodon_mruby" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DEBF07B24FFDC79009836F1 /* Debug */,
+				5DEBF07C24FFDC79009836F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5DA3178524FF190C0095AF04 /* Project object */;
+}
