@@ -22,6 +22,7 @@
 #import "MRBProc.h"
 #import "mrb_util.h"
 #import "WindowController.h"
+#import <UserNotifications/UserNotifications.h>
 
 
 // ----------
@@ -114,6 +115,17 @@
             self.prevSelection++;
         }
     });
+}
+
+- (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
+    NSLog(@"ws notification: %@", notification);
+    __auto_type *content = [UNMutableNotificationContent new];
+    content.title = [NSString stringWithFormat:@"⭐️ @%@ さんにふぁぼられました", notification.account.fullAcct];
+    content.body = notification.status.expandContent;
+    content.sound = [UNNotificationSound defaultSound];
+    
+    __auto_type request = [UNNotificationRequest requestWithIdentifier:notification.identity content:content trigger:nil];
+    [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:nil];
 }
 
 - (void)donStreamingDidFailWithError:(NSError *)error {

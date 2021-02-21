@@ -125,8 +125,21 @@
 }
 
 - (void)didReveiceNotification:(NSString*)payload {
-    // TODO: impl
-    NSLog(@"ws notification: %@", payload);
+    NSError *error = nil;
+    id decodedPayload = [NSJSONSerialization JSONObjectWithData:[payload dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    if (error) {
+        [self.delegate donStreamingDidFailWithError:error];
+        return;
+    }
+    
+    error = nil;
+    DONMastodonNotification *notify = [MTLJSONAdapter modelOfClass:DONMastodonNotification.class fromJSONDictionary:decodedPayload error:&error];
+    if (error) {
+        [self.delegate donStreamingDidFailWithError:error];
+        return;
+    }
+    
+    [self.delegate donStreamingDidReceiveNotification:notify];
 }
 
 - (void)didReceiveDeletedID:(NSString*)payload {

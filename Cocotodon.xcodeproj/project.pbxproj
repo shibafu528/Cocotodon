@@ -25,6 +25,7 @@
 		5D54E6C6251429430067EAB4 /* mrb_setting_dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C5251429430067EAB4 /* mrb_setting_dsl.m */; };
 		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
 		5D6F5E2B2515D34900018EBA /* PostBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F5E2A2515CB0400018EBA /* PostBox.xib */; };
+		5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D798DF725E283D7009761A6 /* DONMastodonNotification.m */; };
 		5D7AC8A625029CA70042009D /* MRBPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A525029CA70042009D /* MRBPin.m */; };
 		5D7AC8A92502A4760042009D /* mrb_cocotodon_model.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */; };
 		5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7AC8AB2503E6E30042009D /* MRBProc.m */; };
@@ -112,6 +113,8 @@
 		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
 		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
 		5D6F5E2A2515CB0400018EBA /* PostBox.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostBox.xib; path = /Users/shibafu/git/Cocotodon/Cocotodon/PostBox.xib; sourceTree = "<absolute>"; };
+		5D798DF625E283D7009761A6 /* DONMastodonNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonNotification.h; sourceTree = "<group>"; };
+		5D798DF725E283D7009761A6 /* DONMastodonNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonNotification.m; sourceTree = "<group>"; };
 		5D7AC8A425029CA70042009D /* MRBPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBPin.h; sourceTree = "<group>"; };
 		5D7AC8A525029CA70042009D /* MRBPin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBPin.m; sourceTree = "<group>"; };
 		5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = mrb_cocotodon_model.rb; sourceTree = "<group>"; };
@@ -322,6 +325,8 @@
 				5D94871A25173AE8009066C3 /* DONStatus.m */,
 				5D04E71E25E0EDFC0068FDFF /* DONMastodonAttachment.h */,
 				5D04E71F25E0EDFC0068FDFF /* DONMastodonAttachment.m */,
+				5D798DF625E283D7009761A6 /* DONMastodonNotification.h */,
+				5D798DF725E283D7009761A6 /* DONMastodonNotification.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,
 				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
 				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
+				5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */,
 				5D94871425173247009066C3 /* DONApiClient+Statuses.m in Sources */,
 				5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */,
 				5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */,
