@@ -204,9 +204,28 @@
         ExpandableCellView *expandable = (ExpandableCellView*) view;
         NSString *summary = [status.originalStatus.expandContent stringByReplacingLineBreaksWithString:@" "];
         NSMutableAttributedString *detail = [[NSMutableAttributedString alloc] initWithAttributedString:status.originalStatus.expandAttributedContent];
+        
+        NSMutableString *indicators = [NSMutableString string];
+        switch (status.originalStatus.visibility) {
+            case DONStatusUnlisted:
+                [indicators appendString:@"🔓"];
+                break;
+            case DONStatusPrivate:
+                [indicators appendString:@"🔒"];
+                break;
+            case DONStatusDirect:
+                [indicators appendString:@"✉️"];
+                break;
+            default:
+                break;
+        }
         if (status.originalStatus.mediaAttachments.count != 0) {
-            summary = [@"🖼 " stringByAppendingString:summary];
-            [detail insertAttributedString:[[NSAttributedString alloc] initWithString:@"🖼 "] atIndex:0];
+            [indicators appendString:@"🖼"];
+        }
+        if (indicators.length) {
+            [indicators appendString:@" "];
+            summary = [indicators stringByAppendingString:summary];
+            [detail insertAttributedString:[[NSAttributedString alloc] initWithString:indicators] atIndex:0];
         }
         if (self.presentationMode && !(status.visibility == DONStatusPublic || status.visibility == DONStatusUnlisted)) {
             summary = @"🔒 ****************";
