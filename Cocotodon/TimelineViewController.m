@@ -200,6 +200,7 @@
         style.lineBreakMode = NSLineBreakByTruncatingTail;
         [attrAcct addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attrAcct.length)];
         view.textField.attributedStringValue = attrAcct;
+        view.textField.toolTip = status.reblog ? [NSString stringWithFormat:@"@%@ がブースト", status.account.fullAcct] : nil;
     } else if ([tableColumn.identifier isEqualToString:@"Body"]) {
         ExpandableCellView *expandable = (ExpandableCellView*) view;
         NSString *summary = [status.originalStatus.expandContent stringByReplacingLineBreaksWithString:@" "];
