@@ -4,6 +4,7 @@
 
 #import "AppDelegate.h"
 #import "ReplyViewController.h"
+#import "IntentManager.h"
 #import "mrb_setting_dsl.h"
 #import <UserNotifications/UserNotifications.h>
 
@@ -182,6 +183,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
     fetch_credential(&host, &accessToken);
     self.client = [[DONApiClient alloc] initWithHost:host accessToken:accessToken];
     [self initializeMRuby];
+    [self registerIntentHandlers];
     
     NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
     self.initialController = [storyboard instantiateControllerWithIdentifier:@"mainWindow"];
@@ -369,6 +371,16 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
         mix_plugin_call_arg0(self.mrb, "boot");
         mrb_gc_arena_restore(self.mrb, ai);
     }
+}
+
+- (void)registerIntentHandlers {
+    IntentManager *manager = IntentManager.sharedManager;
+    [manager registerHandlerWithRegex:[NSRegularExpression regularExpressionWithPattern:@"\\Ahttps?://shindanmaker\\.com/([0-9]+)\\z" options:0 error:nil]
+                                label:@"診断メーカーで診断"
+                           usingBlock:^(NSString * _Nonnull link) {
+        // TODO: いいかんじに
+        NSLog(@"Handle %@", link);
+    }];
 }
 
 @end

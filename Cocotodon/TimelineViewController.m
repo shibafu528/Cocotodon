@@ -22,12 +22,13 @@
 #import "MRBProc.h"
 #import "mrb_util.h"
 #import "WindowController.h"
+#import "IntentManager.h"
 #import <UserNotifications/UserNotifications.h>
 
 
 // ----------
 
-@interface TimelineViewController () <NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONStreamingEventDelegate>
+@interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONStreamingEventDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
@@ -234,6 +235,7 @@
         }
         
         expandable.textField.stringValue = summary;
+        expandable.expandedText.delegate = self;
         expandable.attributedString = detail;
         expandable.attachments = status.originalStatus.mediaAttachments;
         expandable.expanded = row == tableView.selectedRow;
@@ -257,6 +259,41 @@
     [self.tableView reloadDataForRowIndexes:indexes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
     
     self.prevSelection = self.tableView.selectedRow;
+}
+
+#pragma mark - NSTextViewDelegate
+
+- (BOOL)textView:(NSTextView *)textView clickedOnLink:(id)link atIndex:(NSUInteger)charIndex {
+    if (![link isKindOfClass:NSString.class]) {
+        return NO;
+    }
+
+    __auto_type candidates = [IntentManager.sharedManager candidatesForLink:link];
+    if (candidates.count == 0) {
+        return NO;
+    } else if (candidates.count == 1) {
+        [candidates[0] invokeWithLink:link];
+        return YES;
+    }
+
+    NSMenu *menu = [[NSMenu alloc] init];
+    [candidates enumerateObjectsUsingBlock:^(IntentHandler * _Nonnull candidate, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMenuItem *item = [menu addItemWithTitle:candidate.label action:@selector(invokeIntentFromContextMenu:) keyEquivalent:@""];
+        item.target = self;
+        item.representedObject = ^{
+            [candidate invokeWithLink:link];
+        };
+    }];
+    [menu popUpMenuPositioningItem:nil atLocation:NSEvent.mouseLocation inView:nil];
+
+    return YES;
+}
+
+- (void)invokeIntentFromContextMenu:(NSMenuItem*)sender {
+    void (^callback)(void) = sender.representedObject;
+    if (callback) {
+        callback();
+    }
 }
 
 #pragma mark - Context menu

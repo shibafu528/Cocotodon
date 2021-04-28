@@ -18,6 +18,7 @@
 		5D3D9F8F2536747F00BC64A7 /* DONStatusContentParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */; };
 		5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D597225D90F5100E2F2F9 /* MainViewController.m */; };
 		5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */; };
+		5D5028AB2638536400C18949 /* IntentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5028AA2638536400C18949 /* IntentManager.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -99,6 +100,8 @@
 		5D4D597125D90F5100E2F2F9 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5D4D597225D90F5100E2F2F9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
+		5D5028A92638536400C18949 /* IntentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentManager.h; sourceTree = "<group>"; };
+		5D5028AA2638536400C18949 /* IntentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentManager.m; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -427,6 +430,8 @@
 				5D04E72625E113B30068FDFF /* PreviewViewController.m */,
 				5D04E72C25E14A870068FDFF /* ClickableImageView.h */,
 				5D04E72D25E14A870068FDFF /* ClickableImageView.m */,
+				5D5028A92638536400C18949 /* IntentManager.h */,
+				5D5028AA2638536400C18949 /* IntentManager.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 				5D94871025173247009066C3 /* DONMastodonApp.m in Sources */,
 				5DA3179524FF190D0095AF04 /* TimelineViewController.m in Sources */,
 				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
+				5D5028AB2638536400C18949 /* IntentManager.m in Sources */,
 				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
 				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
