@@ -7,6 +7,9 @@
 #import "IntentManager.h"
 #import "mrb_setting_dsl.h"
 #import <UserNotifications/UserNotifications.h>
+#import <JokeDiagnosisKit/JokeDiagnosisKit.h>
+
+static NSString * const kUserDefaultsShindanNameKey = @"ShindanName";
 
 /// 認証情報を ~/.cocotodon.json から読み込む。何かおかしかったらその場でAppを終了する。
 ///
@@ -375,11 +378,52 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 
 - (void)registerIntentHandlers {
     IntentManager *manager = IntentManager.sharedManager;
-    [manager registerHandlerWithRegex:[NSRegularExpression regularExpressionWithPattern:@"\\Ahttps?://shindanmaker\\.com/([0-9]+)\\z" options:0 error:nil]
+    NSRegularExpression *shindanPattern = [NSRegularExpression regularExpressionWithPattern:@"\\Ahttps?://shindanmaker\\.com/([0-9]+)\\z" options:0 error:nil];
+    [manager registerHandlerWithRegex:shindanPattern
                                 label:@"診断メーカーで診断"
                            usingBlock:^(NSString * _Nonnull link) {
-        // TODO: いいかんじに
-        NSLog(@"Handle %@", link);
+        __auto_type *match = [shindanPattern firstMatchInString:link options:0 range:NSMakeRange(0, link.length)];
+        int pageId = [link substringWithRange:[match rangeAtIndex:1]].intValue;
+        JDKDiagnosis *diagnosis = [JDKDiagnosis open:pageId];
+        NSLog(@"%@", diagnosis);
+
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.alertStyle = NSAlertStyleWarning;
+        alert.messageText = @"診断に使用する名前を入力してください";
+        NSButton *acceptButton = [alert addButtonWithTitle:@"OK"];
+        if (@available(macOS 11.0, *)) {
+            acceptButton.hasDestructiveAction = YES;
+        }
+        NSButton *cancelButton = [alert addButtonWithTitle:@"キャンセル"];
+        cancelButton.keyEquivalent = @"\e";
+        NSTextField *name = [[NSTextField alloc] initWithFrame:CGRectMake(0, 0, 240, 20)];
+        NSString *savedName = [NSUserDefaults.standardUserDefaults stringForKey:kUserDefaultsShindanNameKey];
+        if (savedName.length) {
+            name.stringValue = savedName;
+        }
+        name.placeholderString = @"名前";
+        alert.accessoryView = name;
+        if ([alert runModal] == NSAlertFirstButtonReturn) {
+            if (!name.stringValue.length) {
+                return;
+            }
+
+            [NSUserDefaults.standardUserDefaults setObject:name.stringValue forKey:kUserDefaultsShindanNameKey];
+
+            [diagnosis diagnoseWithName:name.stringValue].then(^(JDKDiagnosisResult *result) {
+                NSLog(@"shindan success: %@", result.displayText);
+
+                NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+                NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"replyWindow"];
+                [wc.window center];
+                ReplyViewController *vc = (ReplyViewController*) wc.contentViewController;
+                [vc setHeader:result.fullShareText andFooter:nil];
+                [wc showWindow:self];
+            }).catch(^(NSError *error) {
+                NSLog(@"shindan error: %@", error);
+                [[NSAlert alertWithError:error] runModal];
+            });
+        }
     }];
 }
 
