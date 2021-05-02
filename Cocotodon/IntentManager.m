@@ -3,6 +3,7 @@
 //
 
 #import "IntentManager.h"
+#import <Punycode_Cocoa/NSStringPunycodeAdditions.h>
 
 #pragma mark - IntentHandler
 
@@ -44,7 +45,7 @@
         [shared registerHandlerWithRegex:[NSRegularExpression regularExpressionWithPattern:@"\\Ahttps?://" options:0 error:nil]
                                    label:@"ブラウザで開く"
                               usingBlock:^(NSString* link) {
-            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:link]];
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithUnicodeString:link]];
         }];
     });
     return shared;

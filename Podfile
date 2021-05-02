@@ -8,6 +8,7 @@ target 'Cocotodon' do
   pod 'AFNetworking', '~> 4.0'
   pod 'Mantle'
   pod 'PromiseKit', '~> 6.8'
+  pod 'Punycode-Cocoa', '~> 1.3'
 end
 
 target 'JokeDiagnosisKit' do
