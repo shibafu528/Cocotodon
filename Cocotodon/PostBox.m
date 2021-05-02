@@ -96,7 +96,12 @@
 #pragma mark - private
 
 - (void)updateContentCounter {
-    self.counter.stringValue = @(500 - self.tootInput.string.characterCount).stringValue;
+    NSUInteger count = self.tootInput.string.characterCount;
+    if (count <= 500) {
+        self.counter.stringValue = @(500 - count).stringValue;
+    } else {
+        self.counter.stringValue = [NSString stringWithFormat:@"-%lu", count - 500];
+    }
 }
 
 - (void)updateSendEnabledState {
