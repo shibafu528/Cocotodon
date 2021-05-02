@@ -373,7 +373,7 @@
 			path = LXHTMLParser;
 			sourceTree = "<group>";
 		};
-		5D9486F025173247009066C3 /* DonKitTraditional */ = {
+		5D9486F025173247009066C3 /* DonKit */ = {
 			isa = PBXGroup;
 			children = (
 				5D94870925173247009066C3 /* Entity */,
@@ -381,7 +381,7 @@
 				5D9486F425173247009066C3 /* Mastodon */,
 				5D94870C25173247009066C3 /* Utils */,
 			);
-			path = DonKitTraditional;
+			path = DonKit;
 			sourceTree = "<group>";
 		};
 		5D9486F125173247009066C3 /* Extension */ = {
@@ -468,9 +468,9 @@
 			isa = PBXGroup;
 			children = (
 				5D8A4C9625DD494E0073D733 /* LXHTMLParser */,
-				5D9486F025173247009066C3 /* DonKitTraditional */,
-				5DA3178F24FF190D0095AF04 /* Cocotodon */,
+				5D9486F025173247009066C3 /* DonKit */,
 				5D3D9F822536742600BC64A7 /* DonKitTests */,
+				5DA3178F24FF190D0095AF04 /* Cocotodon */,
 				5D08ABE1263A46E300D9C70B /* JokeDiagnosisKit */,
 				5D08ABF6263A712300D9C70B /* JokeDiagnosisKitTests */,
 				5DA3178E24FF190D0095AF04 /* Products */,
