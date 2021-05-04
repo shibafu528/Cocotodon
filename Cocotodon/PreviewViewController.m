@@ -67,6 +67,7 @@
                 
                 strongSelf.imageView.image = image;
                 [strongSelf.progressIndicator stopAnimation:nil];
+                strongSelf.progressIndicator.hidden = YES;
                 [window setFrame:newFrame display:YES animate:YES];
             }
         });
