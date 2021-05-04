@@ -251,6 +251,12 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
             NSLog(@"Mix::Miquire.load_all success!");
         }
         
+        if (mix_require(self.mrb, [[NSBundle mainBundle] pathForResource:@"mrb_patch" ofType:@"rb"].UTF8String)) {
+            NSLog(@"mrb_patch.rb load success!");
+        } else {
+            exc2log(self.mrb);
+            self.mrb->exc = 0;
+        }
         if (mix_require(self.mrb, [[NSBundle mainBundle] pathForResource:@"mrb_cocotodon_model" ofType:@"rb"].UTF8String)) {
             NSLog(@"mrb_cocotodon_model.rb load success!");
             struct RClass *mod_cct = mrb_module_get(self.mrb, "Cocotodon");

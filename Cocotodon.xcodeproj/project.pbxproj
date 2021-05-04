@@ -24,6 +24,7 @@
 		5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */; };
 		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
 		5D3D9F8F2536747F00BC64A7 /* DONStatusContentParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */; };
+		5D4383D726419043008EB158 /* mrb_patch.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5D4383D626419043008EB158 /* mrb_patch.rb */; };
 		5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D597225D90F5100E2F2F9 /* MainViewController.m */; };
 		5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */; };
 		5D5028AB2638536400C18949 /* IntentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5028AA2638536400C18949 /* IntentManager.m */; };
@@ -141,6 +142,7 @@
 		5D3D9F812536742600BC64A7 /* DonKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D3D9F852536742600BC64A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentParserTests.m; sourceTree = "<group>"; };
+		5D4383D626419043008EB158 /* mrb_patch.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = mrb_patch.rb; sourceTree = "<group>"; };
 		5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStreamingEventDelegate.h; sourceTree = "<group>"; };
 		5D4D597125D90F5100E2F2F9 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5D4D597225D90F5100E2F2F9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */,
+				5D4383D626419043008EB158 /* mrb_patch.rb */,
 			);
 			path = mrblib;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			files = (
 				5D6F5E2B2515D34900018EBA /* PostBox.xib in Resources */,
 				5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */,
+				5D4383D726419043008EB158 /* mrb_patch.rb in Resources */,
 				5D9486EC2516F2EB009066C3 /* MRBSettingFileSelect.xib in Resources */,
 				5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */,
 				5DA3179A24FF19100095AF04 /* Main.storyboard in Resources */,
