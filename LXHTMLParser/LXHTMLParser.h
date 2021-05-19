@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// エラーもNSXMLParserErrorDomainを借用して通知する。
 @interface LXHTMLParser : NSObject
 
-@property (nonatomic, nullable) id<NSXMLParserDelegate> delegate;
+@property (nonatomic, nullable, weak) id<NSXMLParserDelegate> delegate;
 @property (nonatomic, nullable) NSError *parserError;
 
 - (instancetype)init __attribute__((unavailable("init is not available")));
