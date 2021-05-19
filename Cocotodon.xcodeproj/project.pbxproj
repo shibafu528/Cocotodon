@@ -68,6 +68,8 @@
 		5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */; };
 		5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */; };
 		5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC2F3225B11347003D797F /* ExpandableCellView.m */; };
+		5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8C5562654CB3300B1628E /* DONStatusContext.m */; };
+		5DC8C55A265539DC00B1628E /* ThreadWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8C559265539DC00B1628E /* ThreadWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +228,10 @@
 		5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutolayoutTextView.m; sourceTree = "<group>"; };
 		5DBC2F3125B11347003D797F /* ExpandableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpandableCellView.h; sourceTree = "<group>"; };
 		5DBC2F3225B11347003D797F /* ExpandableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpandableCellView.m; sourceTree = "<group>"; };
+		5DC8C5552654CB3300B1628E /* DONStatusContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContext.h; sourceTree = "<group>"; };
+		5DC8C5562654CB3300B1628E /* DONStatusContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContext.m; sourceTree = "<group>"; };
+		5DC8C558265539DC00B1628E /* ThreadWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreadWindow.h; sourceTree = "<group>"; };
+		5DC8C559265539DC00B1628E /* ThreadWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreadWindow.m; sourceTree = "<group>"; };
 		6A67F23249F4B68CBEA96F46 /* Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig"; path = "Target Support Files/Pods-JokeDiagnosisKit-JokeDiagnosisKitTests/Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B23EBB6C51DFB2A0A55A1FB /* Pods_JokeDiagnosisKit_JokeDiagnosisKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JokeDiagnosisKit_JokeDiagnosisKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		700D3FB33002720B46FB651C /* Pods_Cocotodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cocotodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +433,8 @@
 				5D04E71F25E0EDFC0068FDFF /* DONMastodonAttachment.m */,
 				5D798DF625E283D7009761A6 /* DONMastodonNotification.h */,
 				5D798DF725E283D7009761A6 /* DONMastodonNotification.m */,
+				5DC8C5552654CB3300B1628E /* DONStatusContext.h */,
+				5DC8C5562654CB3300B1628E /* DONStatusContext.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -533,6 +541,8 @@
 				5D04E72D25E14A870068FDFF /* ClickableImageView.m */,
 				5D5028A92638536400C18949 /* IntentManager.h */,
 				5D5028AA2638536400C18949 /* IntentManager.m */,
+				5DC8C558265539DC00B1628E /* ThreadWindow.h */,
+				5DC8C559265539DC00B1628E /* ThreadWindow.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -886,6 +896,7 @@
 				5DA3179524FF190D0095AF04 /* TimelineViewController.m in Sources */,
 				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
 				5D5028AB2638536400C18949 /* IntentManager.m in Sources */,
+				5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */,
 				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
 				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
@@ -900,6 +911,7 @@
 				5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */,
 				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
 				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
+				5DC8C55A265539DC00B1628E /* ThreadWindow.m in Sources */,
 				5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */,
 				5D94871625173247009066C3 /* DONApiClient+Apps.m in Sources */,
 				5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */,

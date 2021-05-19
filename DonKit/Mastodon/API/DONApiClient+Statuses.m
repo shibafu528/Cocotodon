@@ -87,4 +87,52 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                  failure:failure];
 }
 
+- (NSURLSessionDataTask *)getStatus:(NSString *)identity
+                            success:(DONApiGetStatusSuccessCallback)success
+                            failure:(DONApiFailureCallback)failure {
+    AFHTTPSessionManager *manager = self.manager;
+    NSString *url = [NSString stringWithFormat:@"/api/v1/statuses/%@", identity];
+    return [manager GET:url
+             parameters:nil
+                headers:self.defaultHeaders
+               progress:nil
+                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSError *error;
+            DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:responseObject error:&error];
+            if (!error) {
+                success(task, status);
+            }
+            if (failure) {
+                failure(task, error);
+            }
+        }
+    }
+                failure:failure];
+}
+
+- (NSURLSessionDataTask *)getStatusContext:(NSString *)identity
+                                   success:(DONApiGetStatusContextSuccessCallback)success
+                                   failure:(DONApiFailureCallback)failure {
+    AFHTTPSessionManager *manager = self.manager;
+    NSString *url = [NSString stringWithFormat:@"/api/v1/statuses/%@/context", identity];
+    return [manager GET:url
+             parameters:nil
+                headers:self.defaultHeaders
+               progress:nil
+                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSError *error;
+            DONStatusContext *context = [MTLJSONAdapter modelOfClass:DONStatusContext.class fromJSONDictionary:responseObject error:&error];
+            if (!error) {
+                success(task, context);
+            }
+            if (failure) {
+                failure(task, error);
+            }
+        }
+    }
+                failure:failure];
+}
+
 @end

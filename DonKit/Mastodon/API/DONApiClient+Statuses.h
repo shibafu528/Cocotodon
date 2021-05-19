@@ -5,10 +5,13 @@
 #import "DONApiClient.h"
 #import "../DONStatusVisibility.h"
 #import "DONPicture.h"
+#import "DONStatusContext.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^DONApiPostMediaSuccessCallback)(NSURLSessionDataTask *__nonnull task, NSNumber *__nonnull mediaId);
+typedef void (^DONApiGetStatusSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatus *__nonnull result);
+typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatusContext *__nonnull result);
 
 @interface DONApiClient (Statuses)
 
@@ -33,6 +36,14 @@ typedef void (^DONApiPostMediaSuccessCallback)(NSURLSessionDataTask *__nonnull t
 - (NSURLSessionDataTask*) reblogStatus:(NSString*)identity
                                success:(nullable DONApiSuccessCallback)success
                                failure:(nullable DONApiFailureCallback)failure;
+
+- (NSURLSessionDataTask*) getStatus:(NSString*)identity
+                            success:(nullable DONApiGetStatusSuccessCallback)success
+                            failure:(nullable DONApiFailureCallback)failure;
+
+- (NSURLSessionDataTask*) getStatusContext:(NSString*)identity
+                                   success:(nullable DONApiGetStatusContextSuccessCallback)success
+                                   failure:(nullable DONApiFailureCallback)failure;
 
 @end
 

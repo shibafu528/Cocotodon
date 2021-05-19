@@ -23,6 +23,7 @@
 #import "mrb_util.h"
 #import "WindowController.h"
 #import "IntentManager.h"
+#import "ThreadWindow.h"
 #import <UserNotifications/UserNotifications.h>
 
 
@@ -58,8 +59,9 @@
     self.prevSelection = -1;
     self.presentationMode = NO;
 
-    NSAssert(self.streamingInitiator, @"streamingInitiator is nil!!");
-    self.userStream = self.streamingInitiator(self);
+    if (self.streamingInitiator) {
+        self.userStream = self.streamingInitiator(self);
+    }
     
     [self reload:nil];
 }
@@ -91,6 +93,9 @@
 }
 
 - (IBAction)toggleStreamingStatus:(id)sender {
+    if (!self.userStream) {
+        return;
+    }
     if (self.userStream.isConnected) {
         [self.userStream disconnect];
     } else {
@@ -346,6 +351,7 @@
     [menu addItemWithTitle:@"お気に入りに追加" action:@selector(favorite:) keyEquivalent:@""];
     [menu addItemWithTitle:@"お気に入りに追加してブースト" action:@selector(favoriteAndBoost:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブースト" action:@selector(boost:) keyEquivalent:@""];
+    [menu addItemWithTitle:@"会話を見る" action:@selector(openThread:) keyEquivalent:@""];
     [menu addItemWithTitle:@"URLをコピー" action:@selector(copyURL:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
@@ -560,6 +566,19 @@
                      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         WriteAFNetworkingErrorToLog(error);
     }];
+}
+
+- (IBAction)openThread:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row];
+    ThreadWindow *window = [[ThreadWindow alloc] initWithStatusID:status.originalStatus.identity];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    [window makeKeyAndOrderFront:self];
 }
 
 - (IBAction)copyURL:(id)sender {
