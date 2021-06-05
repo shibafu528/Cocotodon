@@ -573,12 +573,12 @@
 /* Begin PBXLegacyTarget section */
 		5DEBF07924FFDC79009836F1 /* Cocotodon_mruby */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = "-f MRubyMakefile $(ACTION)";
 			buildConfigurationList = 5DEBF07A24FFDC79009836F1 /* Build configuration list for PBXLegacyTarget "Cocotodon_mruby" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = "$(PROJECT_DIR)/mruby";
+			buildWorkingDirectory = "$(PROJECT_DIR)";
 			dependencies = (
 			);
 			name = Cocotodon_mruby;

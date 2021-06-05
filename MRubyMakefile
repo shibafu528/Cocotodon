@@ -1,0 +1,14 @@
+all:
+	$(MAKE) -C mruby
+.PHONY: all
+
+test: all
+	$(MAKE) -C mruby test
+.PHONY: test
+
+clean:
+	$(MAKE) -C mruby clean
+.PHONY: clean
+
+install: all
+.PHONY: install
