@@ -10,9 +10,11 @@
 @property (nonatomic, weak) IBOutlet NSTextField *counter;
 @property (nonatomic, weak) IBOutlet NSButton *sendButton;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *visibilityPopUp;
+@property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
 
 @property (nonatomic) NSMutableArray<DONPicture*> *attachedPictures;
 @property (nonatomic) MRBPin *commands;
+@property (nonatomic) NSTimer *flashMessageTimer;
 
 @end
 
@@ -83,6 +85,12 @@
 
 - (NSArray<DONPicture *> *)pictures {
     return self.attachedPictures;
+}
+
+- (void)attachPicture:(DONPicture *)picture {
+    [self.attachedPictures addObject:picture];
+    [self updateSendEnabledState];
+    [self flashMessage:@"画像を添付しました"];
 }
 
 - (void)focus {
@@ -164,8 +172,7 @@
             NSString *extension = (url.pathExtension ?: @"").lowercaseString;
             DONPictureFormat format = [extension isEqualToString:@"png"] ? DONPicturePNG : DONPictureJPEG;
             DONPicture *picture = [[DONPicture alloc] initWithData:data format:format];
-            [self.attachedPictures addObject:picture];
-            [self updateSendEnabledState];
+            [self attachPicture:picture];
         }];
     }];
 }
@@ -355,6 +362,25 @@
 
 - (IBAction)changeVisibilityToDirect:(id)sender {
     [self.visibilityPopUp selectItemAtIndex:DONStatusDirect];
+}
+
+- (void)flashMessage:(NSString*)message {
+    self.flashMessageView.stringValue = message;
+    self.flashMessageView.hidden = NO;
+    
+    if (self.flashMessageTimer) {
+        [self.flashMessageTimer invalidate];
+    }
+    self.flashMessageTimer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:NO block:^(NSTimer * _Nonnull timer) {
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            context.duration = 0.3;
+            self.flashMessageView.animator.alphaValue = 0;
+        } completionHandler:^{
+            self.flashMessageView.hidden = YES;
+            self.flashMessageView.alphaValue = 1;
+        }];
+        self.flashMessageTimer = nil;
+    }];
 }
 
 @end

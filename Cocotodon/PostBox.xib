@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PostBox">
             <connections>
                 <outlet property="counter" destination="O8j-cv-sRi" id="GtQ-CO-PjB"/>
+                <outlet property="flashMessageView" destination="jVy-KI-OhZ" id="wRw-U4-dGR"/>
                 <outlet property="sendButton" destination="R6a-UL-EYS" id="bFi-R2-4HK"/>
                 <outlet property="tootInput" destination="V6m-2C-xRl" id="s5Z-JA-zOp"/>
                 <outlet property="visibilityPopUp" destination="Pu3-cM-j66" id="m1I-DS-fMY"/>
@@ -81,7 +82,7 @@ DQ
                         <rect key="frame" x="1" y="1" width="342" height="46"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="V6m-2C-xRl">
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="V6m-2C-xRl" customClass="PostBoxTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="342" height="46"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -91,6 +92,7 @@ DQ
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <outlet property="delegate" destination="-2" id="xWD-0V-hi0"/>
+                                    <outlet property="postbox" destination="-2" id="keg-DT-GXA"/>
                                 </connections>
                             </textView>
                         </subviews>
@@ -117,6 +119,14 @@ DQ
                         <action selector="clickAttach:" target="-2" id="XVC-nw-rys"/>
                     </connections>
                 </button>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jVy-KI-OhZ">
+                    <rect key="frame" x="-2" y="-1" width="87" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Flash message" id="uL8-qq-t47">
+                        <font key="font" metaFont="systemBold" size="11"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <constraints>
                 <constraint firstItem="oo4-JC-Rlm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="0VC-UB-HK0"/>
@@ -131,12 +141,15 @@ DQ
                 <constraint firstItem="oo4-JC-Rlm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="P1t-dJ-4XA"/>
                 <constraint firstAttribute="trailing" secondItem="Pu3-cM-j66" secondAttribute="trailing" id="RZk-mD-Ugz"/>
                 <constraint firstItem="EuX-Ur-O05" firstAttribute="leading" secondItem="ZjG-tz-KiJ" secondAttribute="trailing" constant="4" id="SBK-vp-BR9"/>
+                <constraint firstItem="jVy-KI-OhZ" firstAttribute="leading" secondItem="oo4-JC-Rlm" secondAttribute="leading" id="SRI-MI-I1a"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="bottom" secondItem="oo4-JC-Rlm" secondAttribute="bottom" id="bBn-UH-nXU"/>
                 <constraint firstItem="Pu3-cM-j66" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="top" id="hbj-zy-xy0"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="leading" secondItem="ZjG-tz-KiJ" secondAttribute="leading" id="oe0-W4-RZs"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="leading" secondItem="oo4-JC-Rlm" secondAttribute="trailing" constant="10" id="oo9-aH-Evc"/>
                 <constraint firstItem="O8j-cv-sRi" firstAttribute="trailing" secondItem="oo4-JC-Rlm" secondAttribute="trailing" id="pt9-uL-TQz"/>
+                <constraint firstAttribute="bottom" secondItem="jVy-KI-OhZ" secondAttribute="bottom" constant="-1" id="se2-sI-Lmc"/>
                 <constraint firstItem="Pu3-cM-j66" firstAttribute="bottom" secondItem="EuX-Ur-O05" secondAttribute="bottom" id="vNv-sw-KQc"/>
+                <constraint firstItem="jVy-KI-OhZ" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="bottom" constant="1" id="wro-5s-CK6"/>
                 <constraint firstItem="EuX-Ur-O05" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="top" id="ydg-qC-Lye"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>

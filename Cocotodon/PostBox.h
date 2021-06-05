@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<DONPicture*>*)pictures;
 
+- (void)attachPicture:(DONPicture*)picture;
+
 - (void)clear;
 
 - (void)focus;
