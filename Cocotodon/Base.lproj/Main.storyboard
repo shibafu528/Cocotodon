@@ -352,6 +352,12 @@
                                                 <action selector="boost:" target="Ady-hI-5gd" id="FBY-up-duk"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="会話を見る" id="g1Q-f3-v5a">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openThread:" target="Ady-hI-5gd" id="94e-l5-j1d"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="bnG-vw-qE2"/>
                                         <menuItem title="URLをコピー" id="cJK-p4-RER">
                                             <modifierMask key="keyEquivalentModifierMask"/>
