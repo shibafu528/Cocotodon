@@ -3,6 +3,10 @@ Cocotodon
 
 どこか懐かしい感じのMastodonクライアント
 
+<div align="center">
+<img alt="Screenshot (Timeline)" src="./.readme-imgs/timeline.png" width="600">
+</div>
+
 ## Features
 
 * P3:PeraPeraPrvやYoruFukurouのような1行表示
