@@ -20,6 +20,8 @@
 		5D08ABF8263A712300D9C70B /* JokeDiagnosisKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08ABF7263A712300D9C70B /* JokeDiagnosisKitTests.swift */; };
 		5D08ABFA263A712300D9C70B /* JokeDiagnosisKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D08ABE0263A46E300D9C70B /* JokeDiagnosisKit.framework */; };
 		5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BE96E25D5166300EBE6E0 /* WindowController.m */; };
+		5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */; };
+		5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E9266E68DE006BC203 /* DONEmoji.m */; };
 		5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */; };
 		5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */; };
 		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
@@ -138,6 +140,11 @@
 		5D08ABF9263A712300D9C70B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D0BE96D25D5166300EBE6E0 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		5D0BE96E25D5166300EBE6E0 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		5D0C97E4266E6746006BC203 /* DONEmojiExpander.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONEmojiExpander.h; sourceTree = "<group>"; };
+		5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONEmojiExpander.m; sourceTree = "<group>"; };
+		5D0C97E7266E680A006BC203 /* DONEmojiProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONEmojiProvider.h; sourceTree = "<group>"; };
+		5D0C97E8266E68DE006BC203 /* DONEmoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONEmoji.h; sourceTree = "<group>"; };
+		5D0C97E9266E68DE006BC203 /* DONEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONEmoji.m; sourceTree = "<group>"; };
 		5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentParser.h; sourceTree = "<group>"; };
@@ -438,6 +445,8 @@
 				5D798DF725E283D7009761A6 /* DONMastodonNotification.m */,
 				5DC8C5552654CB3300B1628E /* DONStatusContext.h */,
 				5DC8C5562654CB3300B1628E /* DONStatusContext.m */,
+				5D0C97E8266E68DE006BC203 /* DONEmoji.h */,
+				5D0C97E9266E68DE006BC203 /* DONEmoji.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -474,6 +483,9 @@
 				5D94870D25173247009066C3 /* DONUtils.h */,
 				5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */,
 				5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */,
+				5D0C97E4266E6746006BC203 /* DONEmojiExpander.h */,
+				5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */,
+				5D0C97E7266E680A006BC203 /* DONEmojiProvider.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -902,6 +914,7 @@
 				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
 				5DAA595F266BAA000075C96D /* PostBoxTextView.m in Sources */,
 				5D5028AB2638536400C18949 /* IntentManager.m in Sources */,
+				5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */,
 				5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */,
 				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
@@ -934,6 +947,7 @@
 				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
 				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
 				5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */,
+				5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */,
 				5D94871425173247009066C3 /* DONApiClient+Statuses.m in Sources */,
 				5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */,
 				5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */,

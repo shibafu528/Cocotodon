@@ -6,10 +6,12 @@
 #import <Mantle/Mantle.h>
 #import "DONMastodonAccount.h"
 #import "DONMastodonAttachment.h"
+#import "DONEmoji.h"
+#import "DONEmojiProvider.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DONStatus : MTLModel<MTLJSONSerializing>
+@interface DONStatus : MTLModel<MTLJSONSerializing, DONEmojiProvider>
 
 @property (nonatomic, readonly) NSString *identity;
 @property (nonatomic, readonly) NSDate *createdAt;
@@ -22,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *content;
 @property (nonatomic, readonly) DONStatus *reblog;
 @property (nonatomic, readonly) NSArray<DONMastodonAttachment*> *mediaAttachments;
+@property (nonatomic, readonly) NSArray<DONEmoji*> *emojis;
 
 - (NSString*)expandContent;
 - (NSAttributedString*)expandAttributedContent;

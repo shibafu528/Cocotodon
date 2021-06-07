@@ -65,7 +65,22 @@
     [self updateExpandConstraints];
 }
 
-- (void)setAttributedString:(NSAttributedString *)string {
+- (void)setSummaryString:(NSAttributedString *)string {
+    NSMutableAttributedString *mutable = [[NSMutableAttributedString alloc] initWithAttributedString:string];
+    
+    // Font
+    [mutable addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:[NSFont systemFontSize]] range:NSMakeRange(0, string.length)];
+    
+    // Paragraph style
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 5;
+    style.allowsDefaultTighteningForTruncation = NO;
+    [mutable addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, string.length)];
+    
+    self.textField.attributedStringValue = mutable;
+}
+
+- (void)setExpandedString:(NSAttributedString *)string {
     NSMutableAttributedString *mutable = [[NSMutableAttributedString alloc] initWithAttributedString:string];
     
     // Font

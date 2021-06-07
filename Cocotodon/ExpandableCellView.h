@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSArray<DONMastodonAttachment*> *attachments;
 @property (nonatomic, getter=isExpanded) BOOL expanded;
 
-- (void)setAttributedString:(NSAttributedString *)string;
+- (void)setSummaryString:(NSAttributedString *)string;
+- (void)setExpandedString:(NSAttributedString *)string;
 
 @end
 

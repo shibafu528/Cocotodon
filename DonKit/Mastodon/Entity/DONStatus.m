@@ -20,6 +20,7 @@
         @"content": @"content",
         @"reblog": @"reblog",
         @"mediaAttachments": @"media_attachments",
+        @"emojis": @"emojis",
     };
 }
 
@@ -49,6 +50,10 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:DONMastodonAttachment.class];
 }
 
++ (NSValueTransformer *)emojisJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:DONEmoji.class];
+}
+
 - (NSString *)expandContent {
     NSString *body = [self parseContentUsingParser];
     
@@ -71,10 +76,9 @@
     
     if (self.spoilerText.length) {
         [body insertAttributedString:[[NSAttributedString alloc] initWithString:[self.spoilerText stringByAppendingString:@"\n\n"]] atIndex:0];
-        return body;
-    } else {
-        return body;
     }
+    
+    return body;
 }
 
 - (NSString *)parseContentUsingParser {

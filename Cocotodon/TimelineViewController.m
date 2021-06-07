@@ -8,6 +8,7 @@
 #import "ExpandableCellView.h"
 #import "DONApiClient.h"
 #import "DONUtils.h"
+#import "DONEmojiExpander.h"
 #import "NSString+DONExtension.h"
 #import "NSString+ReplaceLineBreaks.h"
 #import "mruby.h"
@@ -209,8 +210,17 @@
         view.textField.toolTip = status.reblog ? [NSString stringWithFormat:@"@%@ がブースト", status.account.fullAcct] : nil;
     } else if ([tableColumn.identifier isEqualToString:@"Body"]) {
         ExpandableCellView *expandable = (ExpandableCellView*) view;
-        NSString *summary = [status.originalStatus.expandContent stringByReplacingLineBreaksWithString:@" "];
-        NSMutableAttributedString *detail = [[NSMutableAttributedString alloc] initWithAttributedString:status.originalStatus.expandAttributedContent];
+        NSMutableAttributedString *summary;
+        {
+            NSAttributedString *content = [[NSAttributedString alloc] initWithString:[status.originalStatus.expandContent stringByReplacingLineBreaksWithString:@" "]];
+            NSAttributedString *expanded = [DONEmojiExpander expandFromAttributedString:content providedBy:status.originalStatus];
+            summary = [[NSMutableAttributedString alloc] initWithAttributedString:expanded];
+        }
+        NSMutableAttributedString *detail;
+        {
+            NSAttributedString *expanded = [DONEmojiExpander expandFromAttributedString:status.originalStatus.expandAttributedContent providedBy:status.originalStatus];
+            detail = [[NSMutableAttributedString alloc] initWithAttributedString:expanded];
+        }
         
         NSMutableString *indicators = [NSMutableString string];
         switch (status.originalStatus.visibility) {
@@ -231,17 +241,18 @@
         }
         if (indicators.length) {
             [indicators appendString:@" "];
-            summary = [indicators stringByAppendingString:summary];
-            [detail insertAttributedString:[[NSAttributedString alloc] initWithString:indicators] atIndex:0];
+            NSAttributedString *attributedIndicators = [[NSAttributedString alloc] initWithString:indicators];
+            [summary insertAttributedString:attributedIndicators atIndex:0];
+            [detail insertAttributedString:attributedIndicators atIndex:0];
         }
         if (self.presentationMode && !(status.visibility == DONStatusPublic || status.visibility == DONStatusUnlisted)) {
-            summary = @"🔒 ****************";
-            detail = [[NSMutableAttributedString alloc] initWithString:summary];
+            NSString *scrambled = @"🔒 ****************";
+            summary = detail = [[NSMutableAttributedString alloc] initWithString:scrambled];
         }
         
-        expandable.textField.stringValue = summary;
+        expandable.summaryString = summary;
         expandable.expandedText.delegate = self;
-        expandable.attributedString = detail;
+        expandable.expandedString = detail;
         expandable.attachments = status.originalStatus.mediaAttachments;
         expandable.expanded = row == tableView.selectedRow;
     }
