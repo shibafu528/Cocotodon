@@ -18,7 +18,10 @@
             CGFloat size = font.ascender + ABS(font.descender);
             attachment.bounds = NSMakeRect(0, font.descender, size, size);
             attachment.image = [[NSImage alloc] initWithContentsOfURL:emoji.URL];
-            [str replaceCharactersInRange:range withAttributedString:[NSAttributedString attributedStringWithAttachment:attachment]];
+            
+            NSMutableAttributedString *attr = [[NSAttributedString attributedStringWithAttachment:attachment] mutableCopy];
+            [attr addAttribute:NSToolTipAttributeName value:shortcode range:NSMakeRange(0, attr.length)];
+            [str replaceCharactersInRange:range withAttributedString:attr];
         }
     }];
     
