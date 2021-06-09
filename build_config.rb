@@ -54,7 +54,8 @@ end
 build_arch = `uname -m`.chomp
 
 %w[x86_64 arm64].each do |arch|
-  %w[debug release].each do |build_type|
+  build_types = ENV['COCOTODON_MRUBY_BUILD_TYPES']&.split(',') || %w[debug release]
+  build_types.each do |build_type|
     MRuby::CrossBuild.new("macos-#{arch}-#{build_type}") do |conf|
       toolchain :clang
       

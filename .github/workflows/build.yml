@@ -1,0 +1,41 @@
+name: build
+on: push
+jobs:
+  build:
+    runs-on: macos-latest
+    env:
+      COCOTODON_MRUBY_BUILD_TYPES: release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Select Xcode
+        run: sudo xcode-select --switch /Applications/Xcode_12.4.app
+
+      - name: Install tools for build mruby
+        run: brew install automake
+
+      - name: Install dependencies
+        run: pod install
+
+      - name: Make build directory
+        run: mkdir -p build
+
+      - name: Build
+        run: xcodebuild -workspace Cocotodon.xcworkspace -scheme Cocotodon clean archive -archivePath build/Cocotodon.xcarchive
+
+      - name: Packaging
+        working-directory: build
+        run: |
+          mkdir -p Cocotodon
+          cp -a Cocotodon.xcarchive/Products/Applications/Cocotodon.app Cocotodon/Cocotodon.app
+          cp -f ${{ github.workspace }}/README.md Cocotodon/
+          cp -f ${{ github.workspace }}/LICENSE Cocotodon/
+          zip -r Cocotodon-${{ github.sha }}.zip Cocotodon/
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          path: build/Cocotodon-${{ github.sha }}.zip
