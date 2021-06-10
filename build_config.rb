@@ -37,6 +37,8 @@ shared = ->(conf) do
   conf.gem core: 'mruby-complex'
   conf.gem core: 'mruby-compiler'
 
+  # libyamlをsubmoduleでcheckoutするようになったあたりから上手くクロスコンパイルできない
+  conf.gem github: 'mrbgems/mruby-yaml', checksum_hash: '0606652a6e99d902cd3101cf2d757a7c0c37a7fd'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-miquire-fs'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-twitter-models'
