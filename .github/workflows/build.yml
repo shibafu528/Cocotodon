@@ -3,6 +3,10 @@ on: push
 jobs:
   build:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode:
+          - 12.4
     env:
       COCOTODON_MRUBY_BUILD_TYPES: release
     steps:
@@ -12,7 +16,7 @@ jobs:
           submodules: true
 
       - name: Select Xcode
-        run: sudo xcode-select --switch /Applications/Xcode_12.4.app
+        run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
 
       - name: Install tools for build mruby
         run: brew install automake
@@ -22,6 +26,14 @@ jobs:
 
       - name: Make build directory
         run: mkdir -p build
+
+      - name: Cache mruby build
+        uses: actions/cache@v2
+        env:
+          cache-revision: 1
+        with:
+          path: ${{ github.workspace }}/mruby/build/
+          key: ${{ hashFiles('build_config.rb') }}-${{ hashFiles('.git/modules/mruby/HEAD') }}-${{ matrix.xcode }}-${{ env.cache-revision }}
 
       - name: Build
         run: xcodebuild -workspace Cocotodon.xcworkspace -scheme Cocotodon clean archive -archivePath build/Cocotodon.xcarchive
