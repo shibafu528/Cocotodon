@@ -37,6 +37,8 @@ shared = ->(conf) do
   conf.gem core: 'mruby-complex'
   conf.gem core: 'mruby-compiler'
 
+  # libyamlをsubmoduleでcheckoutするようになったあたりから上手くクロスコンパイルできない
+  conf.gem github: 'mrbgems/mruby-yaml', checksum_hash: '0606652a6e99d902cd3101cf2d757a7c0c37a7fd'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-miquire-fs'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-twitter-models'
@@ -54,7 +56,8 @@ end
 build_arch = `uname -m`.chomp
 
 %w[x86_64 arm64].each do |arch|
-  %w[debug release].each do |build_type|
+  build_types = ENV['COCOTODON_MRUBY_BUILD_TYPES']&.split(',') || %w[debug release]
+  build_types.each do |build_type|
     MRuby::CrossBuild.new("macos-#{arch}-#{build_type}") do |conf|
       toolchain :clang
       

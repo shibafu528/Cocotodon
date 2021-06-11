@@ -1,0 +1,95 @@
+name: build
+on: push
+env:
+  COCOTODON_MRUBY_BUILD_TYPES: release
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode:
+          - 12.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Select Xcode
+        run: sudo xcode-select --switch /Applications/Xcode_${{ matrix.xcode }}.app
+
+      - name: Install tools for build mruby
+        run: brew install automake
+
+      - name: Install dependencies
+        run: pod install
+
+      - name: Make build directory
+        run: mkdir -p build
+
+      - name: Cache mruby build
+        uses: actions/cache@v2
+        env:
+          cache-revision: 1
+        with:
+          path: ${{ github.workspace }}/mruby/build/
+          key: ${{ hashFiles('build_config.rb') }}-${{ hashFiles('.git/modules/mruby/HEAD') }}-${{ matrix.xcode }}-${{ env.cache-revision }}
+
+      - name: Build
+        run: xcodebuild -workspace Cocotodon.xcworkspace -scheme Cocotodon clean archive -archivePath build/Cocotodon.xcarchive
+
+      - name: Archive artifact
+        working-directory: build
+        run: |
+          cp -a Cocotodon.xcarchive/Products/Applications/Cocotodon.app Cocotodon.app
+          zip -r Cocotodon-${{ github.sha }}.zip Cocotodon.app
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Cocotodon snapshot
+          path: build/Cocotodon-${{ github.sha }}.zip
+
+  release:
+    runs-on: macos-latest
+    env:
+      XCODE_VERSION: 12.4
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set version
+        id: version
+        run: |
+          VERSION=$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+          echo ::set-output name=version::$VERSION
+          echo ::set-output name=filename::Cocotodon-$VERSION
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Cocotodon snapshot
+          path: build
+
+      - name: Unarchive artifact
+        working-directory: build
+        run: unzip Cocotodon-${{ github.sha }}.zip
+
+      - name: Packaging
+        working-directory: build
+        run: |
+          mkdir -p ${{ steps.version.outputs.filename }}
+          mv Cocotodon.app ${{ steps.version.outputs.filename }}/
+          cp -f ${{ github.workspace }}/README.md ${{ steps.version.outputs.filename }}/
+          cp -f ${{ github.workspace }}/LICENSE ${{ steps.version.outputs.filename }}/
+          zip -r "${{ steps.version.outputs.filename }}.zip" ${{ steps.version.outputs.filename }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ github.workspace }}/build/${{ steps.version.outputs.filename }}.zip
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
