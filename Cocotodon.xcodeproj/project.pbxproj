@@ -35,6 +35,8 @@
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
 		5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C025138D840067EAB4 /* FlippedView.m */; };
 		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
+		5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */; };
+		5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */; };
 		5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D798DF725E283D7009761A6 /* DONMastodonNotification.m */; };
 		5D7AC8A625029CA70042009D /* MRBPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A525029CA70042009D /* MRBPin.m */; };
 		5D7AC8A92502A4760042009D /* mrb_cocotodon_model.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */; };
@@ -171,6 +173,9 @@
 		5D54E6C7251429710067EAB4 /* mrb_setting_dsl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_setting_dsl.h; sourceTree = "<group>"; };
 		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
 		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
+		5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
+		5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
+		5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Pods-Cocotodon-acknowledgements.plist"; path = "Target Support Files/Pods-Cocotodon/Pods-Cocotodon-acknowledgements.plist"; sourceTree = "<group>"; };
 		5D798DF625E283D7009761A6 /* DONMastodonNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonNotification.h; sourceTree = "<group>"; };
 		5D798DF725E283D7009761A6 /* DONMastodonNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonNotification.m; sourceTree = "<group>"; };
 		5D7AC8A425029CA70042009D /* MRBPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBPin.h; sourceTree = "<group>"; };
@@ -291,6 +296,7 @@
 		38BEAB491AAF725A55719083 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */,
 				3C59F63870BBAFA6CC8EA7CB /* Pods-Cocotodon.debug.xcconfig */,
 				06016B61E71F759389BE6068 /* Pods-Cocotodon.release.xcconfig */,
 				DA9D02BAE94F7CA3FA87D3AE /* Pods-JokeDiagnosisKit.debug.xcconfig */,
@@ -560,6 +566,8 @@
 				5DC8C559265539DC00B1628E /* ThreadWindow.m */,
 				5DAA595D266BAA000075C96D /* PostBoxTextView.h */,
 				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
+				5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */,
+				5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -761,6 +769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */,
 				5DDB41C326727E8600B0A25C /* PostBox.xib in Resources */,
 				5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */,
 				5D4383D726419043008EB158 /* mrb_patch.rb in Resources */,
@@ -931,6 +940,7 @@
 				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
 				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
 				5DC8C55A265539DC00B1628E /* ThreadWindow.m in Sources */,
+				5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */,
 				5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */,
 				5D94871625173247009066C3 /* DONApiClient+Apps.m in Sources */,
 				5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */,

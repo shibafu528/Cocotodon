@@ -6,6 +6,80 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Window Controller-->
+        <scene sceneID="Xyk-Kw-g8G">
+            <objects>
+                <windowController id="mat-OC-30l" sceneMemberID="viewController">
+                    <window key="window" title="謝辞" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="tdX-7j-IjO">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="600" height="500"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="VVc-bd-glw">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="mat-OC-30l" id="GYq-rv-fQ6"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="z09-4C-r5M" kind="relationship" relationship="window.shadowedContentViewController" id="3t1-xo-8il"/>
+                    </connections>
+                </windowController>
+                <customObject id="BqT-aj-hwC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="-181"/>
+        </scene>
+        <!--Acknowledgements View Controller-->
+        <scene sceneID="qjt-Ti-sSa">
+            <objects>
+                <viewController id="z09-4C-r5M" customClass="AcknowledgementsViewController" sceneMemberID="viewController">
+                    <view key="view" id="brd-fb-TDV">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4o-Wi-uhY">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <clipView key="contentView" drawsBackground="NO" id="EqE-v0-5HQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="465" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="lEn-aq-jOr">
+                                            <rect key="frame" x="0.0" y="0.0" width="465" height="270"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="465" height="270"/>
+                                            <size key="maxSize" width="465" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="i0I-xI-bgq">
+                                    <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="IhW-l1-9He">
+                                    <rect key="frame" x="465" y="0.0" width="15" height="270"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="p4o-Wi-uhY" secondAttribute="bottom" id="6O6-XU-RAR"/>
+                            <constraint firstItem="p4o-Wi-uhY" firstAttribute="top" secondItem="brd-fb-TDV" secondAttribute="top" id="BxW-ZJ-mro"/>
+                            <constraint firstItem="p4o-Wi-uhY" firstAttribute="leading" secondItem="brd-fb-TDV" secondAttribute="leading" id="lSl-jh-b1a"/>
+                            <constraint firstAttribute="trailing" secondItem="p4o-Wi-uhY" secondAttribute="trailing" id="x58-q5-tYE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="lEn-aq-jOr" id="Ot6-Vb-IeG"/>
+                    </connections>
+                </viewController>
+                <customObject id="h0p-XB-qXd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="-192"/>
+        </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
@@ -413,6 +487,13 @@
                                         <menuItem title="Cocotodonヘルプ" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="5dZ-cW-HjX"/>
+                                        <menuItem title="謝辞" id="k7U-4B-hFV">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="mat-OC-30l" kind="show" id="1Km-Ks-VeV"/>
                                             </connections>
                                         </menuItem>
                                     </items>
