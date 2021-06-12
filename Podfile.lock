@@ -24,6 +24,7 @@ PODS:
   - PromiseKit/Foundation (6.13.1):
     - PromiseKit/CorePromise
   - Punycode-Cocoa (1.3.1)
+  - Sparkle (1.26.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Mantle
   - PromiseKit (~> 6.8)
   - Punycode-Cocoa (~> 1.3)
+  - Sparkle (~> 1.26)
 
 SPEC REPOS:
   trunk:
@@ -39,6 +41,7 @@ SPEC REPOS:
     - Mantle
     - PromiseKit
     - Punycode-Cocoa
+    - Sparkle
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -46,7 +49,8 @@ SPEC CHECKSUMS:
   Mantle: 35238ae6f2e2b2d474fa7b67fee82a59fea71915
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Punycode-Cocoa: d9a974cc7384bd6d31b8d9df867a9b7b213d8880
+  Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
 
-PODFILE CHECKSUM: 861e5d43278d91a96930903c72174d653e4dd156
+PODFILE CHECKSUM: ce85b31369d37eb0023a9041706d15b96e1b85cd
 
 COCOAPODS: 1.10.1
