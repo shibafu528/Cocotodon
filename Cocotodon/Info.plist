@@ -32,5 +32,11 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>SUPublicEDKey</key>
+	<string>8gxRCxM4pMudCB0SR6hCQK3WFUSfen7CPjxwL9hhwVg=</string>
+	<key>SUFeedURL</key>
+	<string>https://shibafu528.github.com/CocotodonAppcast/appcast.xml</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
 </dict>
 </plist>
