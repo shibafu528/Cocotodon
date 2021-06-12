@@ -42,7 +42,7 @@ jobs:
         working-directory: build
         run: |
           cp -a Cocotodon.xcarchive/Products/Applications/Cocotodon.app Cocotodon.app
-          zip -r Cocotodon-${{ github.sha }}.zip Cocotodon.app
+          ditto -c -k --sequesterRsrc --keepParent Cocotodon.app Cocotodon-${{ github.sha }}.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
@@ -75,7 +75,7 @@ jobs:
 
       - name: Unarchive artifact
         working-directory: build
-        run: unzip Cocotodon-${{ github.sha }}.zip
+        run: ditto -x -k Cocotodon-${{ github.sha }}.zip ./
 
       - name: Packaging
         working-directory: build
@@ -84,7 +84,7 @@ jobs:
           mv Cocotodon.app ${{ steps.version.outputs.filename }}/
           cp -f ${{ github.workspace }}/README.md ${{ steps.version.outputs.filename }}/
           cp -f ${{ github.workspace }}/LICENSE ${{ steps.version.outputs.filename }}/
-          zip -r "${{ steps.version.outputs.filename }}.zip" ${{ steps.version.outputs.filename }}
+          ditto -c -k ${{ steps.version.outputs.filename }} "${{ steps.version.outputs.filename }}.zip"
 
       - name: Release
         uses: softprops/action-gh-release@v1
