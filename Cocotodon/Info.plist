@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.2</string>
+	<string>0.1.3</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
@@ -35,7 +35,7 @@
 	<key>SUPublicEDKey</key>
 	<string>8gxRCxM4pMudCB0SR6hCQK3WFUSfen7CPjxwL9hhwVg=</string>
 	<key>SUFeedURL</key>
-	<string>https://shibafu528.github.com/CocotodonAppcast/appcast.xml</string>
+	<string>https://shibafu528.github.io/CocotodonAppcast/appcast.xml</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 </dict>
