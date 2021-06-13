@@ -19,8 +19,22 @@ static void fetch_credential(NSString **host, NSString **accessToken) {
     NSURL *credfile = [NSFileManager.defaultManager.homeDirectoryForCurrentUser URLByAppendingPathComponent:@".cocotodon.json"];
     NSData *data = [NSData dataWithContentsOfURL:credfile options:0 error:&error];
     if (error) {
-        NSAlert *alert = [NSAlert alertWithError:error];
-        [alert runModal];
+        if (error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            alert.alertStyle = NSAlertStyleCritical;
+            alert.messageText = @"ホームフォルダに .cocotodon.json がありません。";
+            NSMutableAttributedString *link = [[NSMutableAttributedString alloc] initWithString:@"ファイルの作り方はこちらをお読みください"];
+            [link addAttribute:NSLinkAttributeName value:@"https://github.com/shibafu528/Cocotodon/wiki/.cocotodon.json-%E3%81%AE%E4%BD%9C%E6%88%90%E6%89%8B%E9%A0%86" range:NSMakeRange(0, link.length)];
+            NSTextField *textField = [NSTextField labelWithAttributedString:link];
+            textField.allowsEditingTextAttributes = YES;
+            textField.selectable = YES;
+            textField.attributedStringValue = link;
+            alert.accessoryView = textField;
+            [alert runModal];
+        } else {
+            NSAlert *alert = [NSAlert alertWithError:error];
+            [alert runModal];
+        }
         [NSApp terminate:nil];
     }
     NSDictionary *cred = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
