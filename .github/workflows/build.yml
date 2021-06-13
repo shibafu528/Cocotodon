@@ -73,18 +73,9 @@ jobs:
           name: Cocotodon snapshot
           path: build
 
-      - name: Unarchive artifact
+      - name: Renane artifact
         working-directory: build
-        run: ditto -x -k Cocotodon-${{ github.sha }}.zip ./
-
-      - name: Packaging
-        working-directory: build
-        run: |
-          mkdir -p ${{ steps.version.outputs.filename }}
-          mv Cocotodon.app ${{ steps.version.outputs.filename }}/
-          cp -f ${{ github.workspace }}/README.md ${{ steps.version.outputs.filename }}/
-          cp -f ${{ github.workspace }}/LICENSE ${{ steps.version.outputs.filename }}/
-          ditto -c -k ${{ steps.version.outputs.filename }} "${{ steps.version.outputs.filename }}.zip"
+        run: mv Cocotodon-${{ github.sha }}.zip "${{ steps.version.outputs.filename }}.zip"
 
       - name: Release
         uses: softprops/action-gh-release@v1
