@@ -63,6 +63,7 @@
         self.secondaryImageLayer.hidden = NO;
         self.secondaryImageLayer.borderWidth = 1;
         self.secondaryImageLayer.borderColor = NSColor.grayColor.CGColor;
+        self.secondaryImageLayer.backgroundColor = NSColor.controlBackgroundColor.CGColor;
         self.secondaryImageLayer.contents = self.secondaryImage;
         self.secondaryImageLayer.cornerRadius = 6.0f;
         self.secondaryImageLayer.contentsGravity = kCAGravityResizeAspect;
