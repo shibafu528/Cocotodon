@@ -9,6 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PostBox : NSControl
 
+@property (nonatomic, readonly, getter=isSensitive) BOOL sensitive;
+
 - (NSString *)message;
 
 - (void)setMessage:(NSString *)message;

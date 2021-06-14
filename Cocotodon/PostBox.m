@@ -12,6 +12,7 @@
 @property (nonatomic, weak) IBOutlet NSPopUpButton *visibilityPopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
 
+@property (nonatomic, readwrite, getter=isSensitive) BOOL sensitive;
 @property (nonatomic) NSMutableArray<DONPicture*> *attachedPictures;
 @property (nonatomic) MRBPin *commands;
 @property (nonatomic) NSTimer *flashMessageTimer;
@@ -79,6 +80,7 @@
 - (void)clear {
     self.tootInput.string = @"";
     self.sendButton.enabled = NO;
+    self.sensitive = NO;
     [self.attachedPictures removeAllObjects];
     [self updateContentCounter];
 }
@@ -135,6 +137,10 @@
     
     [menu addItemWithTitle:@"画像を添付..." action:@selector(attachImage:) keyEquivalent:@""].target = self;
     [menu addItem:[NSMenuItem separatorItem]];
+    NSMenuItem *sensitiveItem = [[NSMenuItem alloc] initWithTitle:@"閲覧注意にする" action:@selector(toggleSensitive:) keyEquivalent:@""];
+    sensitiveItem.state = self.sensitive ? NSControlStateValueOn : NSControlStateValueOff;
+    sensitiveItem.target = self;
+    [menu addItem:sensitiveItem];
     [self.attachedPictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMenuItem *item = [menu addItemWithTitle:@"この画像を取り除く" action:@selector(removeAttachment:) keyEquivalent:@""];
         NSImage *image = [[NSImage alloc] initWithData:picture.data];
@@ -147,6 +153,10 @@
     [menu addItemWithTitle:@"すべての添付画像を取り除く" action:@selector(removeAllAttachments:) keyEquivalent:@""].target = self;
     
     [menu popUpMenuPositioningItem:nil atLocation:((NSButton*)sender).frame.origin inView:self];
+}
+
+- (void)toggleSensitive:(NSMenuItem*)sender {
+    self.sensitive = !self.isSensitive;
 }
 
 - (void)attachImage:(NSMenuItem*)sender {
@@ -184,11 +194,15 @@
     }
     
     [self.attachedPictures removeObjectAtIndex:index.unsignedIntegerValue];
+    if (self.attachedPictures.count == 0) {
+        self.sensitive = NO;
+    }
     [self updateSendEnabledState];
 }
 
 - (void)removeAllAttachments:(NSMenuItem*)sender {
     [self.attachedPictures removeAllObjects];
+    self.sensitive = NO;
     [self updateSendEnabledState];
 }
 

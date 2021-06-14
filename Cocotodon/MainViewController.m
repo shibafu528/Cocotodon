@@ -108,7 +108,7 @@
             [App.client postStatus:[self.postbox.message stringByReplacingLineBreaksWithString:@"\n"]
                            replyTo:nil
                           mediaIds:mediaIds
-                         sensitive:NO
+                         sensitive:self.postbox.isSensitive
                        spoilerText:nil
                         visibility:self.postbox.visibility
                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
