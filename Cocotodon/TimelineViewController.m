@@ -25,6 +25,7 @@
 #import "WindowController.h"
 #import "IntentManager.h"
 #import "ThreadWindow.h"
+#import "TimelineAvatarCellView.h"
 #import <UserNotifications/UserNotifications.h>
 
 
@@ -195,7 +196,16 @@
     NSTableCellView *view = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
     DONStatus *status = self.statuses[row];
     if ([tableColumn.identifier isEqualToString:@"Icon"]) {
-        view.imageView.image = [[[NSImage alloc] initWithContentsOfURL:status.originalStatus.account.avatar] resizeToScreenSize:view.imageView.fittingSize];
+        TimelineAvatarCellView *cell = (TimelineAvatarCellView*) view;
+        NSSize size = cell.avatarView.fittingSize;
+        NSSize fittingSize = NSMakeSize(size.width, size.width);
+        cell.avatarView.primaryImage = [[[NSImage alloc] initWithContentsOfURL:status.originalStatus.account.avatar] resizeToScreenSize:fittingSize];
+        if (status.reblog) {
+            cell.avatarView.secondaryImage = [[[NSImage alloc] initWithContentsOfURL:status.account.avatar] resizeToScreenSize:fittingSize];
+        } else {
+            cell.avatarView.secondaryImage = nil;
+        }
+        cell.avatarView.statusVisibility = status.originalStatus.visibility;
     } else if ([tableColumn.identifier isEqualToString:@"Acct"]) {
         NSString *acct = status.reblog ? [NSString stringWithFormat:@"🔁 %@", status.reblog.account.fullAcct] : status.account.fullAcct;
         NSMutableAttributedString *attrAcct = [[NSMutableAttributedString alloc] initWithString:acct];
@@ -223,19 +233,6 @@
         }
         
         NSMutableString *indicators = [NSMutableString string];
-        switch (status.originalStatus.visibility) {
-            case DONStatusUnlisted:
-                [indicators appendString:@"🔓"];
-                break;
-            case DONStatusPrivate:
-                [indicators appendString:@"🔒"];
-                break;
-            case DONStatusDirect:
-                [indicators appendString:@"✉️"];
-                break;
-            default:
-                break;
-        }
         if (status.originalStatus.mediaAttachments.count != 0) {
             [indicators appendString:@"🖼"];
         }
@@ -246,7 +243,7 @@
             [detail insertAttributedString:attributedIndicators atIndex:0];
         }
         if (self.presentationMode && !(status.visibility == DONStatusPublic || status.visibility == DONStatusUnlisted)) {
-            NSString *scrambled = @"🔒 ****************";
+            NSString *scrambled = @"****************";
             summary = detail = [[NSMutableAttributedString alloc] initWithString:scrambled];
         }
         

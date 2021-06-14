@@ -44,26 +44,33 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView misplaced="YES" id="omo-Hx-xbj">
+                                            <tableCellView misplaced="YES" id="omo-Hx-xbj" customClass="TimelineAvatarCellView">
                                                 <rect key="frame" x="11" y="1" width="69" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ckk-oc-EUi">
-                                                        <rect key="frame" x="0.0" y="-20" width="64" height="64"/>
+                                                    <customView verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Fg-Fl-Khn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="0.0"/>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="CRi-eX-97y" customClass="TimelineAvatarView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="24"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="64" id="8fK-P9-a6X"/>
-                                                            <constraint firstAttribute="height" constant="64" id="9NB-i6-NlD"/>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="MWZ-Ez-D4J"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="Z4g-Jl-Ohg"/>
+                                                            <constraint firstAttribute="width" constant="64" id="cI0-3b-gtQ"/>
                                                         </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="G6p-CO-MIE"/>
-                                                    </imageView>
+                                                    </customView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Ckk-oc-EUi" secondAttribute="trailing" id="Jj2-KP-Ef1"/>
-                                                    <constraint firstItem="Ckk-oc-EUi" firstAttribute="leading" secondItem="omo-Hx-xbj" secondAttribute="leading" id="MSg-sK-R5w"/>
-                                                    <constraint firstItem="Ckk-oc-EUi" firstAttribute="centerY" secondItem="omo-Hx-xbj" secondAttribute="centerY" id="uya-AC-H3a"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CRi-eX-97y" secondAttribute="trailing" id="BZ0-z3-dHI"/>
+                                                    <constraint firstItem="CRi-eX-97y" firstAttribute="top" secondItem="omo-Hx-xbj" secondAttribute="top" id="EOc-Q7-CjU"/>
+                                                    <constraint firstItem="9Fg-Fl-Khn" firstAttribute="leading" secondItem="omo-Hx-xbj" secondAttribute="leading" id="KAj-UY-qZU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="9Fg-Fl-Khn" secondAttribute="bottom" id="Qz6-xw-foJ"/>
+                                                    <constraint firstItem="CRi-eX-97y" firstAttribute="leading" secondItem="omo-Hx-xbj" secondAttribute="leading" id="Rpy-5S-xYy"/>
+                                                    <constraint firstItem="9Fg-Fl-Khn" firstAttribute="top" secondItem="CRi-eX-97y" secondAttribute="bottom" id="p1R-mg-S2Y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9Fg-Fl-Khn" secondAttribute="trailing" id="ucn-uo-cS0"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="imageView" destination="Ckk-oc-EUi" id="UYY-mN-LmU"/>
+                                                    <outlet property="avatarView" destination="CRi-eX-97y" id="Z2C-Dl-oPr"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>

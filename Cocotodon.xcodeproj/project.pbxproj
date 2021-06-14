@@ -58,6 +58,8 @@
 		5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870725173247009066C3 /* DONStatusVisibility.m */; };
 		5D94871825173247009066C3 /* DONPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94870B25173247009066C3 /* DONPicture.m */; };
 		5D94871B25173AE8009066C3 /* DONStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D94871A25173AE8009066C3 /* DONStatus.m */; };
+		5D97CDD226778D5700950012 /* TimelineAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D97CDD126778D5700950012 /* TimelineAvatarView.m */; };
+		5D97CDD52677936300950012 /* TimelineAvatarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D97CDD42677936300950012 /* TimelineAvatarCellView.m */; };
 		5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DE893250126E100A9E9F2 /* mrb_util.h */; };
 		5D9DE8962501271900A9E9F2 /* mrb_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9DE8952501271900A9E9F2 /* mrb_util.m */; };
 		5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3179124FF190D0095AF04 /* AppDelegate.m */; };
@@ -217,6 +219,10 @@
 		5D94870D25173247009066C3 /* DONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONUtils.h; sourceTree = "<group>"; };
 		5D94871925173AE8009066C3 /* DONStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatus.h; sourceTree = "<group>"; };
 		5D94871A25173AE8009066C3 /* DONStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatus.m; sourceTree = "<group>"; };
+		5D97CDD026778D5700950012 /* TimelineAvatarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineAvatarView.h; sourceTree = "<group>"; };
+		5D97CDD126778D5700950012 /* TimelineAvatarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineAvatarView.m; sourceTree = "<group>"; };
+		5D97CDD32677936300950012 /* TimelineAvatarCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineAvatarCellView.h; sourceTree = "<group>"; };
+		5D97CDD42677936300950012 /* TimelineAvatarCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineAvatarCellView.m; sourceTree = "<group>"; };
 		5D9DE893250126E100A9E9F2 /* mrb_util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_util.h; sourceTree = "<group>"; };
 		5D9DE8952501271900A9E9F2 /* mrb_util.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mrb_util.m; sourceTree = "<group>"; };
 		5DA3178D24FF190D0095AF04 /* Cocotodon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocotodon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -568,6 +574,10 @@
 				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
 				5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */,
 				5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */,
+				5D97CDD026778D5700950012 /* TimelineAvatarView.h */,
+				5D97CDD126778D5700950012 /* TimelineAvatarView.m */,
+				5D97CDD32677936300950012 /* TimelineAvatarCellView.h */,
+				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -926,6 +936,7 @@
 				5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */,
 				5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */,
 				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
+				5D97CDD52677936300950012 /* TimelineAvatarCellView.m in Sources */,
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
 				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
 				5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */,
@@ -946,6 +957,7 @@
 				5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */,
 				5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */,
 				5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */,
+				5D97CDD226778D5700950012 /* TimelineAvatarView.m in Sources */,
 				5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */,
 				5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */,
 				5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */,
