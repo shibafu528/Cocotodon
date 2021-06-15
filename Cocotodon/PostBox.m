@@ -57,6 +57,18 @@
     }
 }
 
+- (void)drawRect:(NSRect)dirtyRect {
+    [super drawRect:dirtyRect];
+    
+    [NSColor.controlBackgroundColor setFill];
+    NSRectFill(dirtyRect);
+    
+    NSBezierPath *border = [NSBezierPath bezierPathWithRect:self.bounds];
+    [NSColor.systemGrayColor set];
+    border.lineWidth = 1;
+    [border stroke];
+}
+
 #pragma mark - public
 
 - (NSString *)message {

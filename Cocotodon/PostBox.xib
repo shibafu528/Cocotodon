@@ -46,18 +46,18 @@ DQ
                         <action selector="clickSend:" target="-2" id="0lM-e4-6Pe"/>
                     </connections>
                 </button>
-                <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo4-JC-Rlm">
-                    <rect key="frame" x="0.0" y="23" width="480" height="39"/>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo4-JC-Rlm">
+                    <rect key="frame" x="1" y="23" width="478" height="38"/>
                     <clipView key="contentView" drawsBackground="NO" id="ehZ-w7-QT7">
-                        <rect key="frame" x="1" y="1" width="478" height="37"/>
+                        <rect key="frame" x="0.0" y="0.0" width="478" height="38"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="V6m-2C-xRl" customClass="PostBoxTextView">
-                                <rect key="frame" x="0.0" y="0.0" width="478" height="37"/>
+                                <rect key="frame" x="0.0" y="0.0" width="478" height="38"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="478" height="37"/>
+                                <size key="minSize" width="478" height="38"/>
                                 <size key="maxSize" width="483" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
@@ -84,48 +84,33 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-hA-QvT">
-                    <rect key="frame" x="1" y="1" width="126" height="20"/>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-hA-QvT">
+                    <rect key="frame" x="1" y="1" width="72" height="20"/>
                     <subviews>
-                        <popUpButton toolTip="公開範囲" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pu3-cM-j66">
-                            <rect key="frame" x="-3" y="-4" width="53" height="25"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="umV-AY-atd" id="IWe-ON-qPn">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" id="J2F-rN-hyj">
-                                    <items>
-                                        <menuItem state="on" image="globe" catalog="system" id="umV-AY-atd"/>
-                                        <menuItem image="lock.open.fill" catalog="system" id="4Lp-6r-BLG"/>
-                                        <menuItem image="lock.fill" catalog="system" id="0AM-KO-Jir"/>
-                                        <menuItem image="envelope.fill" catalog="system" id="cyc-7G-LaQ">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                        </popUpButton>
                         <button toolTip="画像を添付" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-tz-KiJ">
-                            <rect key="frame" x="43" y="-7" width="50" height="32"/>
+                            <rect key="frame" x="0.0" y="2" width="36" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="aUv-JW-iwp"/>
                             </constraints>
-                            <buttonCell key="cell" type="push" alternateTitle="画像を添付" bezelStyle="rounded" image="paperclip" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ncq-aP-GdN">
+                            <buttonCell key="cell" type="square" alternateTitle="画像を添付" bezelStyle="shadowlessSquare" image="paperclip" catalog="system" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="Ncq-aP-GdN">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="clickAttach:" target="-2" id="XVC-nw-rys"/>
                             </connections>
                         </button>
                         <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
-                            <rect key="frame" x="83" y="-7" width="50" height="32"/>
+                            <rect key="frame" x="36" y="3" width="36.5" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="Owg-z6-gyb"/>
                             </constraints>
-                            <buttonCell key="cell" type="push" alternateTitle="mikutterコマンド" bezelStyle="rounded" image="scroll.fill" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xke-ps-M6f">
+                            <buttonCell key="cell" type="square" alternateTitle="mikutterコマンド" bezelStyle="shadowlessSquare" image="scroll.fill" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="xke-ps-M6f">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="openPostboxMenu:" target="-2" id="Mmx-Mu-QdO"/>
                             </connections>
@@ -134,27 +119,50 @@ DQ
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
-                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
+                <popUpButton toolTip="公開範囲" translatesAutoresizingMaskIntoConstraints="NO" id="Pu3-cM-j66">
+                    <rect key="frame" x="74" y="1" width="41" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="KDa-JJ-eoZ"/>
+                        <constraint firstAttribute="height" constant="21" id="nVE-Hv-OYT"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" selectedItem="umV-AY-atd" id="IWe-ON-qPn">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="J2F-rN-hyj">
+                            <items>
+                                <menuItem state="on" image="globe" catalog="system" id="umV-AY-atd"/>
+                                <menuItem image="lock.open.fill" catalog="system" id="4Lp-6r-BLG"/>
+                                <menuItem image="lock.fill" catalog="system" id="0AM-KO-Jir"/>
+                                <menuItem image="envelope.fill" catalog="system" id="cyc-7G-LaQ">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                </popUpButton>
             </subviews>
             <constraints>
-                <constraint firstItem="oo4-JC-Rlm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="0VC-UB-HK0"/>
+                <constraint firstItem="oo4-JC-Rlm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="1" id="0VC-UB-HK0"/>
                 <constraint firstAttribute="bottom" secondItem="ni4-hA-QvT" secondAttribute="bottom" constant="1" id="1pQ-WQ-g07"/>
+                <constraint firstItem="R6a-UL-EYS" firstAttribute="top" secondItem="ni4-hA-QvT" secondAttribute="top" id="40H-Bc-X8O"/>
                 <constraint firstItem="O8j-cv-sRi" firstAttribute="leading" secondItem="jVy-KI-OhZ" secondAttribute="trailing" constant="4" id="A9t-k5-TxS"/>
                 <constraint firstItem="ni4-hA-QvT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="1" id="Biw-RR-kY4"/>
                 <constraint firstAttribute="trailing" secondItem="R6a-UL-EYS" secondAttribute="trailing" constant="1" id="GCY-EC-cEG"/>
-                <constraint firstItem="oo4-JC-Rlm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="P1t-dJ-4XA"/>
+                <constraint firstItem="oo4-JC-Rlm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="1" id="P1t-dJ-4XA"/>
                 <constraint firstAttribute="bottom" secondItem="R6a-UL-EYS" secondAttribute="bottom" constant="1" id="SuJ-K7-m16"/>
-                <constraint firstAttribute="trailing" secondItem="oo4-JC-Rlm" secondAttribute="trailing" id="YNX-1t-4nC"/>
+                <constraint firstItem="Pu3-cM-j66" firstAttribute="bottom" secondItem="ni4-hA-QvT" secondAttribute="bottom" id="U4x-Hh-gf1"/>
+                <constraint firstAttribute="trailing" secondItem="oo4-JC-Rlm" secondAttribute="trailing" constant="1" id="YNX-1t-4nC"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="jVy-KI-OhZ" secondAttribute="centerY" id="ZTE-y6-hoT"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="bottom" constant="2" id="hJa-J0-9at"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="O8j-cv-sRi" secondAttribute="centerY" id="tGa-MF-sw4"/>
+                <constraint firstItem="Pu3-cM-j66" firstAttribute="leading" secondItem="ni4-hA-QvT" secondAttribute="trailing" constant="6" id="u5J-hA-jrC"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="leading" secondItem="O8j-cv-sRi" secondAttribute="trailing" constant="4" id="uqK-IK-DuY"/>
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>
