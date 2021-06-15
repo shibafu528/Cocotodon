@@ -527,7 +527,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="eCw-Uy-Fnf" customClass="PostBox">
-                                <rect key="frame" x="20" y="555" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="575" width="640" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="YUF-9E-mfi"/>
                                 </constraints>
@@ -536,19 +536,19 @@
                                 </connections>
                             </customView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="uCe-tP-tpR">
-                                <rect key="frame" x="0.0" y="0.0" width="640" height="540"/>
+                                <rect key="frame" x="0.0" y="0.0" width="640" height="569"/>
                                 <connections>
                                     <segue destination="5N7-fQ-lzT" kind="embed" identifier="embeddedTabs" id="ahK-0Z-uwM"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="eCw-Uy-Fnf" firstAttribute="leading" secondItem="rQP-AA-ief" secondAttribute="leading" constant="20" symbolic="YES" id="3fj-Lw-e6F"/>
+                            <constraint firstItem="eCw-Uy-Fnf" firstAttribute="leading" secondItem="rQP-AA-ief" secondAttribute="leading" id="3fj-Lw-e6F"/>
                             <constraint firstAttribute="trailing" secondItem="uCe-tP-tpR" secondAttribute="trailing" id="7kp-TP-QPH"/>
                             <constraint firstAttribute="bottom" secondItem="uCe-tP-tpR" secondAttribute="bottom" id="B3f-9T-oiS"/>
-                            <constraint firstItem="uCe-tP-tpR" firstAttribute="top" secondItem="eCw-Uy-Fnf" secondAttribute="bottom" constant="15" id="CQd-Cs-44a"/>
-                            <constraint firstItem="eCw-Uy-Fnf" firstAttribute="top" secondItem="rQP-AA-ief" secondAttribute="top" constant="20" symbolic="YES" id="Ttl-eb-pzI"/>
-                            <constraint firstAttribute="trailing" secondItem="eCw-Uy-Fnf" secondAttribute="trailing" constant="20" symbolic="YES" id="el9-cZ-A19"/>
+                            <constraint firstItem="uCe-tP-tpR" firstAttribute="top" secondItem="eCw-Uy-Fnf" secondAttribute="bottom" constant="6" id="CQd-Cs-44a"/>
+                            <constraint firstItem="eCw-Uy-Fnf" firstAttribute="top" secondItem="rQP-AA-ief" secondAttribute="top" id="Ttl-eb-pzI"/>
+                            <constraint firstAttribute="trailing" secondItem="eCw-Uy-Fnf" secondAttribute="trailing" id="el9-cZ-A19"/>
                             <constraint firstItem="uCe-tP-tpR" firstAttribute="leading" secondItem="rQP-AA-ief" secondAttribute="leading" id="k2U-zN-0f3"/>
                         </constraints>
                     </view>

@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.postbox.borderStyle = PostBoxBorderStyleRect;
 }
 
 #pragma mark - Setter

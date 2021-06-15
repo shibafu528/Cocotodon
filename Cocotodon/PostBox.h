@@ -7,8 +7,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
+    PostBoxBorderStyleNone,
+    PostBoxBorderStyleRect,
+    PostBoxBorderStyleBottomLine,
+};
+
 @interface PostBox : NSControl
 
+@property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
 @property (nonatomic, readonly, getter=isSensitive) BOOL sensitive;
 
 - (NSString *)message;

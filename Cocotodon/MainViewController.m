@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    self.postbox.borderStyle = PostBoxBorderStyleBottomLine;
 }
 
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
