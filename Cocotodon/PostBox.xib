@@ -136,7 +136,7 @@ DQ
                                 <action selector="openPostboxMenu:" target="-2" id="aSj-zx-NKP"/>
                             </connections>
                         </button>
-                        <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
+                        <button toolTip="閲覧注意の設定" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
                             <rect key="frame" x="72" y="2" width="36" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="Owg-z6-gyb"/>
