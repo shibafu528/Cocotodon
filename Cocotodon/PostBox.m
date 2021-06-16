@@ -66,14 +66,14 @@
     switch (self.borderStyle) {
         case PostBoxBorderStyleRect: {
             NSBezierPath *border = [NSBezierPath bezierPathWithRect:self.bounds];
-            [NSColor.systemGrayColor set];
+            [NSColor.separatorColor set];
             border.lineWidth = 1;
             [border stroke];
             break;
         }
         case PostBoxBorderStyleBottomLine: {
             NSBezierPath *path = [NSBezierPath bezierPath];
-            [NSColor.systemGrayColor set];
+            [NSColor.separatorColor set];
             [path moveToPoint:NSMakePoint(0, 0)];
             [path lineToPoint:NSMakePoint(self.bounds.size.width, 0)];
             path.lineWidth = 1;
