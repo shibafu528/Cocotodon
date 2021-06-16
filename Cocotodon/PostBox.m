@@ -133,6 +133,15 @@
     return self.spoilerTextInput.stringValue;
 }
 
+- (void)setSpoilerText:(NSString *)spoilerText {
+    if (spoilerText.length) {
+        self.showSpoilerText = YES;
+        self.spoilerTextInput.stringValue = spoilerText;
+    } else {
+        self.showSpoilerText = NO;
+    }
+}
+
 - (void)focus {
     [self.window makeFirstResponder:self.tootInput];
 }

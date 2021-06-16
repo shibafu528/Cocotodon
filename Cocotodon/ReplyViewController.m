@@ -27,10 +27,14 @@
 #pragma mark - Setter
 
 -(void)setReplyToAndAutoPopulate:(DONStatus *)status {
-    [self setReplyTo:status withHeader:[@"@" stringByAppendingString:status.account.fullAcct] footer:nil];
+    [self setReplyTo:status withSpoilerText:status.spoilerText header:[@"@" stringByAppendingString:status.account.fullAcct] footer:nil];
 }
 
 -(void)setReplyTo:(DONStatus *)status withHeader:(NSString *)header footer:(NSString *)footer {
+    [self setReplyTo:status withSpoilerText:nil header:header footer:footer];
+}
+
+- (void)setReplyTo:(DONStatus *)status withSpoilerText:(NSString *)spoilerText header:(NSString *)header footer:(NSString *)footer {
     self.replyToStatus = status;
     self.replyToAcct.stringValue = status.account.fullAcct;
     [self.replyToContent setString:status.expandContent];
@@ -45,6 +49,7 @@
         [input appendString:footer];
     }
     self.postbox.message = input;
+    self.postbox.spoilerText = spoilerText;
     self.postbox.visibility = status.visibility;
     
     // focus

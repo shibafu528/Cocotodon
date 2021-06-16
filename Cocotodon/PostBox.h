@@ -33,6 +33,8 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 
 - (NSString *)spoilerText;
 
+- (void)setSpoilerText:(NSString *)spoilerText;
+
 - (void)clear;
 
 - (void)focus;
