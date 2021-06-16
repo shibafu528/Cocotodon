@@ -71,6 +71,7 @@
 		5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */; };
 		5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */; };
 		5DAA595F266BAA000075C96D /* PostBoxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA595E266BAA000075C96D /* PostBoxTextView.m */; };
+		5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */; };
 		5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */; };
 		5DBC2F3325B11347003D797F /* ExpandableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC2F3225B11347003D797F /* ExpandableCellView.m */; };
 		5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC8C5562654CB3300B1628E /* DONStatusContext.m */; };
@@ -243,6 +244,8 @@
 		5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONWebSocketStreaming.m; sourceTree = "<group>"; };
 		5DAA595D266BAA000075C96D /* PostBoxTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxTextView.h; sourceTree = "<group>"; };
 		5DAA595E266BAA000075C96D /* PostBoxTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxTextView.m; sourceTree = "<group>"; };
+		5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxSpoilerTextField.h; sourceTree = "<group>"; };
+		5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxSpoilerTextField.m; sourceTree = "<group>"; };
 		5DADEAEC25DABD6D004D8FD0 /* AutolayoutTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutolayoutTextView.h; sourceTree = "<group>"; };
 		5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutolayoutTextView.m; sourceTree = "<group>"; };
 		5DBC2F3125B11347003D797F /* ExpandableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpandableCellView.h; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				5D97CDD126778D5700950012 /* TimelineAvatarView.m */,
 				5D97CDD32677936300950012 /* TimelineAvatarCellView.h */,
 				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
+				5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */,
+				5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -963,6 +968,7 @@
 				5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */,
 				5D9486EF2516F9EA009066C3 /* NSView+NibLoader.m in Sources */,
 				5D94871825173247009066C3 /* DONPicture.m in Sources */,
+				5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */,
 				5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */,
 				5D94870F25173247009066C3 /* DONApiClient.m in Sources */,
 				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,

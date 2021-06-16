@@ -11,6 +11,9 @@
 @property (nonatomic, weak) IBOutlet NSButton *sendButton;
 @property (nonatomic, weak) IBOutlet NSPopUpButton *visibilityPopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
+@property (nonatomic, weak) IBOutlet NSButton *showSpoilerTextButton;
+@property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
+@property (weak) IBOutlet NSLayoutConstraint *topConstraintOfTootInput;
 
 @property (nonatomic, readwrite, getter=isSensitive) BOOL sensitive;
 @property (nonatomic) NSMutableArray<DONPicture*> *attachedPictures;
@@ -108,6 +111,8 @@
 
 - (void)clear {
     self.tootInput.string = @"";
+    self.spoilerTextInput.stringValue = @"";
+    self.showSpoilerText = NO;
     self.sendButton.enabled = NO;
     self.sensitive = NO;
     [self.attachedPictures removeAllObjects];
@@ -124,12 +129,33 @@
     [self flashMessage:@"画像を添付しました"];
 }
 
+- (NSString *)spoilerText {
+    return self.spoilerTextInput.stringValue;
+}
+
 - (void)focus {
     [self.window makeFirstResponder:self.tootInput];
 }
 
 - (void)setSelectedRange:(NSRange)charRange {
     self.tootInput.selectedRange = charRange;
+}
+
+- (void)setShowSpoilerText:(BOOL)showSpoilerText {
+    _showSpoilerText = showSpoilerText;
+    if (showSpoilerText) {
+        self.spoilerTextInput.stringValue = @"";
+        self.showSpoilerTextButton.contentTintColor = NSColor.controlAccentColor;
+        self.topConstraintOfTootInput.constant = 1 + self.spoilerTextInput.frame.size.height + 4;
+    } else {
+        self.showSpoilerTextButton.contentTintColor = NSColor.controlTextColor;
+        self.topConstraintOfTootInput.constant = 1;
+    }
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        context.duration = 0.25;
+        context.allowsImplicitAnimation = YES;
+        [self layoutSubtreeIfNeeded];
+    }];
 }
 
 #pragma mark - private
@@ -153,6 +179,9 @@
 }
 
 - (IBAction)clickSend:(id)sender {
+    if (!self.showSpoilerText) {
+        self.spoilerTextInput.stringValue = @"";
+    }
     [self sendAction:self.action to:self.target];
 }
 

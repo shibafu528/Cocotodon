@@ -95,7 +95,7 @@
                            replyTo:self.replyToStatus.identity
                           mediaIds:mediaIds
                          sensitive:self.postbox.sensitive
-                       spoilerText:nil
+                       spoilerText:self.postbox.spoilerText
                         visibility:self.postbox.visibility
                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 resolve(nil);

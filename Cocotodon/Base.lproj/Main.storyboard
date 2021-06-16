@@ -527,16 +527,16 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="eCw-Uy-Fnf" customClass="PostBox">
-                                <rect key="frame" x="0.0" y="575" width="640" height="65"/>
+                                <rect key="frame" x="0.0" y="558" width="640" height="82"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="YUF-9E-mfi"/>
+                                    <constraint firstAttribute="height" constant="82" id="YUF-9E-mfi"/>
                                 </constraints>
                                 <connections>
                                     <action selector="postMessage:" target="7cs-JW-wmf" id="Zxb-Ki-9fM"/>
                                 </connections>
                             </customView>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="uCe-tP-tpR">
-                                <rect key="frame" x="0.0" y="0.0" width="640" height="569"/>
+                                <rect key="frame" x="0.0" y="0.0" width="640" height="552"/>
                                 <connections>
                                     <segue destination="5N7-fQ-lzT" kind="embed" identifier="embeddedTabs" id="ahK-0Z-uwM"/>
                                 </connections>
@@ -733,14 +733,14 @@
             <objects>
                 <viewController id="cIT-4i-AHh" customClass="ReplyViewController" sceneMemberID="viewController">
                     <view key="view" id="yzf-9w-sE0">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="257"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="274"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PHB-gk-TEk">
-                                <rect key="frame" x="20" y="20" width="440" height="217"/>
+                                <rect key="frame" x="20" y="20" width="440" height="234"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Q7u-Mc-tsJ">
-                                        <rect key="frame" x="0.0" y="73" width="440" height="144"/>
+                                        <rect key="frame" x="0.0" y="90" width="440" height="144"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Og-IR-vmd">
                                                 <rect key="frame" x="22" y="128" width="420" height="16"/>
@@ -812,9 +812,9 @@
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="j6Z-f8-m6J" customClass="PostBox">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="82"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="yD9-VP-eNb"/>
+                                            <constraint firstAttribute="height" constant="82" id="yD9-VP-eNb"/>
                                         </constraints>
                                         <connections>
                                             <action selector="postMessage:" target="cIT-4i-AHh" id="I4P-Ee-YpW"/>

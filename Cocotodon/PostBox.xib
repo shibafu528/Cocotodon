@@ -11,7 +11,10 @@
                 <outlet property="counter" destination="O8j-cv-sRi" id="GtQ-CO-PjB"/>
                 <outlet property="flashMessageView" destination="jVy-KI-OhZ" id="wRw-U4-dGR"/>
                 <outlet property="sendButton" destination="R6a-UL-EYS" id="bFi-R2-4HK"/>
+                <outlet property="showSpoilerTextButton" destination="EuX-Ur-O05" id="jNG-uq-ALb"/>
+                <outlet property="spoilerTextInput" destination="czM-r0-zXC" id="AFc-aE-FX7"/>
                 <outlet property="tootInput" destination="V6m-2C-xRl" id="s5Z-JA-zOp"/>
+                <outlet property="topConstraintOfTootInput" destination="0VC-UB-HK0" id="qMd-bd-P8m"/>
                 <outlet property="visibilityPopUp" destination="Pu3-cM-j66" id="m1I-DS-fMY"/>
             </connections>
         </customObject>
@@ -46,6 +49,21 @@ DQ
                         <action selector="clickSend:" target="-2" id="0lM-e4-6Pe"/>
                     </connections>
                 </button>
+                <textField hidden="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="czM-r0-zXC" customClass="PostBoxSpoilerTextField">
+                    <rect key="frame" x="4" y="42" width="472" height="16"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" focusRingType="none" placeholderString="警告文" usesSingleLineMode="YES" id="GYe-Rn-KES">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="hidden" keyPath="showSpoilerText" id="2Cq-8u-335">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </textField>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oo4-JC-Rlm">
                     <rect key="frame" x="1" y="23" width="478" height="38"/>
                     <clipView key="contentView" drawsBackground="NO" id="ehZ-w7-QT7">
@@ -67,12 +85,15 @@ DQ
                             </textView>
                         </subviews>
                     </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="9nz-9d-ht1"/>
+                    </constraints>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="LKS-DI-7O2">
                         <rect key="frame" x="-100" y="-100" width="225" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="hnq-J9-tue">
-                        <rect key="frame" x="365" y="4" width="15" height="43"/>
+                        <rect key="frame" x="463" y="0.0" width="15" height="8"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -85,7 +106,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-hA-QvT">
-                    <rect key="frame" x="1" y="1" width="72" height="20"/>
+                    <rect key="frame" x="1" y="1" width="108" height="20"/>
                     <subviews>
                         <button toolTip="画像を添付" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjG-tz-KiJ">
                             <rect key="frame" x="0.0" y="2" width="36" height="17"/>
@@ -101,35 +122,50 @@ DQ
                                 <action selector="clickAttach:" target="-2" id="XVC-nw-rys"/>
                             </connections>
                         </button>
-                        <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
+                        <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="42m-0p-drE">
                             <rect key="frame" x="36" y="3" width="36.5" height="16"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="36" id="Owg-z6-gyb"/>
+                                <constraint firstAttribute="width" constant="36" id="ahP-ke-51T"/>
                             </constraints>
-                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="scroll.fill" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="xke-ps-M6f">
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="scroll.fill" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="PHw-ff-gVo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
-                                <action selector="openPostboxMenu:" target="-2" id="Mmx-Mu-QdO"/>
+                                <action selector="openPostboxMenu:" target="-2" id="aSj-zx-NKP"/>
+                            </connections>
+                        </button>
+                        <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
+                            <rect key="frame" x="72" y="2" width="36" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="Owg-z6-gyb"/>
+                            </constraints>
+                            <buttonCell key="cell" type="square" title="CW" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="xke-ps-M6f">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="showSpoilerText" id="7UV-7h-lRo"/>
                             </connections>
                         </button>
                     </subviews>
                     <visibilityPriorities>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
                 <popUpButton toolTip="公開範囲" translatesAutoresizingMaskIntoConstraints="NO" id="Pu3-cM-j66">
-                    <rect key="frame" x="74" y="1" width="41" height="21"/>
+                    <rect key="frame" x="110" y="1" width="41" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="36" id="KDa-JJ-eoZ"/>
-                        <constraint firstAttribute="height" constant="21" id="nVE-Hv-OYT"/>
                     </constraints>
                     <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" selectedItem="umV-AY-atd" id="IWe-ON-qPn">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -155,11 +191,15 @@ DQ
                 <constraint firstItem="O8j-cv-sRi" firstAttribute="leading" secondItem="jVy-KI-OhZ" secondAttribute="trailing" constant="4" id="A9t-k5-TxS"/>
                 <constraint firstItem="ni4-hA-QvT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="1" id="Biw-RR-kY4"/>
                 <constraint firstAttribute="trailing" secondItem="R6a-UL-EYS" secondAttribute="trailing" constant="1" id="GCY-EC-cEG"/>
+                <constraint firstItem="R6a-UL-EYS" firstAttribute="top" secondItem="Pu3-cM-j66" secondAttribute="top" id="LfK-80-H5a"/>
                 <constraint firstItem="oo4-JC-Rlm" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="1" id="P1t-dJ-4XA"/>
                 <constraint firstAttribute="bottom" secondItem="R6a-UL-EYS" secondAttribute="bottom" constant="1" id="SuJ-K7-m16"/>
                 <constraint firstItem="Pu3-cM-j66" firstAttribute="bottom" secondItem="ni4-hA-QvT" secondAttribute="bottom" id="U4x-Hh-gf1"/>
                 <constraint firstAttribute="trailing" secondItem="oo4-JC-Rlm" secondAttribute="trailing" constant="1" id="YNX-1t-4nC"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="jVy-KI-OhZ" secondAttribute="centerY" id="ZTE-y6-hoT"/>
+                <constraint firstItem="czM-r0-zXC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="4" id="akf-Ur-b0V"/>
+                <constraint firstItem="czM-r0-zXC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="6" id="dEe-Lg-f6G"/>
+                <constraint firstAttribute="trailing" secondItem="czM-r0-zXC" secondAttribute="trailing" constant="6" id="eHp-Sx-K9g"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="bottom" constant="2" id="hJa-J0-9at"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="O8j-cv-sRi" secondAttribute="centerY" id="tGa-MF-sw4"/>
                 <constraint firstItem="Pu3-cM-j66" firstAttribute="leading" secondItem="ni4-hA-QvT" secondAttribute="trailing" constant="6" id="u5J-hA-jrC"/>

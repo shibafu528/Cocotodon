@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 @interface PostBox : NSControl
 
 @property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
+@property (nonatomic) BOOL showSpoilerText;
 @property (nonatomic, readonly, getter=isSensitive) BOOL sensitive;
 
 - (NSString *)message;
@@ -29,6 +30,8 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 - (NSArray<DONPicture*>*)pictures;
 
 - (void)attachPicture:(DONPicture*)picture;
+
+- (NSString *)spoilerText;
 
 - (void)clear;
 
