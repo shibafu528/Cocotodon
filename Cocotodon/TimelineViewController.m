@@ -115,7 +115,6 @@
 #pragma mark - DONStreamingEventDelegate
 
 - (void)donStreamingDidReceiveUpdate:(DONStatus *)status {
-    NSLog(@"ws update: %@", status);
     dispatch_async(dispatch_get_main_queue(), ^{
         self.statuses = [@[status] arrayByAddingObjectsFromArray:self.statuses];
         [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
@@ -126,7 +125,6 @@
 }
 
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
-    NSLog(@"ws notification: %@", notification);
     __auto_type *content = [UNMutableNotificationContent new];
     switch (notification.type) {
         case DONMastodonNotificationFollowType:
@@ -157,6 +155,7 @@
             break;
         default:
             NSLog(@"ws unknown notification type!");
+            NSLog(@"ws notification: %@", notification);
             return;
     }
     content.sound = [UNNotificationSound defaultSound];
