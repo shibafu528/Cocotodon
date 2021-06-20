@@ -88,6 +88,10 @@
     }
 }
 
+- (IBAction)newPost:(id)sender {
+    [self.postbox focus];
+}
+
 #pragma mark - PostBox
 
 - (IBAction)postMessage:(id)sender {
