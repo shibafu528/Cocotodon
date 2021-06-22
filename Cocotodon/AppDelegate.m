@@ -320,7 +320,9 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
                           sensitive:NO
                         spoilerText:nil
                          visibility:DONStatusPublic
-                            success:nil
+                            success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
+                cct_mix_call_posted(result);
+            }
                             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
                 WriteAFNetworkingErrorToLog(error);
             }];

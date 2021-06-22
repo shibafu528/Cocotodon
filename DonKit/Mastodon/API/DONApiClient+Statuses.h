@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^DONApiPostStatusSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatus *__nonnull result);
 typedef void (^DONApiPostMediaSuccessCallback)(NSURLSessionDataTask *__nonnull task, NSNumber *__nonnull mediaId);
 typedef void (^DONApiGetStatusSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatus *__nonnull result);
 typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatusContext *__nonnull result);
@@ -21,7 +22,7 @@ typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__no
                            sensitive:(BOOL)sensitive
                          spoilerText:(nullable NSString*)spoilerText
                           visibility:(DONStatusVisibility)visibility
-                             success:(nullable DONApiSuccessCallback)success
+                             success:(nullable DONApiPostStatusSuccessCallback)success
                              failure:(nullable DONApiFailureCallback)failure;
 
 - (NSURLSessionDataTask*) postMedia:(DONPicture*)file

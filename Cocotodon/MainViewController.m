@@ -115,15 +115,16 @@
                          sensitive:self.postbox.isSensitive
                        spoilerText:self.postbox.spoilerText
                         visibility:self.postbox.visibility
-                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                resolve(nil);
+                           success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
+                resolve(result);
             }
                            failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
                 resolve(error);
             }];
         }];
-    }).then(^{
+    }).then(^(DONStatus *status) {
         [self.postbox clear];
+        cct_mix_call_posted(status);
     }).catch(^(NSError *error) {
         WriteAFNetworkingErrorToLog(error);
     });

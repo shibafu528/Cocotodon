@@ -16,6 +16,13 @@ mrb_value mrb_protect_with_block(mrb_state *mrb, mrb_protect_body body, mrb_bool
     return mrb_protect(mrb, mrb_protect_handler, mrb_cptr_value(mrb, (__bridge void*) body), state);
 }
 
+mrb_value mrb_gc_arena_save_with_block(mrb_state *mrb, mrb_gc_arena_save_body body) {
+    int ai = mrb_gc_arena_save(mrb);
+    mrb_value v = body(mrb, ai);
+    mrb_gc_arena_restore(mrb, ai);
+    return v;
+}
+
 NSString *exc2str(mrb_state *mrb, mrb_value exc) {
     NSMutableString *bt = [NSMutableString string];
     [bt appendString:[NSString stringWithUTF8String:mrb_str_to_cstr(mrb, mrb_inspect(mrb, exc))]];

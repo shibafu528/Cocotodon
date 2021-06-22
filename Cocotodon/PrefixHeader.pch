@@ -24,6 +24,7 @@
 #import "MRBPin.h"
 #import "MRBProc.h"
 #import "mrb_util.h"
+#import "mrb_event_wrapper.h"
 
 #import "DONApiClient.h"
 #import "DONUtils.h"

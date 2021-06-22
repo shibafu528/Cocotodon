@@ -11,6 +11,10 @@ typedef mrb_value (^mrb_protect_body)(mrb_state *mrb);
 
 mrb_value mrb_protect_with_block(mrb_state *mrb, mrb_protect_body body, mrb_bool *state);
 
+typedef mrb_value (^mrb_gc_arena_save_body)(mrb_state *mrb, int arenaIndex);
+
+mrb_value mrb_gc_arena_save_with_block(mrb_state *mrb, mrb_gc_arena_save_body body);
+
 NSString *exc2str(mrb_state *mrb, mrb_value exc);
 void exc2log(mrb_state *mrb);
 

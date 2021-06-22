@@ -12,7 +12,7 @@
                           sensitive:(BOOL)sensitive
                         spoilerText:(nullable NSString *)spoilerText
                          visibility:(DONStatusVisibility)visibility
-                            success:(nullable DONApiSuccessCallback)success
+                            success:(nullable DONApiPostStatusSuccessCallback)success
                             failure:(nullable DONApiFailureCallback)failure {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"status"] = status;
@@ -33,7 +33,18 @@
               parameters:params
                  headers:self.defaultHeaders
                 progress:nil
-                 success:success
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSError *error;
+            DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:responseObject error:&error];
+            if (!error) {
+                success(task, status);
+            }
+            if (failure) {
+                failure(task, error);
+            }
+        }
+    }
                  failure:failure];
 }
 
