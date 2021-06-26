@@ -99,7 +99,6 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <tableViewGridLines key="gridStyleMask" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn width="308" minWidth="40" maxWidth="1000" id="0Qo-V8-b7J">
@@ -707,7 +706,7 @@
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="Y8L-s2-WN0">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="megaphone.fill" catalog="system" width="32"/>
+                                                <segment image="megaphone" catalog="system" width="32"/>
                                             </segments>
                                         </segmentedCell>
                                         <connections>
@@ -728,7 +727,8 @@
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="toolbarAnnouncementItem" destination="cWg-UC-NWU" id="k87-Fw-cDx"/>
+                        <outlet property="toolbarAnnouncementCell" destination="Y8L-s2-WN0" id="zYu-Oe-7al"/>
+                        <outlet property="toolbarAnnouncementItem" destination="w9F-Jp-71F" id="wyj-q7-kV6"/>
                         <outlet property="toolbarStreamingItem" destination="e6I-Rl-Psj" id="PQC-nc-at7"/>
                         <segue destination="7cs-JW-wmf" kind="relationship" relationship="window.shadowedContentViewController" id="9QW-1p-G5D"/>
                     </connections>
@@ -1132,6 +1132,6 @@
         <image name="NSTouchBarGoUpTemplate" width="15" height="9"/>
         <image name="NSUser" width="32" height="32"/>
         <image name="bolt.slash" catalog="system" width="13" height="17"/>
-        <image name="megaphone.fill" catalog="system" width="18" height="17"/>
+        <image name="megaphone" catalog="system" width="18" height="16"/>
     </resources>
 </document>
