@@ -30,6 +30,7 @@ typedef void (^DONApiFailureCallback)(NSURLSessionDataTask *__nullable task, NSE
 NS_ASSUME_NONNULL_END
 
 #import "API/DONApiClient+Accounts.h"
+#import "API/DONApiClient+Announcements.h"
 #import "API/DONApiClient+Apps.h"
 #import "API/DONApiClient+Statuses.h"
 #import "API/DONApiClient+Timelines.h"

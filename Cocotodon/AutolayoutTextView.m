@@ -20,8 +20,7 @@
 
 @implementation AutolayoutTextView
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super initWithFrame:CGRectZero]) {
         // 横幅が狭くなったら即座に潰れる
         [self setContentCompressionResistancePriority:1 forOrientation:NSLayoutConstraintOrientationHorizontal];

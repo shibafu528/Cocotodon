@@ -23,6 +23,11 @@
 		5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */; };
 		5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E9266E68DE006BC203 /* DONEmoji.m */; };
 		5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0EC9A626815E0D00BC38BA /* mrb_event_wrapper.m */; };
+		5D3C29672686ABD300242242 /* DONApiClient+Announcements.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C29662686ABD300242242 /* DONApiClient+Announcements.m */; };
+		5D3C296A2686ADC600242242 /* DONMastodonAnnouncement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C29692686ADC600242242 /* DONMastodonAnnouncement.m */; };
+		5D3C296D2686AF5E00242242 /* DONMastodonAnnouncementReaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C296C2686AF5E00242242 /* DONMastodonAnnouncementReaction.m */; };
+		5D3C29702686BA8200242242 /* AnnouncementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C296F2686BA8200242242 /* AnnouncementViewController.m */; };
+		5D3C29732686C77A00242242 /* AnnouncementTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3C29722686C77A00242242 /* AnnouncementTableCellView.m */; };
 		5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */; };
 		5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */; };
 		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
@@ -153,6 +158,16 @@
 		5D0C97E9266E68DE006BC203 /* DONEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONEmoji.m; sourceTree = "<group>"; };
 		5D0EC9A626815E0D00BC38BA /* mrb_event_wrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mrb_event_wrapper.m; sourceTree = "<group>"; };
 		5D0EC9A826815E1C00BC38BA /* mrb_event_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_event_wrapper.h; sourceTree = "<group>"; };
+		5D3C29652686ABD300242242 /* DONApiClient+Announcements.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Announcements.h"; sourceTree = "<group>"; };
+		5D3C29662686ABD300242242 /* DONApiClient+Announcements.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Announcements.m"; sourceTree = "<group>"; };
+		5D3C29682686ADC600242242 /* DONMastodonAnnouncement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonAnnouncement.h; sourceTree = "<group>"; };
+		5D3C29692686ADC600242242 /* DONMastodonAnnouncement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonAnnouncement.m; sourceTree = "<group>"; };
+		5D3C296B2686AF5E00242242 /* DONMastodonAnnouncementReaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonAnnouncementReaction.h; sourceTree = "<group>"; };
+		5D3C296C2686AF5E00242242 /* DONMastodonAnnouncementReaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonAnnouncementReaction.m; sourceTree = "<group>"; };
+		5D3C296E2686BA8200242242 /* AnnouncementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnouncementViewController.h; sourceTree = "<group>"; };
+		5D3C296F2686BA8200242242 /* AnnouncementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnouncementViewController.m; sourceTree = "<group>"; };
+		5D3C29712686C77A00242242 /* AnnouncementTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnnouncementTableCellView.h; sourceTree = "<group>"; };
+		5D3C29722686C77A00242242 /* AnnouncementTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnnouncementTableCellView.m; sourceTree = "<group>"; };
 		5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentParser.h; sourceTree = "<group>"; };
@@ -467,6 +482,10 @@
 				5DC8C5562654CB3300B1628E /* DONStatusContext.m */,
 				5D0C97E8266E68DE006BC203 /* DONEmoji.h */,
 				5D0C97E9266E68DE006BC203 /* DONEmoji.m */,
+				5D3C29682686ADC600242242 /* DONMastodonAnnouncement.h */,
+				5D3C29692686ADC600242242 /* DONMastodonAnnouncement.m */,
+				5D3C296B2686AF5E00242242 /* DONMastodonAnnouncementReaction.h */,
+				5D3C296C2686AF5E00242242 /* DONMastodonAnnouncementReaction.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -484,6 +503,8 @@
 				5D94870425173247009066C3 /* DONApiClient+Timelines.m */,
 				5DA74AA52518F3F700A1CF38 /* DONApiClient+Streaming.h */,
 				5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */,
+				5D3C29652686ABD300242242 /* DONApiClient+Announcements.h */,
+				5D3C29662686ABD300242242 /* DONApiClient+Announcements.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -588,6 +609,10 @@
 				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
 				5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */,
 				5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */,
+				5D3C296E2686BA8200242242 /* AnnouncementViewController.h */,
+				5D3C296F2686BA8200242242 /* AnnouncementViewController.m */,
+				5D3C29712686C77A00242242 /* AnnouncementTableCellView.h */,
+				5D3C29722686C77A00242242 /* AnnouncementTableCellView.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -953,11 +978,14 @@
 				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
 				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,
 				5D94871225173247009066C3 /* DONMastodonAccount.m in Sources */,
+				5D3C296D2686AF5E00242242 /* DONMastodonAnnouncementReaction.m in Sources */,
 				5DDB41BB26727E5500B0A25C /* mrb_setting_dsl.m in Sources */,
 				5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */,
+				5D3C29732686C77A00242242 /* AnnouncementTableCellView.m in Sources */,
 				5D9DE8962501271900A9E9F2 /* mrb_util.m in Sources */,
 				5DA3179D24FF19100095AF04 /* main.m in Sources */,
 				5D04E72025E0EDFC0068FDFF /* DONMastodonAttachment.m in Sources */,
+				5D3C29702686BA8200242242 /* AnnouncementViewController.m in Sources */,
 				5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */,
 				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
 				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
@@ -965,6 +993,7 @@
 				5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */,
 				5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */,
 				5D94871625173247009066C3 /* DONApiClient+Apps.m in Sources */,
+				5D3C29672686ABD300242242 /* DONApiClient+Announcements.m in Sources */,
 				5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */,
 				5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */,
 				5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */,
@@ -978,6 +1007,7 @@
 				5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */,
 				5D94870F25173247009066C3 /* DONApiClient.m in Sources */,
 				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,
+				5D3C296A2686ADC600242242 /* DONMastodonAnnouncement.m in Sources */,
 				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
 				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
 				5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */,
