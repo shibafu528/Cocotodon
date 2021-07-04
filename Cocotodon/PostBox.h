@@ -17,23 +17,14 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 
 @property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
 @property (nonatomic) BOOL showSpoilerText;
+
+@property (nonatomic) NSString *message;
+@property (nonatomic) NSString *spoilerText;
+@property (nonatomic) DONStatusVisibility visibility;
+@property (nonatomic, readonly) NSArray<DONPicture*> *pictures;
 @property (nonatomic, readonly, getter=isSensitive) BOOL sensitive;
 
-- (NSString *)message;
-
-- (void)setMessage:(NSString *)message;
-
-- (DONStatusVisibility)visibility;
-
-- (void)setVisibility:(DONStatusVisibility)visibility;
-
-- (NSArray<DONPicture*>*)pictures;
-
 - (void)attachPicture:(DONPicture*)picture;
-
-- (NSString *)spoilerText;
-
-- (void)setSpoilerText:(NSString *)spoilerText;
 
 - (void)clear;
 

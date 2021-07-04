@@ -3,20 +3,18 @@
 //
 
 #import "PostBox.h"
+#import "PostBoxDraft.h"
 
-@interface PostBox () <NSTextViewDelegate>
+@interface PostBox ()
+
+@property (nonatomic, weak) IBOutlet PostBoxDraft *draft;
 
 @property (unsafe_unretained) IBOutlet NSTextView *tootInput;
-@property (nonatomic, weak) IBOutlet NSTextField *counter;
-@property (nonatomic, weak) IBOutlet NSButton *sendButton;
-@property (nonatomic, weak) IBOutlet NSPopUpButton *visibilityPopUp;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
 @property (nonatomic, weak) IBOutlet NSButton *showSpoilerTextButton;
 @property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
 @property (weak) IBOutlet NSLayoutConstraint *topConstraintOfTootInput;
 
-@property (nonatomic, readwrite, getter=isSensitive) BOOL sensitive;
-@property (nonatomic) NSMutableArray<DONPicture*> *attachedPictures;
 @property (nonatomic) MRBPin *commands;
 @property (nonatomic) NSTimer *flashMessageTimer;
 
@@ -27,7 +25,6 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super initWithCoder:coder]) {
         [self loadNib];
-        _attachedPictures = [NSMutableArray array];
     }
     return self;
 }
@@ -92,54 +89,53 @@
 #pragma mark - public
 
 - (NSString *)message {
-    return self.tootInput.string;
+    return self.draft.message;
 }
 
 - (void)setMessage:(NSString *)message {
-    self.tootInput.string = message;
-    [self updateContentCounter];
-    [self updateSendEnabledState];
+    self.draft.message = message;
 }
 
 - (DONStatusVisibility)visibility {
-    return self.visibilityPopUp.indexOfSelectedItem;
+    return self.draft.visibility;
 }
 
 - (void)setVisibility:(DONStatusVisibility)visibility {
-    [self.visibilityPopUp selectItemAtIndex:visibility];
+    self.draft.visibility = visibility;
+}
+
+- (BOOL)isSensitive {
+    return self.draft.isSensitive;
 }
 
 - (void)clear {
-    self.tootInput.string = @"";
-    self.spoilerTextInput.stringValue = @"";
+    self.draft.message = @"";
+    self.draft.spoilerText = @"";
     self.showSpoilerText = NO;
-    self.sendButton.enabled = NO;
-    self.sensitive = NO;
-    [self.attachedPictures removeAllObjects];
-    [self updateContentCounter];
+    self.draft.sensitive = NO;
+    [self.draft removeAllPictures];
 }
 
 - (NSArray<DONPicture *> *)pictures {
-    return self.attachedPictures;
+    return self.draft.pictures;
 }
 
 - (void)attachPicture:(DONPicture *)picture {
-    [self.attachedPictures addObject:picture];
-    [self updateSendEnabledState];
+    [self.draft insertObject:picture inPicturesAtIndex:self.draft.pictures.count];
     [self flashMessage:@"画像を添付しました"];
 }
 
 - (NSString *)spoilerText {
-    return self.spoilerTextInput.stringValue;
+    return self.draft.spoilerText;
 }
 
 - (void)setSpoilerText:(NSString *)spoilerText {
     if (spoilerText.length) {
         self.showSpoilerText = YES;
-        self.spoilerTextInput.stringValue = spoilerText;
     } else {
         self.showSpoilerText = NO;
     }
+    self.draft.spoilerText = spoilerText;
 }
 
 - (void)focus {
@@ -153,7 +149,7 @@
 - (void)setShowSpoilerText:(BOOL)showSpoilerText {
     _showSpoilerText = showSpoilerText;
     if (showSpoilerText) {
-        self.spoilerTextInput.stringValue = @"";
+        self.draft.spoilerText = @"";
         self.showSpoilerTextButton.contentTintColor = NSColor.controlAccentColor;
         self.topConstraintOfTootInput.constant = 1 + self.spoilerTextInput.frame.size.height + 4;
     } else {
@@ -169,33 +165,15 @@
 
 #pragma mark - private
 
-- (void)updateContentCounter {
-    NSUInteger count = self.tootInput.string.characterCount;
-    if (count <= 500) {
-        self.counter.stringValue = @(500 - count).stringValue;
-    } else {
-        self.counter.stringValue = [NSString stringWithFormat:@"-%lu", count - 500];
-    }
-}
-
-- (void)updateSendEnabledState {
-    self.sendButton.enabled = self.tootInput.string.characterCount != 0 || self.attachedPictures.count != 0;
-}
-
-- (void)textDidChange:(NSNotification *)notification {
-    [self updateContentCounter];
-    [self updateSendEnabledState];
-}
-
 - (IBAction)clickSend:(id)sender {
     if (!self.showSpoilerText) {
-        self.spoilerTextInput.stringValue = @"";
+        self.draft.spoilerText = @"";
     }
     [self sendAction:self.action to:self.target];
 }
 
 - (IBAction)clickAttach:(id)sender {
-    if (self.attachedPictures.count == 0) {
+    if (self.draft.pictures.count == 0) {
         [self attachImage:nil];
         return;
     }
@@ -205,10 +183,10 @@
     [menu addItemWithTitle:@"画像を添付..." action:@selector(attachImage:) keyEquivalent:@""].target = self;
     [menu addItem:[NSMenuItem separatorItem]];
     NSMenuItem *sensitiveItem = [[NSMenuItem alloc] initWithTitle:@"閲覧注意にする" action:@selector(toggleSensitive:) keyEquivalent:@""];
-    sensitiveItem.state = self.sensitive ? NSControlStateValueOn : NSControlStateValueOff;
+    sensitiveItem.state = self.draft.isSensitive ? NSControlStateValueOn : NSControlStateValueOff;
     sensitiveItem.target = self;
     [menu addItem:sensitiveItem];
-    [self.attachedPictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMenuItem *item = [menu addItemWithTitle:@"この画像を取り除く" action:@selector(removeAttachment:) keyEquivalent:@""];
         NSImage *image = [[NSImage alloc] initWithData:picture.data];
         
@@ -223,7 +201,7 @@
 }
 
 - (void)toggleSensitive:(NSMenuItem*)sender {
-    self.sensitive = !self.isSensitive;
+    self.draft.sensitive = !self.draft.isSensitive;
 }
 
 - (void)attachImage:(NSMenuItem*)sender {
@@ -260,17 +238,15 @@
         return;
     }
     
-    [self.attachedPictures removeObjectAtIndex:index.unsignedIntegerValue];
-    if (self.attachedPictures.count == 0) {
-        self.sensitive = NO;
+    [self.draft removeObjectFromPicturesAtIndex:index.unsignedIntegerValue];
+    if (self.draft.pictures.count == 0) {
+        self.draft.sensitive = NO;
     }
-    [self updateSendEnabledState];
 }
 
 - (void)removeAllAttachments:(NSMenuItem*)sender {
-    [self.attachedPictures removeAllObjects];
-    self.sensitive = NO;
-    [self updateSendEnabledState];
+    [self.draft removeAllPictures];
+    self.draft.sensitive = NO;
 }
 
 - (IBAction)openPostboxMenu:(id)sender {
@@ -346,7 +322,7 @@
         mrb_value gtk_postbox = mrb_funcall_argv(mrb, gtk, mrb_intern_lit(mrb, "widgetof"), 1, &postbox);
         mrb_value widget_post = mrb_funcall_argv(mrb, gtk_postbox, mrb_intern_lit(mrb, "widget_post"), 0, NULL);
         mrb_value post_buffer = mrb_funcall_argv(mrb, widget_post, mrb_intern_lit(mrb, "buffer"), 0, NULL);
-        mrb_value buffer_text = mrb_str_new_cstr(mrb, self.tootInput.string.UTF8String);
+        mrb_value buffer_text = mrb_str_new_cstr(mrb, self.draft.message.UTF8String);
         mrb_value cursor_position = mrb_fixnum_value(self.tootInput.selectedRange.location);
         mrb_funcall_argv(mrb, post_buffer, mrb_intern_lit(mrb, "text="), 1, &buffer_text);
         mrb_funcall_argv(mrb, post_buffer, mrb_intern_lit(mrb, "cursor_position="), 1, &cursor_position);
@@ -365,10 +341,8 @@
         
         buffer_text = mrb_funcall_argv(mrb, post_buffer, mrb_intern_lit(mrb, "text"), 0, NULL);
         NSString *changed = [NSString stringWithUTF8String:mrb_str_to_cstr(mrb, buffer_text)];
-        if (![self.tootInput.string isEqualToString:changed]) {
-            self.tootInput.string = changed;
-            [self updateContentCounter];
-            [self updateSendEnabledState];
+        if (![self.draft.message isEqualToString:changed]) {
+            self.draft.message = changed;
         }
         
         return response;
@@ -430,19 +404,19 @@
 }
 
 - (IBAction)changeVisibilityToPublic:(id)sender {
-    [self.visibilityPopUp selectItemAtIndex:DONStatusPublic];
+    self.draft.visibility = DONStatusPublic;
 }
 
 - (IBAction)changeVisibilityToUnlisted:(id)sender {
-    [self.visibilityPopUp selectItemAtIndex:DONStatusUnlisted];
+    self.draft.visibility = DONStatusUnlisted;
 }
 
 - (IBAction)changeVisibilityToPrivate:(id)sender {
-    [self.visibilityPopUp selectItemAtIndex:DONStatusPrivate];
+    self.draft.visibility = DONStatusPrivate;
 }
 
 - (IBAction)changeVisibilityToDirect:(id)sender {
-    [self.visibilityPopUp selectItemAtIndex:DONStatusDirect];
+    self.draft.visibility = DONStatusDirect;
 }
 
 - (void)flashMessage:(NSString*)message {
