@@ -8,7 +8,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PostBox">
             <connections>
-                <outlet property="draft" destination="way-xQ-YYj" id="yk0-Q5-cWE"/>
                 <outlet property="flashMessageView" destination="jVy-KI-OhZ" id="wRw-U4-dGR"/>
                 <outlet property="showSpoilerTextButton" destination="EuX-Ur-O05" id="jNG-uq-ALb"/>
                 <outlet property="spoilerTextInput" destination="czM-r0-zXC" id="AFc-aE-FX7"/>
@@ -30,7 +29,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="way-xQ-YYj" name="value" keyPath="remainingCharacterCount" id="mwE-F8-mss"/>
+                        <binding destination="Cnt-Jx-Xzp" name="value" keyPath="selection.remainingCharacterCount" id="qsn-zQ-LuH"/>
                     </connections>
                 </textField>
                 <button toolTip="投稿" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="R6a-UL-EYS">
@@ -48,7 +47,7 @@ DQ
                     </buttonCell>
                     <connections>
                         <action selector="clickSend:" target="-2" id="0lM-e4-6Pe"/>
-                        <binding destination="way-xQ-YYj" name="enabled" keyPath="isPostable" id="hJM-eu-3DB"/>
+                        <binding destination="Cnt-Jx-Xzp" name="enabled" keyPath="selection.isPostable" id="oD0-Zr-afz"/>
                     </connections>
                 </button>
                 <textField hidden="YES" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="czM-r0-zXC" customClass="PostBoxSpoilerTextField">
@@ -64,7 +63,7 @@ DQ
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="way-xQ-YYj" name="value" keyPath="spoilerText" id="pgj-1q-K8z">
+                        <binding destination="Cnt-Jx-Xzp" name="value" keyPath="selection.spoilerText" id="Yjv-2K-F3Q">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                 <string key="NSNullPlaceholder">警告文</string>
@@ -87,7 +86,7 @@ DQ
                                 <size key="maxSize" width="483" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
-                                    <binding destination="way-xQ-YYj" name="value" keyPath="message" id="Une-po-RYv">
+                                    <binding destination="Cnt-Jx-Xzp" name="value" keyPath="selection.message" id="j1n-fy-pCy">
                                         <dictionary key="options">
                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                         </dictionary>
@@ -195,7 +194,7 @@ DQ
                     </popUpButtonCell>
                     <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                     <connections>
-                        <binding destination="way-xQ-YYj" name="selectedIndex" keyPath="visibility" id="NvV-70-4V5"/>
+                        <binding destination="Cnt-Jx-Xzp" name="selectedIndex" keyPath="selection.visibility" id="qyB-uS-yEC"/>
                     </connections>
                 </popUpButton>
             </subviews>
@@ -222,7 +221,12 @@ DQ
             </constraints>
             <point key="canvasLocation" x="139" y="153"/>
         </customView>
-        <customObject id="way-xQ-YYj" customClass="PostBoxDraft"/>
+        <objectController objectClassName="PostBoxDraft" id="Cnt-Jx-Xzp">
+            <classReference key="objectClass" className="PostBoxDraft"/>
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="draft" id="v0r-9O-WBm"/>
+            </connections>
+        </objectController>
     </objects>
     <resources>
         <image name="envelope.fill" catalog="system" width="18" height="13"/>

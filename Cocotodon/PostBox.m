@@ -4,10 +4,9 @@
 
 #import "PostBox.h"
 #import "PostBoxDraft.h"
+#import "DONPicture.h"
 
 @interface PostBox ()
-
-@property (nonatomic, weak) IBOutlet PostBoxDraft *draft;
 
 @property (unsafe_unretained) IBOutlet NSTextView *tootInput;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
@@ -24,6 +23,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super initWithCoder:coder]) {
+        _draft = [[PostBoxDraft alloc] init];
         [self loadNib];
     }
     return self;
