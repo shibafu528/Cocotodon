@@ -48,9 +48,11 @@
     if (footer.length) {
         [input appendString:footer];
     }
-    self.postbox.message = input;
-    self.postbox.spoilerText = spoilerText;
-    self.postbox.visibility = status.visibility;
+    PostBoxDraft *draft = [[PostBoxDraft alloc] init];
+    draft.message = input;
+    draft.spoilerText = spoilerText;
+    draft.visibility = status.visibility;
+    self.postbox.draft = draft;
     
     // focus
     [self.postbox focus];
@@ -72,7 +74,9 @@
     if (footer.length) {
         [input appendString:footer];
     }
-    self.postbox.message = input;
+    PostBoxDraft *draft = [[PostBoxDraft alloc] init];
+    draft.message = input;
+    self.postbox.draft = draft;
     
     // focus
     [self.postbox focus];
@@ -82,8 +86,9 @@
 #pragma mark - Postbox
 
 - (IBAction)postMessage:(id)sender {
+    PostBoxDraft *draft = self.postbox.draft;
     __block AnyPromise *promise = [AnyPromise promiseWithValue:@[]];
-    [self.postbox.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
         promise = promise.then(^(NSArray<NSNumber*>* mediaIds){
             return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
                 [App.client postMedia:picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
@@ -96,12 +101,12 @@
     }];
     promise.then(^(NSArray<NSNumber*>* mediaIds) {
         return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
-            [App.client postStatus:[self.postbox.message stringByReplacingLineBreaksWithString:@"\n"]
+            [App.client postStatus:[draft.message stringByReplacingLineBreaksWithString:@"\n"]
                            replyTo:self.replyToStatus.identity
                           mediaIds:mediaIds
-                         sensitive:self.postbox.sensitive
-                       spoilerText:self.postbox.spoilerText
-                        visibility:self.postbox.visibility
+                         sensitive:draft.sensitive
+                       spoilerText:draft.spoilerText
+                        visibility:draft.visibility
                            success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
                 resolve(result);
             }

@@ -3,6 +3,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DONStatusVisibility.h"
+#import "DONPicture.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

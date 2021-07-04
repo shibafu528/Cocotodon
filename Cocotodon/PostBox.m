@@ -3,8 +3,6 @@
 //
 
 #import "PostBox.h"
-#import "PostBoxDraft.h"
-#import "DONPicture.h"
 
 @interface PostBox ()
 
@@ -88,54 +86,27 @@
 
 #pragma mark - public
 
-- (NSString *)message {
-    return self.draft.message;
-}
-
-- (void)setMessage:(NSString *)message {
-    self.draft.message = message;
-}
-
-- (DONStatusVisibility)visibility {
-    return self.draft.visibility;
-}
-
-- (void)setVisibility:(DONStatusVisibility)visibility {
-    self.draft.visibility = visibility;
-}
-
-- (BOOL)isSensitive {
-    return self.draft.isSensitive;
+- (void)setDraft:(PostBoxDraft *)draft {
+    _draft = draft;
+    NSString *spoilerText = draft.spoilerText;
+    if (spoilerText.length) {
+        // setShowSpoilerText: で一度消しちゃうので (そっちを直したほうがいいんだけどねえ)
+        self.showSpoilerText = YES;
+        self.draft.spoilerText = spoilerText;
+    } else {
+        self.showSpoilerText = NO;
+    }
 }
 
 - (void)clear {
-    self.draft.message = @"";
-    self.draft.spoilerText = @"";
-    self.showSpoilerText = NO;
-    self.draft.sensitive = NO;
-    [self.draft removeAllPictures];
-}
-
-- (NSArray<DONPicture *> *)pictures {
-    return self.draft.pictures;
+    PostBoxDraft *newDraft = [[PostBoxDraft alloc] init];
+    newDraft.visibility = self.draft.visibility;
+    self.draft = newDraft;
 }
 
 - (void)attachPicture:(DONPicture *)picture {
     [self.draft insertObject:picture inPicturesAtIndex:self.draft.pictures.count];
     [self flashMessage:@"画像を添付しました"];
-}
-
-- (NSString *)spoilerText {
-    return self.draft.spoilerText;
-}
-
-- (void)setSpoilerText:(NSString *)spoilerText {
-    if (spoilerText.length) {
-        self.showSpoilerText = YES;
-    } else {
-        self.showSpoilerText = NO;
-    }
-    self.draft.spoilerText = spoilerText;
 }
 
 - (void)focus {

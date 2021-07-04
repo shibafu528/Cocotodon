@@ -95,8 +95,9 @@
 #pragma mark - PostBox
 
 - (IBAction)postMessage:(id)sender {
+    PostBoxDraft *draft = self.postbox.draft;
     __block AnyPromise *promise = [AnyPromise promiseWithValue:@[]];
-    [self.postbox.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
         promise = promise.then(^(NSArray<NSNumber*>* mediaIds){
             return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
                 [App.client postMedia:picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
@@ -109,12 +110,12 @@
     }];
     promise.then(^(NSArray<NSNumber*>* mediaIds) {
         return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
-            [App.client postStatus:[self.postbox.message stringByReplacingLineBreaksWithString:@"\n"]
+            [App.client postStatus:[draft.message stringByReplacingLineBreaksWithString:@"\n"]
                            replyTo:nil
                           mediaIds:mediaIds
-                         sensitive:self.postbox.isSensitive
-                       spoilerText:self.postbox.spoilerText
-                        visibility:self.postbox.visibility
+                         sensitive:draft.isSensitive
+                       spoilerText:draft.spoilerText
+                        visibility:draft.visibility
                            success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
                 resolve(result);
             }

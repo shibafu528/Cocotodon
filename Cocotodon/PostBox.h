@@ -3,9 +3,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@class PostBoxDraft;
-@class DONPicture;
+#import "PostBoxDraft.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,12 +18,6 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 @property (nonatomic) PostBoxDraft *draft;
 @property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
 @property (nonatomic) BOOL showSpoilerText;
-
-@property (nonatomic) NSString *message;
-@property (nonatomic) NSString *spoilerText;
-@property (nonatomic) DONStatusVisibility visibility;
-@property (nonatomic, readonly) NSArray<DONPicture*> *pictures;
-@property (nonatomic, readonly, getter=isSensitive) BOOL sensitive;
 
 - (void)attachPicture:(DONPicture*)picture;
 
