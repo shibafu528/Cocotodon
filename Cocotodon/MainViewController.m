@@ -131,6 +131,7 @@
         WriteAFNetworkingErrorToLog(error);
     }).ensure(^{
         self.postbox.posting = NO;
+        [self.postbox focus];
     });
 }
 
