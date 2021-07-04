@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
 @property (nonatomic) PostBoxDraft *draft;
 @property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
 @property (nonatomic) BOOL showSpoilerText;
+@property (nonatomic) BOOL posting;
 
 - (void)attachPicture:(DONPicture*)picture;
 

@@ -22,6 +22,7 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super initWithCoder:coder]) {
         _draft = [[PostBoxDraft alloc] init];
+        _posting = NO;
         [self loadNib];
     }
     return self;

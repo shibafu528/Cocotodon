@@ -86,6 +86,7 @@
 #pragma mark - Postbox
 
 - (IBAction)postMessage:(id)sender {
+    self.postbox.posting = YES;
     PostBoxDraft *draft = self.postbox.draft;
     __block AnyPromise *promise = [AnyPromise promiseWithValue:@[]];
     [draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -119,6 +120,8 @@
         cct_mix_call_posted(status);
     }).catch(^(NSError *error) {
         WriteAFNetworkingErrorToLog(error);
+    }).ensure(^{
+        self.postbox.posting = NO;
     });
 }
 

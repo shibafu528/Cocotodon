@@ -47,6 +47,15 @@ DQ
                     </buttonCell>
                     <connections>
                         <action selector="clickSend:" target="-2" id="0lM-e4-6Pe"/>
+                        <binding destination="-2" name="enabled2" keyPath="posting" previousBinding="oD0-Zr-afz" id="TaH-eO-hgd">
+                            <dictionary key="options">
+                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                <integer key="NSNullPlaceholder" value="-1"/>
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="Cnt-Jx-Xzp" name="enabled" keyPath="selection.isPostable" id="oD0-Zr-afz"/>
                     </connections>
                 </button>
@@ -58,7 +67,12 @@ DQ
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="-2" name="hidden" keyPath="showSpoilerText" id="2Cq-8u-335">
+                        <binding destination="-2" name="editable" keyPath="posting" id="5Xn-o7-eQE">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="showSpoilerText" previousBinding="5Xn-o7-eQE" id="tw5-aN-D2e">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
@@ -86,6 +100,11 @@ DQ
                                 <size key="maxSize" width="483" height="10000000"/>
                                 <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
+                                    <binding destination="-2" name="editable" keyPath="posting" id="eLP-8t-FNM">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
                                     <binding destination="Cnt-Jx-Xzp" name="value" keyPath="selection.message" id="j1n-fy-pCy">
                                         <dictionary key="options">
                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
@@ -131,6 +150,11 @@ DQ
                             <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="clickAttach:" target="-2" id="XVC-nw-rys"/>
+                                <binding destination="-2" name="enabled" keyPath="posting" id="1Lf-FV-4lJ">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button toolTip="mikutterコマンド" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="42m-0p-drE">
@@ -145,6 +169,11 @@ DQ
                             <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
                                 <action selector="openPostboxMenu:" target="-2" id="aSj-zx-NKP"/>
+                                <binding destination="-2" name="enabled" keyPath="posting" id="XzV-HY-nDq">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </button>
                         <button toolTip="閲覧注意の設定" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="EuX-Ur-O05">
@@ -158,6 +187,11 @@ DQ
                             </buttonCell>
                             <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <connections>
+                                <binding destination="-2" name="enabled" keyPath="posting" id="kPd-2G-Dev">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="-2" name="value" keyPath="showSpoilerText" id="7UV-7h-lRo"/>
                             </connections>
                         </button>
@@ -194,9 +228,25 @@ DQ
                     </popUpButtonCell>
                     <color key="contentTintColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                     <connections>
+                        <binding destination="-2" name="enabled" keyPath="posting" id="4xV-L2-jxl">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
                         <binding destination="Cnt-Jx-Xzp" name="selectedIndex" keyPath="selection.visibility" id="qyB-uS-yEC"/>
                     </connections>
                 </popUpButton>
+                <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-rI-A5u">
+                    <rect key="frame" x="356" y="3" width="16" height="16"/>
+                    <connections>
+                        <binding destination="-2" name="animate" keyPath="posting" id="axa-VQ-J1i"/>
+                        <binding destination="-2" name="hidden" keyPath="posting" id="Scn-xt-obU">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="oo4-JC-Rlm" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="1" id="0VC-UB-HK0"/>
@@ -212,9 +262,11 @@ DQ
                 <constraint firstAttribute="trailing" secondItem="oo4-JC-Rlm" secondAttribute="trailing" constant="1" id="YNX-1t-4nC"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="jVy-KI-OhZ" secondAttribute="centerY" id="ZTE-y6-hoT"/>
                 <constraint firstItem="czM-r0-zXC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="4" id="akf-Ur-b0V"/>
+                <constraint firstItem="O8j-cv-sRi" firstAttribute="leading" secondItem="CuM-rI-A5u" secondAttribute="trailing" constant="4" id="cTd-7z-w3e"/>
                 <constraint firstItem="czM-r0-zXC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="6" id="dEe-Lg-f6G"/>
                 <constraint firstAttribute="trailing" secondItem="czM-r0-zXC" secondAttribute="trailing" constant="6" id="eHp-Sx-K9g"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="top" secondItem="oo4-JC-Rlm" secondAttribute="bottom" constant="2" id="hJa-J0-9at"/>
+                <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="CuM-rI-A5u" secondAttribute="centerY" id="lg2-FL-G02"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="centerY" secondItem="O8j-cv-sRi" secondAttribute="centerY" id="tGa-MF-sw4"/>
                 <constraint firstItem="Pu3-cM-j66" firstAttribute="leading" secondItem="ni4-hA-QvT" secondAttribute="trailing" constant="6" id="u5J-hA-jrC"/>
                 <constraint firstItem="R6a-UL-EYS" firstAttribute="leading" secondItem="O8j-cv-sRi" secondAttribute="trailing" constant="4" id="uqK-IK-DuY"/>
