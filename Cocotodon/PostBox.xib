@@ -72,15 +72,15 @@ DQ
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="-2" name="hidden" keyPath="showSpoilerText" previousBinding="5Xn-o7-eQE" id="tw5-aN-D2e">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
                         <binding destination="Cnt-Jx-Xzp" name="value" keyPath="selection.spoilerText" id="Yjv-2K-F3Q">
                             <dictionary key="options">
                                 <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                 <string key="NSNullPlaceholder">警告文</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="-2" name="hidden" keyPath="showSpoilerText" previousBinding="5Xn-o7-eQE" id="tw5-aN-D2e">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
                     </connections>
@@ -239,12 +239,12 @@ DQ
                 <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-rI-A5u">
                     <rect key="frame" x="356" y="3" width="16" height="16"/>
                     <connections>
-                        <binding destination="-2" name="animate" keyPath="posting" id="axa-VQ-J1i"/>
                         <binding destination="-2" name="hidden" keyPath="posting" id="Scn-xt-obU">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
+                        <binding destination="-2" name="animate" keyPath="posting" id="axa-VQ-J1i"/>
                     </connections>
                 </progressIndicator>
             </subviews>

@@ -3,6 +3,7 @@
 //
 
 #import "PostBox.h"
+#import "PostBoxLayoutManagerDelegatee.h"
 
 @interface PostBox ()
 
@@ -12,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
 @property (weak) IBOutlet NSLayoutConstraint *topConstraintOfTootInput;
 
+@property (nonatomic) PostBoxLayoutManagerDelegatee *layoutManagerDelegatee;
 @property (nonatomic) MRBPin *commands;
 @property (nonatomic) NSTimer *flashMessageTimer;
 
@@ -52,6 +54,9 @@
             [view.bottomAnchor constraintEqualToAnchor:self.bottomAnchor]
         ]];
         
+        self.layoutManagerDelegatee = [[PostBoxLayoutManagerDelegatee alloc] initWithTextView:self.tootInput];
+        self.tootInput.font = [NSFont systemFontOfSize:NSFont.systemFontSize];
+        self.tootInput.layoutManager.delegate = self.layoutManagerDelegatee;
         self.tootInput.textContainerInset = NSMakeSize(0, 4);
     }
 }

@@ -28,6 +28,7 @@
 		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
 		5D3D9F8F2536747F00BC64A7 /* DONStatusContentParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */; };
 		5D4383D726419043008EB158 /* mrb_patch.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5D4383D626419043008EB158 /* mrb_patch.rb */; };
+		5D4684F3269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4684F2269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m */; };
 		5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D597225D90F5100E2F2F9 /* MainViewController.m */; };
 		5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */; };
 		5D5028AB2638536400C18949 /* IntentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5028AA2638536400C18949 /* IntentManager.m */; };
@@ -163,6 +164,8 @@
 		5D3D9F8E2536747F00BC64A7 /* DONStatusContentParserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentParserTests.m; sourceTree = "<group>"; };
 		5D4383D626419043008EB158 /* mrb_patch.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = mrb_patch.rb; sourceTree = "<group>"; };
 		5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStreamingEventDelegate.h; sourceTree = "<group>"; };
+		5D4684F1269341E300BC1242 /* PostBoxLayoutManagerDelegatee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxLayoutManagerDelegatee.h; sourceTree = "<group>"; };
+		5D4684F2269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxLayoutManagerDelegatee.m; sourceTree = "<group>"; };
 		5D4D597125D90F5100E2F2F9 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		5D4D597225D90F5100E2F2F9 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				5DDB41C226727E8600B0A25C /* PostBox.xib */,
 				5DEB6AEF2691B60E006065E3 /* PostBoxDraft.h */,
 				5DEB6AF02691B60E006065E3 /* PostBoxDraft.m */,
+				5D4684F1269341E300BC1242 /* PostBoxLayoutManagerDelegatee.h */,
+				5D4684F2269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m */,
 				5DBC2F3125B11347003D797F /* ExpandableCellView.h */,
 				5DBC2F3225B11347003D797F /* ExpandableCellView.m */,
 				5D0BE96D25D5166300EBE6E0 /* WindowController.h */,
@@ -957,6 +962,7 @@
 				5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */,
 				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
 				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,
+				5D4684F3269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m in Sources */,
 				5D94871225173247009066C3 /* DONMastodonAccount.m in Sources */,
 				5DDB41BB26727E5500B0A25C /* mrb_setting_dsl.m in Sources */,
 				5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */,
