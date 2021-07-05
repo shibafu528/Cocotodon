@@ -545,6 +545,7 @@
 		5DA3178F24FF190D0095AF04 /* Cocotodon */ = {
 			isa = PBXGroup;
 			children = (
+				5DC260B526935EEB00E12827 /* Timeline */,
 				5DC260B426935E0400E12827 /* PostBox */,
 				5D3D61DB25DD5D1A001B93D4 /* Categories */,
 				5D54E682250913160067EAB4 /* PrefixHeader.pch */,
@@ -552,9 +553,6 @@
 				5D7AC8A3250284940042009D /* mrb */,
 				5DA3179024FF190D0095AF04 /* AppDelegate.h */,
 				5DA3179124FF190D0095AF04 /* AppDelegate.m */,
-				5DA3179324FF190D0095AF04 /* TimelineViewController.h */,
-				5DA3179424FF190D0095AF04 /* TimelineViewController.m */,
-				5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */,
 				5DA3179624FF19100095AF04 /* Assets.xcassets */,
 				5DA3179824FF19100095AF04 /* Main.storyboard */,
 				5DA3179B24FF19100095AF04 /* Info.plist */,
@@ -566,8 +564,6 @@
 				5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */,
 				5D54E6BF25138D840067EAB4 /* FlippedView.h */,
 				5D54E6C025138D840067EAB4 /* FlippedView.m */,
-				5DBC2F3125B11347003D797F /* ExpandableCellView.h */,
-				5DBC2F3225B11347003D797F /* ExpandableCellView.m */,
 				5D0BE96D25D5166300EBE6E0 /* WindowController.h */,
 				5D0BE96E25D5166300EBE6E0 /* WindowController.m */,
 				5D4D597125D90F5100E2F2F9 /* MainViewController.h */,
@@ -584,10 +580,6 @@
 				5DC8C559265539DC00B1628E /* ThreadWindow.m */,
 				5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */,
 				5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */,
-				5D97CDD026778D5700950012 /* TimelineAvatarView.h */,
-				5D97CDD126778D5700950012 /* TimelineAvatarView.m */,
-				5D97CDD32677936300950012 /* TimelineAvatarCellView.h */,
-				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -608,6 +600,22 @@
 				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
 			);
 			path = PostBox;
+			sourceTree = "<group>";
+		};
+		5DC260B526935EEB00E12827 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				5DBC2F3125B11347003D797F /* ExpandableCellView.h */,
+				5DBC2F3225B11347003D797F /* ExpandableCellView.m */,
+				5D97CDD32677936300950012 /* TimelineAvatarCellView.h */,
+				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
+				5D97CDD026778D5700950012 /* TimelineAvatarView.h */,
+				5D97CDD126778D5700950012 /* TimelineAvatarView.m */,
+				5DA3179324FF190D0095AF04 /* TimelineViewController.h */,
+				5DA3179424FF190D0095AF04 /* TimelineViewController.m */,
+				5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 		BFF7F3A0831F9F9D29B2D667 /* Frameworks */ = {
