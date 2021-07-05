@@ -2,13 +2,13 @@
 // Copyright (c) 2021 shibafu
 //
 
-#import "WindowController.h"
+#import "MainWindowController.h"
 
-@interface WindowController ()
+@interface MainWindowController ()
 
 @end
 
-@implementation WindowController
+@implementation MainWindowController
 
 - (void)windowDidLoad {
     [super windowDidLoad];

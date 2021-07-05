@@ -19,7 +19,7 @@
 		5D08ABF0263A481D00D9C70B /* Diagnosis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08ABEF263A481D00D9C70B /* Diagnosis.swift */; };
 		5D08ABF8263A712300D9C70B /* JokeDiagnosisKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D08ABF7263A712300D9C70B /* JokeDiagnosisKitTests.swift */; };
 		5D08ABFA263A712300D9C70B /* JokeDiagnosisKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D08ABE0263A46E300D9C70B /* JokeDiagnosisKit.framework */; };
-		5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BE96E25D5166300EBE6E0 /* WindowController.m */; };
+		5D0BE96F25D5166300EBE6E0 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BE96E25D5166300EBE6E0 /* MainWindowController.m */; };
 		5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */; };
 		5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E9266E68DE006BC203 /* DONEmoji.m */; };
 		5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0EC9A626815E0D00BC38BA /* mrb_event_wrapper.m */; };
@@ -146,8 +146,8 @@
 		5D08ABF5263A712300D9C70B /* JokeDiagnosisKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokeDiagnosisKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D08ABF7263A712300D9C70B /* JokeDiagnosisKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeDiagnosisKitTests.swift; sourceTree = "<group>"; };
 		5D08ABF9263A712300D9C70B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D0BE96D25D5166300EBE6E0 /* WindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
-		5D0BE96E25D5166300EBE6E0 /* WindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		5D0BE96D25D5166300EBE6E0 /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		5D0BE96E25D5166300EBE6E0 /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		5D0C97E4266E6746006BC203 /* DONEmojiExpander.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONEmojiExpander.h; sourceTree = "<group>"; };
 		5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONEmojiExpander.m; sourceTree = "<group>"; };
 		5D0C97E7266E680A006BC203 /* DONEmojiProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONEmojiProvider.h; sourceTree = "<group>"; };
@@ -564,8 +564,8 @@
 				5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */,
 				5D54E6BF25138D840067EAB4 /* FlippedView.h */,
 				5D54E6C025138D840067EAB4 /* FlippedView.m */,
-				5D0BE96D25D5166300EBE6E0 /* WindowController.h */,
-				5D0BE96E25D5166300EBE6E0 /* WindowController.m */,
+				5D0BE96D25D5166300EBE6E0 /* MainWindowController.h */,
+				5D0BE96E25D5166300EBE6E0 /* MainWindowController.m */,
 				5D4D597125D90F5100E2F2F9 /* MainViewController.h */,
 				5D4D597225D90F5100E2F2F9 /* MainViewController.m */,
 				5DADEAEC25DABD6D004D8FD0 /* AutolayoutTextView.h */,
@@ -985,7 +985,7 @@
 				5D9DE8962501271900A9E9F2 /* mrb_util.m in Sources */,
 				5DA3179D24FF19100095AF04 /* main.m in Sources */,
 				5D04E72025E0EDFC0068FDFF /* DONMastodonAttachment.m in Sources */,
-				5D0BE96F25D5166300EBE6E0 /* WindowController.m in Sources */,
+				5D0BE96F25D5166300EBE6E0 /* MainWindowController.m in Sources */,
 				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
 				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
 				5DC8C55A265539DC00B1628E /* ThreadWindow.m in Sources */,

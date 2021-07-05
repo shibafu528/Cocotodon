@@ -22,7 +22,7 @@
 #import "MRBPin.h"
 #import "MRBProc.h"
 #import "mrb_util.h"
-#import "WindowController.h"
+#import "MainWindowController.h"
 #import "IntentManager.h"
 #import "ThreadWindow.h"
 #import "TimelineAvatarCellView.h"
@@ -181,7 +181,7 @@
 - (void)updateToolbarStreamingItem {
     if (@available(macOS 11.0, *)) {
         NSString *sym = self.userStream.isConnected ? @"bolt.fill" : @"bolt.slash";
-        WindowController *wc = (WindowController*) self.view.window.windowController;
+        MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
         [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
     }
 }

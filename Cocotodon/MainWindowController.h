@@ -6,7 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WindowController : NSWindowController
+@interface MainWindowController : NSWindowController
 
 @property (nonatomic, weak) IBOutlet NSSegmentedCell *toolbarStreamingItem;
 
