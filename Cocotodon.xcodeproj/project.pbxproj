@@ -545,6 +545,7 @@
 		5DA3178F24FF190D0095AF04 /* Cocotodon */ = {
 			isa = PBXGroup;
 			children = (
+				5DC260B426935E0400E12827 /* PostBox */,
 				5D3D61DB25DD5D1A001B93D4 /* Categories */,
 				5D54E682250913160067EAB4 /* PrefixHeader.pch */,
 				5D7AC8A72502A44C0042009D /* mrblib */,
@@ -565,13 +566,6 @@
 				5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */,
 				5D54E6BF25138D840067EAB4 /* FlippedView.h */,
 				5D54E6C025138D840067EAB4 /* FlippedView.m */,
-				5D6F5E272515CAEE00018EBA /* PostBox.h */,
-				5D6F5E282515CAEE00018EBA /* PostBox.m */,
-				5DDB41C226727E8600B0A25C /* PostBox.xib */,
-				5DEB6AEF2691B60E006065E3 /* PostBoxDraft.h */,
-				5DEB6AF02691B60E006065E3 /* PostBoxDraft.m */,
-				5D4684F1269341E300BC1242 /* PostBoxLayoutManagerDelegatee.h */,
-				5D4684F2269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m */,
 				5DBC2F3125B11347003D797F /* ExpandableCellView.h */,
 				5DBC2F3225B11347003D797F /* ExpandableCellView.m */,
 				5D0BE96D25D5166300EBE6E0 /* WindowController.h */,
@@ -588,18 +582,32 @@
 				5D5028AA2638536400C18949 /* IntentManager.m */,
 				5DC8C558265539DC00B1628E /* ThreadWindow.h */,
 				5DC8C559265539DC00B1628E /* ThreadWindow.m */,
-				5DAA595D266BAA000075C96D /* PostBoxTextView.h */,
-				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
 				5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */,
 				5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */,
 				5D97CDD026778D5700950012 /* TimelineAvatarView.h */,
 				5D97CDD126778D5700950012 /* TimelineAvatarView.m */,
 				5D97CDD32677936300950012 /* TimelineAvatarCellView.h */,
 				5D97CDD42677936300950012 /* TimelineAvatarCellView.m */,
-				5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */,
-				5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */,
 			);
 			path = Cocotodon;
+			sourceTree = "<group>";
+		};
+		5DC260B426935E0400E12827 /* PostBox */ = {
+			isa = PBXGroup;
+			children = (
+				5D6F5E272515CAEE00018EBA /* PostBox.h */,
+				5D6F5E282515CAEE00018EBA /* PostBox.m */,
+				5DDB41C226727E8600B0A25C /* PostBox.xib */,
+				5DEB6AEF2691B60E006065E3 /* PostBoxDraft.h */,
+				5DEB6AF02691B60E006065E3 /* PostBoxDraft.m */,
+				5D4684F1269341E300BC1242 /* PostBoxLayoutManagerDelegatee.h */,
+				5D4684F2269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m */,
+				5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */,
+				5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */,
+				5DAA595D266BAA000075C96D /* PostBoxTextView.h */,
+				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
+			);
+			path = PostBox;
 			sourceTree = "<group>";
 		};
 		BFF7F3A0831F9F9D29B2D667 /* Frameworks */ = {
