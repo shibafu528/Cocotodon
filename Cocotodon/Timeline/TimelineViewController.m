@@ -514,7 +514,7 @@
         }
         
         DONStatus *status = self.statuses[row];
-        return [status.account.identity isEqualToString:App.currentAccount.identity];
+        return [status.originalStatus.account.identity isEqualToString:App.currentAccount.identity];
     } else if (menuItem.action == @selector(report:)) {
         NSInteger row = [self targetRowInAction:menuItem];
         if (row < 0) {
@@ -522,7 +522,7 @@
         }
         
         DONStatus *status = self.statuses[row];
-        return ![status.account.identity isEqualToString:App.currentAccount.identity];
+        return ![status.originalStatus.account.identity isEqualToString:App.currentAccount.identity];
     }
     
     return YES;
