@@ -10,6 +10,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (nonatomic, readonly) DONApiClient *client;
+@property (nonatomic, readonly) DONMastodonAccount *currentAccount;
 
 @property (nonatomic, readonly) mrb_state *mrb;
 @property (nonatomic, readonly) MRBPin *world;

@@ -452,6 +452,12 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Yh2-0z-fMl"/>
+                                        <menuItem title="削除" id="5le-M2-Cgn">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deleteStatus:" target="Ady-hI-5gd" id="fC1-CZ-yMO"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="通報" id="P3z-kJ-baz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

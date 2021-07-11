@@ -181,6 +181,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
 
 @property (nonatomic) DONApiClient *client;
+@property (nonatomic) DONMastodonAccount *currentAccount;
 
 @property (nonatomic) mrb_state *mrb;
 @property (nonatomic) MRBPin *world;
@@ -202,10 +203,19 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
     [self initializeMRuby];
     [self registerIntentHandlers];
     
-    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.initialController = [storyboard instantiateControllerWithIdentifier:@"mainWindow"];
-    [self.initialController showWindow:self];
-    [self.initialController.window makeKeyAndOrderFront:self];
+    [self.client verifyCredentials:^(NSURLSessionDataTask * _Nonnull task, DONMastodonAccount * _Nonnull account) {
+        self.currentAccount = account;
+        
+        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.initialController = [storyboard instantiateControllerWithIdentifier:@"mainWindow"];
+        [self.initialController showWindow:self];
+        [self.initialController.window makeKeyAndOrderFront:self];
+    }
+                           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        NSAlert *alert = [NSAlert alertWithError:error];
+        [alert runModal];
+        [NSApp terminate:nil];
+    }];
     
     UNUserNotificationCenter *center = UNUserNotificationCenter.currentNotificationCenter;
     [center requestAuthorizationWithOptions:UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {}];

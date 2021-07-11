@@ -46,6 +46,10 @@ typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__no
                                    success:(nullable DONApiGetStatusContextSuccessCallback)success
                                    failure:(nullable DONApiFailureCallback)failure;
 
+- (NSURLSessionDataTask*) deleteStatus:(NSString*)identifier
+                               success:(nullable DONApiGetStatusSuccessCallback)success
+                               failure:(nullable DONApiFailureCallback)failure;
+
 @end
 
 NS_ASSUME_NONNULL_END

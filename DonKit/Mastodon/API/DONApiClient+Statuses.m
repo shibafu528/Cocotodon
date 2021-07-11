@@ -146,4 +146,28 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                 failure:failure];
 }
 
+- (NSURLSessionDataTask *)deleteStatus:(NSString *)identifier
+                               success:(DONApiGetStatusSuccessCallback)success
+                               failure:(DONApiFailureCallback)failure {
+    AFHTTPSessionManager *manager = self.manager;
+    NSString *url = [NSString stringWithFormat:@"/api/v1/statuses/%@", identifier];
+    return [manager DELETE:url
+                parameters:nil
+                   headers:self.defaultHeaders
+                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSError *error;
+            DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:responseObject error:&error];
+            if (!error) {
+                success(task, status);
+                return;
+            }
+            if (failure) {
+                failure(task, error);
+            }
+        }
+    }
+                   failure:failure];
+}
+
 @end

@@ -362,6 +362,7 @@
     [menu addItemWithTitle:@"URLをコピー" action:@selector(copyURL:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItemWithTitle:@"削除" action:@selector(deleteStatus:) keyEquivalent:@""];
     [menu addItemWithTitle:@"通報" action:@selector(report:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
 
@@ -505,6 +506,28 @@
     }
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    if (menuItem.action == @selector(deleteStatus:)) {
+        NSInteger row = [self targetRowInAction:menuItem];
+        if (row < 0) {
+            return NO;
+        }
+        
+        DONStatus *status = self.statuses[row];
+        return [status.account.identity isEqualToString:App.currentAccount.identity];
+    } else if (menuItem.action == @selector(report:)) {
+        NSInteger row = [self targetRowInAction:menuItem];
+        if (row < 0) {
+            return NO;
+        }
+        
+        DONStatus *status = self.statuses[row];
+        return ![status.account.identity isEqualToString:App.currentAccount.identity];
+    }
+    
+    return YES;
+}
+
 - (IBAction)reply:(id)sender {
     NSInteger row = [self targetRowInAction:sender];
     if (row < 0) {
@@ -608,6 +631,46 @@
     
     DONStatus *status = self.statuses[row];
     [NSWorkspace.sharedWorkspace openURL:status.originalStatus.URL];
+}
+
+- (IBAction)deleteStatus:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row].originalStatus;
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.alertStyle = NSAlertStyleWarning;
+    alert.messageText = @"失った信頼はもう戻ってきませんが、本当にこのトゥートを削除しますか？";
+    alert.informativeText = [NSString stringWithFormat:@"%@\n%@", status.account.fullAcct, status.expandContent];
+    NSButton *acceptButton = [alert addButtonWithTitle:@"削除"];
+    if (@available(macOS 11.0, *)) {
+        acceptButton.hasDestructiveAction = YES;
+    }
+    NSButton *cancelButton = [alert addButtonWithTitle:@"キャンセル"];
+    cancelButton.keyEquivalent = @"\e";
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [App.client deleteStatus:status.identity
+                             success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
+                NSAlert *successAlert = [[NSAlert alloc] init];
+                successAlert.alertStyle = NSAlertStyleInformational;
+                successAlert.messageText = @"削除しました。";
+                [successAlert addButtonWithTitle:@"OK"];
+                [successAlert beginSheetModalForWindow:self.view.window completionHandler:nil];
+            }
+                             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+                WriteAFNetworkingErrorToLog(error);
+                NSAlert *successAlert = [[NSAlert alloc] init];
+                successAlert.alertStyle = NSAlertStyleWarning;
+                successAlert.messageText = @"削除中にエラーが発生しました。";
+                [successAlert addButtonWithTitle:@"OK"];
+                [successAlert beginSheetModalForWindow:self.view.window completionHandler:nil];
+            }];
+        }
+    }];
 }
 
 - (IBAction)report:(id)sender {
