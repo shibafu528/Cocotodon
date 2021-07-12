@@ -72,6 +72,11 @@
     [self updateToolbarStreamingItem];
 }
 
+- (void)viewWillLayout {
+    [super viewWillLayout];
+    [self.tableView sizeLastColumnToFit];
+}
+
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
