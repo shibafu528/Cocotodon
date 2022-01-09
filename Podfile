@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :osx, '10.10'
+platform :osx, '11.1'
 
 target 'Cocotodon' do
   # Comment the next line if you don't want to use dynamic frameworks

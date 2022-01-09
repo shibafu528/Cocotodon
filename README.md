@@ -19,7 +19,7 @@ Cocotodon
 
 ## Requirements
 
-* macOS 10.15 以降のオペレーティングシステム
+* macOS 11.1 以降のオペレーティングシステム
 * Intel Mac と Apple Silicon Mac の両方でネイティブ動作確認済
 
 ## License

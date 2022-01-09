@@ -4,11 +4,11 @@ env:
   COCOTODON_MRUBY_BUILD_TYPES: release
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-11
     strategy:
       matrix:
         xcode:
-          - 12.4
+          - 13.1
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -51,9 +51,9 @@ jobs:
           path: build/Cocotodon-${{ github.sha }}.zip
 
   release:
-    runs-on: macos-latest
+    runs-on: macos-11
     env:
-      XCODE_VERSION: 12.4
+      XCODE_VERSION: 13.1
     needs: build
     if: startsWith(github.ref, 'refs/tags/')
     steps:
