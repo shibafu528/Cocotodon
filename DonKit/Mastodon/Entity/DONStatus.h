@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) DONStatus *reblog;
 @property (nonatomic, readonly) NSArray<DONMastodonAttachment*> *mediaAttachments;
 @property (nonatomic, readonly) NSArray<DONEmoji*> *emojis;
+@property (nonatomic, readonly) NSDictionary *poll;
 
 - (NSString*)expandContent;
 - (NSAttributedString*)expandAttributedContent;

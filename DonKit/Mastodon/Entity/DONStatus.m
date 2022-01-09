@@ -21,6 +21,7 @@
         @"reblog": @"reblog",
         @"mediaAttachments": @"media_attachments",
         @"emojis": @"emojis",
+        @"poll": @"poll",
     };
 }
 

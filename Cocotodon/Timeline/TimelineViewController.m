@@ -225,6 +225,9 @@
         if (status.originalStatus.mediaAttachments.count != 0) {
             [indicators appendString:@"🖼"];
         }
+        if (status.originalStatus.poll) {
+            [indicators appendString:@"🗳"];
+        }
         if (indicators.length) {
             [indicators appendString:@" "];
             NSAttributedString *attributedIndicators = [[NSAttributedString alloc] initWithString:indicators];
