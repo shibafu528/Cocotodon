@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)stringByReplacingLineBreaksWithString:(NSString*)replacement;
 
+- (NSString *)stringByRemovingLineBreaksAndJoinedByString:(NSString *)separator;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -211,7 +211,7 @@
         ExpandableCellView *expandable = (ExpandableCellView*) view;
         NSMutableAttributedString *summary;
         {
-            NSAttributedString *content = [[NSAttributedString alloc] initWithString:[status.originalStatus.expandContent stringByReplacingLineBreaksWithString:@" "]];
+            NSAttributedString *content = [[NSAttributedString alloc] initWithString:[status.originalStatus.expandContent stringByRemovingLineBreaksAndJoinedByString:@" "]];
             NSAttributedString *expanded = [DONEmojiExpander expandFromAttributedString:content providedBy:status.originalStatus];
             summary = [[NSMutableAttributedString alloc] initWithAttributedString:expanded];
         }
