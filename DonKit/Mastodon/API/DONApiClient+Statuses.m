@@ -170,4 +170,26 @@ constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                    failure:failure];
 }
 
+- (NSURLSessionDataTask *)bookmarkStatus:(NSString *)identifier
+                   withCompletionHandler:(DONApiBookmarkStatusCompletionHandler)completionHandler {
+    AFHTTPSessionManager *manager = self.manager;
+    NSString *url = [NSString stringWithFormat:@"/api/v1/statuses/%@/bookmark", identifier];
+    return [manager POST:url
+              parameters:nil
+                 headers:self.defaultHeaders
+                progress:nil
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completionHandler) {
+            NSError *error;
+            DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:responseObject error:&error];
+            completionHandler(task, status, error);
+        }
+    }
+                 failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (completionHandler) {
+            completionHandler(task, nil, error);
+        }
+    }];
+}
+
 @end

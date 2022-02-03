@@ -13,6 +13,7 @@ typedef void (^DONApiPostStatusSuccessCallback)(NSURLSessionDataTask *__nonnull 
 typedef void (^DONApiPostMediaSuccessCallback)(NSURLSessionDataTask *__nonnull task, NSNumber *__nonnull mediaId);
 typedef void (^DONApiGetStatusSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatus *__nonnull result);
 typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONStatusContext *__nonnull result);
+typedef void (^DONApiBookmarkStatusCompletionHandler)(NSURLSessionDataTask *__nonnull task, DONStatus *__nullable result, NSError *__nullable error);
 
 @interface DONApiClient (Statuses)
 
@@ -49,6 +50,9 @@ typedef void (^DONApiGetStatusContextSuccessCallback)(NSURLSessionDataTask *__no
 - (NSURLSessionDataTask*) deleteStatus:(NSString*)identifier
                                success:(nullable DONApiGetStatusSuccessCallback)success
                                failure:(nullable DONApiFailureCallback)failure;
+
+- (NSURLSessionDataTask*) bookmarkStatus:(NSString*)identifier
+                   withCompletionHandler:(nullable DONApiBookmarkStatusCompletionHandler)completionHandler;
 
 @end
 

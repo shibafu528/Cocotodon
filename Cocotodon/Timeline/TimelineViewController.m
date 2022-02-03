@@ -349,6 +349,7 @@
     [menu addItemWithTitle:@"お気に入りに追加" action:@selector(favorite:) keyEquivalent:@""];
     [menu addItemWithTitle:@"お気に入りに追加してブースト" action:@selector(favoriteAndBoost:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブースト" action:@selector(boost:) keyEquivalent:@""];
+    [menu addItemWithTitle:@"ブックマークに追加" action:@selector(bookmark:) keyEquivalent:@""];
     [menu addItemWithTitle:@"会話を見る" action:@selector(openThread:) keyEquivalent:@""];
     [menu addItemWithTitle:@"URLをコピー" action:@selector(copyURL:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
@@ -586,6 +587,23 @@
     }
                      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         WriteAFNetworkingErrorToLog(error);
+    }];
+}
+
+- (IBAction)bookmark:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row];
+    [App.client bookmarkStatus:status.identity
+         withCompletionHandler:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            WriteAFNetworkingErrorToLog(error);
+            return;
+        }
+        NSLog(@"Success bookmark! : %@", status.identity);
     }];
 }
 
