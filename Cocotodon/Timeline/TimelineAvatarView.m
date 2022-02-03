@@ -96,28 +96,24 @@
     static NSImage *unlisted;
     static NSImage *private;
     static NSImage *direct;
-    if (@available(macOS 11.0, *)) {
-        switch (visibility) {
-            case DONStatusUnlisted:
-                dispatch_once(&unlistedOnceToken, ^{
-                    unlisted = [self tintedImage:[NSImage imageWithSystemSymbolName:@"lock.open.fill" accessibilityDescription:nil]];
-                });
-                return unlisted;
-            case DONStatusPrivate:
-                dispatch_once(&privateOnceToken, ^{
-                    private = [self tintedImage:[NSImage imageWithSystemSymbolName:@"lock.fill" accessibilityDescription:nil]];
-                });
-                return private;
-            case DONStatusDirect:
-                dispatch_once(&directOnceToken, ^{
-                    direct = [self tintedImage:[NSImage imageWithSystemSymbolName:@"envelope.fill" accessibilityDescription:nil]];
-                });
-                return direct;
-            default:
-                return nil;
-        }
-    } else {
-        return nil;
+    switch (visibility) {
+        case DONStatusUnlisted:
+            dispatch_once(&unlistedOnceToken, ^{
+                unlisted = [self tintedImage:[NSImage imageWithSystemSymbolName:@"lock.open.fill" accessibilityDescription:nil]];
+            });
+            return unlisted;
+        case DONStatusPrivate:
+            dispatch_once(&privateOnceToken, ^{
+                private = [self tintedImage:[NSImage imageWithSystemSymbolName:@"lock.fill" accessibilityDescription:nil]];
+            });
+            return private;
+        case DONStatusDirect:
+            dispatch_once(&directOnceToken, ^{
+                direct = [self tintedImage:[NSImage imageWithSystemSymbolName:@"envelope.fill" accessibilityDescription:nil]];
+            });
+            return direct;
+        default:
+            return nil;
     }
 }
 

@@ -422,10 +422,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
         NSAlert *alert = [[NSAlert alloc] init];
         alert.alertStyle = NSAlertStyleWarning;
         alert.messageText = @"診断に使用する名前を入力してください";
-        NSButton *acceptButton = [alert addButtonWithTitle:@"OK"];
-        if (@available(macOS 11.0, *)) {
-            acceptButton.hasDestructiveAction = YES;
-        }
+        [alert addButtonWithTitle:@"OK"];
         NSButton *cancelButton = [alert addButtonWithTitle:@"キャンセル"];
         cancelButton.keyEquivalent = @"\e";
         NSTextField *name = [[NSTextField alloc] initWithFrame:CGRectMake(0, 0, 240, 20)];

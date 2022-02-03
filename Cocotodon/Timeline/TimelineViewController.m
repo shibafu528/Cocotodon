@@ -169,11 +169,9 @@
 }
 
 - (void)updateToolbarStreamingItem {
-    if (@available(macOS 11.0, *)) {
-        NSString *sym = self.userStream.isConnected ? @"bolt.fill" : @"bolt.slash";
-        MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
-        [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
-    }
+    NSString *sym = self.userStream.isConnected ? @"bolt.fill" : @"bolt.slash";
+    MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
+    [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }
 
 #pragma mark - TableView
@@ -639,9 +637,7 @@
     alert.messageText = @"失った信頼はもう戻ってきませんが、本当にこのトゥートを削除しますか？";
     alert.informativeText = [NSString stringWithFormat:@"%@\n%@", status.account.fullAcct, status.expandContent];
     NSButton *acceptButton = [alert addButtonWithTitle:@"削除"];
-    if (@available(macOS 11.0, *)) {
-        acceptButton.hasDestructiveAction = YES;
-    }
+    acceptButton.hasDestructiveAction = YES;
     NSButton *cancelButton = [alert addButtonWithTitle:@"キャンセル"];
     cancelButton.keyEquivalent = @"\e";
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
@@ -680,14 +676,10 @@
     alert.messageText = @"以下のトゥートをサーバーの管理者に通報します。よろしいですか？";
     alert.informativeText = [NSString stringWithFormat:@"%@\n%@", status.account.fullAcct, status.expandContent];
     NSButton *acceptButton = [alert addButtonWithTitle:@"通報"];
-    if (@available(macOS 11.0, *)) {
-        acceptButton.hasDestructiveAction = YES;
-    }
+    acceptButton.hasDestructiveAction = YES;
     if (isRemote) {
         NSButton *forwardButton = [alert addButtonWithTitle:@"相手のサーバーにも通報"];
-        if (@available(macOS 11.0, *)) {
-            forwardButton.hasDestructiveAction = YES;
-        }
+        forwardButton.hasDestructiveAction = YES;
     }
     NSButton *cancelButton = [alert addButtonWithTitle:@"キャンセル"];
     cancelButton.keyEquivalent = @"\e";
