@@ -36,6 +36,7 @@
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
 		5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C025138D840067EAB4 /* FlippedView.m */; };
+		5D6EFB5F27AD6E80004A5FBF /* DONStatusContentAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */; };
 		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
 		5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */; };
 		5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */; };
@@ -181,6 +182,8 @@
 		5D54E6BF25138D840067EAB4 /* FlippedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlippedView.h; sourceTree = "<group>"; };
 		5D54E6C025138D840067EAB4 /* FlippedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlippedView.m; sourceTree = "<group>"; };
 		5D54E6C7251429710067EAB4 /* mrb_setting_dsl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_setting_dsl.h; sourceTree = "<group>"; };
+		5D6EFB5D27AD6E80004A5FBF /* DONStatusContentAnchor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentAnchor.h; sourceTree = "<group>"; };
+		5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentAnchor.m; sourceTree = "<group>"; };
 		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
 		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
 		5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 				5D94870D25173247009066C3 /* DONUtils.h */,
 				5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */,
 				5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */,
+				5D6EFB5D27AD6E80004A5FBF /* DONStatusContentAnchor.h */,
+				5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */,
 				5D0C97E4266E6746006BC203 /* DONEmojiExpander.h */,
 				5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */,
 				5D0C97E7266E680A006BC203 /* DONEmojiProvider.h */,
@@ -976,6 +981,7 @@
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
 				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
 				5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */,
+				5D6EFB5F27AD6E80004A5FBF /* DONStatusContentAnchor.m in Sources */,
 				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
 				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,
 				5D4684F3269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m in Sources */,

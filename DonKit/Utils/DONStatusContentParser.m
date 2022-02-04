@@ -9,9 +9,10 @@
 
 @property (nonatomic) LXHTMLParser *parser;
 @property (nonatomic) NSInteger linkBegin;
+@property (nonatomic) NSString *linkRef;
 
 @property (nonatomic, readwrite) NSMutableString *textContent;
-@property (nonatomic, readwrite) NSMutableArray<NSValue*> *linkRanges;
+@property (nonatomic, readwrite) NSMutableArray<DONStatusContentAnchor*> *anchors;
 
 @end
 
@@ -24,7 +25,7 @@
         _parser = [[LXHTMLParser alloc] initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
         _parser.delegate = self;
         _textContent = [NSMutableString string];
-        _linkRanges = [NSMutableArray array];
+        _anchors = [NSMutableArray array];
         _linkBegin = -1;
     }
     return self;
@@ -43,13 +44,16 @@
         }
     } else if ([elementName isEqualToString:@"a"]) {
         _linkBegin = _textContent.length;
+        _linkRef = attributeDict[@"href"];
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"a"] && _linkBegin > -1) {
-        [_linkRanges addObject:[NSValue valueWithRange:NSMakeRange(_linkBegin, _textContent.length - _linkBegin)]];
+        NSRange range = NSMakeRange(_linkBegin, _textContent.length - _linkBegin);
+        [_anchors addObject:[[DONStatusContentAnchor alloc] initWithRange:range href:_linkRef]];
         _linkBegin = -1;
+        _linkRef = nil;
     }
 }
 

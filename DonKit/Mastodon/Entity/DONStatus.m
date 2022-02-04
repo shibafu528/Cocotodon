@@ -70,9 +70,13 @@
     [parser parse];
     
     NSMutableAttributedString *body = [[NSMutableAttributedString alloc] initWithString:parser.textContent];
-    [parser.linkRanges enumerateObjectsUsingBlock:^(NSValue * _Nonnull value, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSRange range = value.rangeValue;
-        [body addAttribute:NSLinkAttributeName value:[parser.textContent substringWithRange:range] range:range];
+    [parser.anchors enumerateObjectsUsingBlock:^(DONStatusContentAnchor * _Nonnull anchor, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSRange range = anchor.range;
+        NSString *href = anchor.href;
+        if (!href.length) {
+            href = [parser.textContent substringWithRange:range];
+        }
+        [body addAttribute:NSLinkAttributeName value:href range:range];
     }];
     
     if (self.spoilerText.length) {

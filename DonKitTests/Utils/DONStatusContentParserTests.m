@@ -59,9 +59,9 @@
     __auto_type parser = [[DONStatusContentParser alloc] initWithString:@"link is <a href=\"http://example.com/\">here</a>"];
     XCTAssertTrue([parser parse]);
     XCTAssertEqualObjects(@"link is here", parser.textContent);
-    XCTAssertEqual(1, parser.linkRanges.count);
+    XCTAssertEqual(1, parser.anchors.count);
     
-    NSRange range = parser.linkRanges.firstObject.rangeValue;
+    NSRange range = parser.anchors.firstObject.range;
     XCTAssertEqual(8, range.location);
     XCTAssertEqual(4, range.length);
 }
@@ -73,7 +73,7 @@
     __auto_type parser = [[DONStatusContentParser alloc] initWithString:ikipayo];
     XCTAssertTrue([parser parse]);
     XCTAssertEqualObjects(@"pgjones / quart · GitLab\nhttps://gitlab.com/pgjones/quart\nhae-", parser.textContent);
-    XCTAssertEqual(1, parser.linkRanges.count);
+    XCTAssertEqual(1, parser.anchors.count);
 }
 
 - (void)testQuotedTextFromMisskey {
@@ -85,7 +85,19 @@
     __auto_type parser = [[DONStatusContentParser alloc] initWithString:text];
     XCTAssertTrue([parser parse]);
     XCTAssertEqualObjects(@"quoted text\n\nhttp://example.com", parser.textContent);
-    XCTAssertEqual(1, parser.linkRanges.count);
+    XCTAssertEqual(1, parser.anchors.count);
+}
+
+- (void)testCustomLink {
+    // 実際のところ、一般的なMisskeyユーザーはカニ [検索]以外のリンクは使ってないがちな気はします (自分以外で見たことない)
+    // ----
+    // https://mewl.me/notes/817ec5131ad2241216c01214
+    NSString *text = @"<p><span>実際のところ、一般的なMisskeyユーザーは</span><a href=\"https://www.google.com/search?q=カニ\">カニ [検索]</a><span>以外のリンクは使ってないがちな気はします (自分以外で見たことない)</span></p>";
+    __auto_type parser = [[DONStatusContentParser alloc] initWithString:text];
+    XCTAssertTrue([parser parse]);
+    XCTAssertEqualObjects(@"実際のところ、一般的なMisskeyユーザーはカニ [検索]以外のリンクは使ってないがちな気はします (自分以外で見たことない)", parser.textContent);
+    XCTAssertEqual(1, parser.anchors.count);
+    XCTAssertEqualObjects(@"https://www.google.com/search?q=カニ", parser.anchors[0].href);
 }
 
 @end

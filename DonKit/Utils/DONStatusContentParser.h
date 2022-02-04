@@ -3,13 +3,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DONStatusContentAnchor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DONStatusContentParser : NSObject
 
 @property (nonatomic, readonly) NSString *textContent;
-@property (nonatomic, readonly) NSArray<NSValue*> *linkRanges;
+@property (nonatomic, readonly) NSArray<DONStatusContentAnchor*> *anchors;
 
 - (instancetype)initWithString:(NSString*)string;
 
