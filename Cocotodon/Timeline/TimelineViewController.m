@@ -598,7 +598,7 @@
     
     DONStatus *status = self.statuses[row];
     [App.client bookmarkStatus:status.identity
-         withCompletionHandler:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nullable result, NSError * _Nullable error) {
+                withCompletion:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nullable result, NSError * _Nullable error) {
         if (error) {
             WriteAFNetworkingErrorToLog(error);
             return;

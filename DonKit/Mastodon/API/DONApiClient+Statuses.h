@@ -51,8 +51,8 @@ typedef void (^DONApiBookmarkStatusCompletionHandler)(NSURLSessionDataTask *__no
                                success:(nullable DONApiGetStatusSuccessCallback)success
                                failure:(nullable DONApiFailureCallback)failure;
 
-- (NSURLSessionDataTask*) bookmarkStatus:(NSString*)identifier
-                   withCompletionHandler:(nullable DONApiBookmarkStatusCompletionHandler)completionHandler;
+- (void) bookmarkStatus:(NSString *)identifier
+         withCompletion:(nullable DONApiBookmarkStatusCompletionHandler)completionHandler;
 
 @end
 
