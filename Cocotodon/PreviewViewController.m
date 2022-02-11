@@ -19,6 +19,11 @@
     [super viewDidLoad];
 }
 
+- (void)viewDidAppear {
+    [super viewDidAppear];
+    [self.view.window makeFirstResponder:self];
+}
+
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
     [self.progressIndicator startAnimation:nil];
@@ -80,6 +85,18 @@
         NSURL *url = attachment.remoteURL ? attachment.remoteURL : attachment.URL;
         [NSWorkspace.sharedWorkspace openURL:url];
         [self.view.window close];
+    }
+}
+
+- (IBAction)openPreview:(id)sender {
+    [self.view.window close];
+}
+
+- (void)keyDown:(NSEvent *)event {
+    if ([event.characters isEqualToString:@" "]) {
+        [self.view.window close];
+    } else {
+        [super keyDown:event];
     }
 }
 

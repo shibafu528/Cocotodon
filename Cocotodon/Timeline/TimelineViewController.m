@@ -642,6 +642,22 @@
     [NSWorkspace.sharedWorkspace openURL:status.originalStatus.URL];
 }
 
+- (IBAction)openPreview:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row];
+    DONMastodonAttachment *attachment = status.mediaAttachments[0];
+    if ([attachment.type isEqualToString:@"image"]) {
+        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"previewWindow"];
+        wc.contentViewController.representedObject = attachment;
+        [wc showWindow:self];
+    }
+}
+
 - (IBAction)deleteStatus:(id)sender {
     NSInteger row = [self targetRowInAction:sender];
     if (row < 0) {

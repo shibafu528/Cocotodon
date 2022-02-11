@@ -456,6 +456,12 @@
                                                 <action selector="openInBrowser:" target="Ady-hI-5gd" id="rnL-2i-xhN"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="画像をプレビュー" keyEquivalent="e" id="yUz-DH-HsO">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openPreview:" target="Ady-hI-5gd" id="23S-Pq-hjC"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Yh2-0z-fMl"/>
                                         <menuItem title="削除" id="5le-M2-Cgn">
                                             <modifierMask key="keyEquivalentModifierMask"/>
