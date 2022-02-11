@@ -37,6 +37,7 @@
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
 		5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C025138D840067EAB4 /* FlippedView.m */; };
 		5D6EFB5F27AD6E80004A5FBF /* DONStatusContentAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */; };
+		5D6EFB6227B63651004A5FBF /* TimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB6127B63651004A5FBF /* TimelineTableView.m */; };
 		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
 		5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */; };
 		5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */; };
@@ -184,6 +185,8 @@
 		5D54E6C7251429710067EAB4 /* mrb_setting_dsl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_setting_dsl.h; sourceTree = "<group>"; };
 		5D6EFB5D27AD6E80004A5FBF /* DONStatusContentAnchor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentAnchor.h; sourceTree = "<group>"; };
 		5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentAnchor.m; sourceTree = "<group>"; };
+		5D6EFB6027B63651004A5FBF /* TimelineTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineTableView.h; sourceTree = "<group>"; };
+		5D6EFB6127B63651004A5FBF /* TimelineTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineTableView.m; sourceTree = "<group>"; };
 		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
 		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
 		5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
@@ -619,6 +622,8 @@
 				5DA3179324FF190D0095AF04 /* TimelineViewController.h */,
 				5DA3179424FF190D0095AF04 /* TimelineViewController.m */,
 				5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */,
+				5D6EFB6027B63651004A5FBF /* TimelineTableView.h */,
+				5D6EFB6127B63651004A5FBF /* TimelineTableView.m */,
 			);
 			path = Timeline;
 			sourceTree = "<group>";
@@ -1011,6 +1016,7 @@
 				5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */,
 				5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */,
 				5D94870F25173247009066C3 /* DONApiClient.m in Sources */,
+				5D6EFB6227B63651004A5FBF /* TimelineTableView.m in Sources */,
 				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,
 				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
 				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
