@@ -38,6 +38,7 @@
 		5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6C025138D840067EAB4 /* FlippedView.m */; };
 		5D6EFB5F27AD6E80004A5FBF /* DONStatusContentAnchor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */; };
 		5D6EFB6227B63651004A5FBF /* TimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB6127B63651004A5FBF /* TimelineTableView.m */; };
+		5D6EFB6527B64D5C004A5FBF /* DONAutoReconnectStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6EFB6427B64D5C004A5FBF /* DONAutoReconnectStreaming.m */; };
 		5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F5E282515CAEE00018EBA /* PostBox.m */; };
 		5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */; };
 		5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D76A1B026752C190024C882 /* Pods-Cocotodon-acknowledgements.plist */; };
@@ -187,6 +188,9 @@
 		5D6EFB5E27AD6E80004A5FBF /* DONStatusContentAnchor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONStatusContentAnchor.m; sourceTree = "<group>"; };
 		5D6EFB6027B63651004A5FBF /* TimelineTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimelineTableView.h; sourceTree = "<group>"; };
 		5D6EFB6127B63651004A5FBF /* TimelineTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelineTableView.m; sourceTree = "<group>"; };
+		5D6EFB6327B64D5C004A5FBF /* DONAutoReconnectStreaming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONAutoReconnectStreaming.h; sourceTree = "<group>"; };
+		5D6EFB6427B64D5C004A5FBF /* DONAutoReconnectStreaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONAutoReconnectStreaming.m; sourceTree = "<group>"; };
+		5D6EFB6627B65097004A5FBF /* DONAutoReconnectStreamingDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONAutoReconnectStreamingDelegate.h; sourceTree = "<group>"; };
 		5D6F5E272515CAEE00018EBA /* PostBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBox.h; sourceTree = "<group>"; };
 		5D6F5E282515CAEE00018EBA /* PostBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBox.m; sourceTree = "<group>"; };
 		5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
@@ -456,6 +460,9 @@
 				5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */,
 				5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */,
 				5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */,
+				5D6EFB6327B64D5C004A5FBF /* DONAutoReconnectStreaming.h */,
+				5D6EFB6427B64D5C004A5FBF /* DONAutoReconnectStreaming.m */,
+				5D6EFB6627B65097004A5FBF /* DONAutoReconnectStreamingDelegate.h */,
 			);
 			path = Mastodon;
 			sourceTree = "<group>";
@@ -1028,6 +1035,7 @@
 				5D54E6C125138D840067EAB4 /* FlippedView.m in Sources */,
 				5D7AC8A625029CA70042009D /* MRBPin.m in Sources */,
 				5D94871B25173AE8009066C3 /* DONStatus.m in Sources */,
+				5D6EFB6527B64D5C004A5FBF /* DONAutoReconnectStreaming.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

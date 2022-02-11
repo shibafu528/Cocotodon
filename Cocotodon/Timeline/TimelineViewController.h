@@ -8,7 +8,7 @@
 @interface TimelineViewController : NSViewController
 
 @property (nonatomic, copy) AnyPromise* (^timelineReloader)(TimelineViewController *vc);
-@property (nonatomic, copy) DONWebSocketStreaming* (^streamingInitiator)(TimelineViewController<DONStreamingEventDelegate> *vc);
+@property (nonatomic, copy) DONWebSocketStreaming* (^streamingInitiator)(id<DONStreamingEventDelegate> vc);
 
 - (IBAction)reply:(id)sender;
 - (IBAction)favorite:(id)sender;

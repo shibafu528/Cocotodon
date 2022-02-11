@@ -7,6 +7,7 @@
 #import "PostBox.h"
 #import "ExpandableCellView.h"
 #import "DONEmojiExpander.h"
+#import "DONAutoReconnectStreaming.h"
 #import "MainWindowController.h"
 #import "IntentManager.h"
 #import "ThreadWindow.h"
@@ -16,11 +17,12 @@
 
 // ----------
 
-@interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONStreamingEventDelegate>
+@interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONAutoReconnectStreamingDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
 @property (nonatomic) DONWebSocketStreaming *userStream;
+@property (nonatomic) DONAutoReconnectStreaming *autoReconnect;
 
 @property (nonatomic) NSArray<DONStatus*> *statuses;
 
@@ -47,7 +49,8 @@
     self.presentationMode = NO;
 
     if (self.streamingInitiator) {
-        self.userStream = self.streamingInitiator(self);
+        self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
+        self.userStream = self.streamingInitiator(self.autoReconnect);
     }
     
     [self reload:nil];
@@ -161,8 +164,16 @@
     });
 }
 
-- (void)donStreamingDidCompleteWithError:(NSError *)error {
+- (void)donStreamingDidCompleteWithCloseCode:(NSURLSessionWebSocketCloseCode)closeCode error:(NSError *)error {
     NSLog(@"ws close: %@", error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateToolbarStreamingItem];
+    });
+}
+
+- (void)donStreamingShouldReconnect:(DONAutoReconnectStreaming *)autoReconnect {
+    NSLog(@"ws reconnect");
+    [self.userStream connect];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateToolbarStreamingItem];
     });

@@ -47,7 +47,7 @@
                 }];
             }];
         };
-        homeVC.streamingInitiator = ^DONWebSocketStreaming *(TimelineViewController<DONStreamingEventDelegate> *vc) {
+        homeVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
             return [App.client userStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeVC label:@"ホーム"]];
@@ -64,7 +64,7 @@
                 }];
             }];
         };
-        localVC.streamingInitiator = ^DONWebSocketStreaming *(TimelineViewController<DONStreamingEventDelegate> *vc) {
+        localVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
             return [App.client localPublicStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:localVC label:@"ローカル"]];
@@ -81,7 +81,7 @@
                 }];
             }];
         };
-        federatedVC.streamingInitiator = ^DONWebSocketStreaming *(TimelineViewController<DONStreamingEventDelegate> *vc) {
+        federatedVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
             return [App.client publicStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:federatedVC label:@"連合"]];

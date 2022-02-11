@@ -15,7 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)donStreamingDidFailWithError:(NSError*)error;
 
-- (void)donStreamingDidCompleteWithError:(NSError*)error;
+- (void)donStreamingDidCompleteWithCloseCode:(NSURLSessionWebSocketCloseCode)closeCode error:(NSError * _Nullable)error;
+
+@optional
+
+- (void)donStreamingDidConnect;
 
 @end
 

@@ -13,6 +13,7 @@
 @property (nonatomic) NSURLSessionWebSocketTask *task;
 @property (nonatomic) NSTimer *pingTimer;
 @property (nonatomic, weak) id <DONStreamingEventDelegate> delegate;
+@property (nonatomic) BOOL sentConnectedEvent;
 
 @end
 
@@ -26,6 +27,7 @@
         _task = nil;
         _pingTimer = nil;
         _delegate = delegate;
+        _sentConnectedEvent = NO;
     }
     return self;
 }
@@ -41,7 +43,10 @@
         [self disconnect];
     }
     
-    self.task = [self.session webSocketTaskWithURL:self.endpoint];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.endpoint];
+    // (for debug) ertona.net supports X-Disconnect-After https://ertona.net/about/more
+    //[request setValue:@"5" forHTTPHeaderField:@"X-Disconnect-After"];
+    self.task = [self.session webSocketTaskWithRequest:request];
     [self.task resume];
     [self continiousReceive];
     self.pingTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(ping:) userInfo:nil repeats:YES];
@@ -60,7 +65,9 @@
     [self.task sendPingWithPongReceiveHandler:^(NSError * _Nullable error) {
         if (error) {
             NSLog(@"ws ping error: %@", error);
+            return;
         }
+        [self didConnect];
     }];
 }
 
@@ -73,6 +80,7 @@
                 return;
             }
         } else {
+            [self didConnect];
             switch (message.type) {
                 case NSURLSessionWebSocketMessageTypeData:
                     NSLog(@"Data received, ...why?: %@", message.data);
@@ -104,6 +112,15 @@
         }
         [self continiousReceive];
     }];
+}
+
+- (void)didConnect {
+    if (!self.sentConnectedEvent) {
+        if ([self.delegate respondsToSelector:@selector(donStreamingDidConnect)]) {
+            [self.delegate donStreamingDidConnect];
+        }
+        self.sentConnectedEvent = YES;
+    }
 }
 
 - (void)didReceiveUpdate:(NSString*)payload {
@@ -155,15 +172,16 @@
 #pragma mark - NSURLSessionTaskDelegate
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    NSLog(@"ws connection closed: %@", error);
+    NSLog(@"ws connection closed: (close code = %ld) %@", self.task.closeCode, error);
     self.isConnected = NO;
+    self.sentConnectedEvent = NO;
     [self.pingTimer invalidate];
     self.pingTimer = nil;
     if (error) {
         NSString *reason = [[NSString alloc] initWithData:self.task.closeReason encoding:NSUTF8StringEncoding];
         NSLog(@"ws close code & reason: %ld %@", self.task.closeCode, reason);
     }
-    [self.delegate donStreamingDidCompleteWithError:error];
+    [self.delegate donStreamingDidCompleteWithCloseCode:self.task.closeCode error:error];
 }
 
 #pragma mark - NSURLSessionDelegate
