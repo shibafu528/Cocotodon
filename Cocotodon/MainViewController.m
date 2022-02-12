@@ -51,12 +51,12 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
                     break;
             }
         } else if (s0 != nil) {
-            if (last && ![last.identity isEqualToString:s0.identity]) {
+            if (!last || ![last.identity isEqualToString:s0.identity]) {
                 [merged addObject:s0];
             }
             i0++;
         } else if (s1 != nil) {
-            if (last && ![last.identity isEqualToString:s1.identity]) {
+            if (!last || ![last.identity isEqualToString:s1.identity]) {
                 [merged addObject:s1];
             }
             i1++;
