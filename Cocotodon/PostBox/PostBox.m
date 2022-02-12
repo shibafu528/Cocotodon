@@ -5,7 +5,7 @@
 #import "PostBox.h"
 #import "PostBoxLayoutManagerDelegatee.h"
 
-@interface PostBox ()
+@interface PostBox () <NSTextViewDelegate>
 
 @property (unsafe_unretained) IBOutlet NSTextView *tootInput;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
@@ -58,6 +58,7 @@
         self.tootInput.font = [NSFont systemFontOfSize:NSFont.systemFontSize];
         self.tootInput.layoutManager.delegate = self.layoutManagerDelegatee;
         self.tootInput.textContainerInset = NSMakeSize(0, 4);
+        self.tootInput.delegate = self;
     }
 }
 
@@ -413,6 +414,16 @@
         }];
         self.flashMessageTimer = nil;
     }];
+}
+
+#pragma mark - NSTextViewDelegate
+
+- (BOOL)textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector {
+    if (commandSelector == @selector(insertTab:)) {
+        [self.window selectNextKeyView:nil];
+        return YES;
+    }
+    return NO;
 }
 
 @end
