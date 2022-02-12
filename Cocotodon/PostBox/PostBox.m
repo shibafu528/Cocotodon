@@ -437,10 +437,29 @@
         case '@': // name
             break;
         case '#': // hashtag
+            [self autocompleteDidRequestHashtagCandidatesForKeyword:keyword];
             break;
         case ':': // emoji shortcode
             break;
     }
+}
+
+- (void)autocompleteDidRequestHashtagCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    [App.client searchWithQuery:query
+                requiresResolve:NO
+                     completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
+        if (error) {
+            WriteAFNetworkingErrorToLog(error);
+            return;
+        }
+        NSMutableArray *tags = [NSMutableArray arrayWithCapacity:results.hashtags.count];
+        [results.hashtags enumerateObjectsUsingBlock:^(DONMastodonTag * _Nonnull tag, NSUInteger idx, BOOL * _Nonnull stop) {
+            [tags addObject:[@"#" stringByAppendingString:tag.name]];
+        }];
+        // FIXME: 依存関係がトチ狂っているせいで一旦こうせざるを得ない
+        [self.tootInput performSelector:@selector(setCandidates:forKeyword:) withObject:tags withObject:keyword];
+    }];
 }
 
 @end

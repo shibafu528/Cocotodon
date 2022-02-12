@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet PostBox *postbox;
 @property (nonatomic, weak) IBOutlet id<PostBoxAutocompleteDelegate> autocompleteDelegate;
 
+- (void)setCandidates:(NSArray<NSString *> *)candidates forKeyword:(NSString*)keyword;
+
 @end
 
 NS_ASSUME_NONNULL_END
