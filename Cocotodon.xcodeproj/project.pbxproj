@@ -259,6 +259,7 @@
 		5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Streaming.m"; sourceTree = "<group>"; };
 		5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONWebSocketStreaming.h; sourceTree = "<group>"; };
 		5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONWebSocketStreaming.m; sourceTree = "<group>"; };
+		5DA92D2F27B7D916005C125D /* PostBoxAutocompleteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxAutocompleteDelegate.h; sourceTree = "<group>"; };
 		5DAA595D266BAA000075C96D /* PostBoxTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxTextView.h; sourceTree = "<group>"; };
 		5DAA595E266BAA000075C96D /* PostBoxTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxTextView.m; sourceTree = "<group>"; };
 		5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxSpoilerTextField.h; sourceTree = "<group>"; };
@@ -613,6 +614,7 @@
 				5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */,
 				5DAA595D266BAA000075C96D /* PostBoxTextView.h */,
 				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
+				5DA92D2F27B7D916005C125D /* PostBoxAutocompleteDelegate.h */,
 			);
 			path = PostBox;
 			sourceTree = "<group>";

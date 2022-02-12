@@ -5,7 +5,35 @@
 #import "PostBoxTextView.h"
 #import "DONPicture.h"
 
+@interface PostBoxTextView ()
+
+@property (nonatomic) NSRange complementRange;
+@property (nonatomic, copy) NSString *complementKeyword;
+
+@end
+
 @implementation PostBoxTextView
+
+- (instancetype)initWithFrame:(NSRect)frameRect textContainer:(NSTextContainer *)container {
+    if (self = [super initWithFrame:frameRect textContainer:container]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super initWithCoder:coder]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize {
+    _complementRange = NSMakeRange(NSNotFound, 0);
+    _complementKeyword = nil;
+}
+
+#pragma mark - Paste support
 
 - (NSArray<NSPasteboardType> *)readablePasteboardTypes {
     return [[super readablePasteboardTypes] arrayByAddingObject:NSPasteboardTypePNG];
@@ -67,6 +95,56 @@
     }
     
     return NO;
+}
+
+#pragma mark - Autocomplete support
+
+- (void)keyUp:(NSEvent *)event {
+    [super keyUp:event];
+    
+    NSString *input = self.string;
+    NSUInteger length = input.length;
+    if (length < 1) {
+        return;
+    }
+    
+    NSUInteger location = self.selectedRange.location;
+    NSRange anchor = [input rangeOfCharacterFromSet:NSCharacterSet.whitespaceAndNewlineCharacterSet
+                                            options:NSBackwardsSearch
+                                              range:NSMakeRange(0, location)];
+    NSUInteger lead = anchor.location == NSNotFound ? 0 : anchor.location + 1;
+    if (lead >= length || lead == location) {
+        return;
+    }
+    
+    unichar leadchar = [input characterAtIndex:lead];
+    switch (leadchar) {
+        case '#':
+        case '@':
+        case ':': {
+            NSRange complementRange = NSMakeRange(lead, location - lead);
+            NSString *substring = [input substringWithRange:complementRange];
+            NSLog(@"(%lu, %lu) %@", complementRange.location, complementRange.length, substring);
+            if (!NSEqualRanges(self.complementRange, complementRange) || ![self.complementKeyword isEqualToString:substring]) {
+                self.complementRange = complementRange;
+                self.complementKeyword = substring;
+                [self.autocompleteDelegate autocompleteDidRequestCandidatesForKeyword:substring];
+            }
+            break;
+        }
+    }
+}
+
+- (NSRange)rangeForUserCompletion {
+    return self.complementRange;
+}
+
+- (void)insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag {
+    [super insertCompletion:word forPartialWordRange:charRange movement:movement isFinal:flag];
+    if (flag) {
+        self.complementRange = NSMakeRange(NSNotFound, 0);
+        self.complementKeyword = nil;
+    }
 }
 
 @end

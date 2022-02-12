@@ -426,4 +426,21 @@
     return NO;
 }
 
+#pragma mark - PostBoxAutocompleteDelegate
+
+- (void)autocompleteDidRequestCandidatesForKeyword:(NSString *)keyword {
+    if (keyword.length <= 1) {
+        return;
+    }
+    NSLog(@"autocompleteDidRequestCandidatesForKeyword:%@", keyword);
+    switch ([keyword characterAtIndex:0]) {
+        case '@': // name
+            break;
+        case '#': // hashtag
+            break;
+        case ':': // emoji shortcode
+            break;
+    }
+}
+
 @end
