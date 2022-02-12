@@ -7,6 +7,66 @@
 #import "NSString+ReplaceLineBreaks.h"
 #import "TimelineViewController.h"
 
+static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DONStatus *> *tl1) {
+    if (!tl0.count && !tl1.count) {
+        return @[];
+    } else if (!tl0.count) {
+        return tl1;
+    } else if (!tl1.count) {
+        return tl0;
+    }
+    
+    tl0 = [tl0 sortedArrayUsingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
+        return [obj2.createdAt compare:obj1.createdAt];
+    }];
+    tl1 = [tl1 sortedArrayUsingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
+        return [obj2.createdAt compare:obj1.createdAt];
+    }];
+    
+    NSMutableArray<DONStatus *> *merged = [NSMutableArray arrayWithCapacity:tl0.count + tl1.count];
+    for (int i0 = 0, i1 = 0;;) {
+        DONStatus *s0 = nil, *s1 = nil;
+        if (i0 < tl0.count) {
+            s0 = tl0[i0];
+        }
+        if (i1 < tl1.count) {
+            s1 = tl1[i1];
+        }
+        
+        DONStatus *last = [merged lastObject];
+        if (s0 != nil && s1 != nil) {
+            switch ([s0.createdAt compare:s1.createdAt]) {
+                case NSOrderedAscending: // s0.createdAt < s1.createdAt
+                    if (!last || ![last.identity isEqualToString:s1.identity]) {
+                        [merged addObject:s1];
+                    }
+                    i1++;
+                    break;
+                case NSOrderedSame:
+                case NSOrderedDescending: // s0.createdAt >= s1.createdAt
+                    if (!last || ![last.identity isEqualToString:s0.identity]) {
+                        [merged addObject:s0];
+                    }
+                    i0++;
+                    break;
+            }
+        } else if (s0 != nil) {
+            if (last && ![last.identity isEqualToString:s0.identity]) {
+                [merged addObject:s0];
+            }
+            i0++;
+        } else if (s1 != nil) {
+            if (last && ![last.identity isEqualToString:s1.identity]) {
+                [merged addObject:s1];
+            }
+            i1++;
+        } else {
+            break;
+        }
+    }
+    return (NSArray<DONStatus *> *) merged;
+}
+
 @implementation NSTabViewItem (WithVCAndLabel)
 
 + (instancetype)tabViewItemWithViewController:(nonnull NSViewController *)viewController label:(NSString *)label {
@@ -68,6 +128,34 @@
             return [App.client localPublicStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:localVC label:@"ローカル"]];
+        
+        TimelineViewController *homeLocalVC = [[TimelineViewController alloc] init];
+        homeLocalVC.timelineReloader = ^AnyPromise *(TimelineViewController *vc) {
+            AnyPromise *fetchHome = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+                [App.client homeTimeline:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONStatus *> * _Nonnull results) {
+                    resolver(results);
+                }
+                                 failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+                    resolver(error);
+                }];
+            }];
+            AnyPromise *fetchLocal = [AnyPromise promiseWithResolverBlock:^(PMKResolver resolver) {
+                [App.client publicTimelineOnlyLocal:YES
+                                            success:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONStatus *> * _Nonnull results) {
+                    resolver(results);
+                }
+                                            failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+                    resolver(error);
+                }];
+            }];
+            return PMKWhen(@[fetchHome, fetchLocal]).then(^(NSArray<NSArray<DONStatus *> *> *results) {
+                return mergeTimeline(results[0], results[1]);
+            });
+        };
+        homeLocalVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
+            return [App.client streamingViaWebsocketSubscribeChannels:@[DONStreamingChannelUser, DONStreamingChannelPublicLocal] delegate:vc];
+        };
+        [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeLocalVC label:@"ホーム+ローカル"]];
         
         TimelineViewController *federatedVC = [[TimelineViewController alloc] init];
         federatedVC.timelineReloader = ^AnyPromise *(TimelineViewController *vc) {

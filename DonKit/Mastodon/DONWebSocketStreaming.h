@@ -7,9 +7,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void (^DONWebSocketConnectedCallback)(NSURLSessionWebSocketTask *task);
+
 @interface DONWebSocketStreaming : NSObject
 
 @property (nonatomic, readonly) BOOL isConnected;
+@property (nonatomic, nullable, copy) DONWebSocketConnectedCallback onConnected;
 
 - (instancetype) init __attribute__((unavailable("init is not available")));
 

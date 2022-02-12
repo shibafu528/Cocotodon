@@ -28,6 +28,7 @@
         _pingTimer = nil;
         _delegate = delegate;
         _sentConnectedEvent = NO;
+        _onConnected = nil;
     }
     return self;
 }
@@ -51,6 +52,10 @@
     [self continiousReceive];
     self.pingTimer = [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(ping:) userInfo:nil repeats:YES];
     self.isConnected = YES;
+    
+    if (self.onConnected) {
+        self.onConnected(self.task);
+    }
 }
 
 - (void)disconnect {

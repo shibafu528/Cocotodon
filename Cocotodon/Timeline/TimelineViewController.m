@@ -109,6 +109,12 @@
 
 - (void)donStreamingDidReceiveUpdate:(DONStatus *)status {
     dispatch_async(dispatch_get_main_queue(), ^{
+        // 簡易的な重複排除
+        DONStatus *first = [self.statuses firstObject];
+        if (first && [first.identity isEqualToString:status.identity]) {
+            return;
+        }
+        
         self.statuses = [@[status] arrayByAddingObjectsFromArray:self.statuses];
         [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
         if (self.prevSelection != -1) {
