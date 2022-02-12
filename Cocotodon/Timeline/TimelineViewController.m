@@ -666,7 +666,7 @@
     }
     
     DONStatus *status = self.statuses[row];
-    DONMastodonAttachment *attachment = status.mediaAttachments[0];
+    DONMastodonAttachment *attachment = status.originalStatus.mediaAttachments[0];
     if ([attachment.type isEqualToString:@"image"]) {
         NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
         NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"previewWindow"];
