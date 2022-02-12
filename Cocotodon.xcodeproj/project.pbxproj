@@ -75,6 +75,9 @@
 		5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AA22518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m */; };
 		5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AA62518F3F700A1CF38 /* DONApiClient+Streaming.m */; };
 		5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */; };
+		5DA92D3227B7F0EA005C125D /* DONApiClient+Search.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA92D3127B7F0EA005C125D /* DONApiClient+Search.m */; };
+		5DA92D3527B7F2A4005C125D /* DONMastodonSearchResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA92D3427B7F2A4005C125D /* DONMastodonSearchResults.m */; };
+		5DA92D3827B7F34D005C125D /* DONMastodonTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA92D3727B7F34D005C125D /* DONMastodonTag.m */; };
 		5DAA595F266BAA000075C96D /* PostBoxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA595E266BAA000075C96D /* PostBoxTextView.m */; };
 		5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAD6178267A484300514890 /* PostBoxSpoilerTextField.m */; };
 		5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */; };
@@ -260,6 +263,12 @@
 		5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONWebSocketStreaming.h; sourceTree = "<group>"; };
 		5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONWebSocketStreaming.m; sourceTree = "<group>"; };
 		5DA92D2F27B7D916005C125D /* PostBoxAutocompleteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxAutocompleteDelegate.h; sourceTree = "<group>"; };
+		5DA92D3027B7F0EA005C125D /* DONApiClient+Search.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DONApiClient+Search.h"; sourceTree = "<group>"; };
+		5DA92D3127B7F0EA005C125D /* DONApiClient+Search.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "DONApiClient+Search.m"; sourceTree = "<group>"; };
+		5DA92D3327B7F2A4005C125D /* DONMastodonSearchResults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonSearchResults.h; sourceTree = "<group>"; };
+		5DA92D3427B7F2A4005C125D /* DONMastodonSearchResults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonSearchResults.m; sourceTree = "<group>"; };
+		5DA92D3627B7F34D005C125D /* DONMastodonTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonTag.h; sourceTree = "<group>"; };
+		5DA92D3727B7F34D005C125D /* DONMastodonTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonTag.m; sourceTree = "<group>"; };
 		5DAA595D266BAA000075C96D /* PostBoxTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxTextView.h; sourceTree = "<group>"; };
 		5DAA595E266BAA000075C96D /* PostBoxTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxTextView.m; sourceTree = "<group>"; };
 		5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxSpoilerTextField.h; sourceTree = "<group>"; };
@@ -487,6 +496,10 @@
 				5DC8C5562654CB3300B1628E /* DONStatusContext.m */,
 				5D0C97E8266E68DE006BC203 /* DONEmoji.h */,
 				5D0C97E9266E68DE006BC203 /* DONEmoji.m */,
+				5DA92D3327B7F2A4005C125D /* DONMastodonSearchResults.h */,
+				5DA92D3427B7F2A4005C125D /* DONMastodonSearchResults.m */,
+				5DA92D3627B7F34D005C125D /* DONMastodonTag.h */,
+				5DA92D3727B7F34D005C125D /* DONMastodonTag.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -498,6 +511,8 @@
 				5D9486FF25173247009066C3 /* DONApiClient+Accounts.m */,
 				5D94870125173247009066C3 /* DONApiClient+Apps.h */,
 				5D94870525173247009066C3 /* DONApiClient+Apps.m */,
+				5DA92D3027B7F0EA005C125D /* DONApiClient+Search.h */,
+				5DA92D3127B7F0EA005C125D /* DONApiClient+Search.m */,
 				5D94870625173247009066C3 /* DONApiClient+Statuses.h */,
 				5D94870225173247009066C3 /* DONApiClient+Statuses.m */,
 				5D94870025173247009066C3 /* DONApiClient+Timelines.h */,
@@ -1018,8 +1033,11 @@
 				5D7AC8AC2503E6E30042009D /* MRBProc.m in Sources */,
 				5D97CDD226778D5700950012 /* TimelineAvatarView.m in Sources */,
 				5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */,
+				5DA92D3227B7F0EA005C125D /* DONApiClient+Search.m in Sources */,
 				5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */,
 				5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */,
+				5DA92D3527B7F2A4005C125D /* DONMastodonSearchResults.m in Sources */,
+				5DA92D3827B7F34D005C125D /* DONMastodonTag.m in Sources */,
 				5D9486EF2516F9EA009066C3 /* NSView+NibLoader.m in Sources */,
 				5D94871825173247009066C3 /* DONPicture.m in Sources */,
 				5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */,
