@@ -3,11 +3,12 @@
 //
 
 #import "PostBox.h"
+#import "PostBoxTextView.h"
 #import "PostBoxLayoutManagerDelegatee.h"
 
 @interface PostBox () <NSTextViewDelegate>
 
-@property (unsafe_unretained) IBOutlet NSTextView *tootInput;
+@property (unsafe_unretained) IBOutlet PostBoxTextView *tootInput;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
 @property (nonatomic, weak) IBOutlet NSButton *showSpoilerTextButton;
 @property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
@@ -447,8 +448,7 @@
     }
     if (promise) {
         promise.then(^(NSArray<NSString *> *candidates) {
-            // FIXME: 依存関係がトチ狂っているせいで一旦こうせざるを得ない
-            [self.tootInput performSelector:@selector(setCandidates:forKeyword:) withObject:candidates withObject:keyword];
+            [self.tootInput setCandidates:candidates forKeyword:keyword];
         }).catch(^(NSError *error) {
             WriteAFNetworkingErrorToLog(error);
         });
