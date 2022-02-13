@@ -6,9 +6,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol PostBoxAutocompletable <NSObject>
+
+- (void)setCandidates:(NSArray<NSString *> *)candidates forKeyword:(NSString*)keyword;
+
+@end
+
 @protocol PostBoxAutocompleteDelegate <NSObject>
 
-- (void)autocompleteDidRequestCandidatesForKeyword:(NSString *)keyword;
+- (void)autocomplete:(id<PostBoxAutocompletable>)autocompletable didRequestCandidatesForKeyword:(NSString *)keyword;
 
 @end
 

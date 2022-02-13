@@ -429,11 +429,11 @@
 
 #pragma mark - PostBoxAutocompleteDelegate
 
-- (void)autocompleteDidRequestCandidatesForKeyword:(NSString *)keyword {
+- (void)autocomplete:(id<PostBoxAutocompletable>)autocompletable didRequestCandidatesForKeyword:(NSString *)keyword {
     if (keyword.length <= 1) {
         return;
     }
-    NSLog(@"autocompleteDidRequestCandidatesForKeyword:%@", keyword);
+    NSLog(@"autocomplete:didRequestCandidatesForKeyword:%@", keyword);
     AnyPromise *promise = nil;
     switch ([keyword characterAtIndex:0]) {
         case '@': // account name
@@ -447,8 +447,9 @@
             break;
     }
     if (promise) {
+        __weak typeof(autocompletable) weakAutocompletable = autocompletable;
         promise.then(^(NSArray<NSString *> *candidates) {
-            [self.tootInput setCandidates:candidates forKeyword:keyword];
+            [weakAutocompletable setCandidates:candidates forKeyword:keyword];
         }).catch(^(NSError *error) {
             WriteAFNetworkingErrorToLog(error);
         });

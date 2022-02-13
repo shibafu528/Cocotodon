@@ -5,10 +5,10 @@
 #import "PostBoxTextView.h"
 #import "DONPicture.h"
 
-@interface PostBoxTextView ()
+@interface PostBoxTextView () <PostBoxAutocompletable>
 
 @property (nonatomic, copy) NSString *autocompleteKeyword;
-@property (nonatomic, readonly) NSArray<NSString *> *autocompleteCandidates;
+@property (nonatomic, copy) NSArray<NSString *> *autocompleteCandidates;
 
 @end
 
@@ -135,8 +135,8 @@
             NSLog(@"-[PostBoxTextView rangeForUserCompletion] (%lu, %lu) %@", complementRange.location, complementRange.length, substring);
             if (![self.autocompleteKeyword isEqualToString:substring]) {
                 self.autocompleteKeyword = substring;
-                _autocompleteCandidates = nil;
-                [self.autocompleteDelegate autocompleteDidRequestCandidatesForKeyword:substring];
+                self.autocompleteCandidates = nil;
+                [self.autocompleteDelegate autocomplete:self didRequestCandidatesForKeyword:substring];
             }
             return complementRange;
         }
@@ -174,7 +174,7 @@
     if (![self.autocompleteKeyword isEqualToString:keyword]) {
         return;
     }
-    _autocompleteCandidates = [candidates copy];
+    self.autocompleteCandidates = candidates;
     if (candidates.count) {
         [self complete:nil];
     }
