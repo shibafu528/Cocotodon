@@ -31,6 +31,8 @@
 @property (nonatomic) NSInteger prevSelection;
 @property (nonatomic) bool presentationMode;
 
+@property (nonatomic) NSMutableDictionary<NSString *, NSNumber *> *favoriteStateOverrides;
+
 @end
 
 @implementation TimelineViewController
@@ -47,6 +49,7 @@
     self.commands = nil;
     self.prevSelection = -1;
     self.presentationMode = NO;
+    self.favoriteStateOverrides = [NSMutableDictionary dictionary];
 
     if (self.streamingInitiator) {
         self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
@@ -81,6 +84,7 @@
         }
         
         strongSelf.statuses = results;
+        [strongSelf.favoriteStateOverrides removeAllObjects];
         [strongSelf.tableView reloadData];
     }).catch(^(NSError *error) {
         WriteAFNetworkingErrorToLog(error);
@@ -103,6 +107,28 @@
     self.presentationMode = !self.presentationMode;
     ((NSMenuItem*) sender).state = self.presentationMode ? NSControlStateValueOn : NSControlStateValueOff;
     [self.tableView reloadData];
+}
+
+- (void)favoriteStatus:(DONStatus *)status {
+    [App.client favoriteStatus:status.identity
+                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"Success favorite! : %@", status.identity);
+        [self didUpdateFavoriteState:YES forStatusID:status.originalStatus.identity];
+    }
+                       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+        WriteAFNetworkingErrorToLog(error);
+    }];
+}
+
+- (void)didUpdateFavoriteState:(BOOL)favorited forStatusID:(NSString *)statusID {
+    self.favoriteStateOverrides[statusID] = @(favorited);
+    NSMutableIndexSet *rowIndexes = [NSMutableIndexSet indexSet];
+    [self.statuses enumerateObjectsUsingBlock:^(DONStatus * _Nonnull status, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([status.originalStatus.identity isEqualToString:statusID]) {
+            [rowIndexes addIndex:idx];
+        }
+    }];
+    [self.tableView reloadDataForRowIndexes:rowIndexes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
 }
 
 #pragma mark - DONStreamingEventDelegate
@@ -260,8 +286,16 @@
         expandable.summaryString = summary;
         expandable.expandedText.delegate = self;
         expandable.expandedString = detail;
+        expandable.status = status;
         expandable.attachments = status.originalStatus.mediaAttachments;
         expandable.expanded = row == tableView.selectedRow;
+        
+        NSNumber *favorited = self.favoriteStateOverrides[status.originalStatus.identity];
+        if (favorited) {
+            [expandable setFavoriteState:favorited.boolValue];
+        } else {
+            [expandable setFavoriteState:status.favourited];
+        }
     }
     return view;
 }
@@ -540,6 +574,8 @@
     return YES;
 }
 
+#pragma mark - Actions
+
 - (IBAction)reply:(id)sender {
     NSInteger row = [self targetRowInAction:sender];
     if (row < 0) {
@@ -562,13 +598,7 @@
     }
     
     DONStatus *status = self.statuses[row];
-    [App.client favoriteStatus:status.identity
-                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Success favorite! : %@", status.identity);
-    }
-                       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-        WriteAFNetworkingErrorToLog(error);
-    }];
+    [self favoriteStatus:status];
 }
 
 - (IBAction)boost:(id)sender {
@@ -597,6 +627,7 @@
     [App.client favoriteStatus:status.identity
                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"Success favorite! : %@", status.identity);
+        [self didUpdateFavoriteState:YES forStatusID:status.originalStatus.identity];
     }
                        failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         WriteAFNetworkingErrorToLog(error);

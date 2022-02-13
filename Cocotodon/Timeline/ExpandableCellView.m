@@ -94,6 +94,22 @@
     [self.expandedText.textStorage setAttributedString:mutable];
 }
 
+- (void)setFavoriteState:(BOOL)state {
+    if (state) {
+        self.favoriteButton.image = [NSImage imageWithSystemSymbolName:@"star.fill" accessibilityDescription:nil];
+        self.favoriteButton.contentTintColor = NSColor.systemYellowColor;
+    } else {
+        self.favoriteButton.image = [NSImage imageWithSystemSymbolName:@"star" accessibilityDescription:nil];
+        self.favoriteButton.contentTintColor = NSColor.tertiaryLabelColor;
+    }
+}
+
+#pragma mark - Actions
+
+- (IBAction)favorite:(id)sender {
+    [self.favoriteTarget performSelector:@selector(favoriteStatus:) withObject:self.status];
+}
+
 #pragma mark - Overrides
 
 - (void)awakeFromNib {
@@ -200,7 +216,7 @@
     }
     [NSLayoutConstraint activateConstraints:@[
         [target.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:2],
-        [target.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-2],
+        [target.trailingAnchor constraintEqualToAnchor:self.favoriteButton.leadingAnchor constant:-2],
         [target.topAnchor constraintEqualToAnchor:self.topAnchor constant:4],
         [target.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-4],
     ]];

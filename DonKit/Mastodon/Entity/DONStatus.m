@@ -22,6 +22,7 @@
         @"mediaAttachments": @"media_attachments",
         @"emojis": @"emojis",
         @"poll": @"poll",
+        @"favourited": @"favourited",
     };
 }
 

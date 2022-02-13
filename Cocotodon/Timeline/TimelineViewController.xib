@@ -137,8 +137,29 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="4VY-t2-rF1">
+                                                        <rect key="frame" x="273" y="-7" width="18.5" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="18" id="eZh-QS-f0b"/>
+                                                            <constraint firstAttribute="height" constant="18" id="kua-RH-IRM"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="star" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Hoa-JP-M1k">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <color key="contentTintColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                        <connections>
+                                                            <action selector="favorite:" target="urN-l0-8Xd" id="ZC1-Y6-flr"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="4VY-t2-rF1" firstAttribute="top" secondItem="urN-l0-8Xd" secondAttribute="top" constant="2" id="6gB-Jn-znz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4VY-t2-rF1" secondAttribute="trailing" id="Gtk-Wf-UeD"/>
+                                                </constraints>
                                                 <connections>
+                                                    <outlet property="favoriteButton" destination="4VY-t2-rF1" id="qBO-UQ-pcl"/>
+                                                    <outlet property="favoriteTarget" destination="-2" id="9SC-Nf-iMb"/>
                                                     <outlet property="textField" destination="0i6-Zz-zh9" id="aa2-ua-d5Q"/>
                                                 </connections>
                                             </tableCellView>
@@ -179,4 +200,7 @@
             <point key="canvasLocation" x="193" y="-330"/>
         </menu>
     </objects>
+    <resources>
+        <image name="star" catalog="system" width="17" height="16"/>
+    </resources>
 </document>
