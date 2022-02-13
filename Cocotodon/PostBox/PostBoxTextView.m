@@ -99,9 +99,14 @@
 
 #pragma mark - Autocomplete support
 
+- (void)debounceComplete {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(complete:) object:nil];
+    [self performSelector:@selector(complete:) withObject:nil afterDelay:0.2];
+}
+
 - (void)insertText:(id)string replacementRange:(NSRange)replacementRange {
     [super insertText:string replacementRange:replacementRange];
-    [self complete:nil];
+    [self debounceComplete];
 }
 
 - (NSRange)rangeForUserCompletion {
