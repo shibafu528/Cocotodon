@@ -498,10 +498,30 @@
 
 - (AnyPromise *)autocompleteDidRequestCustomEmojiCandidatesForKeyword:(NSString *)keyword {
     NSString *query = [keyword substringFromIndex:1];
-    return [self customEmojis].then(^(NSArray<DONEmoji *> *emojis) {
-        // TODO: 重み付けをしないと実用的な順序で候補が出せない
-        NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:emojis.count];
+    return [self customEmojis].thenInBackground(^(NSArray<DONEmoji *> *emojis) {
+        NSMutableArray<DONEmoji *> *matches = [NSMutableArray array];
+        NSMutableDictionary<NSString *, NSNumber *> *scores = [NSMutableDictionary dictionary];
         [emojis enumerateObjectsUsingBlock:^(DONEmoji * _Nonnull emoji, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSRange range = [emoji.shortcode rangeOfString:query];
+            if (range.location != NSNotFound) {
+                NSUInteger score = range.location + (query.length - range.length);
+                [matches addObject:emoji];
+                scores[emoji.shortcode] = @(score);
+            }
+        }];
+        
+        [matches sortUsingComparator:^NSComparisonResult(DONEmoji * _Nonnull lsh, DONEmoji * _Nonnull rsh) {
+            NSUInteger lscore = scores[lsh.shortcode].unsignedIntegerValue;
+            NSUInteger rscore = scores[rsh.shortcode].unsignedIntegerValue;
+            if (lscore == rscore) {
+                return [lsh.shortcode compare:rsh.shortcode];
+            } else {
+                return lscore - rscore;
+            }
+        }];
+        
+        NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:matches.count];
+        [matches enumerateObjectsUsingBlock:^(DONEmoji * _Nonnull emoji, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([emoji.shortcode containsString:query]) {
                 [candidates addObject:[NSString stringWithFormat:@":%@:", emoji.shortcode]];
             }
