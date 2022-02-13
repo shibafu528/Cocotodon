@@ -269,6 +269,7 @@
 		5DA92D3427B7F2A4005C125D /* DONMastodonSearchResults.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonSearchResults.m; sourceTree = "<group>"; };
 		5DA92D3627B7F34D005C125D /* DONMastodonTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONMastodonTag.h; sourceTree = "<group>"; };
 		5DA92D3727B7F34D005C125D /* DONMastodonTag.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONMastodonTag.m; sourceTree = "<group>"; };
+		5DA92D3927B8C4A4005C125D /* PostBoxAttachmentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxAttachmentDelegate.h; sourceTree = "<group>"; };
 		5DAA595D266BAA000075C96D /* PostBoxTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxTextView.h; sourceTree = "<group>"; };
 		5DAA595E266BAA000075C96D /* PostBoxTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxTextView.m; sourceTree = "<group>"; };
 		5DAD6177267A484300514890 /* PostBoxSpoilerTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxSpoilerTextField.h; sourceTree = "<group>"; };
@@ -630,6 +631,7 @@
 				5DAA595D266BAA000075C96D /* PostBoxTextView.h */,
 				5DAA595E266BAA000075C96D /* PostBoxTextView.m */,
 				5DA92D2F27B7D916005C125D /* PostBoxAutocompleteDelegate.h */,
+				5DA92D3927B8C4A4005C125D /* PostBoxAttachmentDelegate.h */,
 			);
 			path = PostBox;
 			sourceTree = "<group>";

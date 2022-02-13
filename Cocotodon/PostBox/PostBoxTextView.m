@@ -79,14 +79,14 @@
                     NSString *extension = (url.pathExtension ?: @"").lowercaseString;
                     DONPictureFormat format = [extension isEqualToString:@"png"] ? DONPicturePNG : DONPictureJPEG;
                     DONPicture *picture = [[DONPicture alloc] initWithData:data format:format];
-                    [self.postbox attachPicture:picture];
+                    [self.attachmentDelegate attachPicture:picture];
                 } else {
                     // NSImage
                     NSImage *image = obj;
                     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:image.TIFFRepresentation];
                     NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
                     DONPicture *picture = [[DONPicture alloc] initWithData:data format:DONPicturePNG];
-                    [self.postbox attachPicture:picture];
+                    [self.attachmentDelegate attachPicture:picture];
                 }
             }];
             

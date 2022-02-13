@@ -110,8 +110,8 @@ DQ
                                             <bool key="NSContinuouslyUpdatesValue" value="YES"/>
                                         </dictionary>
                                     </binding>
+                                    <outlet property="attachmentDelegate" destination="-2" id="N24-t5-yvI"/>
                                     <outlet property="autocompleteDelegate" destination="-2" id="Xg3-qd-6Iv"/>
-                                    <outlet property="postbox" destination="-2" id="keg-DT-GXA"/>
                                 </connections>
                             </textView>
                         </subviews>
