@@ -9,6 +9,7 @@
 
 @property (nonatomic, copy) AnyPromise* (^timelineReloader)(TimelineViewController *vc);
 @property (nonatomic, copy) DONWebSocketStreaming* (^streamingInitiator)(id<DONStreamingEventDelegate> vc);
+@property (nonatomic) BOOL dismissNotification;
 
 - (IBAction)reply:(id)sender;
 - (IBAction)favorite:(id)sender;

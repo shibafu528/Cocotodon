@@ -155,6 +155,7 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
         homeLocalVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
             return [App.client streamingViaWebsocketSubscribeChannels:@[DONStreamingChannelUser, DONStreamingChannelPublicLocal] delegate:vc];
         };
+        homeLocalVC.dismissNotification = YES;
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeLocalVC label:@"ホーム+ローカル"]];
         
         TimelineViewController *federatedVC = [[TimelineViewController alloc] init];

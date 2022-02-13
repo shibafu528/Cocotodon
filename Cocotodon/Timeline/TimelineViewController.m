@@ -124,6 +124,9 @@
 }
 
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
+    if (self.dismissNotification) {
+        return;
+    }
     __auto_type *content = [UNMutableNotificationContent new];
     switch (notification.type) {
         case DONMastodonNotificationFollowType:
