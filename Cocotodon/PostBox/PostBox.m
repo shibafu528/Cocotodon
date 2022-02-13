@@ -17,6 +17,8 @@
 @property (nonatomic) PostBoxLayoutManagerDelegatee *layoutManagerDelegatee;
 @property (nonatomic) MRBPin *commands;
 @property (nonatomic) NSTimer *flashMessageTimer;
+@property (nonatomic) NSArray<DONEmoji *> *customEmojiCache;
+@property (nonatomic) AnyPromise *customEmojiPromise;
 
 @end
 
@@ -443,7 +445,7 @@
             promise = [self autocompleteDidRequestHashtagCandidatesForKeyword:keyword];
             break;
         case ':': // emoji shortcode
-            // TODO: 気が向いたら実装する
+            promise = [self autocompleteDidRequestCustomEmojiCandidatesForKeyword:keyword];
             break;
     }
     if (promise) {
@@ -492,6 +494,52 @@
             resolver(candidates);
         }];
     }];
+}
+
+- (AnyPromise *)autocompleteDidRequestCustomEmojiCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    return [self customEmojis].then(^(NSArray<DONEmoji *> *emojis) {
+        // TODO: 重み付けをしないと実用的な順序で候補が出せない
+        NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:emojis.count];
+        [emojis enumerateObjectsUsingBlock:^(DONEmoji * _Nonnull emoji, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([emoji.shortcode containsString:query]) {
+                [candidates addObject:[NSString stringWithFormat:@":%@:", emoji.shortcode]];
+            }
+        }];
+        return candidates;
+    });
+}
+
+- (AnyPromise *)customEmojis {
+    NSArray<DONEmoji *> *cache = self.customEmojiCache;
+    if (cache) {
+        return [AnyPromise promiseWithValue:cache];
+    }
+    
+    AnyPromise *previousPromise = self.customEmojiPromise;
+    if (previousPromise) {
+        return previousPromise;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client customEmojisWithCompletion:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONEmoji *> * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            resolver(results);
+        }];
+    }].then(^(NSArray<DONEmoji *> *results) {
+        __strong typeof(self) strongSelf = weakSelf;
+        if (strongSelf) {
+            strongSelf.customEmojiPromise = nil;
+            strongSelf.customEmojiCache = results;
+        }
+        return results;
+    });
+    self.customEmojiPromise = promise;
+    return promise;
 }
 
 @end
