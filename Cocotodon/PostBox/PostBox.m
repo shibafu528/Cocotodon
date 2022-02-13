@@ -433,32 +433,63 @@
         return;
     }
     NSLog(@"autocompleteDidRequestCandidatesForKeyword:%@", keyword);
+    AnyPromise *promise = nil;
     switch ([keyword characterAtIndex:0]) {
-        case '@': // name
+        case '@': // account name
+            promise = [self autocompleteDidRequestAccountCandidatesForKeyword:keyword];
             break;
         case '#': // hashtag
-            [self autocompleteDidRequestHashtagCandidatesForKeyword:keyword];
+            promise = [self autocompleteDidRequestHashtagCandidatesForKeyword:keyword];
             break;
         case ':': // emoji shortcode
+            // TODO: 気が向いたら実装する
             break;
+    }
+    if (promise) {
+        promise.then(^(NSArray<NSString *> *candidates) {
+            // FIXME: 依存関係がトチ狂っているせいで一旦こうせざるを得ない
+            [self.tootInput performSelector:@selector(setCandidates:forKeyword:) withObject:candidates withObject:keyword];
+        }).catch(^(NSError *error) {
+            WriteAFNetworkingErrorToLog(error);
+        });
     }
 }
 
-- (void)autocompleteDidRequestHashtagCandidatesForKeyword:(NSString *)keyword {
+- (AnyPromise *)autocompleteDidRequestAccountCandidatesForKeyword:(NSString *)keyword {
     NSString *query = [keyword substringFromIndex:1];
-    [App.client searchWithQuery:query
-                requiresResolve:NO
-                     completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
-        if (error) {
-            WriteAFNetworkingErrorToLog(error);
-            return;
-        }
-        NSMutableArray *tags = [NSMutableArray arrayWithCapacity:results.hashtags.count];
-        [results.hashtags enumerateObjectsUsingBlock:^(DONMastodonTag * _Nonnull tag, NSUInteger idx, BOOL * _Nonnull stop) {
-            [tags addObject:[@"#" stringByAppendingString:tag.name]];
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client searchWithQuery:query
+                    requiresResolve:NO
+                         completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:results.accounts.count];
+            [results.accounts enumerateObjectsUsingBlock:^(DONMastodonAccount * _Nonnull account, NSUInteger idx, BOOL * _Nonnull stop) {
+                [candidates addObject:[@"@" stringByAppendingString:account.acct]];
+            }];
+            resolver(candidates);
         }];
-        // FIXME: 依存関係がトチ狂っているせいで一旦こうせざるを得ない
-        [self.tootInput performSelector:@selector(setCandidates:forKeyword:) withObject:tags withObject:keyword];
+    }];
+}
+
+- (AnyPromise *)autocompleteDidRequestHashtagCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client searchWithQuery:query
+                    requiresResolve:NO
+                         completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:results.hashtags.count];
+            [results.hashtags enumerateObjectsUsingBlock:^(DONMastodonTag * _Nonnull tag, NSUInteger idx, BOOL * _Nonnull stop) {
+                [candidates addObject:[@"#" stringByAppendingString:tag.name]];
+            }];
+            resolver(candidates);
+        }];
     }];
 }
 
