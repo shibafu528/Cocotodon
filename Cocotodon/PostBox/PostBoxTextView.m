@@ -5,7 +5,35 @@
 #import "PostBoxTextView.h"
 #import "DONPicture.h"
 
+@interface PostBoxTextView () <PostBoxAutocompletable>
+
+@property (nonatomic, copy) NSString *autocompleteKeyword;
+@property (nonatomic, copy) NSArray<NSString *> *autocompleteCandidates;
+
+@end
+
 @implementation PostBoxTextView
+
+- (instancetype)initWithFrame:(NSRect)frameRect textContainer:(NSTextContainer *)container {
+    if (self = [super initWithFrame:frameRect textContainer:container]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    if (self = [super initWithCoder:coder]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize {
+    _autocompleteKeyword = nil;
+    _autocompleteCandidates = nil;
+}
+
+#pragma mark - Paste support
 
 - (NSArray<NSPasteboardType> *)readablePasteboardTypes {
     return [[super readablePasteboardTypes] arrayByAddingObject:NSPasteboardTypePNG];
@@ -51,14 +79,14 @@
                     NSString *extension = (url.pathExtension ?: @"").lowercaseString;
                     DONPictureFormat format = [extension isEqualToString:@"png"] ? DONPicturePNG : DONPictureJPEG;
                     DONPicture *picture = [[DONPicture alloc] initWithData:data format:format];
-                    [self.postbox attachPicture:picture];
+                    [self.attachmentDelegate attachPicture:picture];
                 } else {
                     // NSImage
                     NSImage *image = obj;
                     NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:image.TIFFRepresentation];
                     NSData *data = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{}];
                     DONPicture *picture = [[DONPicture alloc] initWithData:data format:DONPicturePNG];
-                    [self.postbox attachPicture:picture];
+                    [self.attachmentDelegate attachPicture:picture];
                 }
             }];
             
@@ -67,6 +95,89 @@
     }
     
     return NO;
+}
+
+#pragma mark - Autocomplete support
+
+- (void)debounceComplete {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(complete:) object:nil];
+    [self performSelector:@selector(complete:) withObject:nil afterDelay:0.2];
+}
+
+- (void)insertText:(id)string replacementRange:(NSRange)replacementRange {
+    [super insertText:string replacementRange:replacementRange];
+    [self debounceComplete];
+}
+
+- (NSRange)rangeForUserCompletion {
+    NSString *input = self.string;
+    NSUInteger length = input.length;
+    if (length < 1) {
+        return NSMakeRange(NSNotFound, 0);
+    }
+    
+    NSUInteger location = self.selectedRange.location;
+    NSRange anchor = [input rangeOfCharacterFromSet:NSCharacterSet.whitespaceAndNewlineCharacterSet
+                                            options:NSBackwardsSearch
+                                              range:NSMakeRange(0, location)];
+    NSUInteger lead = anchor.location == NSNotFound ? 0 : anchor.location + 1;
+    if (lead >= length || lead == location) {
+        return NSMakeRange(NSNotFound, 0);
+    }
+    
+    unichar leadchar = [input characterAtIndex:lead];
+    switch (leadchar) {
+        case '#':
+        case '@':
+        case ':': {
+            NSRange complementRange = NSMakeRange(lead, location - lead);
+            NSString *substring = [input substringWithRange:complementRange];
+            NSLog(@"-[PostBoxTextView rangeForUserCompletion] (%lu, %lu) %@", complementRange.location, complementRange.length, substring);
+            if (![self.autocompleteKeyword isEqualToString:substring]) {
+                self.autocompleteKeyword = substring;
+                self.autocompleteCandidates = nil;
+                [self.autocompleteDelegate autocomplete:self didRequestCandidatesForKeyword:substring];
+            }
+            return complementRange;
+        }
+    }
+    
+    return NSMakeRange(NSNotFound, 0);
+}
+
+- (NSArray<NSString *> *)completionsForPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
+    // 0文字のrangeに対して候補を出すことは無い
+    if (charRange.length == 0) {
+        return nil;
+    }
+    // 候補の取得を要求した時点と指している文字列が変わっている場合、現在持っている候補データは使いものにならない可能性がある
+    NSString *substring = [self.string substringWithRange:charRange];
+    if (![substring isEqualToString:self.autocompleteKeyword]) {
+        return nil;
+    }
+    return self.autocompleteCandidates;
+}
+
+- (void)insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag {
+    if (flag) {
+        switch (movement) {
+            case NSTextMovementReturn:
+            case NSTextMovementTab:
+                [self insertText:[word stringByAppendingString:@" "] replacementRange:charRange];
+                break;
+        }
+    }
+}
+
+- (void)setCandidates:(NSArray<NSString *> *)candidates forKeyword:(NSString*)keyword {
+    // 候補の取得を要求した時点と指している文字列が変わっている場合、候補データとして採用すべきでない
+    if (![self.autocompleteKeyword isEqualToString:keyword]) {
+        return;
+    }
+    self.autocompleteCandidates = candidates;
+    if (candidates.count) {
+        [self complete:nil];
+    }
 }
 
 @end

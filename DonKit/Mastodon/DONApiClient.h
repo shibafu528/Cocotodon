@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_END
 
 #import "API/DONApiClient+Accounts.h"
 #import "API/DONApiClient+Apps.h"
+#import "API/DONApiClient+Instance.h"
+#import "API/DONApiClient+Search.h"
 #import "API/DONApiClient+Statuses.h"
 #import "API/DONApiClient+Timelines.h"
 #import "API/DONApiClient+Streaming.h"

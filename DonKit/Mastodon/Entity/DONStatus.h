@@ -6,6 +6,7 @@
 #import <Mantle/Mantle.h>
 #import "DONMastodonAccount.h"
 #import "DONMastodonAttachment.h"
+#import "DONStatusVisibility.h"
 #import "DONEmoji.h"
 #import "DONEmojiProvider.h"
 

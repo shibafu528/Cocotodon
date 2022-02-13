@@ -3,11 +3,12 @@
 //
 
 #import "PostBox.h"
+#import "PostBoxTextView.h"
 #import "PostBoxLayoutManagerDelegatee.h"
 
 @interface PostBox () <NSTextViewDelegate>
 
-@property (unsafe_unretained) IBOutlet NSTextView *tootInput;
+@property (unsafe_unretained) IBOutlet PostBoxTextView *tootInput;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
 @property (nonatomic, weak) IBOutlet NSButton *showSpoilerTextButton;
 @property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
@@ -16,6 +17,8 @@
 @property (nonatomic) PostBoxLayoutManagerDelegatee *layoutManagerDelegatee;
 @property (nonatomic) MRBPin *commands;
 @property (nonatomic) NSTimer *flashMessageTimer;
+@property (nonatomic) NSArray<DONEmoji *> *customEmojiCache;
+@property (nonatomic) AnyPromise *customEmojiPromise;
 
 @end
 
@@ -424,6 +427,139 @@
         return YES;
     }
     return NO;
+}
+
+#pragma mark - PostBoxAutocompleteDelegate
+
+- (void)autocomplete:(id<PostBoxAutocompletable>)autocompletable didRequestCandidatesForKeyword:(NSString *)keyword {
+    if (keyword.length <= 1) {
+        return;
+    }
+    NSLog(@"autocomplete:didRequestCandidatesForKeyword:%@", keyword);
+    AnyPromise *promise = nil;
+    switch ([keyword characterAtIndex:0]) {
+        case '@': // account name
+            promise = [self autocompleteDidRequestAccountCandidatesForKeyword:keyword];
+            break;
+        case '#': // hashtag
+            promise = [self autocompleteDidRequestHashtagCandidatesForKeyword:keyword];
+            break;
+        case ':': // emoji shortcode
+            promise = [self autocompleteDidRequestCustomEmojiCandidatesForKeyword:keyword];
+            break;
+    }
+    if (promise) {
+        __weak typeof(autocompletable) weakAutocompletable = autocompletable;
+        promise.then(^(NSArray<NSString *> *candidates) {
+            [weakAutocompletable setCandidates:candidates forKeyword:keyword];
+        }).catch(^(NSError *error) {
+            WriteAFNetworkingErrorToLog(error);
+        });
+    }
+}
+
+- (AnyPromise *)autocompleteDidRequestAccountCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client searchWithQuery:query
+                    requiresResolve:NO
+                         completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:results.accounts.count];
+            [results.accounts enumerateObjectsUsingBlock:^(DONMastodonAccount * _Nonnull account, NSUInteger idx, BOOL * _Nonnull stop) {
+                [candidates addObject:[@"@" stringByAppendingString:account.acct]];
+            }];
+            resolver(candidates);
+        }];
+    }];
+}
+
+- (AnyPromise *)autocompleteDidRequestHashtagCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client searchWithQuery:query
+                    requiresResolve:NO
+                         completion:^(NSURLSessionDataTask * _Nonnull task, DONMastodonSearchResults * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:results.hashtags.count];
+            [results.hashtags enumerateObjectsUsingBlock:^(DONMastodonTag * _Nonnull tag, NSUInteger idx, BOOL * _Nonnull stop) {
+                [candidates addObject:[@"#" stringByAppendingString:tag.name]];
+            }];
+            resolver(candidates);
+        }];
+    }];
+}
+
+- (AnyPromise *)autocompleteDidRequestCustomEmojiCandidatesForKeyword:(NSString *)keyword {
+    NSString *query = [keyword substringFromIndex:1];
+    return [self customEmojis].thenInBackground(^(NSArray<DONEmoji *> *emojis) {
+        NSMutableArray<DONEmoji *> *matches = [NSMutableArray array];
+        NSMutableDictionary<NSString *, NSNumber *> *scores = [NSMutableDictionary dictionary];
+        [emojis enumerateObjectsUsingBlock:^(DONEmoji * _Nonnull emoji, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSRange range = [emoji.shortcode rangeOfString:query];
+            if (range.location != NSNotFound) {
+                NSUInteger score = range.location + (query.length - range.length);
+                [matches addObject:emoji];
+                scores[emoji.shortcode] = @(score);
+            }
+        }];
+        
+        [matches sortUsingComparator:^NSComparisonResult(DONEmoji * _Nonnull lsh, DONEmoji * _Nonnull rsh) {
+            NSUInteger lscore = scores[lsh.shortcode].unsignedIntegerValue;
+            NSUInteger rscore = scores[rsh.shortcode].unsignedIntegerValue;
+            if (lscore == rscore) {
+                return [lsh.shortcode compare:rsh.shortcode];
+            } else {
+                return lscore - rscore;
+            }
+        }];
+        
+        NSMutableArray<NSString *> *candidates = [NSMutableArray arrayWithCapacity:matches.count];
+        [matches enumerateObjectsUsingBlock:^(DONEmoji * _Nonnull emoji, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([emoji.shortcode containsString:query]) {
+                [candidates addObject:[NSString stringWithFormat:@":%@:", emoji.shortcode]];
+            }
+        }];
+        return candidates;
+    });
+}
+
+- (AnyPromise *)customEmojis {
+    NSArray<DONEmoji *> *cache = self.customEmojiCache;
+    if (cache) {
+        return [AnyPromise promiseWithValue:cache];
+    }
+    
+    AnyPromise *previousPromise = self.customEmojiPromise;
+    if (previousPromise) {
+        return previousPromise;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    AnyPromise *promise = [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
+        [App.client customEmojisWithCompletion:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONEmoji *> * _Nullable results, NSError * _Nullable error) {
+            if (error) {
+                resolver(error);
+                return;
+            }
+            resolver(results);
+        }];
+    }].then(^(NSArray<DONEmoji *> *results) {
+        __strong typeof(self) strongSelf = weakSelf;
+        if (strongSelf) {
+            strongSelf.customEmojiPromise = nil;
+            strongSelf.customEmojiCache = results;
+        }
+        return results;
+    });
+    self.customEmojiPromise = promise;
+    return promise;
 }
 
 @end

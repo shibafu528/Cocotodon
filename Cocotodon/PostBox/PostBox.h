@@ -4,6 +4,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PostBoxDraft.h"
+#import "PostBoxAttachmentDelegate.h"
+#import "PostBoxAutocompleteDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,7 +15,7 @@ typedef NS_ENUM(NSUInteger, PostBoxBorderStyle) {
     PostBoxBorderStyleBottomLine,
 };
 
-@interface PostBox : NSControl
+@interface PostBox : NSControl <PostBoxAttachmentDelegate, PostBoxAutocompleteDelegate>
 
 @property (nonatomic) PostBoxDraft *draft;
 @property (nonatomic) IBInspectable PostBoxBorderStyle borderStyle;
