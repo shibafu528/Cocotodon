@@ -7,9 +7,8 @@
 
 @interface PostBoxTextView ()
 
-@property (nonatomic) NSRange complementRange;
-@property (nonatomic, copy) NSString *complementKeyword;
-@property (nonatomic, readonly) NSArray<NSString *> *candidates;
+@property (nonatomic, copy) NSString *autocompleteKeyword;
+@property (nonatomic, readonly) NSArray<NSString *> *autocompleteCandidates;
 
 @end
 
@@ -30,8 +29,8 @@
 }
 
 - (void)initialize {
-    _complementRange = NSMakeRange(NSNotFound, 0);
-    _complementKeyword = nil;
+    _autocompleteKeyword = nil;
+    _autocompleteCandidates = nil;
 }
 
 #pragma mark - Paste support
@@ -100,18 +99,16 @@
 
 #pragma mark - Autocomplete support
 
-- (void)keyUp:(NSEvent *)event {
-    NSLog(@"-[PostBoxTextView keyUp:]");
-    [super keyUp:event];
-    if (![event.characters stringByTrimmingCharactersInSet:NSCharacterSet.controlCharacterSet].length) {
-        NSLog(@"-[PostBoxTextView keyUp:] cancel");
-        return;
-    }
-    
+- (void)insertText:(id)string replacementRange:(NSRange)replacementRange {
+    [super insertText:string replacementRange:replacementRange];
+    [self complete:nil];
+}
+
+- (NSRange)rangeForUserCompletion {
     NSString *input = self.string;
     NSUInteger length = input.length;
     if (length < 1) {
-        return;
+        return NSMakeRange(NSNotFound, 0);
     }
     
     NSUInteger location = self.selectedRange.location;
@@ -120,7 +117,7 @@
                                               range:NSMakeRange(0, location)];
     NSUInteger lead = anchor.location == NSNotFound ? 0 : anchor.location + 1;
     if (lead >= length || lead == location) {
-        return;
+        return NSMakeRange(NSNotFound, 0);
     }
     
     unichar leadchar = [input characterAtIndex:lead];
@@ -130,38 +127,34 @@
         case ':': {
             NSRange complementRange = NSMakeRange(lead, location - lead);
             NSString *substring = [input substringWithRange:complementRange];
-            NSLog(@"(%lu, %lu) %@", complementRange.location, complementRange.length, substring);
-            if (!NSEqualRanges(self.complementRange, complementRange) || ![self.complementKeyword isEqualToString:substring]) {
-                self.complementRange = complementRange;
-                self.complementKeyword = substring;
+            NSLog(@"-[PostBoxTextView rangeForUserCompletion] (%lu, %lu) %@", complementRange.location, complementRange.length, substring);
+            if (![self.autocompleteKeyword isEqualToString:substring]) {
+                self.autocompleteKeyword = substring;
+                _autocompleteCandidates = nil;
                 [self.autocompleteDelegate autocompleteDidRequestCandidatesForKeyword:substring];
             }
-            break;
+            return complementRange;
         }
     }
-}
-
-- (NSRange)rangeForUserCompletion {
-    return self.complementRange;
+    
+    return NSMakeRange(NSNotFound, 0);
 }
 
 - (NSArray<NSString *> *)completionsForPartialWordRange:(NSRange)charRange indexOfSelectedItem:(NSInteger *)index {
-    NSLog(@"-[PostBoxTextView completionsForPartialWordRange:indexOfSelectedItem:]");
-    if (!NSEqualRanges(charRange, self.complementRange)) {
-        // なにかがおかしい
-        return [super completionsForPartialWordRange:charRange indexOfSelectedItem:index];
+    // 0文字のrangeに対して候補を出すことは無い
+    if (charRange.length == 0) {
+        return nil;
     }
-    if (self.candidates.count) {
-        return self.candidates;
-    } else {
-        return @[];
+    // 候補の取得を要求した時点と指している文字列が変わっている場合、現在持っている候補データは使いものにならない可能性がある
+    NSString *substring = [self.string substringWithRange:charRange];
+    if (![substring isEqualToString:self.autocompleteKeyword]) {
+        return nil;
     }
+    return self.autocompleteCandidates;
 }
 
 - (void)insertCompletion:(NSString *)word forPartialWordRange:(NSRange)charRange movement:(NSInteger)movement isFinal:(BOOL)flag {
-    NSLog(@"-[PostBoxTextView insertCompletion:forPartialWordRange:movement:isFinal:]");
     if (flag) {
-        [self cancelCompletion];
         switch (movement) {
             case NSTextMovementReturn:
             case NSTextMovementTab:
@@ -172,23 +165,14 @@
 }
 
 - (void)setCandidates:(NSArray<NSString *> *)candidates forKeyword:(NSString*)keyword {
-    NSLog(@"-[PostBoxTextView setCandidates:forKeyword:]");
-    if (self.complementRange.location == NSNotFound || ![self.complementKeyword isEqualToString:keyword]) {
+    // 候補の取得を要求した時点と指している文字列が変わっている場合、候補データとして採用すべきでない
+    if (![self.autocompleteKeyword isEqualToString:keyword]) {
         return;
     }
-    _candidates = [candidates copy];
+    _autocompleteCandidates = [candidates copy];
     if (candidates.count) {
         [self complete:nil];
-    } else {
-        [self cancelCompletion];
     }
-}
-
-- (void)cancelCompletion {
-    NSLog(@"-[PostBoxTextView cancelCompletion]");
-    self.complementRange = NSMakeRange(NSNotFound, 0);
-    self.complementKeyword = nil;
-    _candidates = nil;
 }
 
 @end
