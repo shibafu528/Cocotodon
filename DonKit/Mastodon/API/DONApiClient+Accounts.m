@@ -46,4 +46,44 @@
                       failure:failure];
 }
 
+- (void)favoritedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion {
+    AFHTTPSessionManager *manager = self.manager;
+    [manager GET:@"/api/v1/favourites"
+      parameters:nil
+         headers:self.defaultHeaders
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            NSError *error;
+            NSArray<DONStatus*> *results = [MTLJSONAdapter modelsOfClass:DONStatus.class fromJSONArray:responseObject error:&error];
+            completion(task, results, error);
+        }
+    }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (completion) {
+            completion(task, nil, error);
+        }
+    }];
+}
+
+- (void)bookmarkedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion {
+    AFHTTPSessionManager *manager = self.manager;
+    [manager GET:@"/api/v1/bookmarks"
+      parameters:nil
+         headers:self.defaultHeaders
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            NSError *error;
+            NSArray<DONStatus*> *results = [MTLJSONAdapter modelsOfClass:DONStatus.class fromJSONArray:responseObject error:&error];
+            completion(task, results, error);
+        }
+    }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (completion) {
+            completion(task, nil, error);
+        }
+    }];
+}
+
 @end

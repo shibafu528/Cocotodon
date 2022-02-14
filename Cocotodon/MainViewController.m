@@ -174,6 +174,22 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
             return [App.client publicStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:federatedVC label:@"連合"]];
+        
+        TimelineViewController *favoritedVC = [[TimelineViewController alloc] init];
+        favoritedVC.timelineReloader = ^AnyPromise *(TimelineViewController *vc) {
+            return DONPromisify(^(DONPromisifyCompletionHandler _Nonnull completionHandler) {
+                [App.client favoritedStatusesWithCompletion:completionHandler];
+            });
+        };
+        [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:favoritedVC label:@"お気に入り"]];
+        
+        TimelineViewController *bookmarkedVC = [[TimelineViewController alloc] init];
+        bookmarkedVC.timelineReloader = ^AnyPromise *(TimelineViewController *vc) {
+            return DONPromisify(^(DONPromisifyCompletionHandler _Nonnull completionHandler) {
+                [App.client bookmarkedStatusesWithCompletion:completionHandler];
+            });
+        };
+        [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:bookmarkedVC label:@"ブックマーク"]];
     }
 }
 

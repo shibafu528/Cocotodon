@@ -28,6 +28,7 @@
 
 #import "DONApiClient.h"
 #import "DONUtils.h"
+#import "DONPromise.h"
 #import "NSString+DONExtension.h"
 #import "NSString+ReplaceLineBreaks.h"
 #import "NSView+NibLoader.h"
