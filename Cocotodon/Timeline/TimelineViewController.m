@@ -122,15 +122,19 @@
     }];
 }
 
-- (void)didUpdateFavoriteState:(BOOL)favorited forStatusID:(NSString *)statusID {
-    self.favoriteStateOverrides[statusID] = @(favorited);
+- (NSIndexSet *)indexesForStatusID:(NSString *)statusID {
     NSMutableIndexSet *rowIndexes = [NSMutableIndexSet indexSet];
     [self.statuses enumerateObjectsUsingBlock:^(DONStatus * _Nonnull status, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([status.originalStatus.identity isEqualToString:statusID]) {
             [rowIndexes addIndex:idx];
         }
     }];
-    [self.tableView reloadDataForRowIndexes:rowIndexes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
+    return rowIndexes;
+}
+
+- (void)didUpdateFavoriteState:(BOOL)favorited forStatusID:(NSString *)statusID {
+    self.favoriteStateOverrides[statusID] = @(favorited);
+    [self.tableView reloadDataForRowIndexes:[self indexesForStatusID:statusID] columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
 }
 
 #pragma mark - DONStreamingEventDelegate
@@ -153,14 +157,8 @@
 
 - (void)donStreamingDidReceiveDelete:(NSString *)statusID {
     [self.deletedStatusIDs addObject:statusID];
-    NSMutableIndexSet *rowIndexes = [NSMutableIndexSet indexSet];
-    [self.statuses enumerateObjectsUsingBlock:^(DONStatus * _Nonnull status, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([status.originalStatus.identity isEqualToString:statusID]) {
-            [rowIndexes addIndex:idx];
-        }
-    }];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadDataForRowIndexes:rowIndexes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
+        [self.tableView reloadDataForRowIndexes:[self indexesForStatusID:statusID] columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
     });
 }
 
