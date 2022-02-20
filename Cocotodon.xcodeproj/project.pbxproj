@@ -436,6 +436,19 @@
 			path = mrblib;
 			sourceTree = "<group>";
 		};
+		5D893F0A27C2AD0F00DE0384 /* Streaming */ = {
+			isa = PBXGroup;
+			children = (
+				5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */,
+				5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */,
+				5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */,
+				5D6EFB6327B64D5C004A5FBF /* DONAutoReconnectStreaming.h */,
+				5D6EFB6427B64D5C004A5FBF /* DONAutoReconnectStreaming.m */,
+				5D6EFB6627B65097004A5FBF /* DONAutoReconnectStreamingDelegate.h */,
+			);
+			path = Streaming;
+			sourceTree = "<group>";
+		};
 		5D8A4C9625DD494E0073D733 /* LXHTMLParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,12 +487,7 @@
 				5D9486FD25173247009066C3 /* DONStatusVisibility.h */,
 				5D94870725173247009066C3 /* DONStatusVisibility.m */,
 				5D9486F625173247009066C3 /* Entity */,
-				5DA74AAF2518F9BB00A1CF38 /* DONWebSocketStreaming.h */,
-				5DA74AB02518F9BB00A1CF38 /* DONWebSocketStreaming.m */,
-				5D45116F2519010E006CA130 /* DONStreamingEventDelegate.h */,
-				5D6EFB6327B64D5C004A5FBF /* DONAutoReconnectStreaming.h */,
-				5D6EFB6427B64D5C004A5FBF /* DONAutoReconnectStreaming.m */,
-				5D6EFB6627B65097004A5FBF /* DONAutoReconnectStreamingDelegate.h */,
+				5D893F0A27C2AD0F00DE0384 /* Streaming */,
 			);
 			path = Mastodon;
 			sourceTree = "<group>";
