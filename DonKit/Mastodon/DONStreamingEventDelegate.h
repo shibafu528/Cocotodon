@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)donStreamingDidReceiveUpdate:(DONStatus*)status;
 
+- (void)donStreamingDidReceiveDelete:(NSString*)statusID;
+
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification*)notification;
 
 - (void)donStreamingDidFailWithError:(NSError*)error;

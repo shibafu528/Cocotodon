@@ -32,6 +32,7 @@
 @property (nonatomic) bool presentationMode;
 
 @property (nonatomic) NSMutableDictionary<NSString *, NSNumber *> *favoriteStateOverrides;
+@property (nonatomic) NSMutableSet<NSString *> *deletedStatusIDs;
 
 @end
 
@@ -50,6 +51,7 @@
     self.prevSelection = -1;
     self.presentationMode = NO;
     self.favoriteStateOverrides = [NSMutableDictionary dictionary];
+    self.deletedStatusIDs = [NSMutableSet set];
 
     if (self.streamingInitiator) {
         self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
@@ -146,6 +148,19 @@
         if (self.prevSelection != -1) {
             self.prevSelection++;
         }
+    });
+}
+
+- (void)donStreamingDidReceiveDelete:(NSString *)statusID {
+    [self.deletedStatusIDs addObject:statusID];
+    NSMutableIndexSet *rowIndexes = [NSMutableIndexSet indexSet];
+    [self.statuses enumerateObjectsUsingBlock:^(DONStatus * _Nonnull status, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([status.originalStatus.identity isEqualToString:statusID]) {
+            [rowIndexes addIndex:idx];
+        }
+    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadDataForRowIndexes:rowIndexes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
     });
 }
 
@@ -266,6 +281,11 @@
         }
         
         NSMutableString *indicators = [NSMutableString string];
+        if ([self.deletedStatusIDs containsObject:status.originalStatus.identity]) {
+            [indicators appendString:@"🗑"];
+            [summary addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, summary.length)];
+            [detail addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, detail.length)];
+        }
         if (status.originalStatus.mediaAttachments.count != 0) {
             [indicators appendString:@"🖼"];
         }

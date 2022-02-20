@@ -164,9 +164,8 @@
     [self.delegate donStreamingDidReceiveNotification:notify];
 }
 
-- (void)didReceiveDeletedID:(NSString*)payload {
-    // TODO: impl
-    NSLog(@"ws delete: %@", payload);
+- (void)didReceiveDeletedID:(NSString*)statusID {
+    [self.delegate donStreamingDidReceiveDelete:statusID];
 }
 
 - (void)didReceiveFiltersChangedNotice:(NSString*)payload {

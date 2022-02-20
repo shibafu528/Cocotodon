@@ -31,6 +31,10 @@
     [self.delegate donStreamingDidReceiveUpdate:status];
 }
 
+- (void)donStreamingDidReceiveDelete:(NSString *)statusID {
+    [self.delegate donStreamingDidReceiveDelete:statusID];
+}
+
 - (void)donStreamingDidReceiveNotification:(nonnull DONMastodonNotification *)notification {
     [self.delegate donStreamingDidReceiveNotification:notification];
 }
