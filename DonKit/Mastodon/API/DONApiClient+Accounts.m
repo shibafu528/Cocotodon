@@ -49,7 +49,7 @@
 - (void)favoritedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion {
     AFHTTPSessionManager *manager = self.manager;
     [manager GET:@"/api/v1/favourites"
-      parameters:nil
+      parameters:@{@"limit": @(100)}
          headers:self.defaultHeaders
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -69,7 +69,7 @@
 - (void)bookmarkedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion {
     AFHTTPSessionManager *manager = self.manager;
     [manager GET:@"/api/v1/bookmarks"
-      parameters:nil
+      parameters:@{@"limit": @(100)}
          headers:self.defaultHeaders
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
