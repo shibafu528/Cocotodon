@@ -4,13 +4,6 @@
 
 #import "TableCellViewInversionHelper.h"
 
-@interface TableCellViewInversionHelper ()
-
-@property (nonatomic, readonly) NSDictionary<NSAttributedStringKey, id> *linkNormalAttributes;
-@property (nonatomic, readonly) NSDictionary<NSAttributedStringKey, id> *linkEmphasizedAttributes;
-
-@end
-
 @implementation TableCellViewInversionHelper
 
 - (instancetype)init {

@@ -3,6 +3,7 @@
 //
 
 #import "ExpandableCellView.h"
+#import "TableCellViewInversionHelper.h"
 
 @interface ExpandableCellView ()
 
@@ -12,8 +13,7 @@
 @property (nonatomic) NSLayoutConstraint *attachmentsContainerTopSpacingConstraint;
 @property (nonatomic) NSLayoutConstraint *attachmentsContainerTopNonSpacingConstraint;
 
-@property (nonatomic) NSDictionary<NSAttributedStringKey, id> *linkNormalAttributes;
-@property (nonatomic) NSDictionary<NSAttributedStringKey, id> *linkEmphasizedAttributes;
+@property (nonatomic) TableCellViewInversionHelper *inversionHelper;
 
 @end
 
@@ -115,16 +115,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.linkNormalAttributes = @{
-        NSForegroundColorAttributeName: [NSColor controlTextColor],
-        NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
-        NSCursorAttributeName: [NSCursor pointingHandCursor]
-    };
-    self.linkEmphasizedAttributes = @{
-        NSForegroundColorAttributeName: [NSColor alternateSelectedControlTextColor],
-        NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle),
-        NSCursorAttributeName: [NSCursor pointingHandCursor]
-    };
+    self.inversionHelper = [[TableCellViewInversionHelper alloc] init];
     
     self.translatesAutoresizingMaskIntoConstraints = NO;
     self.textField.translatesAutoresizingMaskIntoConstraints = NO;
@@ -136,7 +127,7 @@
     self.expandedText.editable = NO;
     self.expandedText.drawsBackground = NO;
     self.expandedText.textContainer.lineFragmentPadding = 0;
-    self.expandedText.linkTextAttributes = self.linkNormalAttributes;
+    self.expandedText.linkTextAttributes = self.inversionHelper.linkNormalAttributes;
     self.expandedText.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.expandedContainer = [[NSView alloc] initWithFrame:CGRectZero];
@@ -179,19 +170,8 @@
 }
 
 - (void)setBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
-    // https://stackoverflow.com/q/9149138
-    // https://stackoverflow.com/q/29859224
     [super setBackgroundStyle:backgroundStyle];
-    switch (backgroundStyle) {
-        case NSBackgroundStyleNormal:
-            self.expandedText.textColor = [NSColor controlTextColor];
-            self.expandedText.linkTextAttributes = self.linkNormalAttributes;
-            break;
-        case NSBackgroundStyleEmphasized:
-            self.expandedText.textColor = [NSColor alternateSelectedControlTextColor];
-            self.expandedText.linkTextAttributes = self.linkEmphasizedAttributes;
-            break;
-    }
+    [self.inversionHelper setBackgroundStyle:backgroundStyle toTextView:self.expandedText];
 }
 
 #pragma mark - Private
