@@ -6,6 +6,7 @@
 #import "PostBox.h"
 #import "NSString+ReplaceLineBreaks.h"
 #import "TimelineViewController.h"
+#import "NotificationViewController.h"
 
 static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DONStatus *> *tl1) {
     if (!tl0.count && !tl1.count) {
@@ -174,6 +175,9 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
             return [App.client publicStreamingViaWebSocketWithDelegate:vc];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:federatedVC label:@"連合"]];
+        
+        NotificationViewController *notifyVC = [[NotificationViewController alloc] init];
+        [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:notifyVC label:@"通知"]];
         
         TimelineViewController *favoritedVC = [[TimelineViewController alloc] init];
         favoritedVC.timelineReloader = ^AnyPromise *(TimelineViewController *vc) {
