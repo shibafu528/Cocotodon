@@ -9,7 +9,7 @@
 - (void)notificationsWithCompletion:(DONApiNotificationsCompletionHandler)completion {
     AFHTTPSessionManager *manager = self.manager;
     [manager GET:@"/api/v1/notifications"
-      parameters:@{@"limit": @(100)}
+      parameters:@{@"limit": @(30)}
          headers:self.defaultHeaders
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
