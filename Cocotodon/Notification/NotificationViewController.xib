@@ -94,6 +94,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <action trigger="doubleAction" selector="openThread:" target="-2" id="4Jh-he-Puv"/>
                                     <outlet property="dataSource" destination="-2" id="gfZ-wA-bpF"/>
                                     <outlet property="delegate" destination="-2" id="b0B-ju-ojk"/>
                                 </connections>
@@ -101,7 +102,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="qAs-XG-BY9">
-                        <rect key="frame" x="1" y="119" width="223" height="15"/>
+                        <rect key="frame" x="1" y="256" width="478" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="MjT-68-uZJ">

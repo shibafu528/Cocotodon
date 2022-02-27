@@ -4,6 +4,7 @@
 
 #import "NotificationViewController.h"
 #import "NotificationCellView.h"
+#import "ThreadWindow.h"
 
 @interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -35,6 +36,15 @@
         strongSelf.notifications = results;
         [strongSelf.tableView reloadData];
     }];
+}
+
+/// イベント発生時に操作対象となっている行を判定し、行番号を返す
+- (NSInteger)targetRowInAction:(id)sender {
+    if ([sender isKindOfClass:NSMenuItem.class] && [((NSMenuItem*) sender).menu.identifier isEqualToString:@"context"]) {
+        return self.tableView.clickedRow;
+    } else {
+        return self.tableView.selectedRow;
+    }
 }
 
 #pragma mark - NSTableViewDelegate
@@ -92,6 +102,24 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return self.notifications.count;
+}
+
+#pragma mark - Actions
+
+- (IBAction)openThread:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONMastodonNotification *notify = self.notifications[row];
+    if (!notify.status) {
+        return;
+    }
+    ThreadWindow *window = [[ThreadWindow alloc] initWithStatusID:notify.status.originalStatus.identity];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    [window makeKeyAndOrderFront:self];
 }
 
 @end
