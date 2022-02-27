@@ -21,21 +21,7 @@
     
     self.notifications = @[];
     
-    __weak typeof(self) weakSelf = self;
-    [App.client notificationsWithCompletion:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONMastodonNotification *> * _Nullable results, NSError * _Nullable error) {
-        if (error) {
-            WriteAFNetworkingErrorToLog(error);
-            return;
-        }
-        
-        __strong typeof(self) strongSelf = weakSelf;
-        if (!strongSelf) {
-            return;
-        }
-        
-        strongSelf.notifications = results;
-        [strongSelf.tableView reloadData];
-    }];
+    [self reload:nil];
 }
 
 /// イベント発生時に操作対象となっている行を判定し、行番号を返す
@@ -105,6 +91,24 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)reload:(id)sender {
+    __weak typeof(self) weakSelf = self;
+    [App.client notificationsWithCompletion:^(NSURLSessionDataTask * _Nonnull task, NSArray<DONMastodonNotification *> * _Nullable results, NSError * _Nullable error) {
+        if (error) {
+            WriteAFNetworkingErrorToLog(error);
+            return;
+        }
+        
+        __strong typeof(self) strongSelf = weakSelf;
+        if (!strongSelf) {
+            return;
+        }
+        
+        strongSelf.notifications = results;
+        [strongSelf.tableView reloadData];
+    }];
+}
 
 - (IBAction)openThread:(id)sender {
     NSInteger row = [self targetRowInAction:sender];
