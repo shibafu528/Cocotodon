@@ -4,11 +4,16 @@
 
 #import "NotificationViewController.h"
 #import "NotificationCellView.h"
+#import "DONAutoReconnectStreaming.h"
 #import "ThreadWindow.h"
+#import "MainWindowController.h"
 
-@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource>
+@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource, DONAutoReconnectStreamingDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
+
+@property (nonatomic) DONWebSocketStreaming *streaming;
+@property (nonatomic) DONAutoReconnectStreaming *autoReconnect;
 
 @property (nonatomic) NSArray<DONMastodonNotification *> *notifications;
 
@@ -21,6 +26,9 @@
     
     self.notifications = @[];
     
+    self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
+    self.streaming = [App.client userStreamingViaWebSocketWithDelegate:self];
+    
     [self reload:nil];
 }
 
@@ -31,6 +39,49 @@
     } else {
         return self.tableView.selectedRow;
     }
+}
+
+#pragma mark - DONAutoReconnectStreamingDelegate
+
+- (void)donStreamingDidReceiveUpdate:(DONStatus *)status {
+}
+
+- (void)donStreamingDidReceiveDelete:(NSString *)statusID {
+}
+
+- (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.notifications = [@[notification] arrayByAddingObjectsFromArray:self.notifications];
+        [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
+    });
+}
+
+- (void)donStreamingDidFailWithError:(NSError *)error {
+    NSLog(@"ws error: %@", error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateToolbarStreamingItem];
+    });
+}
+
+- (void)donStreamingDidCompleteWithCloseCode:(NSURLSessionWebSocketCloseCode)closeCode error:(NSError *)error {
+    NSLog(@"ws close: %@", error);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateToolbarStreamingItem];
+    });
+}
+
+- (void)donStreamingShouldReconnect:(DONAutoReconnectStreaming *)autoReconnect {
+    NSLog(@"ws reconnect");
+    [self.streaming connect];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateToolbarStreamingItem];
+    });
+}
+
+- (void)updateToolbarStreamingItem {
+    NSString *sym = self.streaming.isConnected ? @"bolt.fill" : @"bolt.slash";
+    MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
+    [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }
 
 #pragma mark - NSTableViewDelegate
