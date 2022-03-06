@@ -20,8 +20,7 @@
 
 @implementation AutolayoutTextView
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super initWithFrame:CGRectZero]) {
         // 横幅が狭くなったら即座に潰れる
         [self setContentCompressionResistancePriority:1 forOrientation:NSLayoutConstraintOrientationHorizontal];
@@ -54,6 +53,8 @@
 }
 
 - (void)rightMouseDown:(NSEvent *)event {
+    // 文字が選択されている場合のみ処理 (コンテキストメニューを表示する)
+    // 文字が選択されていない場合は次のresponderに処理させる
     if (self.selectedRange.length == 0) {
         [self.nextResponder rightMouseDown:event];
     } else {
