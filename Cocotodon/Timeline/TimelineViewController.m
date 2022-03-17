@@ -739,8 +739,8 @@
     DONStatus *status = self.statuses[row];
     DONMastodonAttachment *attachment = status.originalStatus.mediaAttachments[0];
     if ([attachment.type isEqualToString:@"image"]) {
-        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"previewWindow"];
+        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"PreviewWindow" bundle:nil];
+        NSWindowController *wc = [storyboard instantiateInitialController];
         wc.contentViewController.representedObject = attachment;
         [wc showWindow:self];
     }

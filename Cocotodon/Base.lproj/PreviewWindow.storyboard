@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Y2-gj-IbP">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="dZJ-v6-ZtR">
+            <objects>
+                <windowController storyboardIdentifier="previewWindow" id="5Y2-gj-IbP" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="7YP-F8-OHs" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="320" height="200"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="055-5S-8BW">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="5Y2-gj-IbP" id="jxt-qS-ANh"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="TQG-ih-JdN" kind="relationship" relationship="window.shadowedContentViewController" id="MxA-hF-52v"/>
+                    </connections>
+                </windowController>
+                <customObject id="csi-jf-vZL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="115" y="1653"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="IOs-EZ-egd">
+            <objects>
+                <customObject id="67I-IA-dAd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="TQG-ih-JdN" customClass="PreviewViewController" sceneMemberID="viewController">
+                    <view key="view" id="e6g-Ba-BWA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="IhB-EC-4Ih" customClass="ClickableImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="odl-OV-BSL"/>
+                                <connections>
+                                    <action selector="clickThumbnail:" target="TQG-ih-JdN" id="OzO-jf-ubq"/>
+                                </connections>
+                            </imageView>
+                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zx8-GP-mPv">
+                                <rect key="frame" x="144" y="84" width="32" height="32"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="IhB-EC-4Ih" firstAttribute="leading" secondItem="e6g-Ba-BWA" secondAttribute="leading" id="8fm-m4-sVn"/>
+                            <constraint firstItem="Zx8-GP-mPv" firstAttribute="centerX" secondItem="e6g-Ba-BWA" secondAttribute="centerX" id="Apb-Ma-lQj"/>
+                            <constraint firstAttribute="bottom" secondItem="IhB-EC-4Ih" secondAttribute="bottom" id="BXF-Xp-lnG"/>
+                            <constraint firstItem="Zx8-GP-mPv" firstAttribute="centerY" secondItem="e6g-Ba-BWA" secondAttribute="centerY" id="PTp-TL-dIS"/>
+                            <constraint firstAttribute="trailing" secondItem="IhB-EC-4Ih" secondAttribute="trailing" id="eCM-qG-xdK"/>
+                            <constraint firstItem="IhB-EC-4Ih" firstAttribute="top" secondItem="e6g-Ba-BWA" secondAttribute="top" id="fn4-jF-Q8Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="IhB-EC-4Ih" id="VbE-yc-skS"/>
+                        <outlet property="progressIndicator" destination="Zx8-GP-mPv" id="Mmc-nd-VKp"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="115" y="2017"/>
+        </scene>
+    </scenes>
+</document>

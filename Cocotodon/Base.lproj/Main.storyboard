@@ -684,67 +684,6 @@
             </objects>
             <point key="canvasLocation" x="-45" y="1086"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="7q1-Xw-g7G">
-            <objects>
-                <windowController storyboardIdentifier="previewWindow" id="TQZ-Wt-yP4" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" appearanceType="darkAqua" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="qCj-Rg-0xs" customClass="NSPanel">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="425" y="462" width="320" height="200"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-                        <view key="contentView" id="xIg-0M-EnC">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </view>
-                        <connections>
-                            <outlet property="delegate" destination="TQZ-Wt-yP4" id="bJe-nQ-K6d"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="WXP-ue-OTK" kind="relationship" relationship="window.shadowedContentViewController" id="yXR-fg-cWk"/>
-                    </connections>
-                </windowController>
-                <customObject id="Pf6-N8-bYV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="115" y="1653"/>
-        </scene>
-        <!--Preview View Controller-->
-        <scene sceneID="kqw-sd-RzL">
-            <objects>
-                <customObject id="Xcy-wM-7LT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="WXP-ue-OTK" customClass="PreviewViewController" sceneMemberID="viewController">
-                    <view key="view" id="Y9i-eV-3a6">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="8Oc-Ek-3tP" customClass="ClickableImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="rAW-Va-4wl"/>
-                                <connections>
-                                    <action selector="clickThumbnail:" target="WXP-ue-OTK" id="YXQ-pK-OAd"/>
-                                </connections>
-                            </imageView>
-                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="GFh-SW-JiG">
-                                <rect key="frame" x="144" y="84" width="32" height="32"/>
-                            </progressIndicator>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="GFh-SW-JiG" firstAttribute="centerX" secondItem="Y9i-eV-3a6" secondAttribute="centerX" id="4eX-pI-cHP"/>
-                            <constraint firstItem="GFh-SW-JiG" firstAttribute="centerY" secondItem="Y9i-eV-3a6" secondAttribute="centerY" id="PFQ-vd-h8Q"/>
-                            <constraint firstItem="8Oc-Ek-3tP" firstAttribute="top" secondItem="Y9i-eV-3a6" secondAttribute="top" id="W0m-Ks-hCS"/>
-                            <constraint firstAttribute="bottom" secondItem="8Oc-Ek-3tP" secondAttribute="bottom" id="YzZ-hs-9z3"/>
-                            <constraint firstItem="8Oc-Ek-3tP" firstAttribute="leading" secondItem="Y9i-eV-3a6" secondAttribute="leading" id="g5V-Nq-KHt"/>
-                            <constraint firstAttribute="trailing" secondItem="8Oc-Ek-3tP" secondAttribute="trailing" id="kW9-On-i6W"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="imageView" destination="8Oc-Ek-3tP" id="SDO-vi-UPa"/>
-                        <outlet property="progressIndicator" destination="GFh-SW-JiG" id="XsP-2h-254"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="830" y="1653"/>
-        </scene>
         <!--Reply View Controller-->
         <scene sceneID="70L-Fa-jSa">
             <objects>
