@@ -23,6 +23,7 @@
         @"emojis": @"emojis",
         @"poll": @"poll",
         @"favourited": @"favourited",
+        @"editedAt": @"edited_at",
     };
 }
 
@@ -54,6 +55,11 @@
 
 + (NSValueTransformer *)emojisJSONTransformer {
     return [MTLJSONAdapter arrayTransformerWithModelClass:DONEmoji.class];
+}
+
++ (NSValueTransformer *)editedAtJSONTransformer {
+    return [NSValueTransformer mtl_dateTransformerWithDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                                                          locale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
 }
 
 - (NSString *)expandContent {

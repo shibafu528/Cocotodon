@@ -108,6 +108,8 @@
                         [self didReceiveDeletedID:payload];
                     } else if ([event isEqualToString:@"filters_changed"]) {
                         [self didReceiveFiltersChangedNotice:payload];
+                    } else if ([event isEqualToString:@"status.update"]) {
+                        [self didReceiveStatusUpdate:payload];
                     } else {
                         NSLog(@"Unknown event %@: %@", event, payload);
                     }
@@ -171,6 +173,24 @@
 - (void)didReceiveFiltersChangedNotice:(NSString*)payload {
     // TODO: impl
     NSLog(@"ws filters_changed: %@", payload);
+}
+
+- (void)didReceiveStatusUpdate:(NSString*)payload {
+    NSError *error = nil;
+    id decodedPayload = [NSJSONSerialization JSONObjectWithData:[payload dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    if (error) {
+        [self.delegate donStreamingDidFailWithError:error];
+        return;
+    }
+    
+    error = nil;
+    DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:decodedPayload error:&error];
+    if (error) {
+        [self.delegate donStreamingDidFailWithError:error];
+        return;
+    }
+    
+    [self.delegate donStreamingDidReceiveStatusUpdate:status];
 }
 
 #pragma mark - NSURLSessionTaskDelegate

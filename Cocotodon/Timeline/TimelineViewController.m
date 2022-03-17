@@ -205,6 +205,22 @@
     [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:nil];
 }
 
+- (void)donStreamingDidReceiveStatusUpdate:(DONStatus *)status {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray<DONStatus *> *newStatuses = self.statuses.mutableCopy;
+        NSMutableIndexSet *changes = [NSMutableIndexSet indexSet];
+        [newStatuses enumerateObjectsUsingBlock:^(DONStatus * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.identity isEqualToString:status.identity]) {
+                newStatuses[idx] = status;
+                [changes addIndex:idx];
+            }
+        }];
+        
+        self.statuses = newStatuses;
+        [self.tableView reloadDataForRowIndexes:changes columnIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 3)]];
+    });
+}
+
 - (void)donStreamingDidFailWithError:(NSError *)error {
     NSLog(@"ws error: %@", error);
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -283,6 +299,9 @@
             [indicators appendString:@"🗑"];
             [summary addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, summary.length)];
             [detail addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, detail.length)];
+        }
+        if (status.editedAt) {
+            [indicators appendString:@"✏️"];
         }
         if (status.originalStatus.mediaAttachments.count != 0) {
             [indicators appendString:@"🖼"];

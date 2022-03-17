@@ -39,6 +39,10 @@
     [self.delegate donStreamingDidReceiveNotification:notification];
 }
 
+- (void)donStreamingDidReceiveStatusUpdate:(DONStatus *)status {
+    [self.delegate donStreamingDidReceiveStatusUpdate:status];
+}
+
 - (void)donStreamingDidFailWithError:(nonnull NSError *)error {
     [self.delegate donStreamingDidFailWithError:error];
 }

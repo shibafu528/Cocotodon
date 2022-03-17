@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSArray<DONEmoji*> *emojis;
 @property (nonatomic, readonly) NSDictionary *poll;
 @property (nonatomic, readonly) BOOL favourited;
+@property (nonatomic, readonly, nullable) NSDate *editedAt;
 
 - (NSString*)expandContent;
 - (NSAttributedString*)expandAttributedContent;

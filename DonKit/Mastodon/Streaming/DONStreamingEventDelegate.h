@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification*)notification;
 
+- (void)donStreamingDidReceiveStatusUpdate:(DONStatus*)status;
+
 - (void)donStreamingDidFailWithError:(NSError*)error;
 
 - (void)donStreamingDidCompleteWithCloseCode:(NSURLSessionWebSocketCloseCode)closeCode error:(NSError * _Nullable)error;
