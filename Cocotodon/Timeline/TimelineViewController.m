@@ -619,8 +619,8 @@
         return;
     }
     
-    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"replyWindow"];
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ReplyWindow" bundle:nil];
+    NSWindowController *wc = [storyboard instantiateInitialController];
     NSPoint mouseLocation = NSEvent.mouseLocation;
     [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
     ReplyViewController *vc = (ReplyViewController*) wc.contentViewController;

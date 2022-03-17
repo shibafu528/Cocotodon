@@ -53,6 +53,7 @@
 		5D893F6227C7DC1C00DE0384 /* TableCellViewInversionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D893F6127C7DC1C00DE0384 /* TableCellViewInversionHelper.m */; };
 		5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A4C9825DD49780073D733 /* LXHTMLParser.m */; };
 		5D8A8EF327E3A0A100993833 /* PreviewWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8A8EF127E3A0A100993833 /* PreviewWindow.storyboard */; };
+		5D8A8EF627E3A10000993833 /* ReplyWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8A8EF427E3A10000993833 /* ReplyWindow.storyboard */; };
 		5D9486E72516F0FF009066C3 /* MRBSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486E62516F0FF009066C3 /* MRBSettingView.m */; };
 		5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486E92516F2D4009066C3 /* MRBSettingFileSelect.m */; };
 		5D9486EC2516F2EB009066C3 /* MRBSettingFileSelect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */; };
@@ -226,6 +227,7 @@
 		5D8A4C9725DD49780073D733 /* LXHTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXHTMLParser.h; sourceTree = "<group>"; };
 		5D8A4C9825DD49780073D733 /* LXHTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXHTMLParser.m; sourceTree = "<group>"; };
 		5D8A8EF227E3A0A100993833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PreviewWindow.storyboard; sourceTree = "<group>"; };
+		5D8A8EF527E3A10000993833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ReplyWindow.storyboard; sourceTree = "<group>"; };
 		5D9486E52516F0FF009066C3 /* MRBSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBSettingView.h; sourceTree = "<group>"; };
 		5D9486E62516F0FF009066C3 /* MRBSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MRBSettingView.m; sourceTree = "<group>"; };
 		5D9486E82516F2D4009066C3 /* MRBSettingFileSelect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MRBSettingFileSelect.h; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 			children = (
 				5DA3179824FF19100095AF04 /* Main.storyboard */,
 				5D8A8EF127E3A0A100993833 /* PreviewWindow.storyboard */,
+				5D8A8EF427E3A10000993833 /* ReplyWindow.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -919,6 +922,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D8A8EF627E3A10000993833 /* ReplyWindow.storyboard in Resources */,
 				5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */,
 				5DDB41C326727E8600B0A25C /* PostBox.xib in Resources */,
 				5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */,
@@ -1169,6 +1173,14 @@
 				5D8A8EF227E3A0A100993833 /* Base */,
 			);
 			name = PreviewWindow.storyboard;
+			sourceTree = "<group>";
+		};
+		5D8A8EF427E3A10000993833 /* ReplyWindow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8A8EF527E3A10000993833 /* Base */,
+			);
+			name = ReplyWindow.storyboard;
 			sourceTree = "<group>";
 		};
 		5DA3179824FF19100095AF04 /* Main.storyboard */ = {

@@ -123,8 +123,8 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
     mrb_value options = mrb_funcall_argv(mrb, postbox, mrb_intern_lit(mrb, "options"), 0, NULL);
     printf("%s\n", mrb_str_to_cstr(mrb, mrb_inspect(mrb, options)));
     
-    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"replyWindow"];
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ReplyWindow" bundle:nil];
+    NSWindowController *wc = [storyboard instantiateInitialController];
     ReplyViewController *vc = (ReplyViewController*)wc.contentViewController;
     
     mrb_value header_value = mrb_hash_get(mrb, options, mrb_symbol_value(mrb_intern_lit(mrb, "header")));
@@ -442,8 +442,8 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
             [diagnosis diagnoseWithName:name.stringValue].then(^(JDKDiagnosisResult *result) {
                 NSLog(@"shindan success: %@", result.displayText);
 
-                NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-                NSWindowController *wc = [storyboard instantiateControllerWithIdentifier:@"replyWindow"];
+                NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ReplyWindow" bundle:nil];
+                NSWindowController *wc = [storyboard instantiateInitialController];
                 [wc.window center];
                 ReplyViewController *vc = (ReplyViewController*) wc.contentViewController;
                 [vc setHeader:result.fullShareText andFooter:nil];
