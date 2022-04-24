@@ -207,10 +207,14 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
     self.postbox.posting = YES;
     PostBoxDraft *draft = self.postbox.draft;
     __block AnyPromise *promise = [AnyPromise promiseWithValue:@[]];
-    [draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [draft.attachments enumerateObjectsUsingBlock:^(PostBoxAttachment * _Nonnull attachment, NSUInteger idx, BOOL * _Nonnull stop) {
         promise = promise.then(^(NSArray<NSNumber*>* mediaIds){
+            if (attachment.attachment) {
+                return [AnyPromise promiseWithValue:[mediaIds arrayByAddingObject:[NSNumber numberWithLongLong: [attachment.attachment.identity longLongValue]]]];
+            }
+            
             return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
-                [App.client postMedia:picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
+                [App.client postMedia:attachment.picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
                     resolve([mediaIds arrayByAddingObject:mediaId]);
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
                     resolve(error);

@@ -115,7 +115,7 @@
 }
 
 - (void)attachPicture:(DONPicture *)picture {
-    [self.draft insertObject:picture inPicturesAtIndex:self.draft.pictures.count];
+    [self.draft insertObject:[[PostBoxAttachment alloc] initWithPicture:picture] inAttachmentsAtIndex:self.draft.attachments.count];
     [self flashMessage:@"画像を添付しました"];
 }
 
@@ -154,7 +154,7 @@
 }
 
 - (IBAction)clickAttach:(id)sender {
-    if (self.draft.pictures.count == 0) {
+    if (self.draft.attachments.count == 0) {
         [self attachImage:nil];
         return;
     }
@@ -167,9 +167,9 @@
     sensitiveItem.state = self.draft.isSensitive ? NSControlStateValueOn : NSControlStateValueOff;
     sensitiveItem.target = self;
     [menu addItem:sensitiveItem];
-    [self.draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.draft.attachments enumerateObjectsUsingBlock:^(PostBoxAttachment * _Nonnull attachment, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMenuItem *item = [menu addItemWithTitle:@"この画像を取り除く" action:@selector(removeAttachment:) keyEquivalent:@""];
-        NSImage *image = [[NSImage alloc] initWithData:picture.data];
+        NSImage *image = [attachment thumbnail];
         
         item.target = self;
         item.image = [image resizeToScreenSize:NSMakeSize(64, 48)];
@@ -219,14 +219,14 @@
         return;
     }
     
-    [self.draft removeObjectFromPicturesAtIndex:index.unsignedIntegerValue];
-    if (self.draft.pictures.count == 0) {
+    [self.draft removeObjectFromAttachmentsAtIndex:index.unsignedIntegerValue];
+    if (self.draft.attachments.count == 0) {
         self.draft.sensitive = NO;
     }
 }
 
 - (void)removeAllAttachments:(NSMenuItem*)sender {
-    [self.draft removeAllPictures];
+    [self.draft removeAllAttachments];
     self.draft.sensitive = NO;
 }
 

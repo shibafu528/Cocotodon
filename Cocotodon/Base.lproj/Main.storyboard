@@ -469,6 +469,12 @@
                                                 <action selector="deleteStatus:" target="Ady-hI-5gd" id="fC1-CZ-yMO"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="編集" id="gH0-Uw-Hkv">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="recomposeStatus:" target="Ady-hI-5gd" id="Flv-Cm-1bk"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="通報" id="P3z-kJ-baz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

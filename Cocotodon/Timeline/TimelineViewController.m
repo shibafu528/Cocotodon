@@ -446,6 +446,7 @@
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:@"削除" action:@selector(deleteStatus:) keyEquivalent:@""];
+    [menu addItemWithTitle:@"編集" action:@selector(recomposeStatus:) keyEquivalent:@""];
     [menu addItemWithTitle:@"通報" action:@selector(report:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
 
@@ -590,7 +591,7 @@
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    if (menuItem.action == @selector(deleteStatus:)) {
+    if (menuItem.action == @selector(deleteStatus:) || menuItem.action == @selector(recomposeStatus:)) {
         NSInteger row = [self targetRowInAction:menuItem];
         if (row < 0) {
             return NO;
@@ -782,6 +783,21 @@
             }];
         }
     }];
+}
+
+- (IBAction)recomposeStatus:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ReplyWindow" bundle:nil];
+    NSWindowController *wc = [storyboard instantiateInitialController];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    ReplyViewController *vc = (ReplyViewController*) wc.contentViewController;
+    [vc recomposeStatus:self.statuses[row].originalStatus];
+    [wc showWindow:self];
 }
 
 - (IBAction)report:(id)sender {

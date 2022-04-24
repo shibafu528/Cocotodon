@@ -93,6 +93,10 @@
     return body;
 }
 
+- (NSString *)plainContent {
+    return [self parseContentUsingParser];
+}
+
 - (NSString *)parseContentUsingParser {
     DONStatusContentParser *parser = [[DONStatusContentParser alloc] initWithString:self.content];
     [parser parse];

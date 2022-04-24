@@ -11,18 +11,18 @@
         _message = @"";
         _spoilerText = @"";
         _visibility = DONStatusPublic;
-        _pictures = [NSMutableArray array];
+        _attachments = [NSMutableArray array];
         _sensitive = NO;
     }
     return self;
 }
 
 - (BOOL)isPostable {
-    return self.message.characterCount != 0 || self.pictures.count != 0;
+    return self.message.characterCount != 0 || self.attachments.count != 0;
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsPostable {
-    return [NSSet setWithObjects:@"message", @"pictures", nil];
+    return [NSSet setWithObjects:@"message", @"attachments", nil];
 }
 
 - (NSInteger)remainingCharacterCount {
@@ -38,18 +38,18 @@
     return [NSSet setWithObject:@"message"];
 }
 
-- (void)insertObject:(DONPicture *)object inPicturesAtIndex:(NSUInteger)index {
-    [self.pictures insertObject:object atIndex:index];
+- (void)insertObject:(PostBoxAttachment *)object inAttachmentsAtIndex:(NSUInteger)index {
+    [self.attachments insertObject:object atIndex:index];
 }
 
-- (void)removeObjectFromPicturesAtIndex:(NSUInteger)index {
-    [self.pictures removeObjectAtIndex:index];
+- (void)removeObjectFromAttachmentsAtIndex:(NSUInteger)index {
+    [self.attachments removeObjectAtIndex:index];
 }
 
-- (void)removeAllPictures {
-    [self willChangeValueForKey:@"pictures"];
-    [self.pictures removeAllObjects];
-    [self didChangeValueForKey:@"pictures"];
+- (void)removeAllAttachments {
+    [self willChangeValueForKey:@"attachments"];
+    [self.attachments removeAllObjects];
+    [self didChangeValueForKey:@"attachments"];
 }
 
 @end

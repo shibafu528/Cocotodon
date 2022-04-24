@@ -5,6 +5,7 @@
 #import <Foundation/Foundation.h>
 #import "DONStatusVisibility.h"
 #import "DONPicture.h"
+#import "PostBoxAttachment.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,17 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, copy) NSString *spoilerText;
 @property (nonatomic) DONStatusVisibility visibility;
-@property (nonatomic, readonly) NSMutableArray<DONPicture*> *pictures;
+@property (nonatomic, readonly) NSMutableArray<PostBoxAttachment*> *attachments;
 @property (nonatomic, getter=isSensitive) BOOL sensitive;
 
 @property (nonatomic, readonly, getter=isPostable) BOOL postable;
 @property (nonatomic, readonly) NSInteger remainingCharacterCount;
 
-- (void)insertObject:(DONPicture *)object inPicturesAtIndex:(NSUInteger)index;
+- (void)insertObject:(PostBoxAttachment *)object inAttachmentsAtIndex:(NSUInteger)index;
 
-- (void)removeObjectFromPicturesAtIndex:(NSUInteger)index;
+- (void)removeObjectFromAttachmentsAtIndex:(NSUInteger)index;
 
-- (void)removeAllPictures;
+- (void)removeAllAttachments;
 
 @end
 

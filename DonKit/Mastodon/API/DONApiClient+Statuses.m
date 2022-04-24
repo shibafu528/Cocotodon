@@ -48,6 +48,46 @@
                  failure:failure];
 }
 
+- (NSURLSessionDataTask *)updateStatus:(NSString *)identity
+                             newStatus:(NSString *)status
+                              mediaIds:(NSArray<NSNumber *> *)mediaIds
+                             sensitive:(BOOL)sensitive
+                           spoilerText:(NSString *)spoilerText
+                               success:(DONApiPostStatusSuccessCallback)success
+                               failure:(DONApiFailureCallback)failure {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"status"] = status;
+    if (mediaIds) {
+        params[@"media_ids"] = mediaIds;
+    } else {
+        params[@"media_ids"] = @[];
+    }
+    params[@"sensitive"] = @(sensitive);
+    if (spoilerText) {
+        params[@"spoiler_text"] = spoilerText;
+    } else {
+        params[@"spoiler_text"] = @"";
+    }
+    
+    AFHTTPSessionManager *manager = self.manager;
+    return [manager PATCH:[NSString stringWithFormat:@"/api/v1/statuses/%@", identity]
+               parameters:params
+                  headers:self.defaultHeaders
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success) {
+            NSError *error;
+            DONStatus *status = [MTLJSONAdapter modelOfClass:DONStatus.class fromJSONDictionary:responseObject error:&error];
+            if (!error) {
+                success(task, status);
+            }
+            if (failure) {
+                failure(task, error);
+            }
+        }
+    }
+                 failure:failure];
+}
+
 - (nonnull NSURLSessionDataTask *)postMedia:(nonnull DONPicture *)file
                                 description:(nullable NSString *)description
                                     success:(nullable DONApiPostMediaSuccessCallback)success

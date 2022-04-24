@@ -6,12 +6,20 @@
 #import "PostBox.h"
 #import "NSString+ReplaceLineBreaks.h"
 
+typedef NS_ENUM(NSInteger, DONComposeMode) {
+    DONComposeModeCreate,
+    DONComposeModeUpdate,
+};
+
 @interface ReplyViewController () <NSTextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet NSView *replyToView;
 @property (nonatomic, weak) IBOutlet NSTextField *replyToAcct;
 @property (nonatomic, unsafe_unretained) IBOutlet NSTextView *replyToContent;
 @property (nonatomic, weak) IBOutlet PostBox *postbox;
+
+@property (nonatomic) DONComposeMode mode;
+@property (nonatomic) DONStatus *recomposingStatus;
 
 @property (nonatomic) DONStatus *replyToStatus;
 
@@ -35,6 +43,7 @@
 }
 
 - (void)setReplyTo:(DONStatus *)status withSpoilerText:(NSString *)spoilerText header:(NSString *)header footer:(NSString *)footer {
+    self.mode = DONComposeModeCreate;
     self.replyToStatus = status;
     self.replyToAcct.stringValue = status.account.fullAcct;
     [self.replyToContent setString:status.expandContent];
@@ -60,6 +69,8 @@
 }
 
 - (void)setHeader:(NSString *)header andFooter:(NSString *)footer {
+    self.mode = DONComposeModeCreate;
+    
     // clear reply to
     self.replyToView.hidden = YES;
     self.replyToAcct.stringValue = @"";
@@ -83,16 +94,41 @@
     [self.postbox setSelectedRange: NSMakeRange(input.length, 0)];
 }
 
+- (void)recomposeStatus:(DONStatus *)status {
+    self.mode = DONComposeModeUpdate;
+    self.recomposingStatus = status;
+    
+    // TODO: delete below and show in-reply-to status
+    self.replyToView.hidden = YES;
+    self.replyToAcct.stringValue = @"";
+    self.replyToContent.string = @"";
+    
+    PostBoxDraft *draft = [[PostBoxDraft alloc] init];
+    draft.message = status.plainContent;
+    draft.spoilerText = status.spoilerText;
+    draft.visibility = status.visibility;
+    draft.sensitive = status.sensitive;
+    [status.mediaAttachments enumerateObjectsUsingBlock:^(DONMastodonAttachment * _Nonnull attachment, NSUInteger idx, BOOL * _Nonnull stop) {
+        [draft insertObject:[[PostBoxAttachment alloc] initWithAttachment:attachment] inAttachmentsAtIndex:draft.attachments.count];
+    }];
+    
+    self.postbox.draft = draft;
+}
+
 #pragma mark - Postbox
 
 - (IBAction)postMessage:(id)sender {
     self.postbox.posting = YES;
     PostBoxDraft *draft = self.postbox.draft;
     __block AnyPromise *promise = [AnyPromise promiseWithValue:@[]];
-    [draft.pictures enumerateObjectsUsingBlock:^(DONPicture * _Nonnull picture, NSUInteger idx, BOOL * _Nonnull stop) {
+    [draft.attachments enumerateObjectsUsingBlock:^(PostBoxAttachment * _Nonnull attachment, NSUInteger idx, BOOL * _Nonnull stop) {
         promise = promise.then(^(NSArray<NSNumber*>* mediaIds){
+            if (attachment.attachment) {
+                return [AnyPromise promiseWithValue:[mediaIds arrayByAddingObject:[NSNumber numberWithLongLong: [attachment.attachment.identity longLongValue]]]];
+            }
+            
             return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
-                [App.client postMedia:picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
+                [App.client postMedia:attachment.picture description:nil success:^(NSURLSessionDataTask * _Nonnull task, NSNumber * _Nonnull mediaId) {
                     resolve([mediaIds arrayByAddingObject:mediaId]);
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
                     resolve(error);
@@ -102,18 +138,37 @@
     }];
     promise.then(^(NSArray<NSNumber*>* mediaIds) {
         return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolve) {
-            [App.client postStatus:[draft.message stringByReplacingLineBreaksWithString:@"\n"]
-                           replyTo:self.replyToStatus.identity
-                          mediaIds:mediaIds
-                         sensitive:draft.sensitive
-                       spoilerText:draft.spoilerText
-                        visibility:draft.visibility
-                           success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
-                resolve(result);
+            switch (self.mode) {
+                case DONComposeModeCreate: {
+                    [App.client postStatus:[draft.message stringByReplacingLineBreaksWithString:@"\n"]
+                                   replyTo:self.replyToStatus.identity
+                                  mediaIds:mediaIds
+                                 sensitive:draft.sensitive
+                               spoilerText:draft.spoilerText
+                                visibility:draft.visibility
+                                   success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
+                        resolve(result);
+                    }
+                                   failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+                        resolve(error);
+                    }];
+                    break;
+                }
+                case DONComposeModeUpdate: {
+                    [App.client updateStatus:self.recomposingStatus.identity
+                                   newStatus:[draft.message stringByReplacingLineBreaksWithString:@"\n"]
+                                    mediaIds:mediaIds
+                                   sensitive:draft.sensitive
+                                 spoilerText:draft.spoilerText
+                                     success:^(NSURLSessionDataTask * _Nonnull task, DONStatus * _Nonnull result) {
+                        resolve(result);
+                    }
+                                     failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
+                        resolve(error);
+                    }];
+                    break;
+                }
             }
-                           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
-                resolve(error);
-            }];
         }];
     }).then(^(DONStatus *status) {
         [self.view.window close];

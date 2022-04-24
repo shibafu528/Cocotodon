@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)expandContent;
 - (NSAttributedString*)expandAttributedContent;
+- (NSString*)plainContent;
 - (DONStatus*)originalStatus;
 
 @end

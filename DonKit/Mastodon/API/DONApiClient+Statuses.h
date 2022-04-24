@@ -17,6 +17,7 @@ typedef void (^DONApiBookmarkStatusCompletionHandler)(NSURLSessionDataTask *__no
 
 @interface DONApiClient (Statuses)
 
+// FIXME: mediaIdsをNSArray<NSString>*に変更する
 - (NSURLSessionDataTask*) postStatus:(NSString*)status
                              replyTo:(nullable NSString*)inReplyToId
                             mediaIds:(nullable NSArray<NSNumber*>*)mediaIds
@@ -25,6 +26,14 @@ typedef void (^DONApiBookmarkStatusCompletionHandler)(NSURLSessionDataTask *__no
                           visibility:(DONStatusVisibility)visibility
                              success:(nullable DONApiPostStatusSuccessCallback)success
                              failure:(nullable DONApiFailureCallback)failure;
+
+- (NSURLSessionDataTask*) updateStatus:(NSString *)identity
+                             newStatus:(NSString *)status
+                              mediaIds:(nullable NSArray<NSNumber*>*)mediaIds
+                             sensitive:(BOOL)sensitive
+                           spoilerText:(nullable NSString *)spoilerText
+                               success:(nullable DONApiPostStatusSuccessCallback)success
+                               failure:(nullable DONApiFailureCallback)failure;
 
 - (NSURLSessionDataTask*) postMedia:(DONPicture*)file
                         description:(nullable NSString*)description
