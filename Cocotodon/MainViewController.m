@@ -177,7 +177,6 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
             bool isConnected = [App.streamingManager isConnectedChannel:DONStreamingChannelUser] && [App.streamingManager isConnectedChannel:DONStreamingChannelPublicLocal];
             return isConnected ? YES : NO;
         };
-        homeLocalVC.dismissNotification = YES;
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeLocalVC label:@"ホーム+ローカル"]];
         
         TimelineViewController *federatedVC = [[TimelineViewController alloc] init];

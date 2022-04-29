@@ -178,7 +178,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 
 #pragma mark -
 
-@interface AppDelegate () <UNUserNotificationCenterDelegate>
+@interface AppDelegate () <UNUserNotificationCenterDelegate, DONStreamingEventDelegate>
 
 @property (nonatomic) DONApiClient *client;
 @property (nonatomic) DONMastodonAccount *currentAccount;
@@ -212,6 +212,8 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
         self.initialController = [storyboard instantiateControllerWithIdentifier:@"mainWindow"];
         [self.initialController showWindow:self];
         [self.initialController.window makeKeyAndOrderFront:self];
+        
+        [self.streamingManager subscribeChannel:DONStreamingChannelUser delegate:self];
     }
                            failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nullable error) {
         NSAlert *alert = [NSAlert alertWithError:error];
@@ -457,5 +459,57 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
         }
     }];
 }
+
+#pragma mark - DONStreamingEventDelegate
+
+- (void)donStreamingDidReceiveNotification:(nonnull DONMastodonNotification *)notification {
+    __auto_type *content = [UNMutableNotificationContent new];
+    switch (notification.type) {
+        case DONMastodonNotificationFollowType:
+            content.body = [NSString stringWithFormat:@"@%@ さんにフォローされました", notification.account.fullAcct];
+            break;
+        case DONMastodonNotificationFollowRequestType:
+            content.body = [NSString stringWithFormat:@"@%@ さんからフォローリクエストが届いています", notification.account.fullAcct];
+            break;
+        case DONMastodonNotificationMentionType:
+            content.title = [NSString stringWithFormat:@"💬 @%@ さんからの返信", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationReblogType:
+            content.title = [NSString stringWithFormat:@"🔁 @%@ さんにブーストされました", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationFavoriteType:
+            content.title = [NSString stringWithFormat:@"⭐️ @%@ さんにふぁぼられました", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationPollType:
+            content.title = @"🗳 投票が終了しました";
+            content.body = notification.status.expandContent;
+            break;
+        case DONMastodonNotificationStatusType:
+            content.title = [NSString stringWithFormat:@"📥 @%@ さんの新しいトゥート", notification.account.fullAcct];
+            content.body = notification.status.expandContent;
+            break;
+        default:
+            NSLog(@"ws unknown notification type!");
+            NSLog(@"ws notification: %@", notification);
+            return;
+    }
+    content.sound = [UNNotificationSound defaultSound];
+    
+    __auto_type request = [UNNotificationRequest requestWithIdentifier:notification.identity content:content trigger:nil];
+    [UNUserNotificationCenter.currentNotificationCenter addNotificationRequest:request withCompletionHandler:nil];
+}
+
+- (void)donStreamingDidReceiveUpdate:(nonnull DONStatus *)status {}
+
+- (void)donStreamingDidReceiveStatusUpdate:(nonnull DONStatus *)status {}
+
+- (void)donStreamingDidReceiveDelete:(nonnull NSString *)statusID {}
+
+- (void)donStreamingDidCompleteWithCloseCode:(NSURLSessionWebSocketCloseCode)closeCode error:(NSError * _Nullable)error {}
+
+- (void)donStreamingDidFailWithError:(nonnull NSError *)error {}
 
 @end
