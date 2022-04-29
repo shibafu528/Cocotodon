@@ -108,8 +108,14 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
                 }];
             }];
         };
-        homeVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
-            return [App.client userStreamingViaWebSocketWithDelegate:vc];
+        homeVC.subscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager subscribeChannel:DONStreamingChannelUser delegate:vc];
+        };
+        homeVC.unsubscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager unsubscribeChannel:DONStreamingChannelUser delegate:vc];
+        };
+        homeVC.isConnectedStream = ^(id<DONStreamingEventDelegate> vc) {
+            return [App.streamingManager isConnectedChannel:DONStreamingChannelUser];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeVC label:@"ホーム"]];
         
@@ -125,8 +131,14 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
                 }];
             }];
         };
-        localVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
-            return [App.client localPublicStreamingViaWebSocketWithDelegate:vc];
+        localVC.subscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager subscribeChannel:DONStreamingChannelPublicLocal delegate:vc];
+        };
+        localVC.unsubscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager unsubscribeChannel:DONStreamingChannelPublicLocal delegate:vc];
+        };
+        localVC.isConnectedStream = ^(id<DONStreamingEventDelegate> vc) {
+            return [App.streamingManager isConnectedChannel:DONStreamingChannelPublicLocal];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:localVC label:@"ローカル"]];
         
@@ -153,8 +165,17 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
                 return mergeTimeline(results[0], results[1]);
             });
         };
-        homeLocalVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
-            return [App.client streamingViaWebsocketSubscribeChannels:@[DONStreamingChannelUser, DONStreamingChannelPublicLocal] delegate:vc];
+        homeLocalVC.subscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager subscribeChannel:DONStreamingChannelUser delegate:vc];
+            [App.streamingManager subscribeChannel:DONStreamingChannelPublicLocal delegate:vc];
+        };
+        homeLocalVC.unsubscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager unsubscribeChannel:DONStreamingChannelUser delegate:vc];
+            [App.streamingManager unsubscribeChannel:DONStreamingChannelPublicLocal delegate:vc];
+        };
+        homeLocalVC.isConnectedStream = ^BOOL(id<DONStreamingEventDelegate> vc) {
+            bool isConnected = [App.streamingManager isConnectedChannel:DONStreamingChannelUser] && [App.streamingManager isConnectedChannel:DONStreamingChannelPublicLocal];
+            return isConnected ? YES : NO;
         };
         homeLocalVC.dismissNotification = YES;
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:homeLocalVC label:@"ホーム+ローカル"]];
@@ -171,8 +192,14 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
                 }];
             }];
         };
-        federatedVC.streamingInitiator = ^DONWebSocketStreaming *(id<DONStreamingEventDelegate> vc) {
-            return [App.client publicStreamingViaWebSocketWithDelegate:vc];
+        federatedVC.subscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager subscribeChannel:DONStreamingChannelPublic delegate:vc];
+        };
+        federatedVC.unsubscribeStream = ^(id<DONStreamingEventDelegate> vc) {
+            [App.streamingManager unsubscribeChannel:DONStreamingChannelPublic delegate:vc];
+        };
+        federatedVC.isConnectedStream = ^(id<DONStreamingEventDelegate> vc) {
+            return [App.streamingManager isConnectedChannel:DONStreamingChannelPublic];
         };
         [self.tabVC addTabViewItem:[NSTabViewItem tabViewItemWithViewController:federatedVC label:@"連合"]];
         

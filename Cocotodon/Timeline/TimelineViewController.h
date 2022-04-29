@@ -8,8 +8,10 @@
 @interface TimelineViewController : NSViewController
 
 @property (nonatomic, copy) AnyPromise* (^timelineReloader)(TimelineViewController *vc);
-@property (nonatomic, copy) DONWebSocketStreaming* (^streamingInitiator)(id<DONStreamingEventDelegate> vc);
-@property (nonatomic) BOOL dismissNotification;
+@property (nonatomic, copy) void (^subscribeStream)(id<DONStreamingEventDelegate> vc);
+@property (nonatomic, copy) void (^unsubscribeStream)(id<DONStreamingEventDelegate> vc);
+@property (nonatomic, copy) BOOL (^isConnectedStream)(id<DONStreamingEventDelegate> vc);
+@property (nonatomic) BOOL dismissNotification DEPRECATED_ATTRIBUTE; // TODO: 通知の実装を別の場所に移動したら消す
 
 - (IBAction)reply:(id)sender;
 - (IBAction)favorite:(id)sender;

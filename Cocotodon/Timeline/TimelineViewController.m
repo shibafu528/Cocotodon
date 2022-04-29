@@ -7,7 +7,6 @@
 #import "PostBox.h"
 #import "ExpandableCellView.h"
 #import "DONEmojiExpander.h"
-#import "DONAutoReconnectStreaming.h"
 #import "MainWindowController.h"
 #import "IntentManager.h"
 #import "ThreadWindow.h"
@@ -17,12 +16,11 @@
 
 // ----------
 
-@interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONAutoReconnectStreamingDelegate>
+@interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONStreamingEventDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
-@property (nonatomic) DONWebSocketStreaming *userStream;
-@property (nonatomic) DONAutoReconnectStreaming *autoReconnect;
+@property (nonatomic) BOOL subscribedStream;
 
 @property (nonatomic) NSArray<DONStatus*> *statuses;
 
@@ -40,6 +38,9 @@
 
 - (void)dealloc {
     self.commands = nil;
+    if (self.unsubscribeStream) {
+        self.unsubscribeStream(self);
+    }
 }
 
 - (void)viewDidLoad {
@@ -53,9 +54,11 @@
     self.favoriteStateOverrides = [NSMutableDictionary dictionary];
     self.deletedStatusIDs = [NSMutableSet set];
 
-    if (self.streamingInitiator) {
-        self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
-        self.userStream = self.streamingInitiator(self.autoReconnect);
+    if (self.subscribeStream) {
+        self.subscribeStream(self);
+        self.subscribedStream = YES;
+    } else {
+        self.subscribedStream = NO;
     }
     
     [self reload:nil];
@@ -94,14 +97,17 @@
 }
 
 - (IBAction)toggleStreamingStatus:(id)sender {
-    if (!self.userStream) {
+    if (!self.subscribeStream) {
         return;
     }
-    if (self.userStream.isConnected) {
-        [self.userStream disconnect];
+    
+    if (self.subscribedStream) {
+        self.unsubscribeStream(self);
     } else {
-        [self.userStream connect];
+        self.subscribeStream(self);
     }
+    self.subscribedStream = !self.subscribedStream;
+    
     [self updateToolbarStreamingItem];
 }
 
@@ -163,6 +169,7 @@
 }
 
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
+    // TODO: 実装を別の場所に移動する
     if (self.dismissNotification) {
         return;
     }
@@ -235,16 +242,8 @@
     });
 }
 
-- (void)donStreamingShouldReconnect:(DONAutoReconnectStreaming *)autoReconnect {
-    NSLog(@"ws reconnect");
-    [self.userStream connect];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateToolbarStreamingItem];
-    });
-}
-
 - (void)updateToolbarStreamingItem {
-    NSString *sym = self.userStream.isConnected ? @"bolt.fill" : @"bolt.slash";
+    NSString *sym = self.subscribedStream && self.isConnectedStream(self) ? @"bolt.fill" : @"bolt.slash";
     MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
     [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }

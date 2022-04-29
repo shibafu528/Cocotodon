@@ -182,6 +182,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 
 @property (nonatomic) DONApiClient *client;
 @property (nonatomic) DONMastodonAccount *currentAccount;
+@property (nonatomic) StreamingManager *streamingManager;
 
 @property (nonatomic) mrb_state *mrb;
 @property (nonatomic) MRBPin *world;
@@ -200,6 +201,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
     NSString *host, *accessToken;
     fetch_credential(&host, &accessToken);
     self.client = [[DONApiClient alloc] initWithHost:host accessToken:accessToken];
+    self.streamingManager = [[StreamingManager alloc] initWithClient:self.client];
     [self initializeMRuby];
     [self registerIntentHandlers];
     

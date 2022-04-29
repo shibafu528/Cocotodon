@@ -23,6 +23,7 @@
 		5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E5266E6746006BC203 /* DONEmojiExpander.m */; };
 		5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C97E9266E68DE006BC203 /* DONEmoji.m */; };
 		5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0EC9A626815E0D00BC38BA /* mrb_event_wrapper.m */; };
+		5D12AF4A2819975100033235 /* StreamingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D12AF492819975100033235 /* StreamingManager.m */; };
 		5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */; };
 		5D3D9F7A253671FB00BC64A7 /* DONStatusContentParser.h in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */; };
 		5D3D9F7B253671FB00BC64A7 /* DONStatusContentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3D9F782536715900BC64A7 /* DONStatusContentParser.m */; };
@@ -171,6 +172,8 @@
 		5D0C97E9266E68DE006BC203 /* DONEmoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DONEmoji.m; sourceTree = "<group>"; };
 		5D0EC9A626815E0D00BC38BA /* mrb_event_wrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mrb_event_wrapper.m; sourceTree = "<group>"; };
 		5D0EC9A826815E1C00BC38BA /* mrb_event_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mrb_event_wrapper.h; sourceTree = "<group>"; };
+		5D12AF482819975100033235 /* StreamingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StreamingManager.h; sourceTree = "<group>"; };
+		5D12AF492819975100033235 /* StreamingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamingManager.m; sourceTree = "<group>"; };
 		5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+Resize.h"; sourceTree = "<group>"; };
 		5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Resize.m"; sourceTree = "<group>"; };
 		5D3D9F772536715900BC64A7 /* DONStatusContentParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DONStatusContentParser.h; sourceTree = "<group>"; };
@@ -675,6 +678,8 @@
 				5DC8C559265539DC00B1628E /* ThreadWindow.m */,
 				5D76A1AB2674C20E0024C882 /* AcknowledgementsViewController.h */,
 				5D76A1AC2674C20E0024C882 /* AcknowledgementsViewController.m */,
+				5D12AF482819975100033235 /* StreamingManager.h */,
+				5D12AF492819975100033235 /* StreamingManager.m */,
 			);
 			path = Cocotodon;
 			sourceTree = "<group>";
@@ -1117,6 +1122,7 @@
 				5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */,
 				5DA92D4227B9D1C9005C125D /* DONPromise.m in Sources */,
 				5DA92D3227B7F0EA005C125D /* DONApiClient+Search.m in Sources */,
+				5D12AF4A2819975100033235 /* StreamingManager.m in Sources */,
 				5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */,
 				5D893F5F27C7C0B000DE0384 /* DONApiClient+Notifications.m in Sources */,
 				5D3D61E025DD5DC4001B93D4 /* NSImage+Resize.m in Sources */,
