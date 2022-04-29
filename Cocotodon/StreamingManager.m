@@ -47,7 +47,6 @@
 }
 
 - (void)donStreamingDidReceiveUpdate:(nonnull DONStatus *)status {
-    NSLog(@"[StreamingSubscription] '%@': update %@", self.channel, status.identity);
     [self.subscriptions.allObjects enumerateObjectsUsingBlock:^(id<DONStreamingEventDelegate> _Nonnull delegate, NSUInteger idx, BOOL * _Nonnull stop) {
         [delegate donStreamingDidReceiveUpdate:status];
     }];

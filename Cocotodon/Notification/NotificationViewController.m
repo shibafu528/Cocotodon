@@ -8,12 +8,11 @@
 #import "ThreadWindow.h"
 #import "MainWindowController.h"
 
-@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource, DONAutoReconnectStreamingDelegate>
+@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource, DONStreamingEventDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
-@property (nonatomic) DONWebSocketStreaming *streaming;
-@property (nonatomic) DONAutoReconnectStreaming *autoReconnect;
+@property (nonatomic) BOOL subscribedStream;
 
 @property (nonatomic) NSArray<DONMastodonNotification *> *notifications;
 
@@ -26,8 +25,8 @@
     
     self.notifications = @[];
     
-    self.autoReconnect = [[DONAutoReconnectStreaming alloc] initWithDelegate:self];
-    self.streaming = [App.client userStreamingViaWebSocketWithDelegate:self];
+    [App.streamingManager subscribeChannel:DONStreamingChannelUser delegate:self];
+    self.subscribedStream = YES;
     
     [self reload:nil];
 }
@@ -43,11 +42,9 @@
 
 #pragma mark - DONAutoReconnectStreamingDelegate
 
-- (void)donStreamingDidReceiveUpdate:(DONStatus *)status {
-}
+- (void)donStreamingDidReceiveUpdate:(DONStatus *)status {}
 
-- (void)donStreamingDidReceiveDelete:(NSString *)statusID {
-}
+- (void)donStreamingDidReceiveDelete:(NSString *)statusID {}
 
 - (void)donStreamingDidReceiveNotification:(DONMastodonNotification *)notification {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -56,8 +53,7 @@
     });
 }
 
-- (void)donStreamingDidReceiveStatusUpdate:(DONStatus *)status {
-}
+- (void)donStreamingDidReceiveStatusUpdate:(DONStatus *)status {}
 
 - (void)donStreamingDidFailWithError:(NSError *)error {
     NSLog(@"ws error: %@", error);
@@ -73,16 +69,8 @@
     });
 }
 
-- (void)donStreamingShouldReconnect:(DONAutoReconnectStreaming *)autoReconnect {
-    NSLog(@"ws reconnect");
-    [self.streaming connect];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateToolbarStreamingItem];
-    });
-}
-
 - (void)updateToolbarStreamingItem {
-    NSString *sym = self.streaming.isConnected ? @"bolt.fill" : @"bolt.slash";
+    NSString *sym = self.subscribedStream && [App.streamingManager isConnectedChannel:DONStreamingChannelUser] ? @"bolt.fill" : @"bolt.slash";
     MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
     [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }
