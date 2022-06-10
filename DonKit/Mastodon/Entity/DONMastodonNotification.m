@@ -25,6 +25,7 @@
         @"favourite": @(DONMastodonNotificationFavoriteType),
         @"poll": @(DONMastodonNotificationPollType),
         @"status": @(DONMastodonNotificationStatusType),
+        @"update": @(DONMastodonNotificationUpdateType),
     }];
 }
 

@@ -117,6 +117,11 @@
             view.detailField.stringValue = notification.status.expandContent;
             view.avatarView.statusVisibility = notification.status.visibility;
             break;
+        case DONMastodonNotificationUpdateType:
+            view.summaryField.stringValue = [NSString stringWithFormat:@"✏️ @%@ さんが投稿を編集しました", notification.account.fullAcct];
+            view.detailField.stringValue = notification.status.expandContent;
+            view.avatarView.statusVisibility = notification.status.visibility;
+            break;
         default:
             NSLog(@"ws unknown notification type!");
             NSLog(@"ws notification: %@", notification);

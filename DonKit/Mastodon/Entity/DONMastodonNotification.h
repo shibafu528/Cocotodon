@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, DONMastodonNotificationType) {
     DONMastodonNotificationFavoriteType,
     DONMastodonNotificationPollType,
     DONMastodonNotificationStatusType,
+    DONMastodonNotificationUpdateType
 };
 
 @interface DONMastodonNotification : MTLModel<MTLJSONSerializing>
