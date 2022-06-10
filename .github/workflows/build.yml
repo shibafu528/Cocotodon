@@ -33,7 +33,7 @@ jobs:
           cache-revision: 1
         with:
           path: ${{ github.workspace }}/mruby/build/
-          key: ${{ hashFiles('build_config.rb') }}-${{ hashFiles('.git/modules/mruby/HEAD') }}-${{ matrix.xcode }}-${{ env.cache-revision }}
+          key: ${{ hashFiles('build_config.rb') }}-${{ hashFiles('build_config.rb.lock') }}-${{ hashFiles('.git/modules/mruby/HEAD') }}-${{ matrix.xcode }}-${{ env.cache-revision }}
 
       - name: Build
         run: xcodebuild -workspace Cocotodon.xcworkspace -scheme Cocotodon clean archive -archivePath build/Cocotodon.xcarchive

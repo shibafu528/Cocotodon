@@ -1,8 +1,6 @@
 # disable pkg-config
 ENV['PKG_CONFIG_LIBDIR'] = ''
 
-MRuby::Lockfile.disable
-
 shared = ->(conf) do
   conf.cc.defines << %w(MRB_UTF8_STRING)
 
