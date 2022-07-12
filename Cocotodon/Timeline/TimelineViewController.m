@@ -13,6 +13,8 @@
 #import "TimelineAvatarCellView.h"
 #import <UserNotifications/UserNotifications.h>
 
+/// TLの最大要素数
+static const NSInteger kTimelineMaxItems = 1000;
 
 // ----------
 
@@ -153,7 +155,15 @@
             return;
         }
         
-        self.statuses = [@[status] arrayByAddingObjectsFromArray:self.statuses];
+        if (self.statuses.count < kTimelineMaxItems) {
+            self.statuses = [@[status] arrayByAddingObjectsFromArray:self.statuses];
+        } else {
+            NSUInteger removes = self.statuses.count - kTimelineMaxItems + 1;
+            self.statuses = [@[status] arrayByAddingObjectsFromArray:[self.statuses subarrayWithRange:NSMakeRange(0, kTimelineMaxItems - 1)]];
+            [self.tableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(kTimelineMaxItems - 1, removes)]
+                                  withAnimation:NSTableViewAnimationSlideDown];
+        }
+        
         [self.tableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:0] withAnimation:NSTableViewAnimationSlideDown];
         if (self.prevSelection != -1) {
             self.prevSelection++;
