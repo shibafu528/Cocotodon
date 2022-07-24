@@ -1468,7 +1468,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cocotodon/Cocotodon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1485,7 +1485,7 @@
 					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-debug/mrbgems/mruby-yaml/yaml-0.2.2/build/lib/",
 					/usr/local/lib,
 				);
-				MARKETING_VERSION = 0.3.1;
+				MARKETING_VERSION = 0.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lmruby",
@@ -1505,7 +1505,7 @@
 				CODE_SIGN_ENTITLEMENTS = Cocotodon/Cocotodon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				GCC_PREFIX_HEADER = "$(PROJECT)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1522,7 +1522,7 @@
 					"$(PROJECT_DIR)/mruby/build/macos-$(CURRENT_ARCH)-release/mrbgems/mruby-yaml/yaml-0.2.2/build/lib/",
 					/usr/local/lib,
 				);
-				MARKETING_VERSION = 0.3.1;
+				MARKETING_VERSION = 0.3.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lmruby",
