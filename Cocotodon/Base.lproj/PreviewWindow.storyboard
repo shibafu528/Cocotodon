@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Y2-gj-IbP">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Y2-gj-IbP">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -49,19 +49,37 @@
                             <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zx8-GP-mPv">
                                 <rect key="frame" x="144" y="84" width="32" height="32"/>
                             </progressIndicator>
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Yvt-yV-Ajl">
+                                <rect key="frame" x="110" y="50" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="AjC-oC-uBh"/>
+                                </constraints>
+                                <contentFilters>
+                                    <ciFilter name="CIFalseColor">
+                                        <configuration>
+                                            <ciColor key="inputColor0" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1"/>
+                                            <ciColor key="inputColor1" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1"/>
+                                            <null key="inputImage"/>
+                                        </configuration>
+                                    </ciFilter>
+                                </contentFilters>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Yvt-yV-Ajl" firstAttribute="centerX" secondItem="e6g-Ba-BWA" secondAttribute="centerX" id="4sk-6I-w4n"/>
                             <constraint firstItem="IhB-EC-4Ih" firstAttribute="leading" secondItem="e6g-Ba-BWA" secondAttribute="leading" id="8fm-m4-sVn"/>
                             <constraint firstItem="Zx8-GP-mPv" firstAttribute="centerX" secondItem="e6g-Ba-BWA" secondAttribute="centerX" id="Apb-Ma-lQj"/>
                             <constraint firstAttribute="bottom" secondItem="IhB-EC-4Ih" secondAttribute="bottom" id="BXF-Xp-lnG"/>
                             <constraint firstItem="Zx8-GP-mPv" firstAttribute="centerY" secondItem="e6g-Ba-BWA" secondAttribute="centerY" id="PTp-TL-dIS"/>
+                            <constraint firstItem="Yvt-yV-Ajl" firstAttribute="top" secondItem="Zx8-GP-mPv" secondAttribute="bottom" constant="15" id="X7t-nO-pql"/>
                             <constraint firstAttribute="trailing" secondItem="IhB-EC-4Ih" secondAttribute="trailing" id="eCM-qG-xdK"/>
                             <constraint firstItem="IhB-EC-4Ih" firstAttribute="top" secondItem="e6g-Ba-BWA" secondAttribute="top" id="fn4-jF-Q8Z"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="IhB-EC-4Ih" id="VbE-yc-skS"/>
-                        <outlet property="progressIndicator" destination="Zx8-GP-mPv" id="Mmc-nd-VKp"/>
+                        <outlet property="progress" destination="Yvt-yV-Ajl" id="fuf-NW-IZp"/>
+                        <outlet property="spinner" destination="Zx8-GP-mPv" id="Mmc-nd-VKp"/>
                     </connections>
                 </viewController>
             </objects>
