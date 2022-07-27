@@ -15,27 +15,27 @@ builds:
       commit: b793088a7a9eed6e2ab74d886d5d0d0dd9fed4b1
     https://github.com/shibafu528/mruby-set.git:
       url: https://github.com/shibafu528/mruby-set.git
-      branch: my-dev
+      branch: HEAD
       commit: 9f31599368946758d31f12459aa62ce760a030c4
       version: 0.0.0
     https://github.com/shibafu528/mruby-pluggaloid.git:
       url: https://github.com/shibafu528/mruby-pluggaloid.git
-      branch: mruby
+      branch: HEAD
       commit: 43129a187c9c9f336f35174ead6972f0aabf933e
       version: 1.5.0
     https://github.com/shibafu528/mruby-diva.git:
       url: https://github.com/shibafu528/mruby-diva.git
-      branch: mruby
+      branch: HEAD
       commit: 63299e5a3183dcd51788196b919b1812b9f02a8f
       version: 1.0.2
     https://github.com/shibafu528/mruby-delayer-deferred.git:
       url: https://github.com/shibafu528/mruby-delayer-deferred.git
-      branch: mruby
+      branch: HEAD
       commit: c3bc0ef77aad9c942800f346408004477cbc7446
       version: 2.2.0
     https://github.com/ksss/mruby-singleton.git:
       url: https://github.com/ksss/mruby-singleton.git
-      branch: master
+      branch: HEAD
       commit: 73dd4bae1a47d82e49b8f85bf27f49ec4462052e
       version: 0.0.0
     https://github.com/mattn/mruby-require.git:
@@ -45,37 +45,37 @@ builds:
       version: 0.0.0
     https://github.com/iij/mruby-dir.git:
       url: https://github.com/iij/mruby-dir.git
-      branch: master
+      branch: HEAD
       commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
       version: 0.0.0
     https://github.com/shibafu528/mruby-delayer.git:
       url: https://github.com/shibafu528/mruby-delayer.git
-      branch: mruby
+      branch: HEAD
       commit: b20de4b3c6d6b3c2e86157fb51411f06ae6c0d6b
       version: 1.1.2
     https://github.com/shibafu528/mruby-instance-storage.git:
       url: https://github.com/shibafu528/mruby-instance-storage.git
-      branch: master
+      branch: HEAD
       commit: d11690a510ddaf3559328cb78c1b81cd7260e152
       version: 1.0.0
     https://github.com/IceDragon200/mruby-catch-throw:
       url: https://github.com/IceDragon200/mruby-catch-throw
-      branch: master
+      branch: HEAD
       commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
       version: 1.1.0
     https://github.com/monochromegane/mruby-secure-random.git:
       url: https://github.com/monochromegane/mruby-secure-random.git
-      branch: master
+      branch: HEAD
       commit: 4971702e8cd299054b3220b4adb6bc3031ae2881
       version: 0.0.0
     https://github.com/zzak/mruby-uri.git:
       url: https://github.com/zzak/mruby-uri.git
-      branch: master
+      branch: HEAD
       commit: b3108ae56a48990eb7b79f44aca4ec76e1e60ad8
       version: 0.0.0
     https://github.com/mattn/mruby-onig-regexp.git:
       url: https://github.com/mattn/mruby-onig-regexp.git
-      branch: master
+      branch: HEAD
       commit: 20ba3325d6fa504cbbf193e1b2a90e20fdab544f
       version: 0.0.0
   macos-x86_64-debug:
@@ -90,27 +90,27 @@ builds:
       commit: b793088a7a9eed6e2ab74d886d5d0d0dd9fed4b1
     https://github.com/shibafu528/mruby-set.git:
       url: https://github.com/shibafu528/mruby-set.git
-      branch: my-dev
+      branch: HEAD
       commit: 9f31599368946758d31f12459aa62ce760a030c4
       version: 0.0.0
     https://github.com/shibafu528/mruby-pluggaloid.git:
       url: https://github.com/shibafu528/mruby-pluggaloid.git
-      branch: mruby
+      branch: HEAD
       commit: 43129a187c9c9f336f35174ead6972f0aabf933e
       version: 1.5.0
     https://github.com/shibafu528/mruby-diva.git:
       url: https://github.com/shibafu528/mruby-diva.git
-      branch: mruby
+      branch: HEAD
       commit: 63299e5a3183dcd51788196b919b1812b9f02a8f
       version: 1.0.2
     https://github.com/shibafu528/mruby-delayer-deferred.git:
       url: https://github.com/shibafu528/mruby-delayer-deferred.git
-      branch: mruby
+      branch: HEAD
       commit: c3bc0ef77aad9c942800f346408004477cbc7446
       version: 2.2.0
     https://github.com/ksss/mruby-singleton.git:
       url: https://github.com/ksss/mruby-singleton.git
-      branch: master
+      branch: HEAD
       commit: 73dd4bae1a47d82e49b8f85bf27f49ec4462052e
       version: 0.0.0
     https://github.com/mattn/mruby-require.git:
@@ -120,37 +120,37 @@ builds:
       version: 0.0.0
     https://github.com/iij/mruby-dir.git:
       url: https://github.com/iij/mruby-dir.git
-      branch: master
+      branch: HEAD
       commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
       version: 0.0.0
     https://github.com/shibafu528/mruby-delayer.git:
       url: https://github.com/shibafu528/mruby-delayer.git
-      branch: mruby
+      branch: HEAD
       commit: b20de4b3c6d6b3c2e86157fb51411f06ae6c0d6b
       version: 1.1.2
     https://github.com/shibafu528/mruby-instance-storage.git:
       url: https://github.com/shibafu528/mruby-instance-storage.git
-      branch: master
+      branch: HEAD
       commit: d11690a510ddaf3559328cb78c1b81cd7260e152
       version: 1.0.0
     https://github.com/IceDragon200/mruby-catch-throw:
       url: https://github.com/IceDragon200/mruby-catch-throw
-      branch: master
+      branch: HEAD
       commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
       version: 1.1.0
     https://github.com/monochromegane/mruby-secure-random.git:
       url: https://github.com/monochromegane/mruby-secure-random.git
-      branch: master
+      branch: HEAD
       commit: 4971702e8cd299054b3220b4adb6bc3031ae2881
       version: 0.0.0
     https://github.com/zzak/mruby-uri.git:
       url: https://github.com/zzak/mruby-uri.git
-      branch: master
+      branch: HEAD
       commit: b3108ae56a48990eb7b79f44aca4ec76e1e60ad8
       version: 0.0.0
     https://github.com/mattn/mruby-onig-regexp.git:
       url: https://github.com/mattn/mruby-onig-regexp.git
-      branch: master
+      branch: HEAD
       commit: 20ba3325d6fa504cbbf193e1b2a90e20fdab544f
       version: 0.0.0
   macos-x86_64-release:
@@ -165,27 +165,27 @@ builds:
       commit: b793088a7a9eed6e2ab74d886d5d0d0dd9fed4b1
     https://github.com/shibafu528/mruby-set.git:
       url: https://github.com/shibafu528/mruby-set.git
-      branch: my-dev
+      branch: HEAD
       commit: 9f31599368946758d31f12459aa62ce760a030c4
       version: 0.0.0
     https://github.com/shibafu528/mruby-pluggaloid.git:
       url: https://github.com/shibafu528/mruby-pluggaloid.git
-      branch: mruby
+      branch: HEAD
       commit: 43129a187c9c9f336f35174ead6972f0aabf933e
       version: 1.5.0
     https://github.com/shibafu528/mruby-diva.git:
       url: https://github.com/shibafu528/mruby-diva.git
-      branch: mruby
+      branch: HEAD
       commit: 63299e5a3183dcd51788196b919b1812b9f02a8f
       version: 1.0.2
     https://github.com/shibafu528/mruby-delayer-deferred.git:
       url: https://github.com/shibafu528/mruby-delayer-deferred.git
-      branch: mruby
+      branch: HEAD
       commit: c3bc0ef77aad9c942800f346408004477cbc7446
       version: 2.2.0
     https://github.com/ksss/mruby-singleton.git:
       url: https://github.com/ksss/mruby-singleton.git
-      branch: master
+      branch: HEAD
       commit: 73dd4bae1a47d82e49b8f85bf27f49ec4462052e
       version: 0.0.0
     https://github.com/mattn/mruby-require.git:
@@ -195,37 +195,37 @@ builds:
       version: 0.0.0
     https://github.com/iij/mruby-dir.git:
       url: https://github.com/iij/mruby-dir.git
-      branch: master
+      branch: HEAD
       commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
       version: 0.0.0
     https://github.com/shibafu528/mruby-delayer.git:
       url: https://github.com/shibafu528/mruby-delayer.git
-      branch: mruby
+      branch: HEAD
       commit: b20de4b3c6d6b3c2e86157fb51411f06ae6c0d6b
       version: 1.1.2
     https://github.com/shibafu528/mruby-instance-storage.git:
       url: https://github.com/shibafu528/mruby-instance-storage.git
-      branch: master
+      branch: HEAD
       commit: d11690a510ddaf3559328cb78c1b81cd7260e152
       version: 1.0.0
     https://github.com/IceDragon200/mruby-catch-throw:
       url: https://github.com/IceDragon200/mruby-catch-throw
-      branch: master
+      branch: HEAD
       commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
       version: 1.1.0
     https://github.com/monochromegane/mruby-secure-random.git:
       url: https://github.com/monochromegane/mruby-secure-random.git
-      branch: master
+      branch: HEAD
       commit: 4971702e8cd299054b3220b4adb6bc3031ae2881
       version: 0.0.0
     https://github.com/zzak/mruby-uri.git:
       url: https://github.com/zzak/mruby-uri.git
-      branch: master
+      branch: HEAD
       commit: b3108ae56a48990eb7b79f44aca4ec76e1e60ad8
       version: 0.0.0
     https://github.com/mattn/mruby-onig-regexp.git:
       url: https://github.com/mattn/mruby-onig-regexp.git
-      branch: master
+      branch: HEAD
       commit: 20ba3325d6fa504cbbf193e1b2a90e20fdab544f
       version: 0.0.0
   macos-arm64-debug:
@@ -240,27 +240,27 @@ builds:
       commit: b793088a7a9eed6e2ab74d886d5d0d0dd9fed4b1
     https://github.com/shibafu528/mruby-set.git:
       url: https://github.com/shibafu528/mruby-set.git
-      branch: my-dev
+      branch: HEAD
       commit: 9f31599368946758d31f12459aa62ce760a030c4
       version: 0.0.0
     https://github.com/shibafu528/mruby-pluggaloid.git:
       url: https://github.com/shibafu528/mruby-pluggaloid.git
-      branch: mruby
+      branch: HEAD
       commit: 43129a187c9c9f336f35174ead6972f0aabf933e
       version: 1.5.0
     https://github.com/shibafu528/mruby-diva.git:
       url: https://github.com/shibafu528/mruby-diva.git
-      branch: mruby
+      branch: HEAD
       commit: 63299e5a3183dcd51788196b919b1812b9f02a8f
       version: 1.0.2
     https://github.com/shibafu528/mruby-delayer-deferred.git:
       url: https://github.com/shibafu528/mruby-delayer-deferred.git
-      branch: mruby
+      branch: HEAD
       commit: c3bc0ef77aad9c942800f346408004477cbc7446
       version: 2.2.0
     https://github.com/ksss/mruby-singleton.git:
       url: https://github.com/ksss/mruby-singleton.git
-      branch: master
+      branch: HEAD
       commit: 73dd4bae1a47d82e49b8f85bf27f49ec4462052e
       version: 0.0.0
     https://github.com/mattn/mruby-require.git:
@@ -270,37 +270,37 @@ builds:
       version: 0.0.0
     https://github.com/iij/mruby-dir.git:
       url: https://github.com/iij/mruby-dir.git
-      branch: master
+      branch: HEAD
       commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
       version: 0.0.0
     https://github.com/shibafu528/mruby-delayer.git:
       url: https://github.com/shibafu528/mruby-delayer.git
-      branch: mruby
+      branch: HEAD
       commit: b20de4b3c6d6b3c2e86157fb51411f06ae6c0d6b
       version: 1.1.2
     https://github.com/shibafu528/mruby-instance-storage.git:
       url: https://github.com/shibafu528/mruby-instance-storage.git
-      branch: master
+      branch: HEAD
       commit: d11690a510ddaf3559328cb78c1b81cd7260e152
       version: 1.0.0
     https://github.com/IceDragon200/mruby-catch-throw:
       url: https://github.com/IceDragon200/mruby-catch-throw
-      branch: master
+      branch: HEAD
       commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
       version: 1.1.0
     https://github.com/monochromegane/mruby-secure-random.git:
       url: https://github.com/monochromegane/mruby-secure-random.git
-      branch: master
+      branch: HEAD
       commit: 4971702e8cd299054b3220b4adb6bc3031ae2881
       version: 0.0.0
     https://github.com/zzak/mruby-uri.git:
       url: https://github.com/zzak/mruby-uri.git
-      branch: master
+      branch: HEAD
       commit: b3108ae56a48990eb7b79f44aca4ec76e1e60ad8
       version: 0.0.0
     https://github.com/mattn/mruby-onig-regexp.git:
       url: https://github.com/mattn/mruby-onig-regexp.git
-      branch: master
+      branch: HEAD
       commit: 20ba3325d6fa504cbbf193e1b2a90e20fdab544f
       version: 0.0.0
   macos-arm64-release:
@@ -315,27 +315,27 @@ builds:
       commit: b793088a7a9eed6e2ab74d886d5d0d0dd9fed4b1
     https://github.com/shibafu528/mruby-set.git:
       url: https://github.com/shibafu528/mruby-set.git
-      branch: my-dev
+      branch: HEAD
       commit: 9f31599368946758d31f12459aa62ce760a030c4
       version: 0.0.0
     https://github.com/shibafu528/mruby-pluggaloid.git:
       url: https://github.com/shibafu528/mruby-pluggaloid.git
-      branch: mruby
+      branch: HEAD
       commit: 43129a187c9c9f336f35174ead6972f0aabf933e
       version: 1.5.0
     https://github.com/shibafu528/mruby-diva.git:
       url: https://github.com/shibafu528/mruby-diva.git
-      branch: mruby
+      branch: HEAD
       commit: 63299e5a3183dcd51788196b919b1812b9f02a8f
       version: 1.0.2
     https://github.com/shibafu528/mruby-delayer-deferred.git:
       url: https://github.com/shibafu528/mruby-delayer-deferred.git
-      branch: mruby
+      branch: HEAD
       commit: c3bc0ef77aad9c942800f346408004477cbc7446
       version: 2.2.0
     https://github.com/ksss/mruby-singleton.git:
       url: https://github.com/ksss/mruby-singleton.git
-      branch: master
+      branch: HEAD
       commit: 73dd4bae1a47d82e49b8f85bf27f49ec4462052e
       version: 0.0.0
     https://github.com/mattn/mruby-require.git:
@@ -345,36 +345,36 @@ builds:
       version: 0.0.0
     https://github.com/iij/mruby-dir.git:
       url: https://github.com/iij/mruby-dir.git
-      branch: master
+      branch: HEAD
       commit: 89dceefa1250fb1ae868d4cb52498e9e24293cd1
       version: 0.0.0
     https://github.com/shibafu528/mruby-delayer.git:
       url: https://github.com/shibafu528/mruby-delayer.git
-      branch: mruby
+      branch: HEAD
       commit: b20de4b3c6d6b3c2e86157fb51411f06ae6c0d6b
       version: 1.1.2
     https://github.com/shibafu528/mruby-instance-storage.git:
       url: https://github.com/shibafu528/mruby-instance-storage.git
-      branch: master
+      branch: HEAD
       commit: d11690a510ddaf3559328cb78c1b81cd7260e152
       version: 1.0.0
     https://github.com/IceDragon200/mruby-catch-throw:
       url: https://github.com/IceDragon200/mruby-catch-throw
-      branch: master
+      branch: HEAD
       commit: 2b6eaff4232b4a9473b864df53c2917080af5dcf
       version: 1.1.0
     https://github.com/monochromegane/mruby-secure-random.git:
       url: https://github.com/monochromegane/mruby-secure-random.git
-      branch: master
+      branch: HEAD
       commit: 4971702e8cd299054b3220b4adb6bc3031ae2881
       version: 0.0.0
     https://github.com/zzak/mruby-uri.git:
       url: https://github.com/zzak/mruby-uri.git
-      branch: master
+      branch: HEAD
       commit: b3108ae56a48990eb7b79f44aca4ec76e1e60ad8
       version: 0.0.0
     https://github.com/mattn/mruby-onig-regexp.git:
       url: https://github.com/mattn/mruby-onig-regexp.git
-      branch: master
+      branch: HEAD
       commit: 20ba3325d6fa504cbbf193e1b2a90e20fdab544f
       version: 0.0.0
