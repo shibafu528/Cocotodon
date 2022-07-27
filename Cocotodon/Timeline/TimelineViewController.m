@@ -16,6 +16,16 @@
 /// TLの最大要素数
 static const NSInteger kTimelineMaxItems = 1000;
 
+static NSString* SummarizeContent(DONStatus *status) {
+    NSString *content;
+    if (status.spoilerText.length) {
+        content = [status.spoilerText stringByAppendingString:@" | (選択して続きを表示...)"];
+    } else {
+        content = status.plainContent;
+    }
+    return [content stringByRemovingLineBreaksAndJoinedByString:@" "];
+}
+
 // ----------
 
 @interface TimelineViewController () <NSTextViewDelegate, NSTableViewDelegate, NSTableViewDataSource, NSMenuDelegate, DONStreamingEventDelegate>
@@ -251,7 +261,7 @@ static const NSInteger kTimelineMaxItems = 1000;
         ExpandableCellView *expandable = (ExpandableCellView*) view;
         NSMutableAttributedString *summary;
         {
-            NSAttributedString *content = [[NSAttributedString alloc] initWithString:[status.originalStatus.expandContent stringByRemovingLineBreaksAndJoinedByString:@" "]];
+            NSAttributedString *content = [[NSAttributedString alloc] initWithString:SummarizeContent(status.originalStatus)];
             NSAttributedString *expanded = [DONEmojiExpander expandFromAttributedString:content providedBy:status.originalStatus];
             summary = [[NSMutableAttributedString alloc] initWithAttributedString:expanded];
         }
