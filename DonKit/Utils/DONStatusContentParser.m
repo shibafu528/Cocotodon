@@ -10,6 +10,7 @@
 @property (nonatomic) LXHTMLParser *parser;
 @property (nonatomic) NSInteger linkBegin;
 @property (nonatomic) NSString *linkRef;
+@property (nonatomic) BOOL insertLineSpacing;
 
 @property (nonatomic, readwrite) NSMutableString *textContent;
 @property (nonatomic, readwrite) NSMutableArray<DONStatusContentAnchor*> *anchors;
@@ -36,12 +37,9 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
+    [self insertLineSpacingIfNeeded];
     if ([elementName isEqualToString:@"br"]) {
         [_textContent appendString:@"\n"];
-    } else if ([elementName isEqualToString:@"p"]) {
-        if ([_textContent length] != 0) {
-            [_textContent appendString:@"\n\n"];
-        }
     } else if ([elementName isEqualToString:@"a"]) {
         _linkBegin = _textContent.length;
         _linkRef = attributeDict[@"href"];
@@ -54,11 +52,23 @@
         [_anchors addObject:[[DONStatusContentAnchor alloc] initWithRange:range href:_linkRef]];
         _linkBegin = -1;
         _linkRef = nil;
+    } else if ([elementName isEqualToString:@"p"]) {
+        _insertLineSpacing = YES;
     }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    [self insertLineSpacingIfNeeded];
     [_textContent appendString:string];
+}
+
+- (void)insertLineSpacingIfNeeded {
+    if (_insertLineSpacing) {
+        if (_textContent.length) {
+            [_textContent appendString:@"\n\n"];
+        }
+        _insertLineSpacing = NO;
+    }
 }
 
 @end
