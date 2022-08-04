@@ -9,15 +9,20 @@
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
         @"identity": @"id",
-        @"type": @"type",
+        @"rawType": @"type",
         @"createdAt": @"created_at",
         @"account": @"account",
         @"status": @"status",
     };
 }
 
-+ (NSValueTransformer *)typeJSONTransformer {
-    return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{
++ (NSValueTransformer *)createdAtJSONTransformer {
+    return [NSValueTransformer mtl_dateTransformerWithDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+                                                          locale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+}
+
+- (DONMastodonNotificationType)type {
+    NSNumber *value = @{
         @"follow": @(DONMastodonNotificationFollowType),
         @"follow_request": @(DONMastodonNotificationFollowRequestType),
         @"mention": @(DONMastodonNotificationMentionType),
@@ -26,12 +31,12 @@
         @"poll": @(DONMastodonNotificationPollType),
         @"status": @(DONMastodonNotificationStatusType),
         @"update": @(DONMastodonNotificationUpdateType),
-    }];
-}
-
-+ (NSValueTransformer *)createdAtJSONTransformer {
-    return [NSValueTransformer mtl_dateTransformerWithDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                                                          locale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+    }[self.rawType];
+    if (value) {
+        return value.intValue;
+    } else {
+        return DONMastodonNotificationUnknown;
+    }
 }
 
 @end

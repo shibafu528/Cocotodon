@@ -122,10 +122,16 @@
             view.detailField.stringValue = notification.status.expandContent;
             view.avatarView.statusVisibility = notification.status.visibility;
             break;
-        default:
-            NSLog(@"ws unknown notification type!");
-            NSLog(@"ws notification: %@", notification);
+        default: {
+            view.summaryField.stringValue = [NSString stringWithFormat:@"不明な通知 (%@)", notification.rawType];
+            NSMutableString *detail = [NSMutableString stringWithFormat:@"@%@", notification.account.fullAcct];
+            if (notification.status) {
+                [detail appendString:@"\n"];
+                [detail appendString:notification.status.expandContent];
+            }
+            view.detailField.stringValue = detail;
             break;
+        }
     }
     
     return view;

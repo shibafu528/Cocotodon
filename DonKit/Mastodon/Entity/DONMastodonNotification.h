@@ -10,7 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, DONMastodonNotificationType) {
-    DONMastodonNotificationFollowType = 1,
+    DONMastodonNotificationUnknown,
+    DONMastodonNotificationFollowType,
     DONMastodonNotificationFollowRequestType,
     DONMastodonNotificationMentionType,
     DONMastodonNotificationReblogType,
@@ -23,10 +24,12 @@ typedef NS_ENUM(NSInteger, DONMastodonNotificationType) {
 @interface DONMastodonNotification : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, readonly) NSString *identity;
-@property (nonatomic, readonly) DONMastodonNotificationType type;
+@property (nonatomic, readonly) NSString *rawType;
 @property (nonatomic, readonly) NSDate *createdAt;
 @property (nonatomic, readonly) DONMastodonAccount *account;
 @property (nonatomic, readonly, nullable) DONStatus *status;
+
+- (DONMastodonNotificationType)type;
 
 @end
 
