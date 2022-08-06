@@ -4,6 +4,7 @@
 
 #import "ExpandableCellView.h"
 #import "TableCellViewInversionHelper.h"
+#import "PreviewViewController.h"
 
 @interface ExpandableCellView ()
 
@@ -210,9 +211,27 @@
     
     DONMastodonAttachment *attachment = self.attachments[index];
     if ([attachment.type isEqualToString:@"image"]) {
+        // 既に開いている場合はそのウインドウを前面に持ってくる
+        __block BOOL broughtToFront = NO;
+        [NSApp enumerateWindowsWithOptions:0 usingBlock:^(NSWindow * _Nonnull window, BOOL * _Nonnull stop) {
+            NSViewController *vc = window.contentViewController;
+            NSObject *obj = vc.representedObject;
+            if (![vc isKindOfClass:PreviewViewController.class] || ![obj isKindOfClass:DONMastodonAttachment.class]) {
+                return;
+            }
+            if ([((DONMastodonAttachment *) obj).identity isEqualToString:attachment.identity]) {
+                [window makeKeyAndOrderFront:nil];
+                broughtToFront = YES;
+                *stop = YES;
+            }
+        }];
+        if (broughtToFront) {
+            return;
+        }
+        
         NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"PreviewWindow" bundle:nil];
         NSWindowController *wc = [storyboard instantiateInitialController];
-        wc.contentViewController.representedObject = self.attachments[index];
+        wc.contentViewController.representedObject = attachment;
         [wc showWindow:self];
     } else {
         NSURL *url = attachment.remoteURL ? attachment.remoteURL : attachment.URL;
