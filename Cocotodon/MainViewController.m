@@ -8,6 +8,16 @@
 #import "TimelineViewController.h"
 #import "NotificationViewController.h"
 
+static NSArray<DONStatus *> *TimelineOrderByCreatedAtDescAndIdDesc(NSArray<DONStatus *> *tl) {
+    tl = [tl sortedArrayUsingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
+        return [obj2.identity compare:obj1.identity];
+    }];
+    tl = [tl sortedArrayWithOptions:NSSortStable usingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
+        return [obj2.createdAt compare:obj1.createdAt];
+    }];
+    return tl;
+}
+
 static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DONStatus *> *tl1) {
     if (!tl0.count && !tl1.count) {
         return @[];
@@ -17,12 +27,8 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
         return tl0;
     }
     
-    tl0 = [tl0 sortedArrayUsingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
-        return [obj2.createdAt compare:obj1.createdAt];
-    }];
-    tl1 = [tl1 sortedArrayUsingComparator:^NSComparisonResult(DONStatus * _Nonnull obj1, DONStatus * _Nonnull obj2) {
-        return [obj2.createdAt compare:obj1.createdAt];
-    }];
+    tl0 = TimelineOrderByCreatedAtDescAndIdDesc(tl0);
+    tl1 = TimelineOrderByCreatedAtDescAndIdDesc(tl1);
     
     NSMutableArray<DONStatus *> *merged = [NSMutableArray arrayWithCapacity:tl0.count + tl1.count];
     for (int i0 = 0, i1 = 0;;) {
