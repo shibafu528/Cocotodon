@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -97,6 +97,7 @@
                                     <action trigger="doubleAction" selector="openThread:" target="-2" id="4Jh-he-Puv"/>
                                     <outlet property="dataSource" destination="-2" id="gfZ-wA-bpF"/>
                                     <outlet property="delegate" destination="-2" id="b0B-ju-ojk"/>
+                                    <outlet property="menu" destination="H9e-2O-4wf" id="DtO-T5-SUT"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -119,5 +120,11 @@
             </constraints>
             <point key="canvasLocation" x="139" y="154"/>
         </customView>
+        <menu id="H9e-2O-4wf">
+            <connections>
+                <outlet property="delegate" destination="-2" id="Saa-UM-bpz"/>
+            </connections>
+            <point key="canvasLocation" x="502" y="35"/>
+        </menu>
     </objects>
 </document>

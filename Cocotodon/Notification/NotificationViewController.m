@@ -8,7 +8,7 @@
 #import "ThreadWindow.h"
 #import "MainWindowController.h"
 
-@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource, DONStreamingEventDelegate>
+@interface NotificationViewController () <NSTableViewDelegate, NSTableViewDataSource, DONStreamingEventDelegate, NSMenuDelegate>
 
 @property (nonatomic, weak) IBOutlet NSTableView *tableView;
 
@@ -143,6 +143,27 @@
     return self.notifications.count;
 }
 
+#pragma mark - Context menu
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    if (self.tableView.clickedRow < 0) {
+        return;
+    }
+    
+    DONMastodonNotification *notify = self.notifications[self.tableView.clickedRow];
+    
+    [menu removeAllItems];
+    [menu addItemWithTitle:[NSString stringWithFormat:@"@%@ をブラウザで開く", notify.account.fullAcct] action:@selector(openInBrowser:) keyEquivalent:@""];
+    
+    if (notify.status) {
+        if (notify.type == DONMastodonNotificationMentionType) {
+            [menu addItemWithTitle:@"会話を見る" action:@selector(openThread:) keyEquivalent:@""];
+        } else {
+            [menu addItemWithTitle:@"投稿を開く" action:@selector(openThread:) keyEquivalent:@""];
+        }
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)reload:(id)sender {
@@ -177,6 +198,16 @@
     NSPoint mouseLocation = NSEvent.mouseLocation;
     [window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
     [window makeKeyAndOrderFront:self];
+}
+
+- (IBAction)openInBrowser:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONMastodonNotification *notify = self.notifications[row];
+    [NSWorkspace.sharedWorkspace openURL:notify.account.URL];
 }
 
 @end
