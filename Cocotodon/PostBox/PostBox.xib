@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PostBox">
             <connections>
+                <outlet property="attachmentButton" destination="ZjG-tz-KiJ" id="Hy0-dx-VtB"/>
                 <outlet property="flashMessageView" destination="jVy-KI-OhZ" id="wRw-U4-dGR"/>
                 <outlet property="showSpoilerTextButton" destination="EuX-Ur-O05" id="jNG-uq-ALb"/>
                 <outlet property="spoilerTextInput" destination="czM-r0-zXC" id="AFc-aE-FX7"/>

@@ -10,6 +10,7 @@
 
 @property (unsafe_unretained) IBOutlet PostBoxTextView *tootInput;
 @property (nonatomic, weak) IBOutlet NSTextField *flashMessageView;
+@property (nonatomic, weak) IBOutlet NSButton *attachmentButton;
 @property (nonatomic, weak) IBOutlet NSButton *showSpoilerTextButton;
 @property (nonatomic, weak) IBOutlet NSTextField *spoilerTextInput;
 @property (weak) IBOutlet NSLayoutConstraint *topConstraintOfTootInput;
@@ -62,6 +63,8 @@
         self.tootInput.layoutManager.delegate = self.layoutManagerDelegatee;
         self.tootInput.textContainerInset = NSMakeSize(0, 4);
         self.tootInput.delegate = self;
+        
+        [self addObserver:self forKeyPath:@"draft.attachments" options:NSKeyValueObservingOptionNew context:nil];
     }
 }
 
@@ -92,6 +95,18 @@
             break;
     }
     
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"draft.attachments"]) {
+        if (self.draft.attachments.count) {
+            self.attachmentButton.contentTintColor = NSColor.controlAccentColor;
+        } else {
+            self.attachmentButton.contentTintColor = NSColor.controlTextColor;
+        }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - public
