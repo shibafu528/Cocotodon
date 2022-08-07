@@ -160,9 +160,10 @@ static NSString* SummarizeContent(DONStatus *status) {
 - (void)donStreamingDidReceiveUpdate:(DONStatus *)status {
     dispatch_async(dispatch_get_main_queue(), ^{
         // 簡易的な重複排除
-        DONStatus *first = [self.statuses firstObject];
-        if (first && [first.identity isEqualToString:status.identity]) {
-            return;
+        for (int i = 0; i < 8 && i < self.statuses.count; i++) {
+            if ([self.statuses[i].identity isEqualToString:status.identity]) {
+                return;
+            }
         }
         
         if (self.statuses.count < kTimelineMaxItems) {
