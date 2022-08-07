@@ -60,7 +60,6 @@
 		5D9486EA2516F2D4009066C3 /* MRBSettingFileSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486E92516F2D4009066C3 /* MRBSettingFileSelect.m */; };
 		5D9486EC2516F2EB009066C3 /* MRBSettingFileSelect.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */; };
 		5D9486EF2516F9EA009066C3 /* NSView+NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486EE2516F9EA009066C3 /* NSView+NibLoader.m */; };
-		5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486F225173247009066C3 /* NSString+DONExtension.m */; };
 		5D94870F25173247009066C3 /* DONApiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486F525173247009066C3 /* DONApiClient.m */; };
 		5D94871025173247009066C3 /* DONMastodonApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FA25173247009066C3 /* DONMastodonApp.m */; };
 		5D94871125173247009066C3 /* DONMastodonAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9486FB25173247009066C3 /* DONMastodonAccessToken.m */; };
@@ -241,8 +240,6 @@
 		5D9486EB2516F2EB009066C3 /* MRBSettingFileSelect.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MRBSettingFileSelect.xib; sourceTree = "<group>"; };
 		5D9486ED2516F9EA009066C3 /* NSView+NibLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+NibLoader.h"; sourceTree = "<group>"; };
 		5D9486EE2516F9EA009066C3 /* NSView+NibLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+NibLoader.m"; sourceTree = "<group>"; };
-		5D9486F225173247009066C3 /* NSString+DONExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DONExtension.m"; sourceTree = "<group>"; };
-		5D9486F325173247009066C3 /* NSString+DONExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DONExtension.h"; sourceTree = "<group>"; };
 		5D9486F525173247009066C3 /* DONApiClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DONApiClient.m; sourceTree = "<group>"; };
 		5D9486F725173247009066C3 /* DONMastodonApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONMastodonApp.h; sourceTree = "<group>"; };
 		5D9486F825173247009066C3 /* DONMastodonAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DONMastodonAccount.h; sourceTree = "<group>"; };
@@ -508,20 +505,10 @@
 			isa = PBXGroup;
 			children = (
 				5D94870925173247009066C3 /* Entity */,
-				5D9486F125173247009066C3 /* Extension */,
 				5D9486F425173247009066C3 /* Mastodon */,
 				5D94870C25173247009066C3 /* Utils */,
 			);
 			path = DonKit;
-			sourceTree = "<group>";
-		};
-		5D9486F125173247009066C3 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				5D9486F325173247009066C3 /* NSString+DONExtension.h */,
-				5D9486F225173247009066C3 /* NSString+DONExtension.m */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		5D9486F425173247009066C3 /* Mastodon */ = {
@@ -1138,7 +1125,6 @@
 				5D6EFB6227B63651004A5FBF /* TimelineTableView.m in Sources */,
 				5D94871525173247009066C3 /* DONApiClient+Timelines.m in Sources */,
 				5D9DE894250126E100A9E9F2 /* mrb_util.h in Sources */,
-				5D94870E25173247009066C3 /* NSString+DONExtension.m in Sources */,
 				5D798DF825E283D7009761A6 /* DONMastodonNotification.m in Sources */,
 				5DA92D3C27B8CE9D005C125D /* DONApiClient+Instance.m in Sources */,
 				5D0C97E6266E6746006BC203 /* DONEmojiExpander.m in Sources */,

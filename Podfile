@@ -10,6 +10,7 @@ target 'Cocotodon' do
   pod 'PromiseKit', '~> 6.8'
   pod 'Punycode-Cocoa', '~> 1.3'
   pod 'Sparkle', '~> 1.26'
+  pod 'twitter-text', '~> 3.1'
 end
 
 target 'JokeDiagnosisKit' do

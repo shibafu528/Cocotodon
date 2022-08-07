@@ -3,6 +3,7 @@
 //
 
 #import "PostBoxDraft.h"
+#import <twitter_text/twitter-text-umbrella.h>
 
 @implementation PostBoxDraft
 
@@ -18,7 +19,7 @@
 }
 
 - (BOOL)isPostable {
-    return self.message.characterCount != 0 || self.attachments.count != 0;
+    return self.message.length != 0 || self.attachments.count != 0;
 }
 
 + (NSSet *)keyPathsForValuesAffectingIsPostable {
@@ -26,7 +27,7 @@
 }
 
 - (NSInteger)remainingCharacterCount {
-    NSUInteger count = self.message.characterCount;
+    NSInteger count = [TwitterText tweetLength:self.message];
     if (count <= 500) {
         return 500 - count;
     } else {

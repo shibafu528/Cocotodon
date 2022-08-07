@@ -25,6 +25,7 @@ PODS:
     - PromiseKit/CorePromise
   - Punycode-Cocoa (1.3.1)
   - Sparkle (1.26.0)
+  - twitter-text (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - PromiseKit (~> 6.8)
   - Punycode-Cocoa (~> 1.3)
   - Sparkle (~> 1.26)
+  - twitter-text (~> 3.1)
 
 SPEC REPOS:
   trunk:
@@ -42,6 +44,7 @@ SPEC REPOS:
     - PromiseKit
     - Punycode-Cocoa
     - Sparkle
+    - twitter-text
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -50,7 +53,8 @@ SPEC CHECKSUMS:
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   Punycode-Cocoa: d9a974cc7384bd6d31b8d9df867a9b7b213d8880
   Sparkle: d56d028f4b0c123577825f5d1004f6140d77f90e
+  twitter-text: 3a0d73ca52955439dc8b208ca7e123ea0abd6a51
 
-PODFILE CHECKSUM: 21f0899ccb59a118f99725b1c8a0e58abd140a7e
+PODFILE CHECKSUM: 49ec05f47d4b2dce98a072ee73417c70bd2274d0
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
