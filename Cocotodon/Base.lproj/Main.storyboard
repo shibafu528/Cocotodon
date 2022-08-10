@@ -624,7 +624,7 @@
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="TVV-uk-0J4">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="NSRefreshTemplate" width="32"/>
+                                                <segment toolTip="更新" image="NSRefreshTemplate" width="32"/>
                                             </segments>
                                             <connections>
                                                 <action selector="reload:" target="Oky-zY-oP4" id="RbH-PV-Jty"/>
@@ -640,7 +640,7 @@
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="e6I-Rl-Psj">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment image="bolt.slash" catalog="system" width="32"/>
+                                                <segment toolTip="ストリーミング" image="bolt.slash" catalog="system" width="32"/>
                                             </segments>
                                         </segmentedCell>
                                         <connections>
