@@ -97,6 +97,7 @@
 		5DDB41BB26727E5500B0A25C /* mrb_setting_dsl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DDB41BA26727E5500B0A25C /* mrb_setting_dsl.m */; };
 		5DDB41C326727E8600B0A25C /* PostBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DDB41C226727E8600B0A25C /* PostBox.xib */; };
 		5DEB6AF12691B60E006065E3 /* PostBoxDraft.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEB6AF02691B60E006065E3 /* PostBoxDraft.m */; };
+		5DF8980128A4AD0500D35D63 /* mrb_settings_compat.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5DF8980028A4AD0500D35D63 /* mrb_settings_compat.rb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +314,7 @@
 		5DDB41C226727E8600B0A25C /* PostBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostBox.xib; sourceTree = "<group>"; };
 		5DEB6AEF2691B60E006065E3 /* PostBoxDraft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostBoxDraft.h; sourceTree = "<group>"; };
 		5DEB6AF02691B60E006065E3 /* PostBoxDraft.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostBoxDraft.m; sourceTree = "<group>"; };
+		5DF8980028A4AD0500D35D63 /* mrb_settings_compat.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = mrb_settings_compat.rb; sourceTree = "<group>"; };
 		6A67F23249F4B68CBEA96F46 /* Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig"; path = "Target Support Files/Pods-JokeDiagnosisKit-JokeDiagnosisKitTests/Pods-JokeDiagnosisKit-JokeDiagnosisKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B23EBB6C51DFB2A0A55A1FB /* Pods_JokeDiagnosisKit_JokeDiagnosisKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JokeDiagnosisKit_JokeDiagnosisKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		700D3FB33002720B46FB651C /* Pods_Cocotodon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cocotodon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +455,7 @@
 			children = (
 				5D7AC8A82502A4760042009D /* mrb_cocotodon_model.rb */,
 				5D4383D626419043008EB158 /* mrb_patch.rb */,
+				5DF8980028A4AD0500D35D63 /* mrb_settings_compat.rb */,
 			);
 			path = mrblib;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 			files = (
 				5D8A8EF627E3A10000993833 /* ReplyWindow.storyboard in Resources */,
 				5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */,
+				5DF8980128A4AD0500D35D63 /* mrb_settings_compat.rb in Resources */,
 				5DDB41C326727E8600B0A25C /* PostBox.xib in Resources */,
 				5DA3179724FF19100095AF04 /* Assets.xcassets in Resources */,
 				5D4383D726419043008EB158 /* mrb_patch.rb in Resources */,

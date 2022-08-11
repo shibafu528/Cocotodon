@@ -256,6 +256,13 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
     {
         int ai = mrb_gc_arena_save(self.mrb);
         
+        if (mix_require(self.mrb, [[NSBundle mainBundle] pathForResource:@"mrb_settings_compat" ofType:@"rb"].UTF8String)) {
+            NSLog(@"mrb_settings_compat.rb load success!");
+        } else {
+            exc2log(self.mrb);
+            self.mrb->exc = 0;
+        }
+        
         {
             NSString *cocotodonPlugins = [NSHomeDirectory() stringByAppendingPathComponent:@"CocotodonPlugins/"];
             BOOL pathIsDir = NO;

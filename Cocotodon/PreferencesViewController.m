@@ -20,6 +20,17 @@
     [super viewDidLoad];
     
     self.settings = [[MRBPin alloc] initWithValue:mix_plugin_filtering_arg1(App.mrb, "defined_settings", mrb_ary_new(App.mrb)) by:App.mrb];
+    if (mrb_exception_p(self.settings.value)) {
+        NSString *exc = exc2str(App.mrb, self.settings.value);
+        NSLog(@"Exception: %@", exc);
+        self.settings = [[MRBPin alloc] initWithValue:mrb_ary_new(App.mrb) by:App.mrb];
+        
+        NSAlert *alert = [[NSAlert alloc] init];
+        alert.alertStyle = NSAlertStyleCritical;
+        alert.messageText = @"プラグイン設定の読み込み中にエラーが発生しました。";
+        alert.informativeText = exc;
+        [alert runModal];
+    }
     [self.outlineView reloadData];
     if (RARRAY_LEN(self.settings.value)) {
         [self.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
