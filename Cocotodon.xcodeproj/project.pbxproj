@@ -33,6 +33,8 @@
 		5D4D597325D90F5100E2F2F9 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4D597225D90F5100E2F2F9 /* MainViewController.m */; };
 		5D4D598825D95AE500E2F2F9 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */; };
 		5D5028AB2638536400C18949 /* IntentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5028AA2638536400C18949 /* IntentManager.m */; };
+		5D52C3B528A78044004994B7 /* ProfileWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D52C3B328A78044004994B7 /* ProfileWindow.storyboard */; };
+		5D52C3B928A7A141004994B7 /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C3B828A7A141004994B7 /* ProfileWindowController.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -190,6 +192,9 @@
 		5D4D598725D95AE500E2F2F9 /* TimelineViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
 		5D5028A92638536400C18949 /* IntentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentManager.h; sourceTree = "<group>"; };
 		5D5028AA2638536400C18949 /* IntentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentManager.m; sourceTree = "<group>"; };
+		5D52C3B428A78044004994B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProfileWindow.storyboard; sourceTree = "<group>"; };
+		5D52C3B728A7A141004994B7 /* ProfileWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileWindowController.h; sourceTree = "<group>"; };
+		5D52C3B828A7A141004994B7 /* ProfileWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileWindowController.m; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -426,6 +431,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		5D52C3B628A78897004994B7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5D52C3B728A7A141004994B7 /* ProfileWindowController.h */,
+				5D52C3B828A7A141004994B7 /* ProfileWindowController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		5D7AC8A3250284940042009D /* mrb */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +514,7 @@
 				5DA3179824FF19100095AF04 /* Main.storyboard */,
 				5D8A8EF127E3A0A100993833 /* PreviewWindow.storyboard */,
 				5D8A8EF427E3A10000993833 /* ReplyWindow.storyboard */,
+				5D52C3B328A78044004994B7 /* ProfileWindow.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -636,6 +651,7 @@
 				5D893F5127C7B53700DE0384 /* Notification */,
 				5DC260B526935EEB00E12827 /* Timeline */,
 				5DC260B426935E0400E12827 /* PostBox */,
+				5D52C3B628A78897004994B7 /* Profile */,
 				5D3D61DB25DD5D1A001B93D4 /* Categories */,
 				5D54E682250913160067EAB4 /* PrefixHeader.pch */,
 				5D7AC8A72502A44C0042009D /* mrblib */,
@@ -922,6 +938,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D52C3B528A78044004994B7 /* ProfileWindow.storyboard in Resources */,
 				5D8A8EF627E3A10000993833 /* ReplyWindow.storyboard in Resources */,
 				5D76A1B126752C210024C882 /* Pods-Cocotodon-acknowledgements.plist in Resources */,
 				5DF8980128A4AD0500D35D63 /* mrb_settings_compat.rb in Resources */,
@@ -1092,6 +1109,7 @@
 				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
 				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,
 				5D4684F3269341E300BC1242 /* PostBoxLayoutManagerDelegatee.m in Sources */,
+				5D52C3B928A7A141004994B7 /* ProfileWindowController.m in Sources */,
 				5D94871225173247009066C3 /* DONMastodonAccount.m in Sources */,
 				5DDB41BB26727E5500B0A25C /* mrb_setting_dsl.m in Sources */,
 				5D0EC9A726815E0D00BC38BA /* mrb_event_wrapper.m in Sources */,
@@ -1169,6 +1187,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5D52C3B328A78044004994B7 /* ProfileWindow.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D52C3B428A78044004994B7 /* Base */,
+			);
+			name = ProfileWindow.storyboard;
+			sourceTree = "<group>";
+		};
 		5D8A8EF127E3A0A100993833 /* PreviewWindow.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

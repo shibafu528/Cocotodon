@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="K3b-Sp-OeB">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="nCw-2V-3qC">
+            <objects>
+                <windowController id="K3b-Sp-OeB" customClass="ProfileWindowController" sceneMemberID="viewController">
+                    <window key="window" title="Profile" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="compact" titleVisibility="hidden" id="dXK-lS-3Lk">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="700" height="600"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="8FK-hw-sKX">
+                            <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="Mz7-9o-J4U">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="SmO-mU-Zri"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sMB-KR-FeO"/>
+                                <toolbarItem implicitItemIdentifier="4232A412-6647-493B-881B-B7613C94E0B1" label="" paletteLabel="" sizingBehavior="auto" id="CT5-RU-Cbz">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="xXq-ob-XKl">
+                                        <rect key="frame" x="0.0" y="14" width="229" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="uHZ-se-27h">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="投稿" selected="YES"/>
+                                                <segment label="フォロー" tag="1"/>
+                                                <segment label="フォロワー" tag="2"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="switchTab:" target="K3b-Sp-OeB" id="W3b-3n-1NH"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="AC0AA903-D73A-434F-92C3-BBEE4CE1DD32" label="Dummy" paletteLabel="Dummy" tag="-1" bordered="YES" id="Khc-Zr-H7d">
+                                    <size key="minSize" width="0.0" height="25"/>
+                                    <size key="maxSize" width="0.0" height="25"/>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="Khc-Zr-H7d"/>
+                                <toolbarItem reference="sMB-KR-FeO"/>
+                                <toolbarItem reference="CT5-RU-Cbz"/>
+                                <toolbarItem reference="sMB-KR-FeO"/>
+                            </defaultToolbarItems>
+                        </toolbar>
+                        <connections>
+                            <outlet property="delegate" destination="K3b-Sp-OeB" id="xOE-V0-K1u"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="U1B-0e-5ec" kind="relationship" relationship="window.shadowedContentViewController" id="mkj-BY-59d"/>
+                    </connections>
+                </windowController>
+                <customObject id="IGT-Nq-spo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-590" y="496.5"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="7rY-HW-aih">
+            <objects>
+                <splitViewController id="U1B-0e-5ec" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
+                        <splitViewItem id="4K6-nT-fgr"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="69N-hP-yrf">
+                        <rect key="frame" x="-95" y="0.0" width="699" height="544"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </splitView>
+                    <connections>
+                        <segue destination="ToY-bz-W5E" kind="relationship" relationship="splitItems" id="LAP-0i-ri8"/>
+                        <segue destination="dOK-1f-bpP" kind="relationship" relationship="splitItems" id="wla-2j-BwL"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="GlI-Cn-OWd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-591" y="1251"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XAf-ru-3gV">
+            <objects>
+                <viewController id="ToY-bz-W5E" sceneMemberID="viewController">
+                    <view key="view" id="AN1-uD-NuU">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="550"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <viewLayoutGuide key="safeArea" id="g6w-Cq-3VB"/>
+                        <viewLayoutGuide key="layoutMargins" id="rVp-Ga-gtC"/>
+                    </view>
+                </viewController>
+                <customObject id="Os5-E3-KZ7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1" y="1251"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="Crt-d1-Hjr">
+            <objects>
+                <customObject id="MBy-tz-zSX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="dOK-1f-bpP" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="投稿" identifier="" id="Z7W-58-uR3"/>
+                        <tabViewItem label="フォロー" id="KNp-2k-gDF"/>
+                        <tabViewItem label="フォロワー" id="Q3q-RZ-CfI"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="c4i-iC-H3V">
+                        <rect key="frame" x="0.0" y="0.0" width="485" height="550"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="dOK-1f-bpP" id="cOK-To-41Q"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="c4i-iC-H3V" id="njp-MY-okg"/>
+                        <segue destination="afd-An-LK8" kind="relationship" relationship="tabItems" id="2DN-h7-BuD"/>
+                        <segue destination="RPk-Eb-qMS" kind="relationship" relationship="tabItems" id="1bx-UY-DRj"/>
+                        <segue destination="E24-IJ-7Yc" kind="relationship" relationship="tabItems" id="y9X-Hp-kSe"/>
+                    </connections>
+                </tabViewController>
+            </objects>
+            <point key="canvasLocation" x="401.5" y="1251"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="NGT-ql-flU">
+            <objects>
+                <viewController id="afd-An-LK8" sceneMemberID="viewController">
+                    <view key="view" id="AEJ-zy-8S0">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cU0-dk-D9l">
+                                <rect key="frame" x="18" y="212" width="40" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="ccccc" id="PeR-Gd-4WP">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZkY-RM-cjj"/>
+                        <viewLayoutGuide key="layoutMargins" id="FVQ-Jv-y4Z"/>
+                    </view>
+                </viewController>
+                <customObject id="nRt-o9-hMr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="1429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ieU-CJ-vkP">
+            <objects>
+                <viewController id="RPk-Eb-qMS" sceneMemberID="viewController">
+                    <view key="view" id="yxJ-PY-OZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77l-zN-0LK">
+                                <rect key="frame" x="18" y="212" width="40" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="aaaaa" id="UKC-r3-6GB">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0WB-9F-JPe"/>
+                        <viewLayoutGuide key="layoutMargins" id="2Kh-GN-PTA"/>
+                    </view>
+                </viewController>
+                <customObject id="QPu-gF-wEN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="857" y="685"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="A01-bu-dNv">
+            <objects>
+                <viewController id="E24-IJ-7Yc" sceneMemberID="viewController">
+                    <view key="view" id="xde-HU-Fnm">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufr-AA-rjg">
+                                <rect key="frame" x="18" y="212" width="44" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="bbbbb" id="okw-Sp-W09">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1el-bY-Xf1"/>
+                        <viewLayoutGuide key="layoutMargins" id="zgI-zR-cmc"/>
+                    </view>
+                </viewController>
+                <customObject id="fBD-Av-IVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="986" y="983"/>
+        </scene>
+    </scenes>
+</document>

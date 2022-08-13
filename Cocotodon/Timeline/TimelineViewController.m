@@ -423,6 +423,8 @@ static NSString* SummarizeContent(DONStatus *status) {
     [menu addItemWithTitle:@"URLをコピー" action:@selector(copyURL:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItemWithTitle:@"プロフィールを表示" action:@selector(openProfile:) keyEquivalent:@""];
+    [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:@"削除" action:@selector(deleteStatus:) keyEquivalent:@""];
     [menu addItemWithTitle:@"編集" action:@selector(recomposeStatus:) keyEquivalent:@""];
     [menu addItemWithTitle:@"通報" action:@selector(report:) keyEquivalent:@""];
@@ -707,6 +709,22 @@ static NSString* SummarizeContent(DONStatus *status) {
     
     DONStatus *status = self.statuses[row];
     [NSWorkspace.sharedWorkspace openURL:status.originalStatus.URL];
+}
+
+- (IBAction)openProfile:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row];
+    DONMastodonAccount *account = status.originalStatus.account;
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ProfileWindow" bundle:nil];
+    NSWindowController *wc = [storyboard instantiateInitialController];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    wc.contentViewController.representedObject = account;
+    [wc showWindow:self];
 }
 
 - (IBAction)openPreview:(id)sender {
