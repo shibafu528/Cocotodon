@@ -140,9 +140,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cU0-dk-D9l">
-                                <rect key="frame" x="18" y="212" width="40" height="16"/>
+                                <rect key="frame" x="18" y="212" width="38" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="ccccc" id="PeR-Gd-4WP">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="posts" id="PeR-Gd-4WP">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -154,7 +154,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1095" y="1429"/>
+            <point key="canvasLocation" x="986" y="1129"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ieU-CJ-vkP">
@@ -166,9 +166,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77l-zN-0LK">
-                                <rect key="frame" x="18" y="212" width="40" height="16"/>
+                                <rect key="frame" x="18" y="212" width="65" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="aaaaa" id="UKC-r3-6GB">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="followings" id="UKC-r3-6GB">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -180,7 +180,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="857" y="685"/>
+            <point key="canvasLocation" x="986" y="1483"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A01-bu-dNv">
@@ -192,9 +192,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufr-AA-rjg">
-                                <rect key="frame" x="18" y="212" width="44" height="16"/>
+                                <rect key="frame" x="18" y="212" width="59" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="bbbbb" id="okw-Sp-W09">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="followers" id="okw-Sp-W09">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -206,7 +206,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="986" y="983"/>
+            <point key="canvasLocation" x="1495" y="1483"/>
         </scene>
     </scenes>
 </document>
