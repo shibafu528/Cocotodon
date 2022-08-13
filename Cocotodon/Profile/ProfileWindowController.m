@@ -16,7 +16,7 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-- (IBAction)switchTab:(id)sender {
+- (IBAction)changeTab:(id)sender {
     NSSegmentedControl *control = (NSSegmentedControl *)sender;
     NSTabViewController *vc = (NSTabViewController *) [self childViewControllerOfClass:NSTabViewController.class];
     vc.selectedTabViewItemIndex = control.selectedSegment;

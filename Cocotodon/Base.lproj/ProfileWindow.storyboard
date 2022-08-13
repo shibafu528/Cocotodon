@@ -24,7 +24,7 @@
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="SmO-mU-Zri"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="sMB-KR-FeO"/>
-                                <toolbarItem implicitItemIdentifier="4232A412-6647-493B-881B-B7613C94E0B1" label="" paletteLabel="" sizingBehavior="auto" id="CT5-RU-Cbz">
+                                <toolbarItem implicitItemIdentifier="4232A412-6647-493B-881B-B7613C94E0B1" label="Tab" paletteLabel="Tab" sizingBehavior="auto" id="CT5-RU-Cbz">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="xXq-ob-XKl">
                                         <rect key="frame" x="0.0" y="14" width="229" height="26"/>
@@ -38,7 +38,7 @@
                                             </segments>
                                         </segmentedCell>
                                         <connections>
-                                            <action selector="switchTab:" target="K3b-Sp-OeB" id="W3b-3n-1NH"/>
+                                            <action selector="changeTab:" target="K3b-Sp-OeB" id="fUa-iv-JtG"/>
                                         </connections>
                                     </segmentedControl>
                                 </toolbarItem>
@@ -64,7 +64,7 @@
                 </windowController>
                 <customObject id="IGT-Nq-spo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-590" y="496.5"/>
+            <point key="canvasLocation" x="-590" y="496"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="7rY-HW-aih">
@@ -133,6 +133,7 @@
         <!--View Controller-->
         <scene sceneID="NGT-ql-flU">
             <objects>
+                <customObject id="nRt-o9-hMr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="afd-An-LK8" sceneMemberID="viewController">
                     <view key="view" id="AEJ-zy-8S0">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -152,13 +153,13 @@
                         <viewLayoutGuide key="layoutMargins" id="FVQ-Jv-y4Z"/>
                     </view>
                 </viewController>
-                <customObject id="nRt-o9-hMr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1095" y="1429"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ieU-CJ-vkP">
             <objects>
+                <customObject id="QPu-gF-wEN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="RPk-Eb-qMS" sceneMemberID="viewController">
                     <view key="view" id="yxJ-PY-OZ5">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -178,13 +179,13 @@
                         <viewLayoutGuide key="layoutMargins" id="2Kh-GN-PTA"/>
                     </view>
                 </viewController>
-                <customObject id="QPu-gF-wEN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="857" y="685"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A01-bu-dNv">
             <objects>
+                <customObject id="fBD-Av-IVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="E24-IJ-7Yc" sceneMemberID="viewController">
                     <view key="view" id="xde-HU-Fnm">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -204,7 +205,6 @@
                         <viewLayoutGuide key="layoutMargins" id="zgI-zR-cmc"/>
                     </view>
                 </viewController>
-                <customObject id="fBD-Av-IVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="986" y="983"/>
         </scene>
