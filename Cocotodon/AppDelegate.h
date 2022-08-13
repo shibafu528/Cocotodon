@@ -17,6 +17,9 @@
 @property (nonatomic, readonly) mrb_state *mrb;
 @property (nonatomic, readonly) MRBPin *world;
 
+- (NSWindowController *)profileWindowControllerForAccount:(DONMastodonAccount *)account;
+- (void)releaseProfileWindowController:(NSWindowController *)controller;
+
 @end
 
 #define App ((AppDelegate*) [NSApplication sharedApplication].delegate)

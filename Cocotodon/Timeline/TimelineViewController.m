@@ -719,11 +719,9 @@ static NSString* SummarizeContent(DONStatus *status) {
     
     DONStatus *status = self.statuses[row];
     DONMastodonAccount *account = status.originalStatus.account;
-    NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ProfileWindow" bundle:nil];
-    NSWindowController *wc = [storyboard instantiateInitialController];
+    NSWindowController *wc = [App profileWindowControllerForAccount:account];
     NSPoint mouseLocation = NSEvent.mouseLocation;
     [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
-    wc.contentViewController.representedObject = account;
     [wc showWindow:self];
 }
 

@@ -4,7 +4,7 @@
 
 #import "ProfileWindowController.h"
 
-@interface ProfileWindowController ()
+@interface ProfileWindowController () <NSWindowDelegate>
 
 @end
 
@@ -32,6 +32,12 @@
         }
     }];
     return found;
+}
+
+#pragma mark - NSWindowDelegate
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [App releaseProfileWindowController:self];
 }
 
 @end
