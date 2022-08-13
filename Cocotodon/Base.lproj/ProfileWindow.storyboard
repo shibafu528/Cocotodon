@@ -94,6 +94,65 @@
                     <view key="view" id="AN1-uD-NuU">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-0Z-Dpx">
+                                <rect key="frame" x="0.0" y="430" width="250" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="MBk-fY-SnM"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="84n-5S-c6M"/>
+                                <connections>
+                                    <binding destination="ToY-bz-W5E" name="valueURL" keyPath="self.representedObject.headerStatic" id="zZw-eW-Oxo"/>
+                                </connections>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fyw-iZ-5xk">
+                                <rect key="frame" x="18" y="390" width="214" height="20"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Name" id="Ope-L9-pLE">
+                                    <font key="font" metaFont="system" size="17"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.username" id="ICQ-14-o3q"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-25-hSX">
+                                <rect key="frame" x="18" y="366" width="214" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="acct" id="430-nY-AcN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.fullAcct" id="GCq-4g-2DE"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PvY-Se-Rl1">
+                                <rect key="frame" x="18" y="330" width="214" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="Biography" id="kGx-TT-Tub">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.note" id="9aM-im-Fr0"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="rVp-Ga-gtC" firstAttribute="trailing" secondItem="Fyw-iZ-5xk" secondAttribute="trailing" id="53I-pb-avI"/>
+                            <constraint firstItem="PvY-Se-Rl1" firstAttribute="leading" secondItem="rVp-Ga-gtC" secondAttribute="leading" id="8Ut-Uh-B77"/>
+                            <constraint firstItem="rVp-Ga-gtC" firstAttribute="trailing" secondItem="j3w-25-hSX" secondAttribute="trailing" id="RSf-61-iXp"/>
+                            <constraint firstItem="rVp-Ga-gtC" firstAttribute="trailing" secondItem="PvY-Se-Rl1" secondAttribute="trailing" id="Xbd-xb-N7x"/>
+                            <constraint firstItem="VAG-0Z-Dpx" firstAttribute="trailing" secondItem="g6w-Cq-3VB" secondAttribute="trailing" id="YJF-Pa-o0Y"/>
+                            <constraint firstItem="Fyw-iZ-5xk" firstAttribute="top" secondItem="VAG-0Z-Dpx" secondAttribute="bottom" constant="20" id="gNa-cq-PLD"/>
+                            <constraint firstItem="VAG-0Z-Dpx" firstAttribute="leading" secondItem="g6w-Cq-3VB" secondAttribute="leading" id="rFP-Eb-n0o"/>
+                            <constraint firstItem="PvY-Se-Rl1" firstAttribute="top" secondItem="j3w-25-hSX" secondAttribute="bottom" constant="20" id="t2C-Y4-NBW"/>
+                            <constraint firstItem="VAG-0Z-Dpx" firstAttribute="top" secondItem="AN1-uD-NuU" secondAttribute="top" id="tes-87-ufR"/>
+                            <constraint firstItem="j3w-25-hSX" firstAttribute="leading" secondItem="rVp-Ga-gtC" secondAttribute="leading" id="usG-CQ-vdL"/>
+                            <constraint firstItem="Fyw-iZ-5xk" firstAttribute="leading" secondItem="rVp-Ga-gtC" secondAttribute="leading" id="xNM-WV-c92"/>
+                            <constraint firstItem="j3w-25-hSX" firstAttribute="top" secondItem="Fyw-iZ-5xk" secondAttribute="bottom" constant="8" symbolic="YES" id="y1v-tZ-bYY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g6w-Cq-3VB"/>
                         <viewLayoutGuide key="layoutMargins" id="rVp-Ga-gtC"/>
                     </view>

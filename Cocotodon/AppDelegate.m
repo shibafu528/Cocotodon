@@ -4,6 +4,7 @@
 
 #import "AppDelegate.h"
 #import "ReplyViewController.h"
+#import "ProfileWindowController.h"
 #import "IntentManager.h"
 #import "mrb_setting_dsl.h"
 #import <UserNotifications/UserNotifications.h>
@@ -192,7 +193,7 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 @property (nonatomic) MRBProc *worldCurrentFilter;
 
 @property (nonatomic) NSWindowController *initialController;
-@property (nonatomic) NSMutableDictionary<NSString *, NSWindowController *> *profileControllers; // fullAcct => window controller
+@property (nonatomic) NSMutableDictionary<NSString *, ProfileWindowController *> *profileControllers; // fullAcct => window controller
 
 
 @end
@@ -429,11 +430,11 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 }
 
 - (NSWindowController *)profileWindowControllerForAccount:(DONMastodonAccount *)account {
-    NSWindowController *wc = self.profileControllers[account.fullAcct];
+    ProfileWindowController *wc = self.profileControllers[account.fullAcct];
     if (!wc) {
         NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ProfileWindow" bundle:nil];
         wc = [storyboard instantiateInitialController];
-        wc.contentViewController.representedObject = account;
+        wc.account = account;
         self.profileControllers[account.fullAcct] = wc;
     }
     return wc;

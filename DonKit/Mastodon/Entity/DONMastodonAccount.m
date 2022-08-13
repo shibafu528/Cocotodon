@@ -11,9 +11,12 @@
         @"identity": @"id",
         @"username": @"username",
         @"acct": @"acct",
+        @"note": @"note",
         @"URL": @"url",
         @"avatar": @"avatar",
         @"avatarStatic": @"avatar_static",
+        @"header": @"header",
+        @"headerStatic": @"header_static",
     };
 }
 

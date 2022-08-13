@@ -12,8 +12,13 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+
+- (void)setAccount:(DONMastodonAccount *)account {
+    _account = account;
+    [self.splitViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof NSViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
+        vc.representedObject = account;
+    }];
 }
 
 - (IBAction)changeTab:(id)sender {
@@ -22,10 +27,13 @@
     vc.selectedTabViewItemIndex = control.selectedSegment;
 }
 
+- (NSSplitViewController *)splitViewController {
+    return (NSSplitViewController *) self.contentViewController;
+}
+
 - (NSViewController *)childViewControllerOfClass:(Class)aClass {
-    NSSplitViewController *splitVC = (NSSplitViewController *) self.contentViewController;
     __block NSViewController *found = nil;
-    [splitVC.childViewControllers enumerateObjectsUsingBlock:^(__kindof NSViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.splitViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof NSViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([vc isKindOfClass:aClass]) {
             found = vc;
             *stop = YES;
