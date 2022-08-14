@@ -20,7 +20,6 @@
     self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawDuringViewResize;
     
     self.headerLayer = [CALayer layer];
-    self.headerLayer.backgroundColor = NSColor.windowBackgroundColor.CGColor;
     self.headerLayer.minificationFilter = kCAFilterTrilinear;
     self.headerLayer.contentsGravity = kCAGravityResizeAspectFill;
     self.headerLayer.masksToBounds = YES;
@@ -45,6 +44,7 @@
 - (void)updateLayer {
     [super updateLayer];
     
+    self.headerLayer.backgroundColor = NSColor.windowBackgroundColor.CGColor;
     self.headerLayer.contents = self.headerImage;
     self.headerLayer.frame = NSMakeRect(0, 20, CGRectGetWidth(self.layer.frame), CGRectGetHeight(self.layer.frame) - 20);
     self.avatarLayer.contents = self.avatarImage;
