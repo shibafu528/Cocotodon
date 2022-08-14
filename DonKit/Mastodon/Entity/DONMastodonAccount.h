@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *identity;
 @property (nonatomic, copy, readonly) NSString *username;
 @property (nonatomic, copy, readonly) NSString *acct;
+@property (nonatomic, copy, readonly) NSString *displayName;
 @property (nonatomic, copy, readonly) NSString *note;
 @property (nonatomic, readonly) NSURL *avatar;
 @property (nonatomic, readonly) NSURL *avatarStatic;
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSURL *headerStatic;
 
 - (NSString*)fullAcct;
+- (NSString*)displayNameOrUserName;
 
 @end
 

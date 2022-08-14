@@ -11,6 +11,7 @@
         @"identity": @"id",
         @"username": @"username",
         @"acct": @"acct",
+        @"displayName": @"display_name",
         @"note": @"note",
         @"URL": @"url",
         @"avatar": @"avatar",
@@ -37,6 +38,14 @@
         return self.acct;
     } else {
         return [NSString stringWithFormat:@"%@@%@", self.acct, [self.URL host]];
+    }
+}
+
+- (NSString *)displayNameOrUserName {
+    if (self.displayName.length) {
+        return self.displayName;
+    } else {
+        return self.username;
     }
 }
 

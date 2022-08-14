@@ -780,7 +780,7 @@
                                         <subviews>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNq-qn-rw8">
                                                 <rect key="frame" x="0.0" y="0.0" width="415" height="450"/>
-                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="eER-SD-R5k" customClass="FlippedView">
+                                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="eER-SD-R5k" customClass="FlippedClipView">
                                                     <rect key="frame" x="0.0" y="0.0" width="415" height="450"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
