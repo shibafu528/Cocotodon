@@ -16,6 +16,7 @@
 
 - (void)setAccount:(DONMastodonAccount *)account {
     _account = account;
+    self.window.title = [NSString stringWithFormat:@"@%@", account.fullAcct];
     [self.splitViewController.childViewControllers enumerateObjectsUsingBlock:^(__kindof NSViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
         vc.representedObject = account;
     }];
