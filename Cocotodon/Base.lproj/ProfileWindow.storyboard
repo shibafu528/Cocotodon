@@ -137,13 +137,13 @@
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PvY-Se-Rl1">
                                                             <rect key="frame" x="18" y="20" width="210" height="16"/>
-                                                            <textFieldCell key="cell" selectable="YES" title="Biography" id="kGx-TT-Tub">
+                                                            <textFieldCell key="cell" selectable="YES" title="Biography" allowsEditingTextAttributes="YES" id="kGx-TT-Tub">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <connections>
-                                                                <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.note" id="9aM-im-Fr0"/>
+                                                                <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.attributedNote" id="CRm-Ju-bjI"/>
                                                             </connections>
                                                         </textField>
                                                     </subviews>

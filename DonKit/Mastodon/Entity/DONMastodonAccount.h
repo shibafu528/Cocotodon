@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)fullAcct;
 - (NSString*)displayNameOrUserName;
+- (NSAttributedString *)attributedNote;
 
 @end
 
