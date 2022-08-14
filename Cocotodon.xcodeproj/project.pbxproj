@@ -35,6 +35,8 @@
 		5D5028AB2638536400C18949 /* IntentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5028AA2638536400C18949 /* IntentManager.m */; };
 		5D52C3B528A78044004994B7 /* ProfileWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D52C3B328A78044004994B7 /* ProfileWindow.storyboard */; };
 		5D52C3B928A7A141004994B7 /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C3B828A7A141004994B7 /* ProfileWindowController.m */; };
+		5D52C40628A8F870004994B7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40528A8F870004994B7 /* ProfileHeaderView.m */; };
+		5D52C40928A8FD5D004994B7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40828A8FD5D004994B7 /* ProfileViewController.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -195,6 +197,10 @@
 		5D52C3B428A78044004994B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ProfileWindow.storyboard; sourceTree = "<group>"; };
 		5D52C3B728A7A141004994B7 /* ProfileWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileWindowController.h; sourceTree = "<group>"; };
 		5D52C3B828A7A141004994B7 /* ProfileWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileWindowController.m; sourceTree = "<group>"; };
+		5D52C40428A8F870004994B7 /* ProfileHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderView.h; sourceTree = "<group>"; };
+		5D52C40528A8F870004994B7 /* ProfileHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderView.m; sourceTree = "<group>"; };
+		5D52C40728A8FD5D004994B7 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		5D52C40828A8FD5D004994B7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -436,6 +442,10 @@
 			children = (
 				5D52C3B728A7A141004994B7 /* ProfileWindowController.h */,
 				5D52C3B828A7A141004994B7 /* ProfileWindowController.m */,
+				5D52C40428A8F870004994B7 /* ProfileHeaderView.h */,
+				5D52C40528A8F870004994B7 /* ProfileHeaderView.m */,
+				5D52C40728A8FD5D004994B7 /* ProfileViewController.h */,
+				5D52C40828A8FD5D004994B7 /* ProfileViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1098,6 +1108,7 @@
 				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
 				5DAA595F266BAA000075C96D /* PostBoxTextView.m in Sources */,
 				5D5028AB2638536400C18949 /* IntentManager.m in Sources */,
+				5D52C40928A8FD5D004994B7 /* ProfileViewController.m in Sources */,
 				5D0C97EA266E68DE006BC203 /* DONEmoji.m in Sources */,
 				5DC8C5572654CB3300B1628E /* DONStatusContext.m in Sources */,
 				5D94871325173247009066C3 /* DONApiClient+Accounts.m in Sources */,
@@ -1141,6 +1152,7 @@
 				5D94871825173247009066C3 /* DONPicture.m in Sources */,
 				5D893F5C27C7BE3F00DE0384 /* NotificationViewController.m in Sources */,
 				5D893F5927C7BD5000DE0384 /* NotificationCellView.m in Sources */,
+				5D52C40628A8F870004994B7 /* ProfileHeaderView.m in Sources */,
 				5DAD6179267A484300514890 /* PostBoxSpoilerTextField.m in Sources */,
 				5DA3179224FF190D0095AF04 /* AppDelegate.m in Sources */,
 				5D94870F25173247009066C3 /* DONApiClient.m in Sources */,

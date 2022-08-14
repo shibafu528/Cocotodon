@@ -28,7 +28,7 @@
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="xXq-ob-XKl">
                                         <rect key="frame" x="0.0" y="14" width="229" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="uHZ-se-27h">
                                             <font key="font" metaFont="system"/>
                                             <segments>
@@ -71,7 +71,7 @@
             <objects>
                 <splitViewController id="U1B-0e-5ec" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
                         <splitViewItem id="4K6-nT-fgr"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="69N-hP-yrf">
@@ -87,25 +87,31 @@
             </objects>
             <point key="canvasLocation" x="-591" y="1251"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="XAf-ru-3gV">
             <objects>
-                <viewController id="ToY-bz-W5E" sceneMemberID="viewController">
+                <viewController id="ToY-bz-W5E" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" id="AN1-uD-NuU">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <customView verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="sxi-UC-bRz" customClass="ProfileHeaderView">
+                                <rect key="frame" x="0.0" y="410" width="250" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Ywf-6Q-dra"/>
+                                </constraints>
+                            </customView>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJW-CV-PT2">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="430"/>
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="410"/>
                                 <clipView key="contentView" drawsBackground="NO" id="hpP-uc-iYu">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="430"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="410"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="D09-cp-fil" customClass="FlippedView">
-                                            <rect key="frame" x="0.0" y="316" width="250" height="114"/>
+                                            <rect key="frame" x="0.0" y="306" width="250" height="104"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="WbI-S6-8Rf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="114"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="104"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Fyw-iZ-5xk">
                                                             <rect key="frame" x="18" y="74" width="210" height="20"/>
@@ -121,7 +127,7 @@
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-25-hSX">
                                                             <rect key="frame" x="18" y="51" width="210" height="15"/>
                                                             <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" title="acct" id="430-nY-AcN">
-                                                                <font key="font" metaFont="system" size="12"/>
+                                                                <font key="font" metaFont="cellTitle"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -146,7 +152,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="PvY-Se-Rl1" secondAttribute="trailing" constant="24" id="2xz-1z-gV9"/>
                                                         <constraint firstAttribute="bottom" secondItem="PvY-Se-Rl1" secondAttribute="bottom" constant="20" symbolic="YES" id="9Ub-s3-gef"/>
                                                         <constraint firstAttribute="trailing" secondItem="j3w-25-hSX" secondAttribute="trailing" constant="24" id="Hza-Cv-bkh"/>
-                                                        <constraint firstItem="Fyw-iZ-5xk" firstAttribute="top" secondItem="WbI-S6-8Rf" secondAttribute="top" constant="20" symbolic="YES" id="L6n-La-ODH"/>
+                                                        <constraint firstItem="Fyw-iZ-5xk" firstAttribute="top" secondItem="WbI-S6-8Rf" secondAttribute="top" constant="10" id="L6n-La-ODH"/>
                                                         <constraint firstItem="j3w-25-hSX" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="PiY-7r-wnm"/>
                                                         <constraint firstItem="Fyw-iZ-5xk" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="XsV-tE-bYJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="Fyw-iZ-5xk" secondAttribute="trailing" constant="24" id="cpY-N7-wHe"/>
@@ -178,29 +184,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <imageView verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="VAG-0Z-Dpx">
-                                <rect key="frame" x="0.0" y="430" width="250" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="MBk-fY-SnM"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="84n-5S-c6M"/>
-                                <connections>
-                                    <binding destination="ToY-bz-W5E" name="valueURL" keyPath="self.representedObject.headerStatic" id="zZw-eW-Oxo"/>
-                                </connections>
-                            </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="VAG-0Z-Dpx" firstAttribute="top" secondItem="AN1-uD-NuU" secondAttribute="top" id="F04-0X-E5U"/>
+                            <constraint firstItem="sxi-UC-bRz" firstAttribute="top" secondItem="AN1-uD-NuU" secondAttribute="top" id="8op-IU-fvY"/>
+                            <constraint firstItem="sxi-UC-bRz" firstAttribute="trailing" secondItem="g6w-Cq-3VB" secondAttribute="trailing" id="F53-bo-nWY"/>
                             <constraint firstItem="rJW-CV-PT2" firstAttribute="bottom" secondItem="g6w-Cq-3VB" secondAttribute="bottom" id="O3c-fe-c4Z"/>
-                            <constraint firstItem="rJW-CV-PT2" firstAttribute="top" secondItem="VAG-0Z-Dpx" secondAttribute="bottom" id="TfW-V7-asc"/>
-                            <constraint firstItem="g6w-Cq-3VB" firstAttribute="trailing" secondItem="VAG-0Z-Dpx" secondAttribute="trailing" id="UUj-rt-ixB"/>
-                            <constraint firstItem="VAG-0Z-Dpx" firstAttribute="leading" secondItem="g6w-Cq-3VB" secondAttribute="leading" id="oBl-gn-dzb"/>
+                            <constraint firstItem="sxi-UC-bRz" firstAttribute="leading" secondItem="g6w-Cq-3VB" secondAttribute="leading" id="Snv-PP-ePy"/>
+                            <constraint firstItem="rJW-CV-PT2" firstAttribute="top" secondItem="sxi-UC-bRz" secondAttribute="bottom" id="TfW-V7-asc"/>
                             <constraint firstItem="rJW-CV-PT2" firstAttribute="leading" secondItem="g6w-Cq-3VB" secondAttribute="leading" id="rO8-1Z-3ec"/>
                             <constraint firstItem="rJW-CV-PT2" firstAttribute="trailing" secondItem="g6w-Cq-3VB" secondAttribute="trailing" id="zUG-ff-a8A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g6w-Cq-3VB"/>
                         <viewLayoutGuide key="layoutMargins" id="rVp-Ga-gtC"/>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="sxi-UC-bRz" id="e5C-uo-THJ"/>
+                    </connections>
                 </viewController>
                 <customObject id="Os5-E3-KZ7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
