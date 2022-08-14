@@ -102,13 +102,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" id="D09-cp-fil" customClass="FlippedView">
-                                            <rect key="frame" x="0.0" y="310" width="250" height="120"/>
+                                            <rect key="frame" x="0.0" y="316" width="250" height="114"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="WbI-S6-8Rf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="114"/>
                                                     <subviews>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Fyw-iZ-5xk">
-                                                            <rect key="frame" x="18" y="80" width="210" height="20"/>
+                                                            <rect key="frame" x="18" y="74" width="210" height="20"/>
                                                             <textFieldCell key="cell" title="Name" id="Ope-L9-pLE">
                                                                 <font key="font" metaFont="systemMedium" size="17"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -119,9 +119,9 @@
                                                             </connections>
                                                         </textField>
                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-25-hSX">
-                                                            <rect key="frame" x="18" y="56" width="210" height="16"/>
+                                                            <rect key="frame" x="18" y="51" width="210" height="15"/>
                                                             <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" title="acct" id="430-nY-AcN">
-                                                                <font key="font" metaFont="system"/>
+                                                                <font key="font" metaFont="system" size="12"/>
                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -151,7 +151,7 @@
                                                         <constraint firstItem="Fyw-iZ-5xk" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="XsV-tE-bYJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="Fyw-iZ-5xk" secondAttribute="trailing" constant="24" id="cpY-N7-wHe"/>
                                                         <constraint firstItem="j3w-25-hSX" firstAttribute="top" secondItem="Fyw-iZ-5xk" secondAttribute="bottom" constant="8" symbolic="YES" id="nSc-vW-GCB"/>
-                                                        <constraint firstItem="PvY-Se-Rl1" firstAttribute="top" secondItem="j3w-25-hSX" secondAttribute="bottom" constant="20" id="omZ-hN-XwV"/>
+                                                        <constraint firstItem="PvY-Se-Rl1" firstAttribute="top" secondItem="j3w-25-hSX" secondAttribute="bottom" constant="15" id="omZ-hN-XwV"/>
                                                     </constraints>
                                                 </customView>
                                             </subviews>
