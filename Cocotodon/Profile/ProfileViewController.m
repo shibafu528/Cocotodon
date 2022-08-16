@@ -4,10 +4,12 @@
 
 #import "ProfileViewController.h"
 #import "ProfileHeaderView.h"
+#import "AutolayoutTextViewWrapper.h"
 
 @interface ProfileViewController ()
 
 @property (nonatomic, weak) IBOutlet ProfileHeaderView *headerView;
+@property (nonatomic, weak) IBOutlet AutolayoutTextViewWrapper *noteViewWrapper;
 
 @end
 
@@ -23,6 +25,7 @@
     self.headerView.headerImage = nil;
     
     DONMastodonAccount *account = (DONMastodonAccount *) representedObject;
+    self.noteViewWrapper.attributedString = account.attributedNote;
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
         if (!account.headerStatic) {

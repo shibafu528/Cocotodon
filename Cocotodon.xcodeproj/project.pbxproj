@@ -37,6 +37,7 @@
 		5D52C3B928A7A141004994B7 /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C3B828A7A141004994B7 /* ProfileWindowController.m */; };
 		5D52C40628A8F870004994B7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40528A8F870004994B7 /* ProfileHeaderView.m */; };
 		5D52C40928A8FD5D004994B7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40828A8FD5D004994B7 /* ProfileViewController.m */; };
+		5D52C40C28AB11CE004994B7 /* AutolayoutTextViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -201,6 +202,8 @@
 		5D52C40528A8F870004994B7 /* ProfileHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderView.m; sourceTree = "<group>"; };
 		5D52C40728A8FD5D004994B7 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		5D52C40828A8FD5D004994B7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		5D52C40A28AB11CE004994B7 /* AutolayoutTextViewWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutolayoutTextViewWrapper.h; sourceTree = "<group>"; };
+		5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutolayoutTextViewWrapper.m; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -684,6 +687,8 @@
 				5D4D597225D90F5100E2F2F9 /* MainViewController.m */,
 				5DADEAEC25DABD6D004D8FD0 /* AutolayoutTextView.h */,
 				5DADEAED25DABD6D004D8FD0 /* AutolayoutTextView.m */,
+				5D52C40A28AB11CE004994B7 /* AutolayoutTextViewWrapper.h */,
+				5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */,
 				5D04E72525E113B30068FDFF /* PreviewViewController.h */,
 				5D04E72625E113B30068FDFF /* PreviewViewController.m */,
 				5D04E72C25E14A870068FDFF /* ClickableImageView.h */,
@@ -1131,6 +1136,7 @@
 				5D04E72E25E14A870068FDFF /* ClickableImageView.m in Sources */,
 				5DA74AA72518F3F700A1CF38 /* DONApiClient+Streaming.m in Sources */,
 				5DC8C55A265539DC00B1628E /* ThreadWindow.m in Sources */,
+				5D52C40C28AB11CE004994B7 /* AutolayoutTextViewWrapper.m in Sources */,
 				5D76A1AD2674C20E0024C882 /* AcknowledgementsViewController.m in Sources */,
 				5DEB6AF12691B60E006065E3 /* PostBoxDraft.m in Sources */,
 				5DA74AA32518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m in Sources */,

@@ -107,13 +107,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="410"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view translatesAutoresizingMaskIntoConstraints="NO" id="D09-cp-fil" customClass="FlippedView">
+                                        <view ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D09-cp-fil" customClass="FlippedView">
                                             <rect key="frame" x="0.0" y="306" width="250" height="104"/>
                                             <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="WbI-S6-8Rf">
+                                                <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WbI-S6-8Rf">
                                                     <rect key="frame" x="0.0" y="0.0" width="250" height="104"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Fyw-iZ-5xk">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fyw-iZ-5xk">
                                                             <rect key="frame" x="18" y="74" width="210" height="20"/>
                                                             <textFieldCell key="cell" title="Name" id="Ope-L9-pLE">
                                                                 <font key="font" metaFont="systemMedium" size="17"/>
@@ -124,7 +124,7 @@
                                                                 <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.displayNameOrUserName" id="xTg-Wn-Sgj"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-25-hSX">
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-25-hSX">
                                                             <rect key="frame" x="18" y="51" width="210" height="15"/>
                                                             <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" title="acct" id="430-nY-AcN">
                                                                 <font key="font" metaFont="cellTitle"/>
@@ -135,29 +135,21 @@
                                                                 <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.fullAcct" id="GCq-4g-2DE"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PvY-Se-Rl1">
-                                                            <rect key="frame" x="18" y="20" width="210" height="16"/>
-                                                            <textFieldCell key="cell" selectable="YES" title="Biography" allowsEditingTextAttributes="YES" id="kGx-TT-Tub">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <connections>
-                                                                <binding destination="ToY-bz-W5E" name="value" keyPath="self.representedObject.attributedNote" id="CRm-Ju-bjI"/>
-                                                            </connections>
-                                                        </textField>
+                                                        <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPf-H5-8d3" customClass="AutolayoutTextViewWrapper">
+                                                            <rect key="frame" x="20" y="20" width="210" height="16"/>
+                                                        </customView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="PvY-Se-Rl1" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="0B0-8t-sJI"/>
-                                                        <constraint firstAttribute="trailing" secondItem="PvY-Se-Rl1" secondAttribute="trailing" constant="24" id="2xz-1z-gV9"/>
-                                                        <constraint firstAttribute="bottom" secondItem="PvY-Se-Rl1" secondAttribute="bottom" constant="20" symbolic="YES" id="9Ub-s3-gef"/>
+                                                        <constraint firstItem="zPf-H5-8d3" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="06g-Eb-Xig"/>
                                                         <constraint firstAttribute="trailing" secondItem="j3w-25-hSX" secondAttribute="trailing" constant="24" id="Hza-Cv-bkh"/>
+                                                        <constraint firstItem="zPf-H5-8d3" firstAttribute="top" secondItem="j3w-25-hSX" secondAttribute="bottom" constant="15" id="JTb-cG-k3W"/>
                                                         <constraint firstItem="Fyw-iZ-5xk" firstAttribute="top" secondItem="WbI-S6-8Rf" secondAttribute="top" constant="10" id="L6n-La-ODH"/>
                                                         <constraint firstItem="j3w-25-hSX" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="PiY-7r-wnm"/>
                                                         <constraint firstItem="Fyw-iZ-5xk" firstAttribute="leading" secondItem="WbI-S6-8Rf" secondAttribute="leading" constant="20" symbolic="YES" id="XsV-tE-bYJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="Fyw-iZ-5xk" secondAttribute="trailing" constant="24" id="cpY-N7-wHe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zPf-H5-8d3" secondAttribute="trailing" constant="20" symbolic="YES" id="iJL-1v-dsx"/>
                                                         <constraint firstItem="j3w-25-hSX" firstAttribute="top" secondItem="Fyw-iZ-5xk" secondAttribute="bottom" constant="8" symbolic="YES" id="nSc-vW-GCB"/>
-                                                        <constraint firstItem="PvY-Se-Rl1" firstAttribute="top" secondItem="j3w-25-hSX" secondAttribute="bottom" constant="15" id="omZ-hN-XwV"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zPf-H5-8d3" secondAttribute="bottom" constant="20" symbolic="YES" id="wdv-xq-i5f"/>
                                                     </constraints>
                                                 </customView>
                                             </subviews>
@@ -199,6 +191,7 @@
                     </view>
                     <connections>
                         <outlet property="headerView" destination="sxi-UC-bRz" id="e5C-uo-THJ"/>
+                        <outlet property="noteViewWrapper" destination="zPf-H5-8d3" id="AYI-uT-lPw"/>
                     </connections>
                 </viewController>
                 <customObject id="Os5-E3-KZ7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
