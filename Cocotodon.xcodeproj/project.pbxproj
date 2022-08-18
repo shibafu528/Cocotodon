@@ -40,6 +40,7 @@
 		5D52C40C28AB11CE004994B7 /* AutolayoutTextViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */; };
 		5D52C40F28AE76B9004994B7 /* ProfileTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */; };
 		5D52C41228AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C41128AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m */; };
+		5D52C41528AE7F46004994B7 /* ProfileSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C41428AE7F46004994B7 /* ProfileSplitViewController.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -210,6 +211,8 @@
 		5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileTabViewController.m; sourceTree = "<group>"; };
 		5D52C41028AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTabViewItem+WithVCAndLabel.h"; sourceTree = "<group>"; };
 		5D52C41128AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTabViewItem+WithVCAndLabel.m"; sourceTree = "<group>"; };
+		5D52C41328AE7F46004994B7 /* ProfileSplitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSplitViewController.h; sourceTree = "<group>"; };
+		5D52C41428AE7F46004994B7 /* ProfileSplitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileSplitViewController.m; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				5D52C40828A8FD5D004994B7 /* ProfileViewController.m */,
 				5D52C40D28AE76B9004994B7 /* ProfileTabViewController.h */,
 				5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */,
+				5D52C41328AE7F46004994B7 /* ProfileSplitViewController.h */,
+				5D52C41428AE7F46004994B7 /* ProfileSplitViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1132,6 +1137,7 @@
 				5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */,
 				5D94871725173247009066C3 /* DONStatusVisibility.m in Sources */,
 				5D6F5E292515CAEE00018EBA /* PostBox.m in Sources */,
+				5D52C41528AE7F46004994B7 /* ProfileSplitViewController.m in Sources */,
 				5D6EFB5F27AD6E80004A5FBF /* DONStatusContentAnchor.m in Sources */,
 				5D8A4C9925DD49790073D733 /* LXHTMLParser.m in Sources */,
 				5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */,

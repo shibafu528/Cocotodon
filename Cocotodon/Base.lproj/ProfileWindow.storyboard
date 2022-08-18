@@ -66,10 +66,10 @@
             </objects>
             <point key="canvasLocation" x="-590" y="496"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Profile Split View Controller-->
         <scene sceneID="7rY-HW-aih">
             <objects>
-                <splitViewController id="U1B-0e-5ec" sceneMemberID="viewController">
+                <splitViewController id="U1B-0e-5ec" customClass="ProfileSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
                         <splitViewItem id="4K6-nT-fgr"/>
