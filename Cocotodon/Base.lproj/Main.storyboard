@@ -463,6 +463,13 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="Yh2-0z-fMl"/>
+                                        <menuItem title="プロフィールを表示" id="qzI-li-iyH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openProfile:" target="Ady-hI-5gd" id="yfw-69-lLQ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="BuZ-mN-XrJ"/>
                                         <menuItem title="削除" id="5le-M2-Cgn">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
