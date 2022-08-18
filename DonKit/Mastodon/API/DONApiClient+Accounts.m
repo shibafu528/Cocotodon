@@ -86,4 +86,24 @@
     }];
 }
 
+- (void)statusesByAccount:(NSString *)accountId withCompletion:(DONApiStatusesCompletionHandler)completion {
+    AFHTTPSessionManager *manager = self.manager;
+    [manager GET:[NSString stringWithFormat:@"/api/v1/accounts/%@/statuses", accountId]
+      parameters:@{@"limit": @(100)}
+         headers:self.defaultHeaders
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (completion) {
+            NSError *error;
+            NSArray<DONStatus*> *results = [MTLJSONAdapter modelsOfClass:DONStatus.class fromJSONArray:responseObject error:&error];
+            completion(task, results, error);
+        }
+    }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (completion) {
+            completion(task, nil, error);
+        }
+    }];
+}
+
 @end

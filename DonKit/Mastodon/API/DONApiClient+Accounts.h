@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^DONApiVerifyCredentialsSuccessCallback)(NSURLSessionDataTask *__nonnull task, DONMastodonAccount *__nonnull account);
 typedef void (^DONApiFavoritedStatusesCompletionHandler)(NSURLSessionDataTask *_Nonnull task, NSArray<DONStatus *> *_Nullable results, NSError *_Nullable error);
 typedef void (^DONApiBookmarkedStatusesCompletionHandler)(NSURLSessionDataTask *_Nonnull task, NSArray<DONStatus *> *_Nullable results, NSError *_Nullable error);
+typedef void (^DONApiStatusesCompletionHandler)(NSURLSessionDataTask *_Nonnull task, NSArray<DONStatus *> *_Nullable results, NSError *_Nullable error);
 
 @interface DONApiClient (Accounts)
 
@@ -27,6 +28,8 @@ typedef void (^DONApiBookmarkedStatusesCompletionHandler)(NSURLSessionDataTask *
 - (void)favoritedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion;
 
 - (void)bookmarkedStatusesWithCompletion:(DONApiFavoritedStatusesCompletionHandler)completion;
+
+- (void)statusesByAccount:(NSString *)accountId withCompletion:(DONApiStatusesCompletionHandler)completion;
 
 @end
 

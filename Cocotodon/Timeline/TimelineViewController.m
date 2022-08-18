@@ -222,8 +222,11 @@ static NSString* SummarizeContent(DONStatus *status) {
 }
 
 - (void)updateToolbarStreamingItem {
-    NSString *sym = self.subscribedStream && self.isConnectedStream(self) ? @"bolt.fill" : @"bolt.slash";
     MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
+    if (![wc isKindOfClass:MainWindowController.class]) {
+        return;
+    }
+    NSString *sym = self.subscribedStream && self.isConnectedStream(self) ? @"bolt.fill" : @"bolt.slash";
     [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }
 

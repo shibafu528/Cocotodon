@@ -74,16 +74,6 @@ static NSArray<DONStatus *> *mergeTimeline(NSArray<DONStatus *> *tl0, NSArray<DO
     return (NSArray<DONStatus *> *) merged;
 }
 
-@implementation NSTabViewItem (WithVCAndLabel)
-
-+ (instancetype)tabViewItemWithViewController:(nonnull NSViewController *)viewController label:(NSString *)label {
-    NSTabViewItem *item = [NSTabViewItem tabViewItemWithViewController:viewController];
-    item.label = label;
-    return item;
-}
-
-@end
-
 @interface MainViewController ()
 
 @property (nonatomic, weak) IBOutlet PostBox *postbox;

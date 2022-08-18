@@ -38,6 +38,8 @@
 		5D52C40628A8F870004994B7 /* ProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40528A8F870004994B7 /* ProfileHeaderView.m */; };
 		5D52C40928A8FD5D004994B7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40828A8FD5D004994B7 /* ProfileViewController.m */; };
 		5D52C40C28AB11CE004994B7 /* AutolayoutTextViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */; };
+		5D52C40F28AE76B9004994B7 /* ProfileTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */; };
+		5D52C41228AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D52C41128AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m */; };
 		5D54E685250928770067EAB4 /* ReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E684250928770067EAB4 /* ReplyViewController.m */; };
 		5D54E691250BBDA70067EAB4 /* MRBState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E690250BBDA70067EAB4 /* MRBState.m */; };
 		5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D54E6BD251265A00067EAB4 /* PreferencesViewController.m */; };
@@ -204,6 +206,10 @@
 		5D52C40828A8FD5D004994B7 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		5D52C40A28AB11CE004994B7 /* AutolayoutTextViewWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutolayoutTextViewWrapper.h; sourceTree = "<group>"; };
 		5D52C40B28AB11CE004994B7 /* AutolayoutTextViewWrapper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutolayoutTextViewWrapper.m; sourceTree = "<group>"; };
+		5D52C40D28AE76B9004994B7 /* ProfileTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileTabViewController.h; sourceTree = "<group>"; };
+		5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileTabViewController.m; sourceTree = "<group>"; };
+		5D52C41028AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTabViewItem+WithVCAndLabel.h"; sourceTree = "<group>"; };
+		5D52C41128AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTabViewItem+WithVCAndLabel.m"; sourceTree = "<group>"; };
 		5D54E682250913160067EAB4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5D54E683250928770067EAB4 /* ReplyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyViewController.h; sourceTree = "<group>"; };
 		5D54E684250928770067EAB4 /* ReplyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReplyViewController.m; sourceTree = "<group>"; };
@@ -419,6 +425,8 @@
 				5DA74AA22518B9A600A1CF38 /* NSString+ReplaceLineBreaks.m */,
 				5D3D61DE25DD5DC4001B93D4 /* NSImage+Resize.h */,
 				5D3D61DF25DD5DC4001B93D4 /* NSImage+Resize.m */,
+				5D52C41028AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.h */,
+				5D52C41128AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -449,6 +457,8 @@
 				5D52C40528A8F870004994B7 /* ProfileHeaderView.m */,
 				5D52C40728A8FD5D004994B7 /* ProfileViewController.h */,
 				5D52C40828A8FD5D004994B7 /* ProfileViewController.m */,
+				5D52C40D28AE76B9004994B7 /* ProfileTabViewController.h */,
+				5D52C40E28AE76B9004994B7 /* ProfileTabViewController.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1109,6 +1119,7 @@
 				5D94871125173247009066C3 /* DONMastodonAccessToken.m in Sources */,
 				5DA74AB12518F9BB00A1CF38 /* DONWebSocketStreaming.m in Sources */,
 				5D94871025173247009066C3 /* DONMastodonApp.m in Sources */,
+				5D52C41228AE77FA004994B7 /* NSTabViewItem+WithVCAndLabel.m in Sources */,
 				5DA3179524FF190D0095AF04 /* TimelineViewController.m in Sources */,
 				5DADEAEE25DABD6D004D8FD0 /* AutolayoutTextView.m in Sources */,
 				5DAA595F266BAA000075C96D /* PostBoxTextView.m in Sources */,
@@ -1147,6 +1158,7 @@
 				5D97CDD226778D5700950012 /* TimelineAvatarView.m in Sources */,
 				5D04E72725E113B30068FDFF /* PreviewViewController.m in Sources */,
 				5DA92D4227B9D1C9005C125D /* DONPromise.m in Sources */,
+				5D52C40F28AE76B9004994B7 /* ProfileTabViewController.m in Sources */,
 				5DA92D3227B7F0EA005C125D /* DONApiClient+Search.m in Sources */,
 				5D12AF4A2819975100033235 /* StreamingManager.m in Sources */,
 				5D54E6BE251265A00067EAB4 /* PreferencesViewController.m in Sources */,

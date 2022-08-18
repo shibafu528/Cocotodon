@@ -14,10 +14,10 @@
                     <window key="window" title="Profile" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" toolbarStyle="compact" titleVisibility="hidden" id="dXK-lS-3Lk">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="425" y="462" width="700" height="600"/>
+                        <rect key="contentRect" x="425" y="462" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <view key="contentView" id="8FK-hw-sKX">
-                            <rect key="frame" x="0.0" y="0.0" width="700" height="600"/>
+                            <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
                         <toolbar key="toolbar" implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="Mz7-9o-J4U">
@@ -27,7 +27,7 @@
                                 <toolbarItem implicitItemIdentifier="4232A412-6647-493B-881B-B7613C94E0B1" label="Tab" paletteLabel="Tab" sizingBehavior="auto" id="CT5-RU-Cbz">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="xXq-ob-XKl">
-                                        <rect key="frame" x="0.0" y="14" width="229" height="26"/>
+                                        <rect key="frame" x="0.0" y="14" width="216" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="texturedSquare" trackingMode="selectOne" id="uHZ-se-27h">
                                             <font key="font" metaFont="system"/>
@@ -71,11 +71,11 @@
             <objects>
                 <splitViewController id="U1B-0e-5ec" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
+                        <splitViewItem holdingPriority="260" behavior="sidebar" id="6VY-uB-AOP"/>
                         <splitViewItem id="4K6-nT-fgr"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="69N-hP-yrf">
-                        <rect key="frame" x="-95" y="0.0" width="699" height="544"/>
+                        <rect key="frame" x="-95" y="0.0" width="804" height="544"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
                     <connections>
@@ -85,7 +85,7 @@
                 </splitViewController>
                 <customObject id="GlI-Cn-OWd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-591" y="1251"/>
+            <point key="canvasLocation" x="-588" y="1251"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="XAf-ru-3gV">
@@ -198,18 +198,18 @@
             </objects>
             <point key="canvasLocation" x="-1" y="1251"/>
         </scene>
-        <!--Tab View Controller-->
+        <!--Profile Tab View Controller-->
         <scene sceneID="Crt-d1-Hjr">
             <objects>
                 <customObject id="MBy-tz-zSX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="dOK-1f-bpP" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="dOK-1f-bpP" customClass="ProfileTabViewController" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="投稿" identifier="" id="Z7W-58-uR3"/>
                         <tabViewItem label="フォロー" id="KNp-2k-gDF"/>
                         <tabViewItem label="フォロワー" id="Q3q-RZ-CfI"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="c4i-iC-H3V">
-                        <rect key="frame" x="0.0" y="0.0" width="485" height="550"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="550"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
                         <connections>
@@ -224,7 +224,7 @@
                     </connections>
                 </tabViewController>
             </objects>
-            <point key="canvasLocation" x="401.5" y="1251"/>
+            <point key="canvasLocation" x="467" y="1254"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NGT-ql-flU">
@@ -232,7 +232,7 @@
                 <customObject id="nRt-o9-hMr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="afd-An-LK8" sceneMemberID="viewController">
                     <view key="view" id="AEJ-zy-8S0">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cU0-dk-D9l">
@@ -250,7 +250,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="986" y="1129"/>
+            <point key="canvasLocation" x="1075" y="1126"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ieU-CJ-vkP">
@@ -258,7 +258,7 @@
                 <customObject id="QPu-gF-wEN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="RPk-Eb-qMS" sceneMemberID="viewController">
                     <view key="view" id="yxJ-PY-OZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77l-zN-0LK">
@@ -276,7 +276,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="986" y="1483"/>
+            <point key="canvasLocation" x="1075" y="1480"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="A01-bu-dNv">
@@ -284,7 +284,7 @@
                 <customObject id="fBD-Av-IVY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="E24-IJ-7Yc" sceneMemberID="viewController">
                     <view key="view" id="xde-HU-Fnm">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="550" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufr-AA-rjg">
@@ -302,7 +302,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1495" y="1483"/>
+            <point key="canvasLocation" x="1685" y="1480"/>
         </scene>
     </scenes>
 </document>
