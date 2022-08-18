@@ -153,6 +153,7 @@
     DONMastodonNotification *notify = self.notifications[self.tableView.clickedRow];
     
     [menu removeAllItems];
+    [menu addItemWithTitle:[NSString stringWithFormat:@"@%@ のプロフィールを表示", notify.account.fullAcct] action:@selector(openProfile:) keyEquivalent:@""];
     [menu addItemWithTitle:[NSString stringWithFormat:@"@%@ をブラウザで開く", notify.account.fullAcct] action:@selector(openInBrowser:) keyEquivalent:@""];
     
     if (notify.status) {
@@ -198,6 +199,19 @@
     NSPoint mouseLocation = NSEvent.mouseLocation;
     [window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
     [window makeKeyAndOrderFront:self];
+}
+
+- (IBAction)openProfile:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONMastodonNotification *notify = self.notifications[row];
+    NSWindowController *wc = [App profileWindowControllerForAccount:notify.account];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    [wc showWindow:self];
 }
 
 - (IBAction)openInBrowser:(id)sender {
