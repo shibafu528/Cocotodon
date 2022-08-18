@@ -222,8 +222,11 @@ static NSString* SummarizeContent(DONStatus *status) {
 }
 
 - (void)updateToolbarStreamingItem {
-    NSString *sym = self.subscribedStream && self.isConnectedStream(self) ? @"bolt.fill" : @"bolt.slash";
     MainWindowController *wc = (MainWindowController*) self.view.window.windowController;
+    if (![wc isKindOfClass:MainWindowController.class]) {
+        return;
+    }
+    NSString *sym = self.subscribedStream && self.isConnectedStream(self) ? @"bolt.fill" : @"bolt.slash";
     [wc.toolbarStreamingItem setImage:[NSImage imageWithSystemSymbolName:sym accessibilityDescription:nil] forSegment:0];
 }
 
@@ -422,6 +425,8 @@ static NSString* SummarizeContent(DONStatus *status) {
     [menu addItemWithTitle:@"会話を見る" action:@selector(openThread:) keyEquivalent:@""];
     [menu addItemWithTitle:@"URLをコピー" action:@selector(copyURL:) keyEquivalent:@""];
     [menu addItemWithTitle:@"ブラウザで開く" action:@selector(openInBrowser:) keyEquivalent:@""];
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItemWithTitle:@"プロフィールを表示" action:@selector(openProfile:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:@"削除" action:@selector(deleteStatus:) keyEquivalent:@""];
     [menu addItemWithTitle:@"編集" action:@selector(recomposeStatus:) keyEquivalent:@""];
@@ -707,6 +712,20 @@ static NSString* SummarizeContent(DONStatus *status) {
     
     DONStatus *status = self.statuses[row];
     [NSWorkspace.sharedWorkspace openURL:status.originalStatus.URL];
+}
+
+- (IBAction)openProfile:(id)sender {
+    NSInteger row = [self targetRowInAction:sender];
+    if (row < 0) {
+        return;
+    }
+    
+    DONStatus *status = self.statuses[row];
+    DONMastodonAccount *account = status.originalStatus.account;
+    NSWindowController *wc = [App profileWindowControllerForAccount:account];
+    NSPoint mouseLocation = NSEvent.mouseLocation;
+    [wc.window setFrameTopLeftPoint:NSMakePoint(mouseLocation.x - 8, mouseLocation.y - 8)];
+    [wc showWindow:self];
 }
 
 - (IBAction)openPreview:(id)sender {

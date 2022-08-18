@@ -32,6 +32,7 @@
 #import "NSString+ReplaceLineBreaks.h"
 #import "NSView+NibLoader.h"
 #import "NSImage+Resize.h"
+#import "NSTabViewItem+WithVCAndLabel.h"
 
 #import <PromiseKit/PromiseKit.h>
 

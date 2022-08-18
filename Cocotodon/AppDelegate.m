@@ -4,6 +4,7 @@
 
 #import "AppDelegate.h"
 #import "ReplyViewController.h"
+#import "ProfileWindowController.h"
 #import "IntentManager.h"
 #import "mrb_setting_dsl.h"
 #import <UserNotifications/UserNotifications.h>
@@ -192,10 +193,19 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
 @property (nonatomic) MRBProc *worldCurrentFilter;
 
 @property (nonatomic) NSWindowController *initialController;
+@property (nonatomic) NSMutableDictionary<NSString *, ProfileWindowController *> *profileControllers; // fullAcct => window controller
+
 
 @end
 
 @implementation AppDelegate
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _profileControllers = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     NSString *host, *accessToken;
@@ -417,6 +427,21 @@ static mrb_value postbox_created_callback(mrb_state *mrb, mrb_value self) {
         mix_plugin_call_arg0(self.mrb, "boot");
         mrb_gc_arena_restore(self.mrb, ai);
     }
+}
+
+- (NSWindowController *)profileWindowControllerForAccount:(DONMastodonAccount *)account {
+    ProfileWindowController *wc = self.profileControllers[account.fullAcct];
+    if (!wc) {
+        NSStoryboard *storyboard = [NSStoryboard storyboardWithName:@"ProfileWindow" bundle:nil];
+        wc = [storyboard instantiateInitialController];
+        wc.account = account;
+        self.profileControllers[account.fullAcct] = wc;
+    }
+    return wc;
+}
+
+- (void)releaseProfileWindowController:(NSWindowController *)controller {
+    [self.profileControllers removeObjectsForKeys:[self.profileControllers allKeysForObject:controller]];
 }
 
 - (void)registerIntentHandlers {

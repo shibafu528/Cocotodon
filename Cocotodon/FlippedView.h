@@ -6,7 +6,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FlippedView : NSClipView
+@interface FlippedView : NSView
+
+@end
+
+DEPRECATED_MSG_ATTRIBUTE("たぶん使い方間違えてる")
+@interface FlippedClipView : NSClipView
 
 @end
 
