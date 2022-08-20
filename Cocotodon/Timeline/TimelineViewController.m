@@ -281,7 +281,7 @@ static NSString* SummarizeContent(DONStatus *status) {
             [summary addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, summary.length)];
             [detail addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, detail.length)];
         }
-        if (status.editedAt) {
+        if (status.originalStatus.editedAt) {
             [indicators appendString:@"✏️"];
         }
         if (status.originalStatus.mediaAttachments.count != 0) {
