@@ -37,7 +37,7 @@ public class Diagnosis: NSObject {
         }.then { context -> Promise<(data: Data, response: URLResponse)> in
             var req = URLRequest(url: self.url, cachePolicy: .reloadIgnoringLocalCacheData)
             req.httpMethod = "POST"
-            let body = "shindanName=\(name)&_token=\(context.token)".data(using: .utf8)!
+            let body = "type=name&shindanName=\(name)&_token=\(context.token)".data(using: .utf8)!
             req.httpBody = body
             req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             req.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
