@@ -100,7 +100,10 @@
     return [AnyPromise promiseWithResolverBlock:^(PMKResolver _Nonnull resolver) {
         NSURL *url = attachment.remoteURL ? attachment.remoteURL : attachment.URL;
         AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
-        manager.responseSerializer = [AFImageResponseSerializer serializer];
+        AFImageResponseSerializer *serializer = [AFImageResponseSerializer serializer];
+        // Big Sur以降ならWebPのデコードに対応しているはず
+        serializer.acceptableContentTypes = [serializer.acceptableContentTypes setByAddingObject:@"image/webp"];
+        manager.responseSerializer = serializer;
         [manager GET:[url absoluteString]
           parameters:nil
              headers:nil
