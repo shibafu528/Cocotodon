@@ -4,11 +4,11 @@ env:
   COCOTODON_MRUBY_BUILD_TYPES: release
 jobs:
   build:
-    runs-on: macos-11
+    runs-on: macos-14
     strategy:
       matrix:
         xcode:
-          - 13.1
+          - 16.2
     steps:
       - name: Checkout
         uses: actions/checkout@v2
