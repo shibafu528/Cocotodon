@@ -1,6 +1,13 @@
 # disable pkg-config
 ENV['PKG_CONFIG_LIBDIR'] = ''
 
+# Workaround for legacy mruby-yaml and Ruby 3.2+
+unless defined?(File.exists?)
+  class << File
+    alias :exists? :exist?
+  end
+end
+
 shared = ->(conf) do
   conf.cc.defines << %w(MRB_UTF8_STRING)
 
@@ -37,6 +44,8 @@ shared = ->(conf) do
 
   # libyamlをsubmoduleでcheckoutするようになったあたりから上手くクロスコンパイルできない
   conf.gem github: 'mrbgems/mruby-yaml', checksum_hash: '0606652a6e99d902cd3101cf2d757a7c0c37a7fd'
+  # バージョン上げても大丈夫な気がするけど確認する時間が取れないから固定
+  conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: '20ba3325d6fa504cbbf193e1b2a90e20fdab544f'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-miquire-fs'
   conf.gem github: 'shibafu528/mruby-mix', path: 'mruby-mix-twitter-models'
