@@ -72,7 +72,7 @@
     [super drawRect:dirtyRect];
     
     [NSColor.controlBackgroundColor setFill];
-    NSRectFill(dirtyRect);
+    NSRectFill(self.bounds);
     
     switch (self.borderStyle) {
         case PostBoxBorderStyleRect: {
