@@ -2,6 +2,7 @@
 // Copyright (c) 2020 shibafu
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "PostBox.h"
 #import "PostBoxTextView.h"
 #import "PostBoxLayoutManagerDelegatee.h"
@@ -20,6 +21,7 @@
 @property (nonatomic) NSTimer *flashMessageTimer;
 @property (nonatomic) NSArray<DONEmoji *> *customEmojiCache;
 @property (nonatomic) AnyPromise *customEmojiPromise;
+@property (nonatomic) CGFloat baseHeight;
 
 @end
 
@@ -144,22 +146,40 @@
 
 - (void)setShowSpoilerText:(BOOL)showSpoilerText {
     _showSpoilerText = showSpoilerText;
+    CGFloat spoilerSpace = 0;
     if (showSpoilerText) {
         self.draft.spoilerText = @"";
         self.showSpoilerTextButton.contentTintColor = NSColor.controlAccentColor;
-        self.topConstraintOfTootInput.constant = 1 + self.spoilerTextInput.frame.size.height + 4;
+        spoilerSpace = self.spoilerTextInput.frame.size.height + 4;
     } else {
         self.showSpoilerTextButton.contentTintColor = NSColor.controlTextColor;
-        self.topConstraintOfTootInput.constant = 1;
     }
+    // 本文欄を潰さないように、警告文欄の分だけPostBox自体の高さも伸ばす
+    NSLayoutConstraint *heightConstraint = [self heightConstraint];
+    if (heightConstraint && self.baseHeight == 0) {
+        self.baseHeight = heightConstraint.constant;
+    }
+    // frameを補間すると左下原点基準で動いてしまうので、制約のconstantを直接アニメーションさせる
     [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
-        context.duration = 0.25;
-        context.allowsImplicitAnimation = YES;
-        [self layoutSubtreeIfNeeded];
+        context.duration = 0.15;
+        context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+        self.topConstraintOfTootInput.animator.constant = 1 + spoilerSpace;
+        heightConstraint.animator.constant = self.baseHeight + spoilerSpace;
     }];
 }
 
 #pragma mark - private
+
+/// Storyboard側で設定されている、PostBox自身の高さ制約
+- (nullable NSLayoutConstraint *)heightConstraint {
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeHeight &&
+            constraint.secondItem == nil && constraint.relation == NSLayoutRelationEqual) {
+            return constraint;
+        }
+    }
+    return nil;
+}
 
 - (IBAction)clickSend:(id)sender {
     if (!self.showSpoilerText) {
